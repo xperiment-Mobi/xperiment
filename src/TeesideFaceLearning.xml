@@ -1,0 +1,167 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+         
+              <screen BGcolour="white"></screen>                          
+			  <computer  stimuliFolder="TeesideFaces" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables trialNum='0' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="0">
+
+	 <addText  drawBox="true"  autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="100%" height="80%" y="0%" x="0%" vertical="top" text=
+"{b}Participant Information: Perceptual Ratings of Same- and Other-Race Faces{/b}
+Introduction
+People are normally very good at recognising familiar faces (i.e., faces of friends, colleagues or famous people) but relatively poor at recognising faces that are unfamiliar to them (Hancock, Bruce & Burton, 200). In particular, people are very poor at recognising faces of other races. A vast amount of research has been conducted to understand why this is the case and importantly it is clear that racial prejudice is not the cause. Instead a combination of perceptual expertise and social categorisation appear to explain the effect. This experiment will examine our perceptions of same and other race faces.
+What will I be asked to do if I take part? You will be presented with two blocks of 46 faces. One block will display Caucasian faces one at a time and the other block will display Japanese faces one at a time. You will see each face for 15s and during that time you will be asked to rate the face on 5 factors on a 7-point scale: attractiveness, distinctiveness, memorability, familiarity and likeability. You will also be asked to complete a questionnaire assessing how much contact you have had with both Japanese and white British faces. The experiment should take no longer than 30 minutes to complete. 
+Will my data be anonymous and confidential?  The names of all participants will remain anonymous throughout the project. Data and responses gained will not be able to be linked to the name of the participant and data will be treated confidentially, only used for the purposes stated here and not shared with anyone beyond the research team.
+Do I have to take part? No, you do not have to take part. You can withdraw from the experiment up until [insert date] without any detriment to you. In order to withdraw at a later date you will need to email the experimenter (using the email address below) and provide them with a password, which you will create on the next page.  The password will be used to identify your data.
+Where can I obtain further information if I need it? Further information can be received from Natalie Butcher at N.Butcher@tees.ac.uk or Dr Kazuyo Nakabayashi at K.Nakabayashi@hull.ac.uk." timeStart="0"  timeEnd="forever" fontSize="20"/>
+
+	<addButton width="20%" height="40"  text="continue" resultFileName="continue" vertical="bottom" y="100%"/>
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  depth="bottom" drawBox="true" howMany="8" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="30%" y="0%---10%---20%---50%---60%---70%---77%---84%" x="0%" vertical="top" text=
+"{b}Consent Page{/b} 
+
+---1.	Have you read the Participant Information Sheet?
+---2.	Do you understand that you do not need to take part in the study and if  you do you are free to withdraw:-
+ *  By [insert date] ****************
+ *  without having to give a reason for withdrawing
+ * and without detriment to you? 
+---3. Have you received enough information about the study? 
+---4. Do you agree to take part in this study?
+---Participant age: 
+---Participant gender:
+---Participant nationality:
+
+---Please provide a memorable password (not your name). You will need to provide the experimenter with this password should you wish to withdraw your data at a later date." timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	
+	<addMultipleChoice height="40" width="18%" labels="yes,no" required="==yes" horizontal="left" howMany="4" y="11.5%---41%---52%---62%" x="50%" seperation="horizontal"/>
+	
+	<addInputTextBox timeStart="0" width="18%" height="35" y="72%" x="20.1%" peg="age" restrict="0123456789." horizontal="left" />
+	
+	<addMultipleChoice height="40" width="18%" peg="sex" timeStart="0" labels="male,female" required="" horizontal="left" y="78.5%" x="20%" seperation="horizontal"/>
+	
+	<addComboBox peg="origin" vertical="top" required="" label="where do you come from?" depth="0" timeStart="0" width="40%" height="31%" timeEnd="forever" x="60%" y="69.7%"/>
+	
+	<addInputTextBox required="" width="18%" height="35" x="20.1%" y="85%" horizontal="left" timeStart="0" peg="pword"  />
+
+	<addButton width="90%" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exist the study.',this.click&&required==true?next.start()" height="40"  text="I fully consent to participation in this study" vertical="bottom" y="100%"/>
+	
+	<behavNextTrial peg="next" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true"  autoSize="false" align="left" wordWrap="true"  width="100%"   text=
+"{b}Instructions page:{/b}
+You are going to see a series of faces for 15s. Please view each face for several seconds before rating it indicating how distinctive, likeable, attractive, memorable and familiar the face is.
+{b}Distinctiveness{/b} is how difficult you think it would be to pick that person out of a crowd
+{b}Likeability{/b} is about whether you think the person looks likeable
+{b}Attractiveness{/b} is whether you think the person is attractive looking.
+{b}Memorability{/b} is about whether you think it would be easy to remember that person
+{b}Familiarity{/b} is about whether the face is confusable with somebody you know.
+When rating the faces please make use of the whole scale as the scale is from 1 to 7. Do not use the same number (e.g., 3 or 5) all the time without thinking of other numbers on the scale." timeStart="0"  timeEnd="forever" fontSize="20"/>
+
+
+	<addButton width="20%" height="40"  text="continue" resultFileName="continue" vertical="bottom" y="100%"/>
+
+</TRIAL>
+
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='1/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are one quarter of the way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='2/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are half way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='3/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are three quarters of the way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+  
+<TRIAL template="myTemplate" block="10" trials="192" trialName="0010_FF_Caucasian;0010_FF_Japan;0011_FF_Caucasian;0011_FF_Japan;0012_FF_Caucasian;0013_FF_Caucasian;0013_FF_Japan;0014_FF_Caucasian;0014_FF_Japan;0015_FF_Caucasian;0015_FF_Japan;0016_FF_Caucasian;0016_FF_Japan;0017_FF_Caucasian;0017_FF_Japan;0018_Brit_NF_UP;0018_FF_Japan;0019_FF_Caucasian;0019_FF_Japan;001_Brit_NF_UP;0020_FF_Caucasian;0020_FF_Japan;0021_FF_Caucasian;0021_FF_Japan;0022_FF_Caucasian;0022_FF_Japan;0023_FF_Caucasian;0023_FF_Japan;0024_FF_Caucasian;0024_FF_Japan;0025_FF_Japan;0026_MF_Caucasian;0026_MF_Japan;0027_MF_Caucasian;0027_MF_Japan;0028_Jap_NF_UP;0028_MF_Caucasian;0029_Brit_NF_UP;0029_MF_Japan;002_FF_Caucasian;002_Jap_NF_UP;0030_Jap_NF_UP;0031_MF_Caucasian;0031_MF_Japan;0032_MF_Caucasian;0032_MF_Japan;0033_MF_Caucasian;0033_MF_Japan;0034_MF_Caucasian;0034_MF_Japan;0035_MF_Caucasian;0035_MF_Japan;0036_Jap_NF_UP;0036_MF_Caucasian;0037_Brit_NF_UP;0037_MF_Japan;0038_MF_Japan;0039_MF_Caucasian;0039_MF_Japan;003_FF_Caucasian;003_FF_Japan;0040_MF_Caucasian;0040_MF_Japan;0041_MF_Caucasian;0042_MF_Caucasian;0042_MF_Japan;0043_MF_Caucasian;0043_MF_Japan;0044_Brit_NF_UP;0045_MF_Caucasian;0045_MF_Japan;0046_MF_Caucaisan;0046_MF_Japan;0047_MF_Caucasian;0047_MF_Japan;0048_MF_Caucasian;0048_MF_Japan;0049_MF_Caucasian;0049_MF_Japan;004_FF_Caucasian;004_Jap_NF_UP;0050_MF_Caucasian;0050_MF_Japan;005_Jap_NF_UP;006_FF_Caucasian;006_FF_Japan;007_Brit_NF_UP;007_FF_Japan;008_FF_Caucasian;008_FF_Japan;009_FF_Caucasian;009_FF_Japan;">
+	
+</TRIAL>  
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+
+
+	<addText text="For the following questionnaire, we would like you to indicate how well the following statements represent the type of interactions you have with Oriental and Caucasian people. Please indicate the extent to which each statement represents your interactions" y="5%" width="100%" fontSize="20"/>
+	
+	<addMultipleChoice fontSize="18" height="50" width="90%" timeStart="0" labels="1 very strongly disagree,2 strongly disagree,3 disagree,4 agree,5 strongly agree,6 very strongly agree"  y="13%"  seperation="horizontal"/>
+
+	 <addText  autoSize="false" align="right" wordWrap="true"  width="70%"  howMany="16" text="(1) I know lots of oriental people---(2) I interact with Caucasian people during recreational periods---(3) I live, or have lived in an area where I interact with Caucasian people---(4) I live, or have lived in an area where I interact with Oriental people---(5) I interact with Oriental people during recreational periods---(6) I interact with Caucasian people on a daily basis---(7) I socialize a lot with Caucasian people---(8) I went to a secondary school where I interacted with Oriental students---(9) I socialize a lot with Oriental people---(10) I know lots of Caucasian people---(11) I generally only interact with Oriental people---(12) I interact with Oriental people on a daily basis---(13) I went to a secondary school where I interacted with Caucasian students---(14) I generally only interact with Caucasian people---(15) I have lived in a country where the people are predominately Caucasian---(16) I have lived in a country where the people are predominately Oriental" timeStart="0"  timeEnd="forever" fontSize="18" x="0" y="19%---24%---etc---" horizontal="left" />
+
+<addMultipleChoice height="30" width="20%" timeStart="0" labels="1,2,3,4,5,6" peg="1---2---3---4---5---6---7---8---9---10---11---12---13---14---15---16" required="" horizontal="left" howMany="16" y="19%---24%---etc---" x="73%" seperation="horizontal"/>
+
+	<addButton width="20%" height="35"  text="continue" resultFileName="continue" vertical="bottom" y="100%"/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" blockOrder="random" trials="1">
+	
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="This is the end of the experiment, thank you for taking part!
+The aim of this project is to assess the degree to which pre-experimental differences in stimulus representations (e.g. attractiveness, familiarity, likability, distinctiveness and memorability) exist within the Cross Race Effect in face recognition. It is important to assess such differences cross culturally in order to establish whether such factors might explain already found differences in face recognition across same and other race faces as well as to validate stimuli (faces) used in past and future research.
+Further information can be received from Natalie Butcher at N.Butcher@tees.ac.uk or Dr Kazuyo Nakabayashi at K.Nakabayashi@hull.ac.uk"	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="20"></addText>
+</TRIAL>
+  	
+
+
+<myTemplate order="random">
+
+	<addJPG extension="jpg" copyOverID="images" filename="0010_FF_Caucasian;0010_FF_Japan;0011_FF_Caucasian;0011_FF_Japan;0012_FF_Caucasian;0013_FF_Caucasian;0013_FF_Japan;0014_FF_Caucasian;0014_FF_Japan;0015_FF_Caucasian;0015_FF_Japan;0016_FF_Caucasian;0016_FF_Japan;0017_FF_Caucasian;0017_FF_Japan;0018_Brit_NF_UP;0018_FF_Japan;0019_FF_Caucasian;0019_FF_Japan;001_Brit_NF_UP;0020_FF_Caucasian;0020_FF_Japan;0021_FF_Caucasian;0021_FF_Japan;0022_FF_Caucasian;0022_FF_Japan;0023_FF_Caucasian;0023_FF_Japan;0024_FF_Caucasian;0024_FF_Japan;0025_FF_Japan;0026_MF_Caucasian;0026_MF_Japan;0027_MF_Caucasian;0027_MF_Japan;0028_Jap_NF_UP;0028_MF_Caucasian;0029_Brit_NF_UP;0029_MF_Japan;002_FF_Caucasian;002_Jap_NF_UP;0030_Jap_NF_UP;0031_MF_Caucasian;0031_MF_Japan;0032_MF_Caucasian;0032_MF_Japan;0033_MF_Caucasian;0033_MF_Japan;0034_MF_Caucasian;0034_MF_Japan;0035_MF_Caucasian;0035_MF_Japan;0036_Jap_NF_UP;0036_MF_Caucasian;0037_Brit_NF_UP;0037_MF_Japan;0038_MF_Japan;0039_MF_Caucasian;0039_MF_Japan;003_FF_Caucasian;003_FF_Japan;0040_MF_Caucasian;0040_MF_Japan;0041_MF_Caucasian;0042_MF_Caucasian;0042_MF_Japan;0043_MF_Caucasian;0043_MF_Japan;0044_Brit_NF_UP;0045_MF_Caucasian;0045_MF_Japan;0046_MF_Caucaisan;0046_MF_Japan;0047_MF_Caucasian;0047_MF_Japan;0048_MF_Caucasian;0048_MF_Japan;0049_MF_Caucasian;0049_MF_Japan;004_FF_Caucasian;004_Jap_NF_UP;0050_MF_Caucasian;0050_MF_Japan;005_Jap_NF_UP;006_FF_Caucasian;006_FF_Japan;007_Brit_NF_UP;007_FF_Japan;008_FF_Caucasian;008_FF_Japan;009_FF_Caucasian;009_FF_Japan" 
+	 timeEnd='15000' vertical="top" y="0%"/>
+
+	
+	<behavSchedule timeStart="0" peg="nxt" schedule="[crowd,crowdTxt],[like,likeTxt],[attractive,attractiveTxt],[remember,rememberTxt],[confuse,confuseTxt]" usePegs="crowd,like,attractive,remember,confuse,crowdTxt,likeTxt,attractiveTxt,rememberTxt,confuseTxt,next" doAfter="next" />
+	
+	<addText  y="88%" fontSize="20" width="100%" align="middle" peg="crowdTxt---likeTxt---attractiveTxt---rememberTxt---confuseTxt" howMany="5"
+	text="How difficult would it be to pick this person out of a crowd? 1 = ‘Not Difficult’ and  7 = ‘Very Difficult’---Does this person look as if he would be likable? ‘Not Likable’ and 7= ‘Very Likable’---Is this person attractive looking? 1 = ‘Not Attractive’ and 7= ‘Very attractive’---Would this face be easy to remember? 1= ‘Easy to Remember’ and 7 = ‘Difficult to Remember’---Is this face confusable with someone you know? 1 = ‘Not Confusable’ and 7 = ‘Very Confusable’"/>
+	
+	<addMultipleChoice if="this.click?nxt.next()" fontSize="18" peg="crowd---like---attractive---remember---confuse" howMany="5" height="50" width="90%" labels="1,2,3,4,5,6,7" y="100%" vertical="bottom"  seperation="horizontal"/>
+	
+	<behavNextTrial peg="next" />
+	
+</myTemplate>
+
+
+
+
+</Bouba2>	

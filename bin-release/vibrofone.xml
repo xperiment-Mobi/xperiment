@@ -1,0 +1,197 @@
+<Bouba2 exptType="WEB"> 
+  
+ <SETUP>   
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" /> 
+              <screen BGcolour="black" width="1024" height="768"  orientation="horizontal" ></screen>                           
+              <computer  stimuliFolder="vibrofone" />  
+              <style BUTTON_DOWN="0xff5656"  /> 
+              <variables COLOUR='0xe9e9e9' sidea="aaa" SIDEA="←" SIDEB="→" randomly_swap="SIDEA SIDEB"  /> 
+</SETUP> 
+  
+  
+  
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="0" order="fixed" trials="1"> 
+  
+     <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text= 
+        "{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'} 
+        You will be asked to identify emotion in faces. Just click on the word that you consider goes describes the emotion in the face - don't think too much, and don't worry if you feel like you're guessing! We are interested in people's intuitive responses.  
+        At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish. 
+        Please read the below consent statement and indicate whether you consent. 
+        {u}Statement of Informed Consent{/u} 
+        1. I understand the general purpose of this experiment. 
+        2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. 
+        3. I understand that my responses are anonymous. 
+        4. I agree to take part in this online experiment.{/p}" 
+        timeStart="0"  timeEnd="forever" fontSize="17"/> 
+      
+    <addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="I consent" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" />                 
+    <addButton y="1%" vertical="top" horizontal="right" width="350" height="100" x="99%" text="quit" goto="quit" /> 
+      
+    <addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+    text="When the stimuli have loaded (below bar), please click 'Continue'"/>     
+      
+    <addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" /> 
+          
+  
+  
+</TRIAL> 
+  
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1"> 
+  
+    <addUrlVariable   /> 
+      
+    <addInputTextBox y="45%" height="30%" width="80%" fontSize="80" peg="id" timeStart="0" text="participant id" /> 
+  
+    <behavNextTrial peg='nextTrial'/> 
+      
+  
+<addButton  hideResults="true"  horizontal="right" x="99%" y="99%" vertical="bottom"  text="Continue" if="this.click?this.text='please answer the questions',this.click&&id.result!=''&?nextTrial.start()" 
+goto="" timeStart="100"  width="350"  height="200"   />              
+   
+  
+</TRIAL> 
+  
+  
+  
+ <TRIAL TYPE="Trial" ITI="0" block='1' order="fixed" trials='1'> 
+       
+    <addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+    timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/>  
+      
+    <addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%" x="20%" y="20%---34%"  text="sex---age"  timeStart="0"  timeEnd="forever" fontSize="25" />  
+      
+    <addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="65%" height="15%" seperation='horizontal' labels="female,male"  padding="10" x="30%" y="20%" timeStart="0" /> 
+      
+    <addMultiNumberSelector width="65%" height="35%" lineAlpha="0x000000" horizontal='left' peg="age" startingVal="22" x="31%" y="50%" timeStart="0" /> 
+      
+    <addButton  hideResults="true" horizontal="right" x="99%" y="99%" vertical="bottom"  text="Continue" if="this.click&&sex.result!=''&&age.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  width="350"  height="200"   />              
+   
+    <behavNextTrial peg="nextTrial"/>     
+      
+    <addUrlVariable  _ip="notGiven" />    
+    
+    <addResults timeStart="0" sideCorrect="SIDEA"/>                       
+           
+</TRIAL> 
+  
+ <TRIAL TYPE="Trial" ITI="0" block='1' order="fixed" trials='1'> 
+       
+    <addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+    timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/>  
+      
+    <addText horizontal="right" wordWrap="true" align="right" autoSize="false" height="13%" width="10%" x="20%" y="55%"  text="my colour vision is normal"  timeStart="0"  timeEnd="forever" fontSize="25" />  
+      
+      
+    <addComboBox buttonHeight="100" fontSize="30" itemHeight="100" peg="country" label="what country do you come from?" horizontal='left'  scale="1" timeStart="0" width="86%" height="70%" vertical="top" text_background="0x000000" x="10%" y="23%"/> 
+      
+    <addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="70%" height="20%" seperation='horizontal' labels="yes,no"  padding="10" x="25%" y="55%" timeStart="0"   />  
+  
+    <addButton horizontal="right" x="99%" y="99%" vertical="bottom" width="350"  height="200" text="Continue" if="this.click&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100" />              
+   
+    <behavNextTrial peg="nextTrial"/>     
+                        
+           
+</TRIAL> 
+  
+  
+  
+<TRIAL TYPE="Trial" hideResults="true" block="11" blockOrder="random"   trials="1"> 
+    <addText colour="COLOUR" wordWrap="true" text= 
+        "You have completed practice 1. Click START to continue to practice 2."
+        timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+    <addButton  peg='nextTr' width="50%" height="20%" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/> 
+</TRIAL> 
+  
+<TRIAL TYPE="Trial" hideResults="true" block="21" blockOrder="random"   trials="1"> 
+    <addText colour="COLOUR" wordWrap="true" text= 
+        "You have completed practice 2. Click START to continue to the experiment."
+        timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+    <addButton  peg='nextTr' width="50%" height="20%" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/> 
+</TRIAL> 
+    
+
+<myTemplate>   
+   <addResults ans='false' copyOver="true" timeStart="0" peg="r"/>
+   <addText colour="white" selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='500'/> 
+     
+   
+   <addVibrate copyOverID="vibration" peg="vibration" if="this.doNow?r.vib=this.pattern,r.vibStart=this.timeStart" repeat="0" duration='200' pattern="0,200;0,40,40" /> 
+   <behavPause copyOverID="pause" peg="delay" timeStart='750' time="50;150" /> 
+   <addJPG copyOverID="prime" peg="prime" if="this.doNow?r.vis=this.filename,r.visStart=this.timeStart" filename="primeGreen.png;primeGreen.png;primeRed.png;primeRed.png" duration="200" />  
+   
+   <behavRT timeStart="1000" peg="rt" />
+   <addText copyOverID="buttons" align="middle" background="grey" peg="left---right" whichPressed="pressed" timeStart="1000" timeEnd="2950" if="this.click?rt.stop(),r.selected=this.peg,this.onFinish?nextTrial.start()" if1="," if3=",this.click?nextTrial.start()" goto="" howMany="2" fontSize="60" text='coconut1---coconut2' height="100%" x="25%---75%" /> 
+ 
+   <behavNextTrial copyOverID="nextTrial" peg="nextTrial" /> 
+</myTemplate>   
+
+<feedback> 
+       <addText copyOverID="buttons"  if2="left.click&&'←'=='SIDEA'?feedback.text='correct',right.click&&'→'=='SIDEA'?feedback.text='correct';right.click&&'←'=='SIDEA'?feedback.text='correct',left.click&&'→'=='SIDEA'?feedback.text='correct'" />
+   <addText copyOverID="correct" duration="500" text="wrong" timeStart="end 500" peg="feedback" colour="white" selectable="false" fontSize="100" align='center'/> 
+</feedback> 
+  
+  
+<!-- Practice Tactile & Vision separately   -->
+<TRIAL template="feedback,myTemplate" order="random" block="10" saveResults="false" trials="4" trialName="practice_t"> 
+    <addJPG present="false" copyOverID="prime" timeStart="550"  />  
+    <addVibrate  copyOverID="vibration" timeStart="800"/> 
+</TRIAL> 
+  
+<TRIAL template="feedback,myTemplate" order="random" block="10" saveResults="false" trials="4" trialName="practice_v"> 
+    <addVibrate present="false" copyOverID="vibration" timeStart="550"  /> 
+    <addJPG copyOverID="prime" timeStart="800" filename="primeGreen.png;primeRed.png"/>  
+</TRIAL> 
+  
+  
+<!-- Practice but with feedback -->
+<TRIAL template="feedback,myTemplate" order="random" block="20"  trials="4" trialName="t"> 
+    <addJPG copyOverID="prime" timeStart="550" />  
+    <behavPause copyOverID='pause' /> 
+    <addText copyOverID="buttons"/> 
+    <addVibrate  copyOverID="vibration" timeStart="800" /> 
+    <addText copyOverID="correct" text="wrong" /> 
+  
+</TRIAL> 
+  
+<TRIAL template="feedback,myTemplate" order="random" block="20"  trials="4" trialName="v" > 
+    <addVibrate copyOverID="vibration" timeStart="550"  /> 
+    <behavPause copyOverID='pause' /> 
+    <addText copyOverID="buttons" if2="left.click&&'←'=='SIDEA'?feedback.text='correct',right.click&&'→'=='SIDEA'?feedback.text='correct';left.click&&'←'=='SIDEA'?feedback.text='correct',right.click&&'→'=='SIDEA'?feedback.text='correct';right.click&&'←'=='SIDEA'?feedback.text='correct',left.click&&'→'=='SIDEA'?feedback.text='correct';right.click&&'←'=='SIDEA'?feedback.text='correct',left.click&&'→'=='SIDEA'?feedback.text='correct'"/> 
+    <addJPG copyOverID="prime" timeStart="800"/>  
+    <addText copyOverID="correct" text="wrong"  /> 
+</TRIAL> 
+  
+<!-- experiment -->
+<TRIAL template="myTemplate" order="random" block="50" trials="12" > 
+    <addJPG copyOverID="prime" timeStart="550" />  
+    <behavPause copyOverID='pause' /> 
+   
+     <addText copyOverID="buttons"  if2="left.click&&'←'=='SIDEA'?r.ans='correct',right.click&&'→'=='SIDEA'?r.ans='correct';right.click&&'←'=='SIDEA'?r.ans='correct',left.click&&'→'=='SIDEA'?r.ans='correct'" />
+    <addVibrate  copyOverID="vibration" timeStart="800" duration="200"/> 
+</TRIAL> 
+  
+<TRIAL template="myTemplate" order="random" block="50" trials="12" > 
+    <addVibrate copyOverID="vibration" timeStart="550"  /> 
+    <behavPause copyOverID='pause' /> 
+    <addJPG copyOverID="prime" timeStart="800" duration="200"/>  
+    <addText copyOverID="buttons"  if2="left.click&&'←'=='SIDEA'?r.ans='correct',right.click&&'→'=='SIDEA'?r.ans='correct';left.click&&'←'=='SIDEA'?r.ans='correct',right.click&&'→'=='SIDEA'?r.ans='correct';right.click&&'←'=='SIDEA'?r.ans='correct',left.click&&'→'=='SIDEA'?r.ans='correct';right.click&&'←'=='SIDEA'?r.ans='correct',left.click&&'→'=='SIDEA'?r.ans='correct'"/>
+</TRIAL> 
+  
+  
+<TRIAL TYPE="Trial" hideResults="true"  block="100" order="random" trials="1"> 
+                
+    <behavSaveData timeStart='0'/> 
+      
+    <addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text= 
+    "Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how recognizable different emotions are in our photos. Have a lovely day!"
+    timeStart="0"  timeEnd="forever" fontSize="20"></addText>  
+      
+    <addButton text="quit" y="80%" goto="" if="this.click?finish.start()" width="50%" height="20%"/> 
+    <behavQuit peg="finish"/> 
+</TRIAL> 
+  
+  
+
+  
+
+</Bouba2> 

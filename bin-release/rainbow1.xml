@@ -1,0 +1,133 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" ssaveDataURL="http://www.opensourcesci.com/experiments/weightColour" />
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="weightCol" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to drag colour patches into ‘weight’ order, from least heavy to most heavy.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Dr Yasmina Jraissati (yasmina.jraissati@gmail.com) or Dr Andy Woods (andy@xperiment.mobi) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL block="20" order="random" trialName="T0;T1;T2;T3;T4;T5;T6;T7;T9;T10;T11;T12;T13;T14;T15;T16;T17;T18;T19;T20;T21;T22;T23;T24" trials="24">
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these colours in the box, arranging them by 'weight' order. Don't overthink! Just order the colours as spontaneously as possible." 
+	if="this.doNow&&RAND==1?this.text='Please drag these colours into ‘weight’ order starting with the most heavy colours on the left',swap.start()"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavSwap how="flipped" peg="swap" usePegs="light,heavy" />
+
+	<addResults timeStart="0" peg="hack" heavyLeft="RAND" />
+	
+	<behavDrag saveProperty="background" timeStart="0" peg="drag" save="x" usePegs="colours,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="colours,box" timeStart="0" timeEnd="forever"/>
+	
+	<addText howMany="10;5;5;5;5;4;3;4;5;8;4;4;5;9;4;4;6;4;4;4;5;3;4;4" align="centre" selectable="false" timeStart="0" peg="colours"
+	background="0xF4083D---0x790894---0xFFE51D---0x19C88E---0x2D859C---0xDD7D15---0x2062A5---0xE61C8E---0x228982---0x9CBC27;0xDFBDF9---0x50DBF9---0x6BE0AB---0xE4CA5A---0xFFB1AA;0xD3C5DF---0x9ED3DF---0xA0D6B9---0xD9CA92---0xEDC0BB;0x8C719B---0x2D859C---0x3B8968---0x90792B---0xAC6966;0x807885---0x697F85---0x698074---0x837B62---0x8C7675;0xB8CED3---0x9ED3DF---0x80D7EB---0x50DBF9;0x697F85---0x518290---0x2D859C;0x22343B---0x4F656C---0x83999F---0xB8CED3;0xCDC8D2---0xD3C5DF---0xD8C1EC---0xDFBDF9---0xE5B8FF;0x504456---0x564060---0x5B3C69---0x613772---0x67307B---0x6D2884---0x731D8C---0x790894;0x4E175F---0x7E4D94---0xB083CA---0xE5B8FF;0x382E3D---0x685E6D---0x9A929F---0xCDC8D2;0xD8C6C4---0xEDC0BB---0xFEB9B3---0xFFB1AA---0xFFA9A1;0x8C7675---0x9D706D---0xAC6966---0xB9615F---0xC65857---0xD34D51---0xDD414B---0xE82F44---0xF4083D;0x630E26---0x9D4646---0xD47D79---0xFFB1AA;0x422C2E---0x745B5A---0xA6908F---0xD8C6C4;0xEEE6C5---0xF5E6A9---0xFBE670---0xFFE670---0xFFE550---0xFFE51D;0x9D957A---0xA49561---0xAA9445---0xAF9323;0xD3CAAC---0x706031---0xA49561---0xD9CA92;0x383120---0x696149---0x9D957A---0xD3CAAC;0xB4D1C0---0xA0D6B9---0x87DCB2---0x6BE0AB---0x43E4A6;0x698074---0x55856E---0x3B8968;0x113829---0x3B6B55---0x6CA086---0xA0D6B9;0x26352E---0x51665B---0x829B8D---0xB4D1C0"
+	text="" 
+	width="10%" height="40" y="20%---25%---etc---" timeEnd="forever" fontSize="20"
+	/> 
+	
+	<addShape peg="box" timeStart="0" width="740" height="200" colour="none" visible="false" y="35%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="740" height="200" colour="none" lineThickness="1" y="70%"/>
+	
+	<addText howMany="2" y="87%" timeStart="0" peg="light---heavy" width="20%" fontSize="30" text="least heavy---most heavy" x="15%---90%" />
+	
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='place all colours please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+
+
+
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation to this study. We're exploring the way people associate color sensation to weight. In previous studies, we found that people associated dark colors to heaviness. In general, they tend to association saturated (intense) color to heaviness too. Still, when it comes to saturation, depending on the color, there seems to be less agreement. This is what you helped us assessing by taking part to this online experiment. 
+If you have any questions or would like to here more about our research, please contact us at colorexperiments@gmail.com."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

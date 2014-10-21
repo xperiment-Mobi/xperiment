@@ -1,0 +1,364 @@
+<MULTI>
+
+<MULTISETUP forceCondition='ObeseLabel'>
+	<step howDetermineCondition='random' conditionSJs='ObeseLabel=17,HealthyLabel=3,ObeseCat=7,HealthyCat=10,ObjectControl=0,HealthyControl=0' />
+<!-- 	<a SJs="60" condition='CBCondition3' /> -->
+</MULTISETUP>
+
+	<HealthyControl>
+	
+	 <SETUP>  
+	              <info id="951261adc1ad494eb46cfd02bb7595b7" />
+	              <results mock="false" saveDataURL='http://www.opensourcesci.com/experiments/Liverpool/perception1' cloudURL="http://www.xpt.mobi/gateway/" saveToCloud="true" saveToServerFile="true" />
+	              <screen BGcolour="white" orientation="vertical" ></screen>                          
+	              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+				  <computer  stimuliFolder="LiverpoolPerceptionStim" />
+				  <loadFilesInAdvance>true</loadFilesInAdvance>
+				  <style   />
+				  <core makeMode="false" />
+				  <variables UNIT="kg" />
+	</SETUP>
+	
+	<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+		<addJPG filename="logo.png" height="97" width="319" y="0" vertical="top" />
+	
+		 <addText  drawBox="true" autoSize="false" align="left" wordWrap="true"  width="100%" height="90%" x="50%" y="15%" verticalAlign="top" vertical="top" text=
+	"{b}Participant Information Sheet{/b}
+	Before you decide whether to participate in this study, it is important that you understand why the research is being done and what it will involve. Please take time to read the following information.
+	{b}What is the purpose of the study?{/b}: The study examines how people make perceptual judgements.
+	{b}Why have I been invited to take part?{/b}: We are looking for volunteers who are aged above 18.
+	{b}Do I have to take part?{/b}: If you do choose to take part, you are free to withdraw at any time without supplying a  reason.
+	{b}What will happen if I take part?{/b}: You will be asked to rate several photos of men based on your impression of them, as well as self-report questions about your current mood. This should take no longer than 20 minutes, on completion you will receive a full debrief.
+	{b}Are there any risks in taking part?{/b}: There are no anticipated negative effects of taking part in the study.
+	{b}What are the benefits in taking part?{/b}: On completion of the study you will be paid $0.60 for your time.
+	{b}Will my participation be kept confidential, what will happen to the results?{/b}: Any information you provide will be kept fully confidential and anonymous. Results from the study will only be published in academic journals.
+	{b}What if I am unhappy or there is a problem?{/b}: If at any point during the study you are unhappy, please contact the researcher at the  address below. If you feel uncomfortable approaching the researcher or that your  concerns have not been adequately addressed you should take the name of the  researcher and study and contact the Research Governance Officer on 0151 794 8290.
+	{b}Will my taking part be covered by an insurance scheme?{/b}: The University’s insurance scheme covers all participants.
+	{b}Who do I contact if I have further questions?{/b}: You should contact the principal investigator: Dr Eric Robinson, School of Psychology, University of Liverpool, Liverpool, L69 7ZA Telephone 01517941187 Email: eric.robinson@liverpool.ac.uk"
+			timeStart="0"  timeEnd="forever" fontSize="17"/>
+		
+		<addButton width="300" sstartID="next" height="40" text="I have read the information sheet" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+		<__behavTrial timeStart="0" disable="a,b,c" enable="d,e,f"/>
+	</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+		<addJPG filename="logo.png" height="97" width="319" y="0" vertical="top" />
+		 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+" •I confirm that I have read and understood the information sheet
+	•I understand that I should be 18 or older in order to take part in the study
+	•I understand my participation is voluntary and I am free to withdraw at any time without giving a reason
+	•I understand that under the Data Protection Act, I can at any time ask for access to the information I provide and I can also request the destruction of that information if I wish.
+	•I agree to take part in this study."
+			timeStart="0"  timeEnd="forever" fontSize="25"/>
+		
+	<addButton width="300" sstartID="next" height="40" text="I consent to the above points" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+	</TRIAL>
+	
+	
+	
+	
+	
+	
+	<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+	
+	
+		<addText  wordWrap="true" width="70%" text=
+	"You will answer some questions about yourself before rating a series of photographs. After this you will answer a few more questions about yourself. Please answer as honestly as possible. This should take around 10 minutes."
+			timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+	
+		<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+		
+		<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" y="100%" vertical="bottom"/>
+	
+	</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="3" betweenSJ="whatUnit" order="fixed" trials="0">
+		<addText  wordWrap="true" width="70%" align="centre" text=
+	"Do you measure your weight in pounds or kilograms?"
+			timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+	
+		
+		<behavNextTrial peg='nextTrial'/>
+		
+		<addResults timeStart="0" peg="results" />
+		
+		<addButton howMany="2" hideResults="true" goto="" if="this.click?UNIT=this.text,results.unit=this.text,nextTrial.start()" width="30%" height="100" text="KGs---pounds" timeStart="0" timeEnd="forever" x="30%---70%" vertical="top" y="65%"/>
+	
+	
+	</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="3" order="fixed" trialName="mood1" trials="1">
+	
+		<addText   x="50%" y="5%" height="10%" text=
+		"Some questions about yourself" 
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+		
+		<addText  howMany="4"  padding="10" width="30%" verticalAlign="center" height="10%" y="18%---35%---etc---" text=
+		"I feel happy---I feel sad---I feel angry---I feel relaxed"
+		timeStart="0"  timeEnd="forever" autoSize="false"  align="center" fontSize="30"/> 
+	
+	 	<addMultipleChoice howMany="4" seperation="horizontal" peg="happy---sad---angry---relaxed" distanceApart="1" width="100%" height="10%" horizontalDistanceApart="210" 
+	 	labels="strongly agree,disagree,somewhat disagree,neither agree nor disagree,somewhat agree,agree,strongly agree"  
+	 	 x="50%" y="23%---40%---etc---" timeStart="0"  timeEnd="forever" /> 	
+		
+		<addUrlVariable  _ip="notGiven" />
+	
+		<behavNextTrial peg='nextTrial'/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+		if="this.click?this.text='please answer the questions',this.click&&happy.result!=''&&sad.result!=''&&angry.result!=''&&relaxed.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+		
+	</TRIAL>
+	
+	
+	<TRIAL block="10" order="fixed" trialName="t1;t2;t3;t4;t5;t6;t7;t8;t9;t10" trials="10">
+	
+		<addJPG height="400" width="253" y="5%" vertical="top" peg="pic" timeStart="0" betweenSJ='filename' filename="h1.jpg;h2.jpg;h3.jpg;h4.jpg;h5.jpg;h6.jpg;h7.jpg;h8.jpg;h9.jpg;h10.jpg" />
+		
+		<addText fontSize="26" width="100%" align="centre" y="70%" betweenSJ='Qs' text="This person is well dressed;This person looks intelligent;This person looks aggressive;This person looks european;This person is wearing very colorful clothes;This person is tanned;This person is approachable;This person has good hair;This person looks relaxed;This person is average height"/>
+		
+		
+		<addText fontSize="26" align="centre" y="63%" x="90%"  howMany="0" betweenSJ="weighs" timeStart="0" if="this.doNow?this.text='in '+UNIT" />	
+	 	
+	 	<addInputTextBox required="" betweenSJ='weighs' peg="weighs" timeStart="0" howMany="0" text='how much do you think this person weighs' y="63%" height="7%" width="60%" restrict="1234567890" fontSize="26"/>
+	 	
+	 	<addResults if="this.doNow?this.pic=pic.filename" timeStart="0"/>
+	 	
+	 	<addText howMany="0;0;0;0;0;0;0;1;1;1" betweenSJ='instructR' fontSize="26" align="centre"  y="86%" text=";;;;;;;This person looks happy;This person has long hair;This person looks helpful"/>
+	 	
+	 	<addMultipleChoice if="this.click&&required==true?nextTrial.start()"
+	 	required="" howMany="1;1;1;1;1;1;1;2;2;2" betweenSJ='multiChoice' seperation="horizontal" 
+	 	distanceApart="1" width="100%" height="10%" horizontalDistanceApart="210" peg="q1---q2"
+	 	labels="strongly disagree,disagree,somewhat disagree,neither agree nor disagree,somewhat agree,agree,strongly agree"  
+	 	y="82%---98%" vertical="bottom" timeStart="0"  timeEnd="forever" /> 
+	 	
+	 	<behavNextTrial peg='nextTrial'/>
+	
+	</TRIAL>
+	
+	
+	<TRIAL block="11" trialName="Target">
+		
+			<addJPG height="400" width="253" y="5%" vertical="top" betweenSJ="fileNames" filename="TargetMan2.jpg" />
+			
+			<addText howMany="2" x="0" horizontal="left" align="centre" fontSize="26" width="100%" y="70%---86%" text="This person is an unacceptable weight---I like the look of this person"/>
+			
+		 	<addMultipleChoice howMany="2" peg="a---b" if="this.click&&b.result!=''?nextTrial.start()---this.click&&a.result!=''?nextTrial.start()" seperation="horizontal" 
+		 	distanceApart="1" width="100%" height="10%" horizontalDistanceApart="210" 
+		 	labels="strongly disagree,disagree,somewhat disagree,neither agree nor disagree,somewhat agree,agree,strongly agree"  
+		 	y="82%---98%" vertical="bottom" timeStart="0"  timeEnd="forever" /> 
+			 	
+		 	
+		 	<behavNextTrial peg='nextTrial'/>
+		
+	</TRIAL>
+		
+		
+	
+	
+	<TRIAL TYPE="Trial" block="15" order="fixed" trialName="mood1" trials="1">
+	
+		<addText   x="50%" y="5%" height="10%" text=
+		"Some questions about yourself" 
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="30"></addText> 
+		
+		<addText  howMany="4"  padding="10" width="30%" verticalAlign="center" height="10%" y="18%---35%---etc---" text=
+		"I feel happy---I feel sad---I feel angry---I feel relaxed"
+		timeStart="0"  timeEnd="forever" autoSize="false"  align="center" fontSize="30"/> 
+	
+	 	<addMultipleChoice howMany="4" seperation="horizontal" peg="happy---sad---angry---relaxed" distanceApart="1" width="100%" height="10%" horizontalDistanceApart="210" 
+	 	labels="strongly agree,disagree,somewhat disagree,neither agree nor disagree,somewhat agree,agree,strongly agree"  
+	 	 x="50%" y="23%---40%---etc---" timeStart="0"  timeEnd="forever" /> 	
+		
+	
+		<behavNextTrial peg='nextTrial'/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+		if="this.click?this.text='please answer the questions',this.click&&happy.result!=''&&sad.result!=''&&angry.result!=''&&relaxed.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+		
+	</TRIAL>
+	 
+	<TRIAL TYPE="Trial" block="-16" trialName="Qs" order="fixed" trials="1">
+	
+	
+		<addText   x="50%" y="5%" height="10%" text=
+		"Some questions about yourself" 
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+		
+		<addText  howMany="5"  padding="10" width="30%" verticalAlign="center" height="10%" x="36%" y="13%---23%---36%---49%---81%" text=
+		"sex---age---height---weight---Have you participated in a similar study to this before?"
+		timeStart="0"  timeEnd="forever" autoSize="false" horizontal="right" align="right" fontSize="20"/> 
+		
+		<addMultipleChoice howMany="2" required="" seperation="horizontal" peg="cm---weightUnit" distanceApart="5" width="18%" height="5%" horizontalDistanceApart="210" labels="cm,inches---kg,pounds"  padding="10" x="75%" y="33%---45%" timeStart="0"  timeEnd="forever" /> 
+		
+	 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="10%" timeStart="0"  timeEnd="forever" /> 	
+		
+		<addMultiNumberSelector required="00---000---000" selectors="2---3---3" howMany="3" peg="age---height---weight" width="25%" height="10%" startingVal="00---000---000"  x="50%" y="20%---33%---46%" timeStart="0" timeEnd="forever" />
+	
+		<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+		
+		<addInputTextBox required="" howMany="2" peg="aims---ethnicity" timeStart="0" height="6%" width="70%" text="What did you think the aims of the study were? (type in this box)---What is your ethnicity?" y="69%---88%"/>
+		
+	 	<addMultipleChoice required="" seperation="horizontal" peg="before" distanceApart="5" width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="79%" timeStart="0"  timeEnd="forever" /> 	
+	
+		<behavNextTrial peg='nextTrial'/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+		if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+		
+	
+	</TRIAL>
+
+		<TRIAL TYPE="Trial" betweenSJ="notice" block="17" order="fixed" trialName="notice" trials="0">
+	
+		<addText  howMany="3" x="50%" verticalAlign="top" vertical="bottom" y="25%---45%---65%" height="5%" align="centre" text=
+		"Did you notice the weight information given for the first 10 photos?---What was it?---Did you believe the information presented to you about the individuals weight?" 
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+		
+	
+		 <addMultipleChoice required="" howMany="3" seperation="horizontal" peg="noticeWeight---whatWasIt---Believe" distanceApart="1" width="60%" height="10%" horizontalDistanceApart="210" 
+	 	labels="yes,no---healthy,overweight,obese,don't know---yes,no,don't know"  
+	 	 x="50%" y="30%---50%---70%" timeStart="0"  timeEnd="forever" if="this.click&&required==true?nextTrial.start()"/>
+	 	 
+	 	 <behavNextTrial peg='nextTrial'/>
+	
+	</TRIAL>
+	
+			
+	<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+			
+			  
+		<behavSaveData timeStart='0'/>
+		
+		<addText  y="0%" verticalAlign="top" vertical="top" wordWrap="true" height="80%" width="100%"  text=
+	"{b}Thank you for  participating.{/b} 
+	{b}What was the study about?{/b}
+	This study examined opinions and acceptance of people with different body weights. In particular, whether applying weight labels to obese individuals impacted on obesity acceptance. Across conditions, the photographs that participants saw differed- participants saw either healthy or obese males where accurate weight information was given or withheld.
+	We expect acceptance of obesity to increase in trials where participants saw obese individuals without weight information. However, due to the negative connotations associated with being obese we expect acceptance to decline in the trials where individuals saw obese individuals and weight information was provided. This study will help us to understand when and how heavier body weights will become more acceptable.
+	{b}What if I want advice about my weight?{/b}
+	We are not qualified to offer advice ourselves, but if you are concerned about your eating or weight, we advise you to seek information and advice from your Doctor. As well as this, you could also seek information from these resources: http://www.nhs.uk/livewell/healthy-eating/Pages/Healthyeating.aspx  www.b-eat.co.uk 
+	{b}Who can I contact if I have further questions?{/b} 
+	If you have any questions then please contact the principal investigator: 
+	Dr Eric Robinson, School of Psychology, University of Liverpool, Liverpool, L69 7ZA
+	0151 794 1187, eric.robinson@liverpool.ac.uk "
+		timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+		<addText text="{b}Don't forget to enter the below code in Mechanical Turk.{/b}" fontSize="25" y="80%" align="center" width="100%"/>
+		
+		<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+		
+	</TRIAL>
+
+	</HealthyControl>	
+	
+	
+	
+	<ObeseControl>
+ 		<a betweenSJ='filename'> -
+ 			<editAttributes filename='01.jpg;02.jpg;03.jpg;04.jpg;05.jpg;06.jpg;07.jpg;08.jpg;09.jpg;10.jpg' /> 
+ 		</a> 
+	</ObeseControl>
+		
+	
+	
+	<ObjectControl>
+		<a betweenSJ='filename'> -
+ 			<editAttributes filename='Ob1.jpg;Ob2.jpg;Ob3.jpg;Ob4.jpg;Ob5.jpg;Ob6.jpg;Ob7.jpg;Ob8.jpg;Ob9.jpg;Ob10.jpg' /> 
+ 		</a> 
+		<a betweenSJ='Qs'>
+	 		<editAttributes text="This makes me feel relaxed;This looks refreshing;This looks fun;This looks expensive;These look colouful;This is pleasant to look at;This looks real;This is a sign I recognize;This is relaxing to look at;This is more fun than most other furniture" />  
+	 	</a> 
+	 	
+	 	<a betweenSJ='instructR'>
+	 		<editAttributes text=";;;;;;;This looks cheap;This looks mass produced;This looks unpleasant" />  
+	 	</a>
+
+	 	
+	</ObjectControl>
+	
+
+	
+<!-- CATEGORY EXPERIMENTS	 -->
+	
+	
+	<HealthyCat>
+		<a betweenSJ='weighs'> 
+	 		<editAttributes howMany='1' /> 
+	 	</a> 
+	 	 <a betweenSJ='whatUnit'> 
+	 		<editAttributes trials='1' />  
+	 	</a> 
+	</HealthyCat>
+	
+	
+	
+	<ObeseCat>
+		<a betweenSJ='filename'> 
+	 			<editAttributes filename='01.jpg;02.jpg;03.jpg;04.jpg;05.jpg;06.jpg;07.jpg;08.jpg;09.jpg;10.jpg' /> 
+	 	</a> 
+	 
+	 	 <a betweenSJ='whatUnit'> 
+	 		<editAttributes trials='1' />  
+	 	</a> 
+	 	<a betweenSJ='weighs'> 
+	 		<editAttributes howMany='1' />  
+	 	</a> 
+	</ObeseCat>
+	
+	
+	
+<!-- LABEL EXPERIMENTS	 -->
+	
+	
+	<HealthyLabel>
+	
+		<a betweenSJ='Qs'> -->
+	 			<editAttributes text="This healthy weight person is well dressed;This healthy weight person looks intelligent;This healthy weight person looks aggressive;This healthy weight person looks european;This healthy weight person is wearing very colorful clothes;This healthy weight person is tanned;This healthy weight person is approachable;This healthy weight person has good hair;This healthy weight person looks relaxed;This healthy weight person is average height" />  
+	 	</a> 
+	 	
+	 	<a betweenSJ='notice'> -->
+	 			<editAttributes trials="1" />  
+	 	</a> 
+	 	
+	 	<a betweenSJ='instructR'>
+	 			<editAttributes text=";;;;;;;This healthy weight person looks happy;This healthy weight person has long hair;This healthy weight person looks helpful" />  
+	 	</a>
+	 	
+	 	
+	
+	 	
+
+	</HealthyLabel>
+	
+	
+	
+	<ObeseLabel>
+		<a betweenSJ='filename'> -->
+	 			<editAttributes filename='01.jpg;02.jpg;03.jpg;04.jpg;05.jpg;06.jpg;07.jpg;08.jpg;09.jpg;10.jpg' />  
+	 	</a> 
+	 	
+	 	
+	 	<a betweenSJ='Qs'> -->
+	 		<editAttributes text="This obese person is well dressed;This obese person looks intelligent;This obese person looks aggressive;This obese person looks european;This obese person is wearing very colorful clothes;This obese person is tanned;This obese person is approachable;This obese person has good hair;This obese person looks relaxed;This obese person is average height" />  
+	 	</a>
+	 	
+	 	<a betweenSJ='instructR'>
+	 			<editAttributes text=";;;;;;;This obese person looks happy;This obese person has long hair;This obese person looks helpful" />  
+	 	</a>
+	 	
+	 	<a betweenSJ='notice'> -->
+	 			<editAttributes trials="1" />  
+	 	</a> 
+	</ObeseLabel>
+	
+	
+	
+	
+	
+	
+	
+</MULTI>

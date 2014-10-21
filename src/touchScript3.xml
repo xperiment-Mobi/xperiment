@@ -1,0 +1,110 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  save="webfile" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="touchStim2" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="0" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be asked to label how pleasant is the (non-sexual) stroking of one person by another.
+At the end of the study we will tell you more about the purpose of the study. You can contact S.C.Walker@ljmu.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="link"  block="1" trials="1">
+		
+		<addText y="40%" text="ID:" peg="info" timeStart="0" width="100%" fontSize="30" align="center" />
+		<addInputTextBox timeStart="0" peg="link" required="" width="100%" restrict="0123456789" height="10%" fontSize="40"/>
+		
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please enter your ID',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="2" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true" width="70%" text=
+"You will see 15 short video clips of a person being touched/stroked on different parts of the body. Following each clip you will be asked to rate how much you liked the touch you saw, and how much you would like to be touched like that.
+To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+  
+<TRIAL block="10,1" trials="15" trialName="Kate_armA_01;Kate_armA_02;Kate_armA_03;Kate_armB_01;Kate_armB_02;Kate_armB_03;Kate_back_01;Kate_back_02;Kate_back_03;Kate_hand_01;Kate_hand_02;Kate_hand_03;Kate_uparm_01;Kate_uparm_02;Kate_uparm_03">
+	
+	<addHideMouse timeStart="0" peg="mouse"/>
+	
+		
+	<addVideo  lockToFrameRate="true" timeStart="0" if="this.onFinish?pleasant.start(),pleasantT.start(),mouse.stop()" peg="np" width="800" height="450" filename="Kate_armA_01.flv;Kate_armA_02.flv;Kate_armA_03.flv;Kate_armB_01.flv;Kate_armB_02.flv;Kate_armB_03.flv;Kate_back_01.flv;Kate_back_02.flv;Kate_back_03.flv;Kate_hand_01.flv;Kate_hand_02.flv;Kate_hand_03.flv;Kate_uparm_01.flv;Kate_uparm_02.flv;Kate_uparm_03.flv"/>
+	
+	
+	<addText y="70%" colour="COLOUR" width="100%" peg="youLikeT" align="centre" fontSize="20" text="how much would you like to be touched like this?"/>
+	<addMultipleChoice y="80%" if="this.click?nextTrial.start()" peg="youLike" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<addText y="50%" colour="COLOUR" width="100%" peg="pleasantT" align="centre" fontSize="20" text="how pleasant do you think the action was for the person being touched?"/>
+	<addMultipleChoice y="60%" if="this.click?youLike.start(),youLikeT.start(),this.stop(),pleasantT.stop()" peg="pleasant" labels="1 - very unpleasant,2,3,4,5,6,7 - very pleasant" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Past research has found that there are specialised nerve cells in our skin that pick up {b}{a href='http://www.sciencedaily.com/releases/2009/04/090414084453.htm' target='_blank'}pleasant touch{/a}{/b} (a new window will open if link is clicked). These nerve cells respond best to slow stroking. Here we test whether seeing others stroked at such a slow pace are found to be pleasant, relative to a fast pace and no movement. We suspect that {b}{a href='https://en.wikipedia.org/wiki/Mirror_neuron' target='_blank'}mirror neurons{/a}{/b} (a new window will open if clicked) in the brain may activate this pleasant feeling when watching others being stroked.  Have a lovely day! 
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	
+
+	
+</TRIAL>
+
+</Bouba2>	

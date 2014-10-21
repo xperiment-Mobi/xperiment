@@ -1,0 +1,176 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results trickleToServer="true" saveToServerFile="true" saveDataURL = "http://www.opensourcesci.com/experiments/Oxford/Sound" />
+              <screen BGcolour="black" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="BikeStim"  />
+			  <trials blockDepthOrder="10,*=random 10,*,*=fixed" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />
+			  <style fontSize="20"/>
+</SETUP>
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='0' order="fixed" trials='1'>
+	
+	<addFont filename="Calibri.swf"/>
+	
+	<addText  x="50%" wordWrap="true" colour="white" align="centre"  autoSize="false" width="80%"  timeStart="0" fontSize="50"
+	text="URBAN ROAD LIGHTS TEST"/>   
+	
+	<addShape width="85%" fill="false" lineColour="white" />
+	
+	<behavNextTrial timeStart="3000"/>
+	
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='5' order="fixed" trials='1'>
+	<fullScreen if="this.onFinish?next.start()" header2="Click ‘close when ready’ to begin the experiment." header="Click ‘go full screen’ (recommended) or click ‘close when ready’ to begin the experiment." timeStart="0"/>
+	<behavNextTrial peg="next"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial" HideResults="true" block='10' order="fixed" trials='1'>
+
+	
+
+	<addText  y="40%---57%" x="50%" howMany="2" wordWrap="true" colour="white---red" align="left"   width="80%"  timeStart="0" fontSize="25"
+	text="This short experiment will look at how people perceive lights on the road at night.  Specifically {b}it will test the  combined speed and accuracy of responses to individual lights{/b}.  At the end  of the experiment we’ll give you feedback on your results.
+You must answer each question to continue to the next question---It is important you try to respond as fast and accurately as possible."/>   
+	
+	<addShape y="40%" width="85%" fill="false" lineColour="white" />
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" />                
+	
+	
+	<addText  y="80%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'. Stimuli have already loaded if there is no bar below."/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	        
+</TRIAL> 
+
+		 
+<TRIAL template="instructions" block='10,0,1' >
+	<addJPG copyOverID="image" filename="bikered.png" />
+</TRIAL>
+<TRIAL template="myTemplate"  block='10,0,2' trialName="bikered0_;bikered1_">
+	<addShape copyOverID="shape" y="60%"  />
+	<addJPG copyOverID="probe" filename="bikered.png" />
+	<addJPG copyOverID="stim" filename="r1.png---r2.png---r3.png---r4.png---r5.png---r6.png---r7.png"/>
+	<addJPG copyOverID="background" filename="lightsRed.jpg" />
+</TRIAL>
+
+<TRIAL template="instructions" block='10,1,1' >
+	<addJPG copyOverID="image" filename="bikewhite.png" />
+</TRIAL>
+<TRIAL template="myTemplate" block='10,1,2' trialName="bikewhite0_;bikewhite1_">
+	<addJPG copyOverID="probe" filename="bikewhite.png" />
+	<addJPG copyOverID="stim" filename="w1.png---w2.png---w3.png---w4.png---w5.png---w6.png---w7.png"/>
+	<addJPG copyOverID="background" filename="lightsWhite.jpg" />
+</TRIAL>
+
+<TRIAL template="instructions" block='10,2,1' >
+	<addJPG copyOverID="image" filename="brainyred.png" />
+</TRIAL>
+<TRIAL template="myTemplate" block='10,2,2' trialName="brainyred0_;brainyred1_">
+	<addShape copyOverID="shape" y="60%"  />
+	<addJPG copyOverID="probe" filename="brainyred.png" />
+	<addJPG copyOverID="stim" filename="r1.png---r2.png---r3.png---r4.png---r5.png---r6.png---r7.png"/>
+	<addJPG copyOverID="background" filename="lightsRed.jpg" />
+</TRIAL>
+
+<TRIAL template="instructions" block='10,3,1' >
+	<addJPG copyOverID="image" filename="brainywhite.png" />
+</TRIAL>
+<TRIAL template="myTemplate" block='10,3,2' trialName="brainywhite0_;brainywhite1_">
+	<addJPG copyOverID="probe" filename="brainywhite.png" />
+	<addJPG copyOverID="stim" filename="w1.png---w2.png---w3.png---w4.png---w5.png---w6.png---w7.png"/>
+	<addJPG copyOverID="background" filename="lightsWhite.jpg" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+	<addHideMouse enable="true" /> 
+	
+	<addText wordWrap="true" colour="white" align="centre" autoSize="false" y="10%" height="10%"  timeStart="0" fontSize="30"
+	text="THAT IS THE END OF THE EXPERIMENT. HOW DID YOU DO?"/>   
+	
+	<addJPG width="5%" x="19%---26.7%---34%---41.6%" y="70%" height="aspectRatio" howMany="4" filename="brainywhite.png---bikewhite.png---brainyred.png---bikered.png" />		
+	
+	
+	<addBarGraph width="32%" x="30%" height="30%" columnNames="BrainyWhite,BikeWhite,BrainyRed,BikeRed" />
+	
+	<addText y="50%" fontSize="25" width="30%" align="centre" text="Simulated driving experiments conducted by the {b}University of Oxford{/b} demonstrated that Brainy Bike symbol lights were {b}identified faster and more accurately{/b} than traditional white and red bike lights." x="70%"/>
+	
+	<addText y="80%" fontSize="20" width="40%" align="centre" text="The graphs show the time in milliseconds taken to correctly spot each given bike light amongst other lights (error bars shown are 2*standard error)." x="30%"/>
+	
+	<addText y="100%" vertical="bottom" verticalAlign="bottom" horizontal="right" fontSize="15" width="70%" align="right" text="(Press escape to leave full-screen mode. You can close this browser window.)" x="100%"/>
+<addShape colour="0x1c1c1c" width="36%" height="42%" y="53%" x="69%"/>
+<addText wordWrap="true" colour="red" align="centre" autoSize="false" y="91%" x="30%" width="40%"   height="10%"  timeStart="0" fontSize="30"
+	text="{b}The shorter the bar, the quicker you were to spot the light.{/b}"/>   
+	
+
+</TRIAL>
+
+
+
+
+
+
+
+<instructions trials='1'>
+	<addHideMouse enable="true" /> 
+	
+	<addJPG copyOverID="image" y="33%" exactSize="true" />
+	
+	<addShape width="85" height="85" y="33%" fill="false" lineColour="blue" />
+	
+	<addShape y="40%" width="85%" fill="false" lineColour="white" />
+	
+	<addJPG y="33%" x="40%" exactSize="true" filename="arrow.png" />
+	
+	<addText align="centre" y="22%" width="80%" fontSize="25" text="In each of the subsequent pictures you should search for the light shown below."/>
+	<addText y="49%" align="centre" width="80%" fontSize="30" colour="red" text="Press Z if you see the light. Press M if you do not.
+This is a speed test so please respond as quickly as possible." />
+	<addText y="60%" align="centre" width="80%" fontSize="20" text="You must give a response to each still image in order to continue to the next image." />
+	
+	<addCounter colour="white" if="this.onFinish?next.start()" peg="counter" startValue="3000" y="83%" x="35%" endValue="0" steps="3"/>
+	
+	<behavNextTrial peg="next" />
+	
+	<addButton  key=" " timeStart="0" goto="" if="this.click?counter.start()" width="350" height="200" text="begin (press space or click)" horizontal="right" x="99%" y="99%" vertical="bottom" />
+</instructions>
+
+
+<myTemplate trials='10' blockOrder="random">
+	
+	<addHideMouse dontDisableAtEnd="true" />
+
+	<behavRandPos timeStart="0" showBoxes="" box="box" usePegs="stim,box,probe"/>
+	
+	<addJPG copyOverID="probe" width="56" height="56" visible="false;true"  timeStart="0" peg="probe" />
+
+	<addJPG copyOverID="stim" width="56" height="56" shuffle_something="filename ---" howMany="40" peg="stim" timeStart="0"  />
+	
+	<addButton howMany="2" visible="false" key="z---m" goto="" text="Continue" timeStart="0" peg="z---m"
+	if="this.mouseDown?rt.stop(),stim.stop(),probe.stop(),background.stop(),feedback.start(),nextTrial.start()"/>
+	
+	<addResults  copyOver="true" ans="0" />
+	
+	<addText peg="feedback" align="centre" fontSize="120" if="this.doBefore&&probe.visible==true&&z.pressed>0?this.text='correct',results.ans=1,this.doBefore&&probe.visible==false&&m.pressed>0?this.text='correct',results.ans=1" text="false"/>
+	
+	<behavRT  peg="rt" timeStart="0"/>
+	
+	<behavNextTrial  peg="nextTrial" />                 
+	                
+	<addShape copyOverID="shape" opacity=".5" peg="box" width="90%" height="60%" />
+	<addJPG copyOverID="background" depth="bottom" opacity=".9" exactSize="true" peg="background" timeStart="0"  />
+	
+</myTemplate>
+
+
+
+</Taste>	

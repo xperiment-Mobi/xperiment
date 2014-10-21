@@ -1,0 +1,160 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results trialTime="true" id="bristol" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="gaitBrunel"/>
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9'/>
+			  
+		  
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be shown a series of videos and asked to rate the women/men in them for attractiveness. Just click on the rating that you consider best applies - don't think about it too much! We are interested in people's intuitive responses. 
+At the end of the study we will tell you more about the purpose of the study. You can contact ht13mnw@my.brunel.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	
+	<addComboBox required="" peg="mOccupation---fOccupation---occupation" howMany="3" label="What is your mother's occupation?---What is your mother's occupation?---what is your occupation?" items="farming/agriculture,building/construction,other" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" y="45%---55%---65%"/>
+
+	
+	
+	<addComboBox required="" peg="income" label="What is your personal Income?" items="less than £5000,£5001-10000,£10001-15000,£15001-20000,£20001-30000,£30001-40000,£40001-50000,more than £50000" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="75%"/>
+	
+		
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0'  hideResults="true" width="90%" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="83%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="75%"/>
+	
+	<addComboBox peg="orientation" items="heterosexual,homosexual,bisexual" label="what is your sexual orientation?" scale="1" timeStart="0" width="70%" height="31%" timeEnd="forever" x="50%" y="84%"/>
+		
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' enabled="false" hideResults="true" width="90%" goto='' height="40" peg='next' text="continue (if stimuli are still loading, please wait for them to load)"
+	if="this.click?this.text='please answer the questions',this.click&&orientation.result!=''&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="83%"/>
+	
+	<addLoadingIndicator id="loading" behaviours="onFinish:next.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true"  text=
+"In this study, you will see videos of women walking. Each video lasts 15 seconds long. Please watch each one carefully.
+After each video is completed, you should judge how attractive the woman was on a scale of 1-7 using the numbers on your keyboard.
+To begin click START.
+"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+  
+	<addButton  peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forceBlockDepthPositions='1/2'  trials="0">
+	<addText colour="COLOUR" wordWrap="true" text=
+		"You have completed half the trials. Click START to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+ <TRIAL block="10,1" trials="43" trialName="t">
+	
+	<addHideMouse dontDisableAtEnd="true"/>
+
+ 	<addVideo timeStart="0" if="this.onFinish?mc.start(),txt.start()" save="vid" peg="stim" width="240" height="432" filename="P001_110811_OV_NP_COMP.flv;P005_010911_OV_NP_COMP.flv;P009_050911_OV_NP_COMP.flv;P010_060911_OV_NP_COMP.flv;P011_140911_OV_NP_COMP.flv;P022_230911_OV_NP_COMP.flv;P023_300911_OV_NP_COMP.flv;P024_031011_OV_NP_COMP.flv;P025_031011_OV_NP_COMP.flv;P026_041011_OV_NP_COMP.flv;P028_051011_OV_NP_COMP.flv;P030_051011_OV_NP_COMP.flv;P032_171011_OV_NP_COMP.flv;P033_181011_OV_NP_COMP.flv;P035_191011_OV_NP_COMP.flv;P037_201011_OV_NP_COMP.flv;P039_241011_OV_NP_COMP.flv;P041_261011_OV_NP_COMP.flv;P045_281011_OV_NP_COMP.flv;P048_081111_OV_NP_COMP.flv;P049_091111_OV_NP_COMP.flv;P051_101111_OV_NP_COMP.flv;P054_151111_OV_NP_COMP.flv;P055_161111_OV_NP_COMP.flv;P056_171111_OV_NP_COMP.flv;P059_291111_OV_NP_COMP.flv;P063_180212_OV_NP_COMP.flv;P065_190212_OV_NP_COMP.flv;P066_200212_OV_NP_COMP.flv;P067_200112_OV_NP_COMP.flv;P068_230112_OV_NP_COMP.flv;P069_230112_OV_NP_COMP.flv;P071_240112_OV_NP_COMP.flv;P072_250112_OV_NP_COMP.flv;P073_250112_OV_NP_COMP.flv;P074_260112_OV_NP_COMP.flv;P081_080212_OV_NP_COMP.flv;P082_080212_OV_NP_COMP.flv;P084_090212_OV_NP_COMP.flv;P087_130212_OV_NP_COMP.flv;P088_140212_OV_NP_COMP.flv;P091_160212_OV_NP_COMP.flv;P093_200212_OV_NP_COMP.flv;P094_210212_OV_NP_COMP.flv;P095_210212_OV_NP_COMP.flv;P096_220212_OV_NP_COMP.flv;P097_230212_OV_NP_COMP.flv;P099_240212_OV_NP_COMP.flv;P100_240212_OV_NP_COMP.flv;P101_050312_OV_NP_COMP.flv;P102_060312_OV_NP_COMP.flv;P104_070312_OV_NP_COMP.flv;P105_070312_OV_NP_COMP.flv;P106_080312_OV_NP_COMP.flv;P107_080312_OV_NP_COMP.flv;P108_090312_OV_NP_COMP.flv;P111_140312_OV_NP_COMP.flv;P113_150312_OV_NP_COMP.flv;P114_150312_OV_NP_COMP.flv;P115_200312_OV_NP_COMP.flv;P116_200312_OV_NP_COMP.flv;P118_220312_OV_NP_COMP.flv;P120_230312_OV_NP_COMP.flv;P122_130412_OV_NP_COMP.flv;P131_100512_OV_NP_COMP.flv;P133_110512_OV_NP_COMP.flv;P135_150512_OV_NP_COMP.flv;P136_150512_OV_NP_COMP.flv;P137_150512_OV_NP_COMP.flv;P138_160512_OV_NP_COMP.flv;P139_160512_OV_NP_COMP.flv;P141_170512_OV_NP_COMP.flv;P145_280512_OV_NP_COMP.flv;P146_280512_OV_NP_COMP.flv;P149_300512_OV_NP_COMP.flv;P152_310512_OV_NP_COMP.flv;P153_310512_OV_NP_COMP.flv;P154_060612_OV_NP_COMP.flv;P156_080612_OV_NP_COMP.flv;P157_270712_OV_NP_COMP.flv;P158_220712_OV_NP_COMP.flv;P160_280612_OV_NP_COMP.flv;P162_280612_OV_NP_COMP.flv;P164_030712_OV_NP_COMP.flv;P167_060712_OV_NP_COMP.flv"/> 
+ 	
+	<addText colour="white" peg="txt" selectable="false" text="how attractive was that woman?" fontSize="30" align='center' y="40%" width="100%"/>
+	<addMultipleChoice  disableButtons="true" useKeys="1,2,3,4,5,6,7" if="this.click?nextTrial.start()" peg="mc" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+ 
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" selectable="true" height="100%" width="100%"  text=
+	"We would like to take this opportunity to say thank you for taking the time to take part in our study.
+All data collected will be treated in the strictest confidence. For any queries please contact Mel Wilson (1220748@my.brunel.ac.uk).
+The aim of the project is to investigate whether men in jobs that regularly use muscular strength, more often than those in the general population, find women who are stronger more attractive. We also hope to find out more about  whether this is related only to the man being strong or is also influenced by the need for a woman to work alongside him in his job (in domestic farming, for instance).
+If this topic is of interest and you wish to read more, the following maybe of interest to you:
+Buss, D. M. (1994). The strategies of human mating. American Scientist, 238-249. http://homepage.psy.utexas.edu/HomePage/Group/BussLAB/pdffiles/AmerSciMay1994.pdf 
+Clark, A.P., (2008). Attracting interest: dynamic displays of proceptivity increase the attractiveness of men and women. Evolutionary Psychology, 6, 4, 563-574. http://www.epjournal.net/articles/attracting-interest-dynamic-displays-of-proceptivity-increase-the-attractiveness-of-men-and-women/ 
+Doyle, J. F. (2009). A woman’s walk: Attractiveness in motion. Journal of Social, Evolutionary, and Cultural Psychology, 3(2), 81 https://www.academia.edu/2463863/A_WOMANS_WALK_ATTRACTIVENESS_IN_MOTION
+Sear, R., & Marlowe, F. W. (2009). How universal are human mate choices? Size does not matter when Hadza foragers are choosing a mate. Biology Letters, 5(5), 606-609 http://rsbl.royalsocietypublishing.org/content/5/5/606.short
+If you were unduly or unexpectedly affected by taking part in the study please feel free to feed it back to the researcher.
+" 
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

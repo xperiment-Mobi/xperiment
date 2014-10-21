@@ -1,0 +1,157 @@
+<CBCondition1 exptType="PC">
+
+<SETUP>
+	<info id="27b2031a2bdb48ce83e100de5f0597d8"></info>
+	<screen BGcolour="white" fullScreen="true" fullScreenMessage="true" orientation="vertical"></screen>
+	<email emergencyEmail="false" toWhom=" andytwoods@gmail.com" subject="test" />
+	<computer stimuliFolder="alcStim"/>
+	<results mock='false' save="webfile" />
+	<defaults ITI="100"/>
+	<style BUTTON_FACE="0xe1eefc" LABEL_TEXT="0x002d62" BUTTON_DOWN="0xff5656" />
+	<variables trialNum='0'/>
+</SETUP>
+
+<TRIAL TYPE="Trial" hideResults="true" block='0' order="fixed" trials='1'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Greetings! Thank you for taking part in this study.
+
+We are researchers form the Crossmodal Research Laboratory, Department of Experimental Psychology, University of Oxford. The purpose of this study is to investigate how people feel about different beverages. During this study, we will show you photos of some beverages and ask you questions about them. It takes about 20 minutes to complete the whole study.
+
+If you would like to take part in this study, please participate in a quiet environment. If you need to wear glasses, please wear them before you start.
+
+Once again, thank you for your participation."/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" block="0" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="3" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%---10%---30%" x="40%" y="20%---34%---70%"  text="sex---age---my colour vision is normal"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="female,male"  padding="10" x="44%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="20%" height="20%" horizontal='left' peg="age" startingVal="22" x="45%" y="35%" timeStart="0" />
+	
+	<addComboBox peg="country" label="what country do you come from?" horizontal='left' scale="1" timeStart="0" width="50%" height="50%" text_background="0x000000" x="45%" y="75%"/>
+	
+	<addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="yes,no"  padding="10" x="44%" y="70%" timeStart="0"   /> 
+
+	<addButton width="300" height="50" horizontal='right' text="Continue" if="this.click&&sex.result!=''&&age.result!=''&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  x="100%" y="90%"/>             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	<addUrlVariable  _ip="notGiven" />                          
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='1' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="Next, we will show you some photos of alcoholic drinks, and ask you to answer some questions.
+Please note that there will be one photo on each screen.
+The name of the drink will be show below the photo.
+You need to answer all the questions on a webpage before you can proceed to the next screen.
+{b}One of the alcoholic drinks we will show you is Baijiu, an alcoholic drink from China.{/b}"/>   
+	
+	<addButton width="200" height="50" text="Continue"  resultFileName="continue" x="85%" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+<TRIAL TYPE="Trial" trialName="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30" order="random" block="10" trials="30">
+	
+	<addText timeStart="0" behaviours="doBefore:this.text=trialNum+'/30 trials completed',doNow:trialNum=trialNum+1" fontSize="15" align="left" height="3%"  vertical="bottom" horizontal="left" width="20%" x='0%' y="99%"/>	
+	
+	<addJPG y="0%" vertical="top" extension="jpg" filename="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30" exactSize="true" />
+	<addText y="33%" align="center" fontSize="23" text="Baijiu;Beer;Red wine;Whisky;White Wine" />
+	
+	
+	<addText  y="37%---50%---etc---" howMany="4" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="On a 7-point scale, please rate the degree to which you like this glass of alcoholic drink.---On a 7-point scale, please rate the degree to which you are familiar with this glass of alcoholic drink.---On a 7-point scale, please rate the degree to which this glass of alcoholic drink looks pleasant.---On a 7-point scale, please rate the degree to which this glass and this alcoholic drink are congruent with each other."/>
+
+	<addMultipleChoice y="42%---55%---etc---" howMany="4" timeStart="0" required="" peg="like---familiar---pleasant---congruent" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10"  
+	labels="1 Extremely dislike it,2 Very dislike it,3 Somewhat dislike it,4 Neutral,5 Somewhat like it,6 Very like it,7 Extremely like it---Extremely unfamiliar,2 Very unfamiliar,3 Somewhat unfamiliar,4 Neutral,5 Somewhat familiar,6 Very familiar,7 Extremely familiar---1 Extremely unpleasant,2 Very unpleasant,3 Somewhat unpleasant,4 Neutral,5 Somewhat pleasant,6 Very pleasant,7 Extremely pleasant---1 Extremely incongruent,2 Very incongruent,3 Somewhat incongruent,4 Neutral,5 Somewhat congruent,6 Very congruent,7 Extremely congruent"  />   
+	
+
+	<addText  y="90%"  wordWrap="true" align="right" autoSize="false" width="30%" horizontal="right" height="10%"  timeStart="0" fontSize="15" 
+	text="How much do you think this glass of alcoholic drink is worth with in US $?"/>
+
+	<addInputTextBox y="90%" x="55%" timeStart="0" peg="wonga" restrict="1234567890." required="" align="left" horizontal="left" width="30%" height="7%" />
+
+	<addButton hideResults="true" if="this.click&&required==true?nextTrial.start(),this.click?this.text='please answer all the questions'"
+	timeStart="0"  width="50%" height="30" goto="" text="NEXT TRIAL (click or press SPACE)" key=" "  resultFileName="continue" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block='20' order="fixed" trials='1'>
+ 
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="How often do you drink alcoholic drinks in daily life?"/>   
+	
+	<addMultipleChoice  timeStart="0" required="" peg="boozled" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10"  
+	labels="1 Never,2 Occasionally,3 Sometimes,4 Often"  />   
+
+	
+	<addButton hideResults="true" if="this.click&&required==true?nextTrial.start(),this.click?this.text='please answer the question'"
+	timeStart="0"  width="50%" height="30" goto="" text="NEXT TRIAL (click or press SPACE)" key=" "  resultFileName="continue" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	     
+</TRIAL> 
+
+
+
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='100' order='fixed'>
+	
+	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='1024' height='108'  />
+	
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="You have completed this study. Thank you for your participation.
+
+In this study, we are aimed to investigate how people feel about different types of alcoholic beverages. If you have further questions regarding this study, please contact thuspacelab@hotmail.com." 
+	timeStart="0" fontSize="20" ></addText>   
+	
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true" height="30%" colour='red' width="90%" x="50%" y="75%" text=
+	"Thank you for your participation. Have a lovely day! Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	 
+</TRIAL>
+
+  
+</CBCondition1>

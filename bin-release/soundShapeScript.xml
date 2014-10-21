@@ -1,0 +1,281 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results saveDataURL='http://www.opensourcesci.com/experiments/soundShape' mock="false" id="expt"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+			  <computer  stimuliFolder="soundShapeStim" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false"/>
+			  <variables COLOUR='0xe9e9e9' />
+</SETUP>
+
+<TRIAL TYPE="Trial" ITI="0" trialName="splash" ignoreData="false" block='0' trials='1' >
+  
+
+	<addButton  howMany="2" fontSize="30" text="English---Français" if="this.click?lang.language='default',lang.start(),next.start()---this.click?lang.language='french',lang.start(),next.start()" width="200" height="50" x="30%---70%"  goto=""/>
+	
+	<behavLanguage peg="lang" />
+	
+	<behavNextTrial peg="next"/>               
+
+</TRIAL>  
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+		You will be asked to match sounds and pictures. Just click on the picture that you consider goes best with the sound - don't think too much! We are interested in whether people intuitively pair the same sounds and pictures across different cultures. 
+		At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+		Please read the below Consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		4. I agree to take part in this online experiment.{/p}"
+		text.french=
+		"{b}Avant de commencer, merci de bien vouloir lire ce qui suit. En cliquant sur J'ACCEPTE vous indiquez que vous consentez à prendre part à cette étude.{/b}{p align='left'}
+		Nous allons vous demander de faire correspondre des sons à des images. Cliquez simplement sur l'image que vous considérez correspondre le mieux au son - Ne réfléchissez pas trop ! Nous sommes intéressés de savoir si les personnes associent similairement les mêmes images aux mêmes sons à travers différentes cultures. 
+		A la fin de l'étude, nous vous en dirons plus sur ses objectifs. Si vous désirez de plus amples informations, vous pouvez contacter ultérieurement andy@xperiment.mobi. 
+		Merci de lire les phrases de consentement ci-dessous et d'indiquer si vous êtes d'accord.
+		{u}Texte du consentement informé{/u}
+		1. Je comprends l'objectif général de cette expérience.
+		2. Je comprends que je peux arrêter l'expérience à n'importe quel moment et qu'en le faisant, mes données seront détruites. 
+		3. Je comprends que mes réponses sont anonymes. 
+		4. Je suis d'accord pour prendre part à cette expérience en ligne.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" text.french="j'accepte" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="60%" height="10%" x="50%" y="4%" vertical="top" text=
+		"Please adjust the volume on your computer so that you can hear the sound clearly."
+		text.french=
+		"Merci d'ajuster le volume sur votre ordinateur afin d'entendre clairement les sons."
+		timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	<addSound repeat="true" filename="crowd.mp3" />
+	
+	<addButton width="140" sstartID="next" height="40" text="continue" text.french="continuer" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="Qs" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	text.french=
+	"Quelques questions sur vous" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	text.french=
+	"genre---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male" labels.french="femme,homme" padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" label.french="De quel pays venez-vous ?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue" text.french="continuer"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="Qs2" block="1" order="fixed" trials="1">
+
+	<addUrlVariable _ip="notGiven" />
+
+	<addText colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself, related to music" 
+	text.french=
+	"Quelques questions sur vous, à propos de la musique" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="3"  padding="10" width="25%" horizontal="left" height="10%" x="0%" y="27%---49%---67%" text=
+	"how many years have you been playing an instrument---what is your level of musical expertise---what instrument do you play (if applicable)"
+	text.french=
+	"Depuis combien de temps jouez-vous d'un instrument de musique---Quel est votre niveau d'expertise musicale---De quel instrument jouez-vous (si c'est le cas)"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+	<addMultiNumberSelector peg="musicYears" width="30%" height="20%" horizontal="left" startingVal="00"  x="36%" y="30%" timeStart="0" timeEnd="forever" />
+
+	
+	<addMultipleChoice seperation="horizontal" peg="expertise" horizontal="left" distanceApart="5"  width="50%" height="5%" horizontalDistanceApart="210" labels="none,beginner,good,advanced" labels.french="aucun, débutant, bon, avancé" x="35%" padding="10" y="50%" timeStart="0"  timeEnd="forever" /> 	
+	
+	
+	<addInputTextBox width="30%" timeStart="0" peg="instrument" height="5%" y="68%" horizontal="left" x="36%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue" text.french="continuer"
+	if="this.click?this.text='please answer the questions',this.click&&expertise.result!=''&&musicYears.result!=''?nextTrial.start()"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" trialName="Qs3" order="fixed" trials="1">
+
+	<addUrlVariable _ip="notGiven" />
+
+	<addText colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself, related to language" 
+	text.french=
+	"Quelques questions sur vous, à propos du langage" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="6"  padding="10" width="20%" horizontal="left" height="10%" x="0%---45%---0%---45%---0%---45%" y="28%---28%---48%---48%---67%---67%" text=
+	"what is your mother tongue?---with which language did you learn to read?---Do you have a second written language?---how many years of practice?---Do you have a third written language?---how many years of practice?"
+	text.french=
+	"Quelle est votre langue maternelle?---Dans quelle langue avez-vous appris à parler?---Possédez-vous une deuxième langue écrite?---Combien d'années de pratique?---Possédez-vous une troisième langue écrite?---Combien d'années de pratique?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+	<addInputTextBox width="20%" timeStart="0" peg="motherTongue" height="5%" y="29%" horizontal="left" x="25%"/>
+	<addInputTextBox width="20%" timeStart="0" peg="motherWritten" height="5%" y="29%" horizontal="left" x="70%"/>
+	
+	<addMultiNumberSelector peg="second" width="25%" height="15%" horizontal="left" startingVal="00"  x="70%" y="49%" timeStart="0" timeEnd="forever" />
+	<addInputTextBox width="20%" timeStart="0" peg="secondYears" height="5%" y="49%" horizontal="left" x="25%"/>
+	
+	<addMultiNumberSelector peg="third" width="25%" height="15%" horizontal="left" startingVal="00"  x="70%" y="68%" timeStart="0" timeEnd="forever" />
+	<addInputTextBox width="20%" timeStart="0" peg="thirdYears" height="5%" y="68%" horizontal="left" x="25%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue" text.french="continuer"
+	if="this.click?this.text='please answer the questions',this.click&&motherTongue.text!=''&&motherWritten.text!=''?nextTrial.start()"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+	<addText colour="COLOUR" autosize="true" wordWrap="true"  width="100%" height="10%" x="50%" y="0%" vertical="top" text=
+		" {u}Instructions{/u}"
+		text.french=
+		" {u}Instructions{/u}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+
+	<addText colour="COLOUR" autSize="false"  wordWrap="true" width="100%" height="15%" x="50%" y="70%" vertical="top" text=
+		"Please respond accurately but also quickly as we measure reaction times. The experiment takes around 10-15 minutes to complete. To begin click START."
+		text.french=
+		"Merci de répondre avec précision mais aussi rapidement car nous mesurons les temps de réaction. L'expérience dure environ 10-15 minutes. Pour commencer cliquez sur COMMENCER."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addJPG filename="instructions.png" filename.french="instructionsFrench.png" width='600' height='303' x="50%" y="40%" timeStart="0"/>
+	
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" text.french="commencer" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10,4" blockOrder="random"  forceBlockDepthPositions='1/3'  trials="1">
+	<addText colour="COLOUR" wordWrap="true"  text=
+		"You have now completed the first block of trials (there are 3 blocks). Click START to continue. Some of the shapes will differ, but your task will remain the same."
+		text.french=
+		"Vous avez maintenant fini le premier bloc d'essais (il y a trois blocs). Cliquez sur START pour continuer. Certaines formes vont changer, mais votre tâche reste la même."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start" text.french="commencer" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10,4" blockOrder="random" forceBlockDepthPositions='2/3'  trials="1">
+	<addText colour="COLOUR" wordWrap="true" text=
+		"You have no completed 2 out of 3 block of trials. Click START to continue. Some of the shapes will differ, but your task will remain the same."
+		text.french=
+		"Vous avez maintenant fini 2 sur 3 blocs d'essais. Cliquez sur START pour continuer. Certaines formes vont changer, mais votre tâche reste la même."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start" text.french="commencer" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+<TRIAL template="myTemplate" trialName="Aup;Adown;Aleft;Aright" block="10,1">
+	<aaddText width="20%" height="5%" x="18%" y="15%" text='up,down,left,right' colour="white"/>
+	<addJPG copyOverID="jpg" filename="up.jpg---down.jpg---left.jpg---right.jpg"/>
+	<addSound copyOverID="sound" filename="up.mp3;upG.mp3;down.mp3;downG.mp3"/>
+	
+</TRIAL>  
+
+<TRIAL template="myTemplate" trialName="Bup;BupG;Bdown;BdownG" block="10,2">
+	<aaddText width="20%" height="5%" x="18%" y="15%" text='up,upG,down,downG' colour="white"/>
+	<addJPG copyOverID="jpg" filename="up.jpg---upG.jpg---down.jpg---downG.jpg"/>
+	<addSound copyOverID="sound" filename="up.mp3;upG.mp3;down.mp3;downG.mp3"/>
+</TRIAL>  
+
+<TRIAL template="myTemplate" trialName="Cleft;CleftG;Cright;CrightG" block="10,3">
+	<aaddText width="20%" height="5%" x="18%" y="15%" text='left,leftG,right,rightG' colour="white"/>
+	<addJPG copyOverID="jpg" filename="left.jpg---leftG.jpg---right.jpg---rightG.jpg"/>
+	<addSound copyOverID="sound" filename="left.mp3;leftG.mp3;right.mp3;rightG.mp3"/>
+</TRIAL>  
+
+			
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="100%" x="50%" y="65%" text=
+	"Thank you for your participation. Have a lovely day! Don't forget to enter the below code in Mechanical Turk."
+	text.french=
+	"Merci de votre participation. Passez une excellente journée ! N'oubliez pas d'entrer le code ci-dessous dans Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+		 <addText colour="COLOUR"  autoSize="false" wordWrap="true" fontSize="20" width="95%" height="80%" x="50%" y="0%" vertical="top" text=
+"{b}What we were testing.{/b}
+Past research has found that concepts that should have not relationship with each other often do.  For example, a blob shape with the word 'bouba' are often linked, as well as an angular shape with the word 'kiki'.  A popular explanation is that it is the shape our mouths form when we speak which leads to these associations - our mouths form a rounded shape when speaking 'bouba' which is currently thought to make an actual rounded shape more likely to linked to the word 'bouba'. This study explored whether other links exist that are not linked to mouth shape (e.g. 'lemon' and 'fast' - preliminary data suggests these words are linked!)."
+text.french=
+"{b}Ce que nous testons.{/b}
+Des recherches ont précédemment montré que certains concepts ont souvent des relations entre eux, alors qu'ils ne le devraient pas.  Par exemple, une forme arrondie est souvent associée avec le mot 'bouba' ; et une forme angulaire avec le mot 'kiki'.  Une explication fréquente est que c'est la forme que notre bouche fait en produisant ces sons qui amène à ces associations - notre bouche prend une forme plus arrondie lorsque nous disons 'bouba' et l'on pense que c'est le fait de faire une telle forme ronde qui est lié au mot 'bouba'. Cette étude explore si il existe d'autres liens qui ne sont pas liés à la forme de la bouche (par exemple 'citron' et 'rapide' - Des études en cours suggèrent que ces mots sont liés !)."timeStart="0"  timeEnd="forever"></addText> 
+	
+</TRIAL>
+
+
+<myTemplate blockOrder="random" order="random" trials="40">
+	<addText colour="COLOUR" align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="click the shape which is most familiar with the sound" text.french="Cliquez sur la forme qui correspond le plus au son" fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavRT timeStart="0" peg="startRT" />
+	
+	
+	<addSound copyOverID="sound" y="60%" width='10%' height='10%' controls="play"/>
+	
+	<addResults peg="results" result=""/>
+	
+	<behavSwap peg="randomSwapChoice" usePegs="a,b,c,d" timeStart="0" timeEnd="forever"/>
+	<addJPG copyOverID="jpg" timeStart="0" howMany="4" behaviours="this.click:results.result=this.filename,instruct.stop(),next.start()"
+	peg='a---b---c---d' width='183' height='183' x="70%---30%---70%---30%"  y="40%---40%---80%---80%"/>
+	
+	
+	<behavNextTrial peg='next' />
+
+</myTemplate>
+
+
+</Bouba2>	

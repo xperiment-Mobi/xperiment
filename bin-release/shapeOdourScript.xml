@@ -1,0 +1,176 @@
+<CBCondition1 exptType="PC">
+
+<SETUP>
+	<info id="Lorraine"></info>
+	<screen BGcolour="0x000000" fullScreen="true" fullScreenMessage="true" orientation="vertical"></screen>
+	
+	<results mock="false" ssaveDataURL="http://www.opensourcesci.com/experiments/shapeStudy"/>
+	                                  
+	<email username="andy.woods@xperiment.mobi" toWhom="andy.woods@xperiment.mobi" />
+
+	<computer stimuliFolder="shapeOdourStim"/>
+	<defaults ITI="0" />
+	<style BUTTON_FACE="0xCFA0E9" LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" ITI="0" trialName="splash" hideResults="true" block='0' trials='1' >
+  
+  	<addText colour="0xFEFEFE" y="20%" fontSize="40" align="centre" text="Welcome to this study on Shape and Emotion
+Bienvenue dans cette expérience sur le pouvoir d'évocation des formes" width="100%" />
+
+	<addButton howMany="2" fontSize="30" text="English---Français" behaviours="click:lang.language='default',lang.start(),next.start()---click:lang.language='french',lang.start(),next.start()" width="200" height="50" x="30%---70%"  goto=""/>
+	
+	<behavLanguage peg="lang" />
+	
+	<behavNextTrial peg="next"/>               
+
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="0" order="fixed" trials="1">
+
+	 <addText colour="0xFEFEFE" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+10 shapes you will be presented successively. For each of them, you should evaluate its pleasantness, and its ability to evoke emotions, odors or flavors.
+At the end of the study we will tell you more about the purpose of the study. You can contact contact@myrissi.fr for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+text.french=
+"Avant de débuter, merci de lire ce texte. 
+En cliquant sur ''J'accepte'', vous indiquez votre consentement à participer à cette étude. 
+L'objectif de cette étude est de travailler sur le pouvoir évocateur de certaines formes. Dix formes vont vous être présentées successivement, pour chacune d'elle, vous devez évaluer son agréabilité et sa capacité à évoquer des émotions, des odeurs ou des saveurs. 
+Ces résultats seront analysés et exploités pour faire avancer la recherche scientifique. Si vous le souhaitez vous pouvez contacter contact@myrissi.fr pour plus d'informations. 
+
+Formulaire de consentement : 
+1 J'ai compris l'objectif de ce test     
+2 J'ai compris que je peux quitter l'étude à tout moment et que dans ce cas, mes données ne seront pas utilisées
+3 J'ai compris que mes réponses sont anonymes
+4 J'accepte de participer à ce test
+"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+
+	<addButton width="140" sstartID="next" height="40" text.french="J'accepte" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='1' order="fixed" trials='1'>
+
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0" text.french="Tout d’abord, quelques questions sur vous ..."  width="80%" height="10%" colour="0xFEFEFE" timeEnd="forever" fontSize="20"/> 
+	
+	<addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%---10%---30%" x="40%" y="20%---34%---70%" colour="0xFEFEFE" text="sex---age" text.french="sexe---âge" timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice timeStart="0" peg="sex" distanceApart="5" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="female,male" labels.french="femme,homme" padding="10" x="44%" y="20%" timeEnd="forever" />
+	
+	<addMultiNumberSelector timeStart="0" peg="age" width="20%" height="10%" fontColour="0xFEFEFE" horizontal='left'  startingVal="22" x="45%" y="35%" timeEnd="forever" />
+	
+	<addComboBox timeStart="0" peg="country" label="what country do you come from?" horizontal='left' label.french="De quel pays venez-vous?" scale="1" width="50%" height="7%" text_background="0x000000" timeEnd="forever" x="45%" y="50%"/>
+	
+	<addButton width="200" 
+	if="this.click&&sex.result!=''&&age.result!=''&&country.result!=''?nexttrial.start()"
+	if.french="this.click&&sex.result!=''&&age.result!=''&&country.result!=''?nexttrial.start()"
+    height="50" goto="" text="Begin" text.french="Commencer le test" resultFileName="continue" x="85%" y="91%" />
+	
+	<behavNextTrial peg="nexttrial" />   
+	
+	<addUrlVariable  _ip="notGiven" />                                 
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='1' order="fixed" trials='1'>
+   
+
+	<addText  y="50%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="80%" colour="0xFEFEFE" text.french=
+	"L'objectif de cette étude est de travailler sur le pouvoir évocateur de certaines formes. 
+	Dix formes vont vous être présentées successivement, pour chacune d'elle, vous devrez évaluer son agréabilité et son habilité à évoquer des émotions, des odeurs et des saveurs." 
+	text="You will be see different shapes, one at a time. We will ask you how pleasant you find each shape and what emotions, smells or tastes you associate with it."
+	timeStart="0"  timeEnd="40000" fontSize="35"></addText>   
+	
+	<addButton width="200" height="50" text="Continue" text.french="Suivant" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="Forme-00;Forme-01;Forme-02;Forme-03;Forme-04;Forme-05;Forme-06;Forme-07;Forme-08" order="random" block="2" trials="9">
+	
+	<addText colour="0xFEFEFE" fontSize="60" align="centre" text="ready?" text.french="prêt?" timeStop="1000" />
+	
+	<addJPG timeStart="1000" filename="Forme-00.png;Forme-01.png;Forme-02.png;Forme-03.png;Forme-04.png;Forme-05.png;Forme-06.png;Forme-07.png;Forme-08.png" exactSize="true" y="0" vertical="top" width='453' height="453" />
+	 
+	<addSlider if="this.mouseDown?pick1.start()" timeStart="1000" peg="like" textColour="0xffffff" fontSize="15" titleSize="25" x="50%" y="80%" width="50%" height="10%" distBetweenScaleAndTitle="40"   
+	sliderTitle="Do you like this shape ?" percentageScreenSizeFrom="horizontal"  hidePointerAtStart="false" 
+	sliderTitle.french="Est ce que vous aimez cette forme ?"
+	labelList="I don't like it at all,I love it" startVal="50" 
+	labelList.french="Pas du tout,Enormément"
+	labelLocation="0,100" length="85%" pointerSize="40" resultFileName="intensity---familiarity---pleasantness" />  
+	
+	
+	<addText peg="textOdor" y="64%"  wordWrap="true" align="centre" autoSize="false" width="100%" height="10%" colour="0xFEFEFE" fontSize="20" 
+	text.french="Est-ce que cela vous inspire un type d’odeurs particulier?" 
+	text="what kind of smell do you associate with this shape?"/>
+
+	<addMultipleChoice if="this.mouseDown?pick5.start()"  peg="odor" autoSize="center"  wordWrap="true"  timeEnd="forever" fontSize="17"  height="25%" width="80%"  seperation="horizontal" grid="3x5" padding="10" x="50%" y="80%"
+	labels="fruity,sweet,spicy,aromatic,floral,woody,plant,animal,milky,roasted,artificial,cosmetic,aucune évocation"  
+	labels.french="fruité,sucré,epicé,aromatique,floral,boisé,végétal,animal,lacté,grillé,artificielle,cosmétique,aucune évocation"/>   
+	
+	<addText peg="textSAM" y="64%"  wordWrap="true" align="centre" autoSize="false" width="100%" height="10%" colour="0xFEFEFE" fontSize="20" 
+	text.french="merci de sélectionner l'image qui reflète au mieux cette forme" 
+	text="please select the image that you think most reflects the shape"/>
+
+	<addClickableJPG radius="15" y="100%" exactSize="true" height="40%" vertical="bottom" peg="SAM_loud" if="this.click&&this.filled=='true'?pick2.start()" filename="SAM_loud.png" colours="blue" />
+	<addClickableJPG radius="15" y="100%" exactSize="true" height="40%" vertical="bottom" peg="SAM_happy" if="this.click&&this.filled=='true'?pick3.start()" filename="SAM_happy.png" colours="red" />
+	<addClickableJPG radius="15" y="100%" exactSize="true" height="40%" vertical="bottom" peg="SAM_size" if="this.click&&this.filled=='true'?pick4.start()" filename="SAM_size.png" colours="green" />
+	
+	
+	<behavSwap usePegs="sweet,sour,salty,bitter,umami" timeStart="0"/>
+	
+	<addText peg="tasteTxt" y="64%"  wordWrap="true" align="centre" autoSize="false" width="100%" height="10%" colour="0xFEFEFE" fontSize="20" 
+	text.french="Est-ce que cela vous inspire un type de goût particulier? (umami est une saveur plaisante de 'bouillon' ou de 'viande')" 
+	text="what kind of taste do you associate with this shape? (umami is 'pleasant broth', 'savoury' or 'meat flavour')"/>
+	
+	<addButton width="100" fontSize="20" height="70" if="this.click?pick6.start()" howMany="5" y="80%" x="30%---40%---50%---60%---70%" peg="sweet---sour---salty---bitter---umami" goto="" text="sweet---sour---salty---bitter---umami"/>
+	
+	<addMultipleChoice if="this.mouseDown?pick6.start()"  peg="taste" autoSize="center"  wordWrap="true"  timeEnd="forever" fontSize="17"  height="25%" width="80%"  seperation="horizontal" grid="3x5" padding="10" x="50%" y="80%"
+	labels="sweet,sour,salty,bitter,umami,none"  
+	labels.french="sweet,sour,salty,bitter,umami,aucune saveur"/>   
+	
+	<addButton  peg="pick1" hideResults="true" if="this.click?this.stop(),like.stop(),SAM_loud.start(),textSAM.start()" goto="" width="180" height="50" text="next" text.french="Suivant"  horizontal="right" vertical="bottom" x="100%" y="100%" />    
+	<addButton  peg="pick2" hideResults="true" if="this.click?this.stop(),SAM_loud.stop(),SAM_happy.start()" goto="" width="180" height="50" text="next" text.french="Suivant"  horizontal="right" vertical="bottom" x="100%" y="100%" />
+	<addButton  peg="pick3" hideResults="true" if="this.click?this.stop(),SAM_happy.stop(),SAM_size.start()" goto="" width="180" height="50" text="next" text.french="Suivant"  horizontal="right" vertical="bottom" x="100%" y="100%" />
+	<addButton  peg="pick4" hideResults="true" if="this.click?this.stop(),textSAM.stop(),SAM_size.stop(),textOdor.stop(),odor.start(),textOdor.start()" goto="" timeStart="" width="180" height="50" text="next" text.french="Suivant"  horizontal="right" vertical="bottom" x="100%" y="100%" />        
+	<addButton  peg="pick5" hideResults="true" if="this.click?odor.stop(),textOdor.stop(),this.stop(),tasteTxt.start(),taste.start()" goto="" timeStart="" width="180" height="50" text="next" text.french="Suivant"  horizontal="right" vertical="bottom" x="100%" y="100%" />        
+	
+	
+	<addButton  peg="pick6" hideResults="true" width="180" height="50" text="next"  text.french="Suivant" horizontal="right" vertical="bottom" x="100%" y="100%"/>    
+	
+		
+	  
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" submitData="" hideResults="true" block='10' order='fixed' trials="1">
+
+	<behavSaveData timeStart='0'/>
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="{b}Thank you for your participation.
+	If you want more information on our work or the result of this study, you can also contact us at {u}contact@myrissi.fr{/u}" 
+	text.french="{b}Merci pour votre participation. Si vous souhaitez en savoir plus sur nos travaux ou le résultat de cette étude, vous pouvez nous contacter à l'adresse suivante : 
+	{u}contact@myrissi.fr{/u}.
+	A bientôt"
+	timeStart="0" fontSize="40" colour="0xFEFEFE"></addText>   
+	 
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+
+</TRIAL>
+
+  
+</CBCondition1>

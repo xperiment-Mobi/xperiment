@@ -1,0 +1,53 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  encrypt='false' sstimuliFolder="SG_Words" stimuliFolder="PitchPlay" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables practice='0' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" text=
+		"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to tastes. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="10"  order="fixed" trials="2" trialName="t">
+	<addText y="20%"/>
+	<addTone peg="tone" volume=".5" timeStart="0"/>
+	<addLineScale y="80%" if="this.updated?tone.frequency=this.result;this.moved?tone.frequency=this.result" />
+	<addButton width="140" key=" " timeStart="0"  height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Well done! 
+You have finished the word matching naming game."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+</TRIAL>
+  	
+
+
+
+
+</Bouba2>	

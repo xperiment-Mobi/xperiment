@@ -1,0 +1,114 @@
+
+<CBCondition1 exptType="PC">
+
+<SETUP>
+	<info id="Lorraine"></info>
+	<screen BGcolour="white" fullScreen="true" fullScreenMessage="true" orientation="vertical"></screen>
+	<email emergencyEmail="false" toWhom=" andytwoods@gmail.com" subject="test" />
+	<computer stimuliFolder="stim"/>
+	<defaults ITI="100" />
+	<style BUTTON_FACE="0xe1eefc" LABEL_TEXT="0x002d62" BUTTON_DOWN="0xff5656" />
+	<variables trialNum='0'/>
+</SETUP>
+
+<TRIAL TYPE="Trial" ignoreData="true" block='0' order="fixed" trials='1'>
+   
+ 	<addMultiNumberSelector showBox="true" width="50%" height="20%" y="20%"  startingVal="22"  timeStart="0" timeEnd="forever" />
+
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0"  timeEnd="40000" fontSize="20"
+	text="Dear participant,
+Welcome to our study!
+
+Here at X, at the Department of Experimental Psychology, University of Y, we are currently conducting a study designed to assess how people perceive Z. If you decide that you would like to take part in this study, we will show you pictures of women and ask you to answer some questions about them. The study will take about 20 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. 
+
+We hope you enjoy it. Your pariticipation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0"  timeEnd="40000" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="20"/> 
+	
+	<addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%---10%---30%" x="40%" y="20%---34%---70%"  text="sex---age"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="female,male"  padding="10" x="44%" y="20%" timeStart="0"  timeEnd="forever" />
+	
+	<addMultiNumberSelector width="20%" height="10%" horizontal='left' peg="age" startingVal="22" x="45%" y="35%" timeStart="0" timeEnd="forever" />
+	
+	<addComboBox peg="country" label="what country do you come from?" horizontal='left'  scale="1" timeStart="0" width="50%" height="7%" text_background="0x000000" timeEnd="forever" x="45%" y="50%"/>
+	
+	<addComboBox peg="ethnic" label="what is your ethnicity?" items='White-Caucasian,African American,Asian or Asian American,Hispanic,other' horizontal='left'  scale="1" timeStart="0" width="50%" height="7%" text_background="0x000000" timeEnd="forever" x="45%" y="70%"/>
+	
+	
+	<addButton width="300" height="50" horizontal='right' text="Continue" if="this.click&&sex.result!=''&&age.result!=''&&country.result!=''&&ethnic.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  x="100%" y="90%"/>             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	                             
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" ignoreData="true" block='0' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="Next, we are going to show you some pictures of people and ask you to make some judgements based on bla.
+
+Thank you very much."/>   
+	
+	<addButton width="200" height="50" text="Continue"  resultFileName="continue" x="85%" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+<TRIAL TYPE="Trial" trialName="" order="random" block="10" trials="1">
+	
+	<addText timeStart="0" behaviours="doBefore:this.text=trialNum+'/32 trials completed',doNow:trialNum=trialNum+1" fontSize="15" align="left" height="3%"  vertical="bottom" horizontal="left" width="20%" x='0%' y="99%"/>	
+	
+	<addJPG y="15%" vertical="top" filename="A-blue.JPG" exactSize="true" width='180' height='240' />
+	
+		
+			 
+	<addText  y="60%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="Please select the label that best describes the emotion shown by the person in the picture."/>
+	
+	
+	<addMultipleChoice timeStart="0" randomPositions="1-4" peg="emotion" autoSize="center"  wordWrap="true"  timeEnd="forever" fontSize="15"  height="10%" width="50%"  
+	seperation="horizontal" padding="10" x="50%" y="70%"
+	labels="friendly,sexually interested,sad,rejecting"  />   
+	
+
+	<addButton if="this.click&&emotion.result!=''?nextTrial.start(),this.click?this.text='please answer all the questions'"
+	timeStart="0"  width="50%" height="60" goto="" text="NEXT TRIAL"  resultFileName="continue" y="85%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" submitData="" ignoreData="true" block='100' order='fixed'>
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="{b}Thank you for your participation.
+	URL TO DEBRIEF
+	You can also contact us at {u}andy.woods@xperiment.mobi{/u}" 
+	timeStart="0" fontSize="40" ></addText>   
+	 
+	<behavRestart timeStart="4000" peg="restart" timeToRestart="6000"/>
+
+</TRIAL>
+
+  
+</CBCondition1>

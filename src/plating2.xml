@@ -1,0 +1,159 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" trickleToServer="true" />
+              <screen BGcolour="0xffffff" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="platingStim2" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />\
+</SETUP>
+
+
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='0' order="fixed" trials='0'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study on food plating
+Here at the Crossmodal Research Lab, at the Department of Experimental Psychology, University of Oxford, we are currently conducting a study designed to assess how people and chefs decorate plates.
+
+The study will take about 5 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. If you need glasses, please wear them before starting the experiment.
+We hope you enjoy it!"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL>
+ 
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%" x="20%" y="20%---50%"  text="sex---age"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="65%" height="15%" seperation='horizontal' labels="female,male"  padding="10" x="30%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="65%" height="35%"  horizontal='left' peg="age" startingVal="22" x="31%" y="50%" timeStart="0" />
+	
+	
+	<addButton  horizontal="right" x="99%" y="99%" vertical="bottom"  text="Continue" if="this.click&&sex.result!=''&&age.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  width="350"  height="200"   />             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	<addUrlVariable  _ip="notGiven" />                          
+         
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" wordWrap="true" align="right" autoSize="false" height="13%" width="10%" x="20%" y="55%"  text="my colour vision is normal"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	
+	<addComboBox buttonHeight="100" fontSize="30" itemHeight="100" peg="country" label="what country do you come from?" horizontal='left'  scale="1" timeStart="0" width="86%" height="70%" vertical="top" text_background="0x000000" x="10%" y="23%"/>
+	
+	<addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="70%" height="20%" seperation='horizontal' labels="yes,no"  padding="10" x="25%" y="55%" timeStart="0"   /> 
+
+	<addButton horizontal="right" x="99%" y="99%" vertical="bottom" width="350"  height="200" text="Continue" if="this.click&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100" />             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+                      
+         
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='10' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%" x="20%" y="20%---50%"  text="are you a chef?---how many years?"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="chef" horizontal='left' width="65%" height="15%" seperation='horizontal' labels="yes,no"  padding="10" x="30%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="65%" height="35%"  horizontal='left' peg="years" startingVal="01" x="31%" y="50%" timeStart="0" />
+	
+	
+	<addButton  horizontal="right" x="99%" y="99%" vertical="bottom"  text="Continue" if="this.click&&years.result!=''&&chef.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  width="350"  height="200"   />             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='0' order="fixed" trials='1'>
+   
+
+	<addText  y="0%" vertical="top" x="50%"  wordWrap="true" align="left"   width="100%" height="30%"  timeStart="0" fontSize="25"
+	text="In this Experiment, you are asked to decorate a plate with food shown on the outside of the plate. Drag a food item to the plate. You can rotate the food either with your mouse (web browser) or by using a two finger rotate gesture (android).  Do this as many times as you want for each type of food. Clicking a food item later on will bring it to the foreground.
+Thank you very much."/>   
+
+	<addJPG filename="plateDemo.jpg" y="45%" height="aspectRatio" width="50%"/>
+	
+	<addJPG filename="instruct.png" x="30%" y="85%" height="aspectRatio"/>
+	
+	<addButton peg="next" timeStart="0" width="350" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                 
+	                
+</TRIAL> 
+
+
+<TRIAL block="10" trialName="p" trials="12">
+
+	
+	<addJPG if="this.doBefore?results.plate=this.filename"  peg="plate" timeStart="0" shuffle_something='filename ;' 
+	filename="circleW.png;circleB.png" exactSize="true" />
+	
+	<addJPG peg="b" horizontal="right" x="100%" y="50%" timeStart="0" howMany="1" shuffle_something='filename ---' 
+	filename="redCircObst.png---redTriaObst.png---yellCircObst.png---yellTriaObst.png---greeCircObst.png---greeTriaObst.png" width="200" height="200" />
+	
+	
+	<addJPG peg="a" horizontal="left" x="0%" y="50%" timeStart="0" howMany="1" shuffle_something='filename ---'
+	filename="redCircTart.png---redTriaTart.png---yellCircTart.png---yellTriaTart.png---greeCircTart.png---greeTriaTart.png" width="200" height="200" />
+	
+	<behavDraw usePegs="plate"/>
+	
+	<behavResults timeStart="0" peg="results"/>
+	
+	<behavTransformDragCopy showInfo="true" usePegs="a,b,plate" containerPeg="plate" />
+	
+	<behavSwap timeStart="0" usePegs="a,b"  />
+	
+	<addButton width="400" height="100" text="Continue" hideResults="true" x="80%" y="93%" />
+	
+	<addButton width="300" height="50" text="you can end the study early if you want" goto="end" hideResults="true" x="85%" y="5%" />
+
+</TRIAL>  
+
+
+
+
+			
+<TRIAL TYPE="Trial" trialName="end" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"Thank you for your participation."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+</Taste>	

@@ -1,0 +1,258 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="touchStim" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be asked to label how pleasant is the (non-sexual) stroking of one person by another.
+At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="1" trials="1">
+	
+	<addText  colour="COLOUR"  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%" height="10%" x="50%" y="1%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}
+Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' fontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' 
+	circles="3" width='90%'	height="50%"  fontSizes='13' position="random" circleNames='emotion,briefly,identify'
+	texts="feeling,quickly,classify,slowly,pick-up,photo,river,jarring" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='briefly:quickly emotion:feeling identify:classify'?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="soft1"  trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"The following statements inquire about your thoughts and feelings in a variety of situations. For each item, indicate how well it describes you by choosing the appropriate letter on the scale at the top of the page: A, B, C, D, or E. When you have decided on your answer, fill in the letter next to the item number. READ EACH ITEM CAREFULLY BEFORE RESPONDING. Answer as honestly as you can. Thank you." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="8" colour="red" x="10%---20%---35%---50%---65%---80%---20%---80%"  y="8%---10%---10%---10%---10%---10%---13%---13%" vertical="top" height="15%" text=
+	"{u}ANSWER SCALE{/u}---A---B---C---D---E---DOES NOT DESCRIBE ME---DESCRIBES ME VERY WELL" 
+	timeStart="0"  width="30%" align="centre"  timeEnd="forever" fontSize="18"></addText>
+	
+	<addText colour="COLOUR" howMany="9"  padding="10" width="70%" height="10%" horizontal="right" x="71%" y="26%---33%---40%---etc---" text=
+	"1. I daydream and fantasize, with some regularity, about things that might happen to me.---2. I often have tender, concerned feelings for people less fortunate than me.---3. I sometimes find it difficult to see things from the ''other guy's'' point of view---4. Sometimes I don't feel very sorry for other people when they are having problems.---5. I really get involved with the feelings of the characters in a novel.---6. In emergency situations, I feel apprehensive and ill-at-ease.---7. I am usually objective when I watch a movie or play, and I don't often get completely caught up in it.---8. I try to look at everybody's side of a disagreement before I make a decision.---9. When I see someone being taken advantage of, I feel kind of protective towards them."
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="18"/> 
+
+ 	<addMultipleChoice howMany="9" peg="1---2---3---4---5---6---7---8---9" seperation="horizontal" distanceApart="5" id="sex"  width="25%" height="5%" horizontal="left" horizontalDistanceApart="210" labels="A,B,C,D,E"  padding="10" x="70%" y="27%---34%---41%---etc---" timeStart="0"  timeEnd="forever" /> 	
+
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&1.result!=''&&9.result!=''&&2.result!=''&&3.result!=''&&4.result!=''&&5.result!=''&&6.result!=''&&7.result!=''&&8.result!=''&&?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="soft2" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"The following statements inquire about your thoughts and feelings in a variety of situations. For each item, indicate how well it describes you by choosing the appropriate letter on the scale at the top of the page: A, B, C, D, or E. When you have decided on your answer, fill in the letter next to the item number. READ EACH ITEM CAREFULLY BEFORE RESPONDING. Answer as honestly as you can. Thank you." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="8" colour="red" x="10%---20%---35%---50%---65%---80%---20%---80%"  y="8%---10%---10%---10%---10%---10%---13%---13%" vertical="top" height="15%" text=
+	"{u}ANSWER SCALE{/u}---A---B---C---D---E---DOES NOT DESCRIBE ME---DESCRIBES ME VERY WELL" 
+	timeStart="0"  width="30%" align="centre"  timeEnd="forever" fontSize="18"></addText>
+	
+	<addText colour="COLOUR" howMany="10"  padding="10" width="70%" height="10%" horizontal="right" x="71%" y="26%---33%---40%---etc---" text=
+	"10. I sometimes feel helpless when I am in the middle of a very emotional situation.---11. I sometimes try to understand my friends better by imagining how things look from their perspective.---12. Becoming extremely involved in a good book or movie is somewhat rare for me.---13. When I see someone get hurt, I tend to remain calm.---14. Other people's misfortunes do not usually disturb me a great deal.---15. If I'm sure I'm right about something, I don't waste much time listening to other people's arguments.---16. After seeing a play or movie, I have felt as though I were one of the characters.---17. Being in a tense emotional situation scares me.---18. When I see someone being treated unfairly, I sometimes don't feel very much pity for them.---19. I am usually pretty effective in dealing with emergencies."
+
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="18"/> 
+
+ 	<addMultipleChoice howMany="10" peg="10---11---12---13---14---15---16---17---18---19" seperation="horizontal" distanceApart="5" id="sex"  width="25%" height="5%" horizontal="left" horizontalDistanceApart="210" labels="A,B,C,D,E"  padding="10" x="70%" y="27%---34%---41%---etc---" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&10.result!=''&&11.result!=''&&12.result!=''&&13.result!=''&&14.result!=''&&15.result!=''&&16.result!=''&&17.result!=''&&18.result!=''&&19.result!=''&&?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="soft3" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"The following statements inquire about your thoughts and feelings in a variety of situations. For each item, indicate how well it describes you by choosing the appropriate letter on the scale at the top of the page: A, B, C, D, or E. When you have decided on your answer, fill in the letter next to the item number. READ EACH ITEM CAREFULLY BEFORE RESPONDING. Answer as honestly as you can. Thank you." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="8" colour="red" x="10%---20%---35%---50%---65%---80%---20%---80%"  y="8%---10%---10%---10%---10%---10%---13%---13%" vertical="top" height="15%" text=
+	"{u}ANSWER SCALE{/u}---A---B---C---D---E---DOES NOT DESCRIBE ME---DESCRIBES ME VERY WELL" 
+	timeStart="0"  width="30%" align="centre"  timeEnd="forever" fontSize="18"></addText>
+	
+	<addText colour="COLOUR" howMany="9"  padding="10" width="70%" height="10%" horizontal="right" x="71%" y="26%---33%---40%---etc---" text=
+	"20. I am often quite touched by things that I see happen.---21. I believe that there are two sides to every question and try to look at them both.---22. I would describe myself as a pretty soft-hearted person.---23. When I watch a good movie, I can very easily put myself in the place of a leading character.---24. I tend to lose control during emergencies.---25. When I'm upset at someone, I usually try to 'put myself in his shoes' for a while.---26. When I am reading an interesting story or novel, I imagine how I would feel if the events in the story were happening to me.---27. When I see someone who badly needs help in an emergency, I go to pieces.---28. Before criticizing somebody, I try to imagine how I would feel if I were in their place."
+
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="18"/> 
+
+ 	<addMultipleChoice howMany="9" peg="20---21---22---23---24---25---26---27---28" seperation="horizontal" distanceApart="5" id="sex"  width="25%" height="5%" horizontal="left" horizontalDistanceApart="210" labels="A,B,C,D,E"  padding="10" x="70%" y="27%---34%---41%---etc---" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&20.result!=''&&21.result!=''&&22.result!=''&&23.result!=''&&24.result!=''&&25.result!=''&&26.result!=''&&27.result!=''&&28.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="relationshipI" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"Following are four general relationship styles that people often report. Place a checkmark next to the letter corresponding to the style that best describes you or is closest to the way you are." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  colour="COLOUR" howMany="4" x="10%" y="20%---40%---60%---80%" width="90%" align="left" horizontal="left" text="A. It is easy for me to become emotionally close to others. I am comfortable depending on them and having them depend on me. I don’t worry about being alone or having others not accept me.---B. I am uncomfortable getting close to others. I want emotionally close relationships, but I find it difficult to trust others completely, or to depend on them. I worry that I will be hurt if I allow myself to become too close to others.---C. I want to be completely emotionally intimate with others, but I often find that others are reluctant to get as close as I would like. I am uncomfortable being without close relationships, but I sometimes worry that others don’t value me as much as I value them.---D. I am comfortable without close emotional relationships. It is very important to me to feel independent and self-sufficient, and I prefer not to depend on others or have others depend on me." fontSize="18"/>
+	
+	<addButton howMany="4" goto="" buttonGroup="relationship" sticky="true" width="40" height="40" x="5%" y="20%---40%---60%---80%" timeStart="0" text="" peg="A---B---C---D"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&A.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" trialName="relationshipII" order="fixed" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"Now please rate each of the relationship styles to indicate how well or poorly each description corresponds to your general relationship style." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  colour="COLOUR" howMany="4" x="10%" y="20%---40%---60%---80%" width="90%" align="left" horizontal="left" text="A. It is easy for me to become emotionally close to others. I am comfortable depending on them and having them depend on me. I don’t worry about being alone or having others not accept me.---B. I am uncomfortable getting close to others. I want emotionally close relationships, but I find it difficult to trust others completely, or to depend on them. I worry that I will be hurt if I allow myself to become too close to others.---C. I want to be completely emotionally intimate with others, but I often find that others are reluctant to get as close as I would like. I am uncomfortable being without close relationships, but I sometimes worry that others don’t value me as much as I value them.---D. I am comfortable without close emotional relationships. It is very important to me to feel independent and self-sufficient, and I prefer not to depend on others or have others depend on me." fontSize="18"/>
+	
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="31%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="51%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="71%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="91%" align="centre" x="20%---55%---91%"/>
+	
+ 	<addMultipleChoice peg="A---B---C---D" howMany="4" x="55%" seperation="horizontal" distanceApart="5" id="sex"  width="80%" height="5%"  horizontalDistanceApart="210" labels="1,2,3,4,5,6,7"  padding="10"  y="27%---47%---67%---87%" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&A.result!=''&&B.result!=''&&C.result!=''&&D.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true" width="70%" text=
+"You will see 12 short video clips of a person being touched/stroked on different parts of the body. Following each clip you will be asked to rate how much you liked the touch you saw, and how much you would like to be touched like that.
+To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+  
+<TRIAL block="10,1" trials="12" trialName="arm_01;arm_02;arm_03;back_01;back_02;back_03;hand_01;hand_02;hand_03;shoulder_01;shoulder_02;shoulder_03">
+	
+	<addHideMouse timeStart="0" peg="mouse"/>
+	
+		
+	<addVideo  lockToFrameRate="true" timeStart="0" if="this.onFinish?pleasant.start(),pleasantT.start(),mouse.stop()" peg="np" width="800" height="450" filename="arm_01.flv;arm_02.flv;arm_03.flv;back_01.flv;back_02.flv;back_03.flv;hand_01.flv;hand_02.flv;hand_03.flv;shoulder_01.flv;shoulder_02.flv;shoulder_03.flv"/>
+	
+	
+	<addText y="70%" colour="COLOUR" width="100%" peg="youLikeT" align="centre" fontSize="20" text="how much would you like to be touched like this?"/>
+	<addMultipleChoice y="80%" if="this.click?nextTrial.start()" peg="youLike" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<addText y="50%" colour="COLOUR" width="100%" peg="pleasantT" align="centre" fontSize="20" text="how pleasant do you think the action was for the person being touched?"/>
+	<addMultipleChoice y="60%" if="this.click?youLike.start(),youLikeT.start(),this.stop(),pleasantT.stop()" peg="pleasant" labels="1 - very unpleasant,2,3,4,5,6,7 - very pleasant" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Past research has found that there are specialised nerve cells in our skin that pick up {b}{a href='http://www.sciencedaily.com/releases/2009/04/090414084453.htm' target='_blank'}pleasant touch{/a}{/b} (a new window will open if link is clicked). These nerve cells respond best to slow stroking. Here we test whether seeing others stroked at such a slow pace are found to be pleasant, relative to a fast pace and no movement. We suspect that {b}{a href='https://en.wikipedia.org/wiki/Mirror_neuron' target='_blank'}mirror neurons{/a}{/b} (a new window will open if clicked) in the brain may activate this pleasant feeling when watching others being stroked.  Have a lovely day! 
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+
+	
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

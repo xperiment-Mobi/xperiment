@@ -1,0 +1,147 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results  mock="false" save="webfile" saveDataURL="http://www.opensourcesci.com/experiments/Oxford/Pills" />
+              <screen BGcolour="0xADADAD" orientation="horizontal" ></screen>                          
+			  <computer  stimuliFolder="pill" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked some questions about the appearence of different tablets. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" _workerId="notGiven"/>
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="3" width="60" height="10%" x="20%" y="23%---40%---58%" 
+	text="sex---age---are you colour blind?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" howMany="2" peg="sex---colour" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female---yes,no"
+ 	x="50%" y="20%---58%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="00" peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL template="template" TYPE="Trial" block="3" trials="1" order="random" trialName="headache">
+	
+	<addText copyOverID="taste" text="Please arrange these tablets in order of how effective each would be of curing you of a headache" />
+</TRIAL>
+
+<TRIAL template="template" TYPE="Trial" block="3" trials="1" order="random" trialName="relax">
+	<addText copyOverID="taste" text="Please arrange these tablets in order of how much you think each would relax you / make you more alert" />
+	<addText copyOverID="labels" text="very relaxed---very alert" />
+</TRIAL>
+
+<TRIAL template="template" TYPE="Trial" block="3" trials="1" order="random" trialName="bitter">
+	<addText copyOverID="taste" text="Please arrange these tablets in order of how bitter would you expect each to taste?" />
+	<addText copyOverID="labels" text="not at all bitter---bitter" />
+</TRIAL>
+
+<TRIAL template="template" TYPE="Trial" block="3" trials="1" order="random" trialName="swallow">
+	<addText copyOverID="taste" text="Please arrange these tablets in order of how easy you think each would be to swallow" />
+	<addText copyOverID="labels" text="easy to swallow---difficult to swallow" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="5" trials="1"  trialName="venn">
+	<addText copyOverID="taste" y="5%" fontSize="35" text="Please identify these colours" />
+	
+	<addJPG timeStart="0" x="10%" y="15%---30%---etc---" howMany="6" extension="png" peg="p1---p2---p3---p4---p5---p6" exactSize="true" filename="pill1" />
+	
+	<addMultipleChoice required="" timeStart="0" peg="a---b---c---d---e---f" labels="red,blue,orange,green,yellow,pink,gray,purple" seperation="horizontal" width="80%" height="7%" x="15%" horizontal="left" y="15%---30%---etc---" howMany="6"/>
+	
+	<behavColour howMany="18" brightness="1.5---2---1.5---1---1---1" usePegs="p1---p2---p3---p4---p5---p6" colour="0xcd1b1b---0x224793---0x02af43---0xff8cd2---0xfffe91---0xf8692a" timeStart="0"/>
+	
+	<addButton  hideResults="true" key=" " goto="" if="this.click?this.text='please identify all colours',this.click&&required==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="40%" 
+	text = "Thank you for your participation to this study. We're exploring how the shape and colour of a tablet can influence expectations of that tablet. In previous studies, we found that people associated angular shapes to sourness, and rounded shapes to sweetness. We have also found that colour can as well impact on taste expectations. Here, we were interested in finding out if these findings extend to tablets. We were also interested in seeing if colour and shape can influence other expectations such as how well a given tablet may be in curing you of a headache.
+If you have any questions or would like to here more about our research, please contact us at andytwoods@gmail.com.
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK." timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addMechanicalTurk fontSize="80" align="middle" y="80%"/>
+	
+</TRIAL>
+
+
+<template order="random" trials="1">
+	
+
+	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"fontSize="50" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+
+	<behavDrag saveProperty="peg" timeStart="0" peg="drag" save="x" usePegs="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,box" timeStart="0" timeEnd="forever"/>
+	
+	<addJPG timeStart="0" howMany="21" extension="png" peg="p1---p2---p3---p4---p5---p6---p7---p8---p9---p10---p11---p12---p13---p14---p15---p16---p17---p18---p19---p20---p21" exactSize="true" filename="pill1---pill1---pill1---pill1---pill1---pill1---pill2---pill2---pill2---pill2---pill2---pill2---pill3---pill3---pill3---pill3---pill3---pill3---pill1---pill2---pill3" />
+	
+	<behavColour howMany="18" brightness="1---1---1---1.5---2---1.5" usePegs="p1---p2---p3---p4---p5---p6---p7---p8---p9---p10---p11---p12---p13---p14---p15---p16---p17---p18" colour="0xcd1b1b---0x224793---0x02af43" timeStart="0"/>
+	
+	<behavColour howMany="3" usePegs="p19---p20---p21" colour="white" timeStart="0"/>
+	
+	<addShape peg="box" timeStart="0" width="1000" height="35%" colour="none" visible="false" y="40%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText copyOverID="labels" howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="50%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" key=" " goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</template>  
+
+
+
+</Taste>	

@@ -1,0 +1,31 @@
+ Volume in drive C has no label.
+ Volume Serial Number is D407-7441
+
+ Directory of C:\Users\Andy\Adobe Flash Builder 4.7\xperiment\src\fontTastes
+
+10/10/2014  20:03             2,823 arial.png
+10/10/2014  20:03             2,873 arialBold.png
+10/10/2014  20:04            33,323 cups_chunk.png
+27/07/2013  14:07             9,359 lab.png
+10/10/2014  20:03            13,352 marks-bitter.png
+10/10/2014  20:03            16,193 marks-salty.png
+10/10/2014  20:02            18,470 marks-sour.png
+10/10/2014  20:03            12,205 marks_sweet.png
+10/10/2014  20:03             2,891 tnw.png
+10/10/2014  20:03             2,873 tnwBold.png
+10/10/2014  20:04            26,679 tub_arial.png
+10/10/2014  20:04            26,111 tub_arialBold.png
+10/10/2014  20:04            33,064 tub_curve.png
+10/10/2014  20:04            31,674 tub_Italic.png
+10/10/2014  20:04            32,129 tub_negItalic.png
+10/10/2014  20:04            47,562 tub_patItalic.png
+10/10/2014  20:04            49,831 tub_patNegItalic.png
+10/10/2014  20:04            43,257 tub_patThick.png
+10/10/2014  20:04            38,918 tub_patThickCurv.png
+10/10/2014  20:04            27,299 tub_tnr.png
+10/10/2014  20:04            26,655 tub_tnrBold.png
+10/10/2014  20:03            11,343 words_salty.png
+10/10/2014  20:03            11,539 words_sour.png
+10/10/2014  20:03            11,662 words_sweet.png
+              24 File(s)        532,085 bytes
+               0 Dir(s)   1,557,876,736 bytes free

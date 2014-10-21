@@ -1,0 +1,185 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info  />
+              <results  />
+              <screen BGcolour="white" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="SG_faces" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" x="50%" y="10%" vertical="top" text=
+			"{b}Emotion Naming Game.{/b}"timeStart="0"  timeEnd="forever" fontSize="50"/>
+	
+
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" vertical="top" text=
+		"{b}PARENTS: We are interested in your child’s answers. To make sure you do not influence your child’s response, please do not look at the screen once your child has started the game.{/b}"
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" "  enabled="false" height="40" peg="next" text="Continue" resultFileName="continue" timeStart="0" timeEnd="forever" x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="instructions" hideResults="true" block="1" order="fixed" trials="1">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="In this game you will see pictures of faces shown for a short time.
+Your job is to decide whether each face you see is happy, sad, scared, angry, surprised or disgusted. " timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton width="140" key=" "  height="40" text="next" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" trialName="instructions" hideResults="true" block="1" order="fixed" trials="1">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="You will now see examples of the 6 expressions. 
+	You don’t have to do anything for this bit so just watch carefully. 
+	Press next to start the examples." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	<addButton width="140" key=" "  height="40" text="next" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+</TRIAL>
+
+
+  
+<TRIAL template="myTemplate" trials="6"  block="1" order="fixed">
+
+	<addButton copyOverID="buttons" visible="false" />
+	
+	<addButton width="140" key=" "  height="40" text="next" resultFileName="continue" timeStart="2500" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	
+	<addButton copyOverID="buttons" width="200" visible='false'  key=" " height="100" text="next" resultFileName="continue" timeStart="2500" timeEnd="forever" x="75%" y="90%"/>
+	
+	<addText  autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="That was an example of a " text1="angry;disgusted;scared;surprised;sad;happy" text2=" face." timeStart="2500"  timeEnd="forever" fontSize="30"/>
+		
+	<addJPG copyOverID="images" filename="example_angry.jpg;example_disgust.jpg;example_fear.jpg;example_surprise.jpg;example_sad.jpg;example_happy.jpg"/>
+	
+</TRIAL>
+  
+
+<TRIAL block="1" hideResults="true" trials="1" order="fixed">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  y="10%" width="85%" height="20%" peg="stop" text="In the game, once the face disappears you will see the names of the emotions appear on the screen like they are below. You should click with the mouse on the one that matches the face you just saw" timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<behavSwap doOnce="true"  usePegs="angry,happy,sad,fearful,surprised,disgusted" timeStart="0"/>
+	
+	<addButton buttonGroup="selected" enabled="false;true" hideResults='false' timeStart="0" howMany="6" text='angry---happy---sad---scared---surprised---disgusted'
+	peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
+
+
+	<addButton width="140"  key=" " present="true;false" height="40" text="next" resultFileName="continue" timeStart="0" timeEnd="forever" x="75%" y="90%"/>
+
+	
+</TRIAL>  
+
+
+<TRIAL block="1" hideResults="true" trials="1" order="fixed">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="Sometimes it will be hard to decide which expression was on the face.
+
+If you are really not sure have a guess, as guesses are sometimes right. 
+" timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton width="140" key=" " height="40" text="next" resultFileName="continue" timeStart="0" timeEnd="forever" x="75%" y="90%"/>
+
+</TRIAL>  
+
+
+<TRIAL block="1" hideResults="true" trials="1" order="fixed">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="You will now have a practice with the examples you just saw." timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton  width="140" key=" " height="40" text="next" resultFileName="continue" timeStart="0" timeEnd="forever" x="75%" y="90%"/>
+</TRIAL>  
+
+
+<TRIAL template="myTemplate" trials="5"  block="2">
+	<addJPG copyOverID="images" filename="example_angry.jpg;example_disgust.jpg;example_fear.jpg;example_surprise.jpg;example_sad.jpg"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="3" order="fixed" trials="1">
+	<addText howMany="2" drawBox="true" autoSize="false" align="centre" wordWrap="true" y="95%---50%" width="85%" height="20%"  text="{b}PARENTS: Please do not watch the screen after this point!{/b}---Well done you have finished the practice.  You can now start the game by pressing continue or go through the instructions again by pressing redo." timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton howMany="2" width="140"  height="40" text="Redo---continue" goto="instructions---nextTrial" timeStart="0" timeEnd="forever" x="40%---60%" vertical="top" y="80%"/>
+</TRIAL>
+
+<TRIAL block="3" hideResults="true" trials="1" order="fixed">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="You will see 192 faces in this task. The whole thing should last about 15-25 minutes. There will be 3 breaks on the way at the quarter, half and three quarter way points. Press start when you are ready to begin" timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton  width="140" key=" " height="40" text="start" timeStart="0" timeEnd="forever" y="90%"/>
+  	
+</TRIAL>  
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='1/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are one quarter of the way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='2/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are half way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='3/4'  trials="1">
+	<addText  wordWrap="true" text="Well done, you are three quarters of the way through! 
+Have a break now and press continue to start the next part."
+		timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+  
+<TRIAL template="myTemplate" block="10" trials="192" trialName="boy_anger1;boy_anger2;boy_anger3;boy_anger4;boy_anger5;boy_anger6;boy_anger7;boy_anger8;boy_disgust1;boy_disgust2;boy_disgust3;boy_disgust4;boy_disgust5;boy_disgust6;boy_disgust7;boy_disgust8;boy_fear1;boy_fear2;boy_fear3;boy_fear4;boy_fear5;boy_fear6;boy_fear7;boy_fear8;boy_happy1;boy_happy2;boy_happy3;boy_happy4;boy_happy5;boy_happy6;boy_happy7;boy_happy8;boy_sad1;boy_sad2;boy_sad3;boy_sad4;boy_sad5;boy_sad6;boy_sad7;boy_sad8;boy_suprise1;boy_suprise2;boy_suprise3;boy_suprise4;boy_suprise5;boy_suprise6;boy_suprise7;boy_suprise8;girl_anger1;girl_anger2;girl_anger3;girl_anger4;girl_anger5;girl_anger6;girl_anger7;girl_anger8;girl_disgust1;girl_disgust2;girl_disgust3;girl_disgust4;girl_disgust5;girl_disgust6;girl_disgust7;girl_disgust8;girl_fear1;girl_fear2;girl_fear3;girl_fear4;girl_fear5;girl_fear6;girl_fear7;girl_fear8;girl_happy1;girl_happy2;girl_happy3;girl_happy4;girl_happy5;girl_happy6;girl_happy7;girl_happy8;girl_sad1;girl_sad2;girl_sad3;girl_sad4;girl_sad5;girl_sad6;girl_sad7;girl_sad8;girl_suprise1;girl_suprise2;girl_suprise3;girl_suprise4;girl_suprise5;girl_suprise6;girl_suprise7;girl_suprise8;man_anger1;man_anger2;man_anger3;man_anger4;man_anger5;man_anger6;man_anger7;man_anger8;man_disgust1;man_disgust2;man_disgust3;man_disgust4;man_disgust5;man_disgust6;man_disgust7;man_disgust8;man_fear1;man_fear2;man_fear3;man_fear4;man_fear5;man_fear6;man_fear7;man_fear8;man_happy1;man_happy2;man_happy3;man_happy4;man_happy5;man_happy6;man_happy7;man_happy8;man_sad1;man_sad2;man_sad3;man_sad4;man_sad5;man_sad6;man_sad7;man_sad8;man_suprise1;man_suprise2;man_suprise3;man_suprise4;man_suprise5;man_suprise6;man_suprise7;man_suprise8;woman_anger1;woman_anger2;woman_anger3;woman_anger4;woman_anger5;woman_anger6;woman_anger7;woman_anger8;woman_disgust1;woman_disgust2;woman_disgust3;woman_disgust4;woman_disgust5;woman_disgust6;woman_disgust7;woman_disgust8;woman_fear1;woman_fear2;woman_fear3;woman_fear4;woman_fear5;woman_fear6;woman_fear7;woman_fear8;woman_happy1;woman_happy2;woman_happy3;woman_happy4;woman_happy5;woman_happy6;woman_happy7;woman_happy8;woman_sad1;woman_sad2;woman_sad3;woman_sad4;woman_sad5;woman_sad6;woman_sad7;woman_sad8;woman_suprise1;woman_suprise2;woman_suprise3;woman_suprise4;woman_suprise5;woman_suprise6;woman_suprise7;woman_suprise8">
+	
+</TRIAL>  
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
+	
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Well done! 
+You have finished the emotion naming game."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+</TRIAL>
+  	
+
+
+<myTemplate order="random">
+	<addHideMouse timeEnd="2450"/>
+	<behavPause peg="pause" timeStart='100' time="rand(0:1000)" />
+
+	<addJPG copyOverID="images" filename="boy_anger1.jpg;boy_anger2.jpg;boy_anger3.jpg;boy_anger4.jpg;boy_anger5.jpg;boy_anger6.jpg;boy_anger7.jpg;boy_anger8.jpg;boy_disgust1.jpg;boy_disgust2.jpg;boy_disgust3.jpg;boy_disgust4.jpg;boy_disgust5.jpg;boy_disgust6.jpg;boy_disgust7.jpg;boy_disgust8.jpg;boy_fear1.jpg;boy_fear2.jpg;boy_fear3.jpg;boy_fear4.jpg;boy_fear5.jpg;boy_fear6.jpg;boy_fear7.jpg;boy_fear8.jpg;boy_happy1.jpg;boy_happy2.jpg;boy_happy3.jpg;boy_happy4.jpg;boy_happy5.jpg;boy_happy6.jpg;boy_happy7.jpg;boy_happy8.jpg;boy_sad1.jpg;boy_sad2.jpg;boy_sad3.jpg;boy_sad4.jpg;boy_sad5.jpg;boy_sad6.jpg;boy_sad7.jpg;boy_sad8.jpg;boy_suprise1.jpg;boy_suprise2.jpg;boy_suprise3.jpg;boy_suprise4.jpg;boy_suprise5.jpg;boy_suprise6.jpg;boy_suprise7.jpg;boy_suprise8.jpg;girl_anger1.jpg;girl_anger2.jpg;girl_anger3.jpg;girl_anger4.jpg;girl_anger5.jpg;girl_anger6.jpg;girl_anger7.jpg;girl_anger8.jpg;girl_disgust1.jpg;girl_disgust2.jpg;girl_disgust3.jpg;girl_disgust4.jpg;girl_disgust5.jpg;girl_disgust6.jpg;girl_disgust7.jpg;girl_disgust8.jpg;girl_fear1.jpg;girl_fear2.jpg;girl_fear3.jpg;girl_fear4.jpg;girl_fear5.jpg;girl_fear6.jpg;girl_fear7.jpg;girl_fear8.jpg;girl_happy1.jpg;girl_happy2.jpg;girl_happy3.jpg;girl_happy4.jpg;girl_happy5.jpg;girl_happy6.jpg;girl_happy7.jpg;girl_happy8.jpg;girl_sad1.jpg;girl_sad2.jpg;girl_sad3.jpg;girl_sad4.jpg;girl_sad5.jpg;girl_sad6.jpg;girl_sad7.jpg;girl_sad8.jpg;girl_suprise1.jpg;girl_suprise2.jpg;girl_suprise3.jpg;girl_suprise4.jpg;girl_suprise5.jpg;girl_suprise6.jpg;girl_suprise7.jpg;girl_suprise8.jpg;man_anger1.jpg;man_anger2.jpg;man_anger3.jpg;man_anger4.jpg;man_anger5.jpg;man_anger6.jpg;man_anger7.jpg;man_anger8.jpg;man_disgust1.jpg;man_disgust2.jpg;man_disgust3.jpg;man_disgust4.jpg;man_disgust5.jpg;man_disgust6.jpg;man_disgust7.jpg;man_disgust8.jpg;man_fear1.jpg;man_fear2.jpg;man_fear3.jpg;man_fear4.jpg;man_fear5.jpg;man_fear6.jpg;man_fear7.jpg;man_fear8.jpg;man_happy1.jpg;man_happy2.jpg;man_happy3.jpg;man_happy4.jpg;man_happy5.jpg;man_happy6.jpg;man_happy7.jpg;man_happy8.jpg;man_sad1.jpg;man_sad2.jpg;man_sad3.jpg;man_sad4.jpg;man_sad5.jpg;man_sad6.jpg;man_sad7.jpg;man_sad8.jpg;man_suprise1.jpg;man_suprise2.jpg;man_suprise3.jpg;man_suprise4.jpg;man_suprise5.jpg;man_suprise6.jpg;man_suprise7.jpg;man_suprise8.jpg;woman_anger1.jpg;woman_anger2.jpg;woman_anger3.jpg;woman_anger4.jpg;woman_anger5.jpg;woman_anger6.jpg;woman_anger7.jpg;woman_anger8.jpg;woman_disgust1.jpg;woman_disgust2.jpg;woman_disgust3.jpg;woman_disgust4.jpg;woman_disgust5.jpg;woman_disgust6.jpg;woman_disgust7.jpg;woman_disgust8.jpg;woman_fear1.jpg;woman_fear2.jpg;woman_fear3.jpg;woman_fear4.jpg;woman_fear5.jpg;woman_fear6.jpg;woman_fear7.jpg;woman_fear8.jpg;woman_happy1.jpg;woman_happy2.jpg;woman_happy3.jpg;woman_happy4.jpg;woman_happy5.jpg;woman_happy6.jpg;woman_happy7.jpg;woman_happy8.jpg;woman_sad1.jpg;woman_sad2.jpg;woman_sad3.jpg;woman_sad4.jpg;woman_sad5.jpg;woman_sad6.jpg;woman_sad7.jpg;woman_sad8.jpg;woman_suprise1.jpg;woman_suprise2.jpg;woman_suprise3.jpg;woman_suprise4.jpg;woman_suprise5.jpg;woman_suprise6.jpg;woman_suprise7.jpg;woman_suprise8.jpg" 
+	timeStart="2000" timeEnd='2300' width="459" height="600" />
+	
+	<addJPG filename="mask.jpg" 
+	timeStart="2300" timeEnd='2550' width="459" height="600" />
+	
+	<addText  selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='2000'/>
+	
+	<behavSwap doOnce="true" peg="randomSwapChoice" usePegs="angry,happy,sad,fearful,surprised,disgusted" timeStart="0"/>
+	
+	<behavRT peg="rt" timeStart='2000'/>
+	
+	<addButton copyOverID="buttons" buttonGroup="selected" hideResults='false' timeStart="2550" howMany="6" text='angry---happy---sad---scared---surprised---disgusted'
+	peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
+
+</myTemplate>
+
+
+
+
+</Bouba2>	

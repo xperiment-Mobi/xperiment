@@ -1,0 +1,296 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="stimuli" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <defaults ITI="100"/>
+			  <variables COLOUR='0xe9e9e9' trialNum='0' X1="25%---75%" X2="75%---25%" KEY1="E---I" KEY2="I---E" pick_ones="X1,X2,KEY1,KEY2,---" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="0">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+	
+	<addButton width="140"  height="40" text="I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="1" trials="0">
+	
+	<addText  colour="COLOUR"  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%" height="10%" x="50%" y="1%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}
+Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' fontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' 
+	circles="3" width='90%'	height="50%"  fontSizes='13' position="random" circleNames='emotion,briefly,identify'
+	texts="feeling,quickly,classify,slowly,pick-up,photo,river,jarring" />
+		
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='briefly:quickly emotion:feeling identify:classify'?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" 7x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="0">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addResults X1Pos="X1" />
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true" width="70%" y="10%" text=
+"Description of task SVP. To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+	
+
+	<addButton peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+
+  
+<!--   Step 1: Learning the concept dimension. -->
+<TRIAL template="TaskTemplate" block="10" trials="4" trialName="task1">
+	<addText text="Step 1: Learning the concept dimension" y="95%" x="10%" width="10%" height="5%" />
+
+	<addText copyOverID="side1" 
+	text="Female"
+	/>
+	<addText copyOverID="side2"
+	text="Male"
+	/>
+	
+	<addText copyOverID="stim"
+	text="mother;wife;daughter;aunt;woman;female;father;husband;son;uncle;man;male"
+	/>
+
+	<addText copyOverID="task"
+	text="Press " text1="KEY1" text2=" to classify as Female 
+or " text3="KEY2" text4=" to classify as Male" 
+	/>
+	
+</TRIAL>  
+
+<TRIAL  template="pauseTemplate" block="12"/>
+
+<!-- Step 2: Learning the attribute dimension. -->
+<TRIAL template="TaskTemplate" block="20" trials="4" trialName="task2">
+<addText text="Step 2: Learning the attribute dimension." y="95%" x="10%" width="10%" height="5%" />
+
+	<addText copyOverID="side1" colour="green"
+	text="Philosophy"
+	/>
+	<addText copyOverID="side2" colour="green"
+	text="Geography"
+	/>
+	
+	<addText copyOverID="stim" colour="green"
+	text="analytic;epistemic;skeptic;aesthetics;logic;ethics;river;land;mountain;lake;coast;shore"
+	/>
+
+	<addText copyOverID="task"
+	text="Press " text1="KEY1" text2=" to classify as Philosophy 
+or " text3="KEY2" text4=" to classify as Geography" 
+	/>
+	
+</TRIAL> 
+
+<TRIAL  template="pauseTemplate" block="22"/>
+
+<!-- Step 3: Concept-attribute pairing. PRACTICE BLOCK, 20 trials -->
+<TRIAL template="TaskTemplate" block="30" trials="4" trialName="task3a">
+	<addText text="Step 3: Concept-attribute pairing. PRACTICE BLOCK, 20 trials" y="95%" x="10%" width="10%" height="5%" />
+	
+	<addText copyOverID="side1"	text="Female/"/>
+	<addText copyOverID="side1" colour="green" text="Philosophy"/>
+	
+	<addText copyOverID="side2" text="Male/"/>
+	<addText copyOverID="side2" colour="green" text="Geography"/>
+	
+	<addText copyOverID="stim" colour="green"
+	text="analytic;epistemic;skeptic;aesthetics;logic;ethics;river;land;mountain;lake;coast;shore;mother;wife;daughter;aunt;woman;female;father;husband;son;uncle;man;male"
+	/>
+
+	<addText copyOverID="task"
+	text="Press " text1="KEY1" text2=" to classify as Female or Philosophy 
+or " text3="KEY2" text4=" to classify as Male or Geography" 
+
+	/>
+	
+</TRIAL> 
+
+<!-- short pause -->
+<TRIAL  template="pauseTemplate" block="32"/>
+
+
+<!-- Step 3: Concept-attribute pairing.  CRITICAL BLOCK, 40 trials -->
+<TRIAL template="TaskTemplate" block="35" trials="4" trialName="task3b">
+	<addText text="Step 3: Concept-attribute pairing.  CRITICAL BLOCK, 40 trials" y="95%" x="10%" width="10%" height="5%" />
+
+	<addText copyOverID="side1"	text="Female/"/>
+	<addText copyOverID="side1" colour="green" text="Philosophy"/>
+	
+	<addText copyOverID="side2" text="Male/"/>
+	<addText copyOverID="side2" colour="green" text="Geography"/>
+	
+	<addText copyOverID="stim" colour="green"
+	text="analytic;epistemic;skeptic;aesthetics;logic;ethics;river;land;mountain;lake;coast;shore;mother;wife;daughter;aunt;woman;female;father;husband;son;uncle;man;male"
+	/>
+
+	<addText copyOverID="task"
+	text="Press " text1="KEY1" text2=" to classify as Female or Philosophy 
+or " text3="KEY2" text4=" to classify as Male or Geography" 
+	/>
+	
+</TRIAL> 
+
+<TRIAL  template="pauseTemplate" block="37"/>
+
+<!-- Step 4: Learning to switch the spatial location of the concepts. 40 trials -->
+<TRIAL template="TaskTemplate" block="40" trials="4" trialName="task4">
+	<addText text="Step 4: Learning to switch the spatial location of the concepts." y="95%" x="10%" width="10%" height="5%" />
+
+	<addText copyOverID="side1" text="Male"/>
+	<addText copyOverID="side2" text="Female"/>
+	
+	<addText copyOverID="stim"
+	text="mother;wife;daughter;aunt;woman;female;father;husband;son;uncle;man;male"
+	/>
+
+	<addText copyOverID="task"
+	text="Press " text1="KEY1" text2=" to classify as Male 
+or " text3="KEY2" text4=" to classify as Female" 
+	/>
+	
+</TRIAL> 
+
+<TRIAL  template="pauseTemplate" block="42"/>
+
+<!-- Step 5: Concept-attribute pairing -->
+<TRIAL template="TaskTemplate" block="50" trials="4" trialName="task5">
+	<addText copyOverID="side1"	text="Male/" />
+	<addText copyOverID="side1" colour="green" text="Philosophy"/>
+	
+	<addText copyOverID="side2" text="Female/"/>
+	<addText copyOverID="side2" colour="green" text="Geography"/>
+	
+	<addText copyOverID="stim" colour="green"
+	text="analytic;epistemic;skeptic;aesthetics;logic;ethics;river;land;mountain;lake;coast;shore;mother;wife;daughter;aunt;woman;female;father;husband;son;uncle;man;male"
+	/>
+
+	<addText copyOverID="task"
+	
+	text="Press " text1="KEY1" text2=" to classify as Male or Geography 
+or " text3="KEY2" text4=" to classify as Female or Philosophy" 
+	/>
+	
+</TRIAL> 
+
+<TaskTemplate>
+
+	<behavPause timeStart='0' addTimeForResults="500" time="rand(0:500)" />
+	<addHideMouse />
+	<addButton howMany="2" key="e---i" peg="e---i"  timeStart="500" visible="false" hideResults='false' width='80' height='80' />
+	
+	<addRT peg="rt" timeStart="500"/>
+	
+	<addText copyOverID="side1" colour="COLOUR" timeStart="500" align="center" fontSize="40" x="X1" y="30%"/>
+	<addText copyOverID="side2" colour="COLOUR" timeStart="500" align="center" fontSize="40" x="X2" y="30%"/>
+	
+	<addText copyOverID="stim" colour="COLOUR" timeStart="500" align="center" fontSize="60"/>
+	
+	<addText copyOverID="task" timeStart="500" align="center" fontSize="40" y="80%"/>
+</TaskTemplate>
+
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="random" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Thank you for your participation. DEBRIEF SVP.
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<aaddMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+
+	
+</TRIAL>
+
+
+
+
+
+<pauseTemplate  trials="1" hideResults="true" trialName="pause">
+
+	<addText fontSize="30"
+	text="Have a short break.  When you are ready press the space bar to continue." 
+	/>
+	
+	<addButton key=" " visible="false" />
+	
+</pauseTemplate> 
+
+
+</Bouba2>	

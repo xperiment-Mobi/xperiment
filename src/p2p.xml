@@ -1,0 +1,50 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="stimuli" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+	<addLive boss="true" peg="boss" studyName="abc" password=""  y="25%" height="40%"/>
+	<addLive boss="false" peg="notBoss" y="75%" height="40%"/>
+	
+	<addButton howMany="2" if="this.click?boss.start()---this.click?notBoss.start()" width="140" goto="" height="40" y="80%" text="Boss---notBoss"  x="60%---75%"  />
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="false" block="10" order="fixed" trials="5">
+	
+	<addText text="Please wait for the experimenter to start the next trial" align="middle"  peg="text" fontSize="40" width="100%"/>
+	
+	<addJPG filename="boy_anger8.jpg;boy_disgust8.jpg;boy_happy8.jpg;boy_sad8.jpg;boy_suprise8.jpg" peg="pic" timeStart="0" x="25%" exactSize="true" />
+	
+	<addButton howMany="2" fontSize="60" width="50%" x="75%" height="50%" peg="b1---b2" timeStart="0" if="this.click?pic.visible=false,b1.visible=false,b2.visible=false,text.start()" text="yes---no"  y="25%---75%"/>
+
+</TRIAL>
+
+
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="false" block="100" order="fixed" trials="5">
+	
+	<addText text="Please wait for the experimenter to end the study" align="middle"  peg="text" fontSize="40" width="100%"/>
+	
+	
+</TRIAL>
+
+
+
+
+
+</Bouba2>	

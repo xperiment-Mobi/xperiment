@@ -1,0 +1,213 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="touchStim2" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="comprehensionTest"  block="1" trials="1">
+		
+		<addText y="40%" text="experimenter ID:" fontSize="30" align="center" />
+		<addInputTextBox timeStart="0" peg="expter" width="30%" height="10%" fontSize="40"/>
+		
+		<addButton betweenSJ='compTestLogic' hideResults="true" width="10%"	 height="5%" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be asked to label how pleasant is the (non-sexual) stroking of one person by another.
+At the end of the study we will tell you more about the purpose of the study. You can contact S.C.Walker@ljmu.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+</TRIAL>
+
+
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required=""peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInputTextBox required="" emptyWhenClicked="true" text="what is your ethnicity?"  y="75%" width="80%" height="5%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	
+	<addText colour="COLOUR" howMany="3"  padding="10"  height="10%" x="40%" y="10%---30%---50%" text=
+	"Are you currently in a romantic relationship?---How long have you been in that relationship? (ignore if n/a)---How often do you see your partner? (ignore if n/a)"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="left" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="relationship" distanceApart="5" width="100%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultipleChoice seperation="horizontal" peg="relationshipDur" distanceApart="5"  width="100%" height="5%" horizontalDistanceApart="210" labels="1 month or less,1-6 months,6 months - 2 years,more than 2 years"  padding="10" x="50%" y="40%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultipleChoice seperation="horizontal" peg="relationshipDur" distanceApart="5"  width="100%" height="5%" horizontalDistanceApart="210" labels="Everyday, several times a week,once every few weeks,less than once a month"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 	
+
+
+	<behavNextTrial peg='nextTrial'/>
+	<behavGotoTrial trial="relationshipI" peg='relationshipI'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&relationship.result=='yes'?nextTrial.start(),this.click&&relationship.result=='no'?relationshipI.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	
+	<addText colour="COLOUR" howMany="7"  padding="10"  height="10%" x="40%" y="0%---14%---etc---" text=
+	"How well does your partner meet your needs?---In general, how satisfied are you with your relationship?---How good is your relationship compared to most?---How often do you wish you hadn’t gotten into this relationship?---To what extent has your relationship met your original expectations?---How much do you love your partner?---How many problems are there in your relationship?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="left" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" howMany="7" seperation="horizontal" peg="a---b---c---d---e---f---g" distanceApart="5" width="100%" height="5%" horizontalDistanceApart="210" labels="1 (low),2,3,4,5 (high)"  padding="10" x="50%" y="6%---20%---etc---" timeStart="0"  timeEnd="forever" /> 	
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="relationshipI" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"Following are four general relationship styles that people often report. Place a checkmark next to the letter corresponding to the style that best describes you or is closest to the way you are." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  colour="COLOUR" howMany="4" x="10%" y="20%---40%---60%---80%" width="90%" align="left" horizontal="left" text="A. It is easy for me to become emotionally close to others. I am comfortable depending on them and having them depend on me. I don’t worry about being alone or having others not accept me.---B. I am uncomfortable getting close to others. I want emotionally close relationships, but I find it difficult to trust others completely, or to depend on them. I worry that I will be hurt if I allow myself to become too close to others.---C. I want to be completely emotionally intimate with others, but I often find that others are reluctant to get as close as I would like. I am uncomfortable being without close relationships, but I sometimes worry that others don’t value me as much as I value them.---D. I am comfortable without close emotional relationships. It is very important to me to feel independent and self-sufficient, and I prefer not to depend on others or have others depend on me." fontSize="18"/>
+	
+	<addButton howMany="4" goto="" buttonGroup="relationship" sticky="true" width="40" height="40" x="5%" y="20%---40%---60%---80%" timeStart="0" text="" peg="A---B---C---D"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&A.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" trialName="relationshipII" order="fixed" trials="1">
+
+	<addText  colour="COLOUR" x="50%"  y="0%" vertical="top" verticalAlign="top" height="20%" text=
+	"Now please rate each of the relationship styles to indicate how well or poorly each description corresponds to your general relationship style." 
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  colour="COLOUR" howMany="4" x="10%" y="20%---40%---60%---80%" width="90%" align="left" horizontal="left" text="A. It is easy for me to become emotionally close to others. I am comfortable depending on them and having them depend on me. I don’t worry about being alone or having others not accept me.---B. I am uncomfortable getting close to others. I want emotionally close relationships, but I find it difficult to trust others completely, or to depend on them. I worry that I will be hurt if I allow myself to become too close to others.---C. I want to be completely emotionally intimate with others, but I often find that others are reluctant to get as close as I would like. I am uncomfortable being without close relationships, but I sometimes worry that others don’t value me as much as I value them.---D. I am comfortable without close emotional relationships. It is very important to me to feel independent and self-sufficient, and I prefer not to depend on others or have others depend on me." fontSize="18"/>
+	
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="31%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="51%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="71%" align="centre" x="20%---55%---91%"/>
+	<addText howMany="3" text="Disagree Strongly---Neutal/Mixed---Agree Strongly" y="91%" align="centre" x="20%---55%---91%"/>
+	
+ 	<addMultipleChoice peg="A---B---C---D" howMany="4" x="55%" seperation="horizontal" distanceApart="5" id="sex"  width="80%" height="5%"  horizontalDistanceApart="210" labels="1,2,3,4,5,6,7"  padding="10"  y="27%---47%---67%---87%" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&A.result!=''&&B.result!=''&&C.result!=''&&D.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="94%"/>
+	
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true" width="70%" text=
+"You will see 15 short video clips of a person being touched/stroked on different parts of the body. Following each clip you will be asked to rate how much you liked the touch you saw, and how much you would like to be touched like that.
+To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+  
+<TRIAL block="10,1" trials="15" trialName="Kate_armA_01;Kate_armA_02;Kate_armA_03;Kate_armB_01;Kate_armB_02;Kate_armB_03;Kate_back_01;Kate_back_02;Kate_back_03;Kate_hand_01;Kate_hand_02;Kate_hand_03;Kate_uparm_01;Kate_uparm_02;Kate_uparm_03">
+	
+	<addHideMouse timeStart="0" peg="mouse"/>
+	
+		
+	<addVideo  lockToFrameRate="true" timeStart="0" if="this.onFinish?pleasant.start(),pleasantT.start(),mouse.stop()" peg="np" width="800" height="450" filename="Kate_armA_01.flv;Kate_armA_02.flv;Kate_armA_03.flv;Kate_armB_01.flv;Kate_armB_02.flv;Kate_armB_03.flv;Kate_back_01.flv;Kate_back_02.flv;Kate_back_03.flv;Kate_hand_01.flv;Kate_hand_02.flv;Kate_hand_03.flv;Kate_uparm_01.flv;Kate_uparm_02.flv;Kate_uparm_03.flv"/>
+	
+	
+	<addText y="70%" colour="COLOUR" width="100%" peg="youLikeT" align="centre" fontSize="20" text="how much would you like to be touched like this?"/>
+	<addMultipleChoice y="80%" if="this.click?nextTrial.start()" peg="youLike" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<addText y="50%" colour="COLOUR" width="100%" peg="pleasantT" align="centre" fontSize="20" text="how pleasant do you think the action was for the person being touched?"/>
+	<addMultipleChoice y="60%" if="this.click?youLike.start(),youLikeT.start(),this.stop(),pleasantT.stop()" peg="pleasant" labels="1 - very unpleasant,2,3,4,5,6,7 - very pleasant" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Past research has found that there are specialised nerve cells in our skin that pick up {b}{a href='http://www.sciencedaily.com/releases/2009/04/090414084453.htm' target='_blank'}pleasant touch{/a}{/b} (a new window will open if link is clicked). These nerve cells respond best to slow stroking. Here we test whether seeing others stroked at such a slow pace are found to be pleasant, relative to a fast pace and no movement. We suspect that {b}{a href='https://en.wikipedia.org/wiki/Mirror_neuron' target='_blank'}mirror neurons{/a}{/b} (a new window will open if clicked) in the brain may activate this pleasant feeling when watching others being stroked.  Have a lovely day! 
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	
+
+	
+</TRIAL>
+
+</Bouba2>	

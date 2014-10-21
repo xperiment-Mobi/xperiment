@@ -1,0 +1,177 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveDataURL="http://www.opensourcesci.com/experiments/Bristol/gait3" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="http://faces.psy.bris.ac.uk/video/SmallBlurredComps/Female" sstimuliFolder="gaitStim3"/>
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' shuffle_somethings="NP_STIM PO_STIM PS_STIM ;" prune_somethings="NP_STIM PO_STIM PS_STIM ; 43" add_somethings="NP_STIM PO_STIM PS_STIM ; DEMO_STIM"
+NP_STIM="P001_110811_OV_NP_COMP.flv;P005_010911_OV_NP_COMP.flv;P009_050911_OV_NP_COMP.flv;P010_060911_OV_NP_COMP.flv;P011_140911_OV_NP_COMP.flv;P022_230911_OV_NP_COMP.flv;P023_300911_OV_NP_COMP.flv;P024_031011_OV_NP_COMP.flv;P025_031011_OV_NP_COMP.flv;P026_041011_OV_NP_COMP.flv;P028_051011_OV_NP_COMP.flv;P030_051011_OV_NP_COMP.flv;P032_171011_OV_NP_COMP.flv;P033_181011_OV_NP_COMP.flv;P035_191011_OV_NP_COMP.flv;P037_201011_OV_NP_COMP.flv;P039_241011_OV_NP_COMP.flv;P041_261011_OV_NP_COMP.flv;P045_281011_OV_NP_COMP.flv;P048_081111_OV_NP_COMP.flv;P049_091111_OV_NP_COMP.flv;P051_101111_OV_NP_COMP.flv;P054_151111_OV_NP_COMP.flv;P055_161111_OV_NP_COMP.flv;P056_171111_OV_NP_COMP.flv;P059_291111_OV_NP_COMP.flv;P063_180212_OV_NP_COMP.flv;P065_190212_OV_NP_COMP.flv;P066_200212_OV_NP_COMP.flv;P067_200112_OV_NP_COMP.flv;P068_230112_OV_NP_COMP.flv;P069_230112_OV_NP_COMP.flv;P071_240112_OV_NP_COMP.flv;P072_250112_OV_NP_COMP.flv;P073_250112_OV_NP_COMP.flv;P074_260112_OV_NP_COMP.flv;P081_080212_OV_NP_COMP.flv;P082_080212_OV_NP_COMP.flv;P084_090212_OV_NP_COMP.flv;P087_130212_OV_NP_COMP.flv;P088_140212_OV_NP_COMP.flv;P091_160212_OV_NP_COMP.flv;P093_200212_OV_NP_COMP.flv;P094_210212_OV_NP_COMP.flv;P095_210212_OV_NP_COMP.flv;P096_220212_OV_NP_COMP.flv;P097_230212_OV_NP_COMP.flv;P099_240212_OV_NP_COMP.flv;P100_240212_OV_NP_COMP.flv;P101_050312_OV_NP_COMP.flv;P102_060312_OV_NP_COMP.flv;P104_070312_OV_NP_COMP.flv;P105_070312_OV_NP_COMP.flv;P106_080312_OV_NP_COMP.flv;P107_080312_OV_NP_COMP.flv;P108_090312_OV_NP_COMP.flv;P111_140312_OV_NP_COMP.flv;P113_150312_OV_NP_COMP.flv;P114_150312_OV_NP_COMP.flv;P115_200312_OV_NP_COMP.flv;P116_200312_OV_NP_COMP.flv;P118_220312_OV_NP_COMP.flv;P120_230312_OV_NP_COMP.flv;P122_130412_OV_NP_COMP.flv;P131_100512_OV_NP_COMP.flv;P133_110512_OV_NP_COMP.flv;P135_150512_OV_NP_COMP.flv;P136_150512_OV_NP_COMP.flv;P137_150512_OV_NP_COMP.flv;P138_160512_OV_NP_COMP.flv;P139_160512_OV_NP_COMP.flv;P141_170512_OV_NP_COMP.flv;P145_280512_OV_NP_COMP.flv;P146_280512_OV_NP_COMP.flv;P149_300512_OV_NP_COMP.flv;P152_310512_OV_NP_COMP.flv;P153_310512_OV_NP_COMP.flv;P154_060612_OV_NP_COMP.flv;P156_080612_OV_NP_COMP.flv;P157_270712_OV_NP_COMP.flv;P158_220712_OV_NP_COMP.flv;P160_280612_OV_NP_COMP.flv;P162_280612_OV_NP_COMP.flv;P164_030712_OV_NP_COMP.flv;P167_060712_OV_NP_COMP.flv"
+PO_STIM="P001_110811_OV_PO_COMP.flv;P005_010911_OV_PO_COMP.flv;P009_050911_OV_PO_COMP.flv;P010_060911_OV_PO_COMP.flv;P011_140911_OV_PO_COMP.flv;P022_230911_OV_PO_COMP.flv;P023_300911_OV_PO_COMP.flv;P024_031011_OV_PO_COMP.flv;P025_031011_OV_PO_COMP.flv;P026_041011_OV_PO_COMP.flv;P028_051011_OV_PO_COMP.flv;P030_051011_OV_PO_COMP.flv;P032_171011_OV_PO_COMP.flv;P033_181011_OV_PO_COMP.flv;P035_191011_OV_PO_COMP.flv;P037_201011_OV_PO_COMP.flv;P039_241011_OV_PO_COMP.flv;P041_261011_OV_PO_COMP.flv;P045_281011_OV_PO_COMP.flv;P048_081111_OV_PO_COMP.flv;P049_091111_OV_PO_COMP.flv;P051_101111_OV_PO_COMP.flv;P054_151111_OV_PO_COMP.flv;P055_161111_OV_PO_COMP.flv;P056_171111_OV_PO_COMP.flv;P059_291111_OV_PO_COMP.flv;P063_180212_OV_PO_COMP.flv;P065_190212_OV_PO_COMP.flv;P066_200212_OV_PO_COMP.flv;P067_200112_OV_PO_COMP.flv;P068_230112_OV_PO_COMP.flv;P069_230112_OV_PO_COMP.flv;P071_240112_OV_PO_COMP.flv;P072_250112_OV_PO_COMP.flv;P073_250112_OV_PO_COMP.flv;P074_260112_OV_PO_COMP.flv;P081_080212_OV_PO_COMP.flv;P082_080212_OV_PO_COMP.flv;P084_090212_OV_PO_COMP.flv;P087_130212_OV_PO_COMP.flv;P088_140212_OV_PO_COMP.flv;P091_160212_OV_PO_COMP.flv;P093_200212_OV_PO_COMP.flv;P094_210212_OV_PO_COMP.flv;P095_210212_OV_PO_COMP.flv;P096_220212_OV_PO_COMP.flv;P097_230212_OV_PO_COMP.flv;P099_240212_OV_PO_COMP.flv;P100_240212_OV_PO_COMP.flv;P101_050312_OV_PO_COMP.flv;P102_060312_OV_PO_COMP.flv;P104_070312_OV_PO_COMP.flv;P105_070312_OV_PO_COMP.flv;P106_080312_OV_PO_COMP.flv;P107_080312_OV_PO_COMP.flv;P108_090312_OV_PO_COMP.flv;P111_140312_OV_PO_COMP.flv;P113_150312_OV_PO_COMP.flv;P114_150312_OV_PO_COMP.flv;P115_200312_OV_PO_COMP.flv;P116_200312_OV_PO_COMP.flv;P118_220312_OV_PO_COMP.flv;P120_230312_OV_PO_COMP.flv;P122_130412_OV_PO_COMP.flv;P131_100512_OV_PO_COMP.flv;P133_110512_OV_PO_COMP.flv;P135_150512_OV_PO_COMP.flv;P136_150512_OV_PO_COMP.flv;P137_150512_OV_PO_COMP.flv;P138_160512_OV_PO_COMP.flv;P139_160512_OV_PO_COMP.flv;P141_170512_OV_PO_COMP.flv;P145_280512_OV_PO_COMP.flv;P146_280512_OV_PO_COMP.flv;P149_300512_OV_PO_COMP.flv;P152_310512_OV_PO_COMP.flv;P153_310512_OV_PO_COMP.flv;P154_060612_OV_PO_COMP.flv;P156_080612_OV_PO_COMP.flv;P157_270712_OV_PO_COMP.flv;P158_220712_OV_PO_COMP.flv;P160_280612_OV_PO_COMP.flv;P162_280612_OV_PO_COMP.flv;P164_030712_OV_PO_COMP.flv;P167_060712_OV_PO_COMP.flv"
+PS_STIM="P001_110811_OV_PS_COMP.flv;P005_010911_OV_PS_COMP.flv;P009_050911_OV_PS_COMP.flv;P010_060911_OV_PS_COMP.flv;P011_140911_OV_PS_COMP.flv;P022_230911_OV_PS_COMP.flv;P023_300911_OV_PS_COMP.flv;P024_031011_OV_PS_COMP.flv;P025_031011_OV_PS_COMP.flv;P026_041011_OV_PS_COMP.flv;P028_051011_OV_PS_COMP.flv;P030_051011_OV_PS_COMP.flv;P032_171011_OV_PS_COMP.flv;P033_181011_OV_PS_COMP.flv;P035_191011_OV_PS_COMP.flv;P037_201011_OV_PS_COMP.flv;P039_241011_OV_PS_COMP.flv;P041_261011_OV_PS_COMP.flv;P045_281011_OV_PS_COMP.flv;P048_081111_OV_PS_COMP.flv;P049_091111_OV_PS_COMP.flv;P051_101111_OV_PS_COMP.flv;P054_151111_OV_PS_COMP.flv;P055_161111_OV_PS_COMP.flv;P056_171111_OV_PS_COMP.flv;P059_291111_OV_PS_COMP.flv;P063_180212_OV_PS_COMP.flv;P065_190212_OV_PS_COMP.flv;P066_200212_OV_PS_COMP.flv;P067_200112_OV_PS_COMP.flv;P068_230112_OV_PS_COMP.flv;P069_230112_OV_PS_COMP.flv;P071_240112_OV_PS_COMP.flv;P072_250112_OV_PS_COMP.flv;P073_250112_OV_PS_COMP.flv;P074_260112_OV_PS_COMP.flv;P081_080212_OV_PS_COMP.flv;P082_080212_OV_PS_COMP.flv;P084_090212_OV_PS_COMP.flv;P087_130212_OV_PS_COMP.flv;P088_140212_OV_PS_COMP.flv;P091_160212_OV_PS_COMP.flv;P093_200212_OV_PS_COMP.flv;P094_210212_OV_PS_COMP.flv;P095_210212_OV_PS_COMP.flv;P096_220212_OV_PS_COMP.flv;P097_230212_OV_PS_COMP.flv;P099_240212_OV_PS_COMP.flv;P100_240212_OV_PS_COMP.flv;P101_050312_OV_PS_COMP.flv;P102_060312_OV_PS_COMP.flv;P104_070312_OV_PS_COMP.flv;P105_070312_OV_PS_COMP.flv;P106_080312_OV_PS_COMP.flv;P107_080312_OV_PS_COMP.flv;P108_090312_OV_PS_COMP.flv;P111_140312_OV_PS_COMP.flv;P113_150312_OV_PS_COMP.flv;P114_150312_OV_PS_COMP.flv;P115_200312_OV_PS_COMP.flv;P116_200312_OV_PS_COMP.flv;P118_220312_OV_PS_COMP.flv;P120_230312_OV_PS_COMP.flv;P122_130412_OV_PS_COMP.flv;P131_100512_OV_PS_COMP.flv;P133_110512_OV_PS_COMP.flv;P135_150512_OV_PS_COMP.flv;P136_150512_OV_PS_COMP.flv;P137_150512_OV_PS_COMP.flv;P138_160512_OV_PS_COMP.flv;P139_160512_OV_PS_COMP.flv;P141_170512_OV_PS_COMP.flv;P145_280512_OV_PS_COMP.flv;P146_280512_OV_PS_COMP.flv;P149_300512_OV_PS_COMP.flv;P152_310512_OV_PS_COMP.flv;P153_310512_OV_PS_COMP.flv;P154_060612_OV_PS_COMP.flv;P156_080612_OV_PS_COMP.flv;P157_270712_OV_PS_COMP.flv;P158_220712_OV_PS_COMP.flv;P160_280612_OV_PS_COMP.flv;P162_280612_OV_PS_COMP.flv;P164_030712_OV_PS_COMP.flv;P167_060712_OV_PS_COMP.flv"			  
+			  
+			   />
+			  
+			  
+<!-- 	NP_STIM="P002_180811_OV_NP_COMP.flv;P003_190811_OV_NP_COMP.flv;P004_190811_OV_NP_COMP.flv;P006_010911_OV_NP_COMP.flv;P007_020911_OV_NP_COMP.flv;P008_020911_OV_NP_COMP.flv;P012_140911_OV_NP_COMP.flv;P013_150911_OV_NP_COMP.flv;P014_160911_OV_NP_COMP.flv;P015_190911_OV_NP_COMP.flv;P016_190911_OV_NP_COMP.flv;P017_200911_OV_NP_COMP.flv;P018_210911_OV_NP_COMP.flv;P019_210911_OV_NP_COMP.flv;P020_220911_OV_NP_COMP.flv;P021_220911_OV_NP_COMP.flv;P027_041011_OV_NP_COMP.flv;P029_051011_OV_NP_COMP.flv;P031_171011_OV_NP_COMP.flv;P034_181011_OV_NP_COMP.flv;P036_201011_OV_NP_COMP.flv;P038_241011_OV_NP_COMP.flv;P042_261011_OV_NP_COMP.flv;P044_271011_OV_NP_COMP.flv;P046_281011_OV_NP_COMP.flv;P047_071111_OV_NP_COMP.flv;P050_091111_OV_NP_COMP.flv;P052_101111_OV_NP_COMP.flv;P053_151111_OV_NP_COMP.flv;P057_281111_OV_NP_COMP.flv;P058_291111_OV_NP_COMP.flv;P060_301111_OV_NP_COMP.flv;P061_160212_OV_NP_COMP.flv;P064_190212_OV_NP_COMP.flv;P070_240112_OV_NP_COMP.flv;P075_260112_OV_NP_COMP.flv;P076_270112_OV_NP_COMP.flv;P077_270112_OV_NP_COMP.flv;P078_060212_OV_NP_COMP.flv;P079_070212_OV_NP_COMP.flv;P080_070212_OV_NP_COMP.flv;P083_090212_OV_NP_COMP.flv;P085_100212_OV_NP_COMP.flv;P086_100212_OV_NP_COMP.flv;P089_140212_OV_NP_COMP.flv;P092_160212_OV_NP_COMP.flv;P098_230212_OV_NP_COMP.flv;P103_060312_OV_NP_COMP.flv;P109_120312_OV_NP_COMP.flv;P110_130312_OV_NP_COMP.flv;P112_150312_OV_NP_COMP.flv;P117_210312_OV_NP_COMP.flv;P119_220312_OV_NP_COMP.flv;P121_120412_OV_NP_COMP.flv;P123_130412_OV_NP_COMP.flv;P124_160412_OV_NP_COMP.flv;P125_170412_OV_NP_COMP.flv;P126_170412_OV_NP_COMP.flv;P127_180412_OV_NP_COMP.flv;P128_180412_OV_NP_COMP.flv;P129_190412_OV_NP_COMP.flv;P130_090512_OV_NP_COMP.flv;P132_100512_OV_NP_COMP.flv;P134_110512_OV_NP_COMP.flv;P140_170512_OV_NP_COMP.flv;P142_240512_OV_NP_COMP.flv;P143_240512_OV_NP_COMP.flv;P144_250512_OV_NP_COMP.flv;P147_280512_OV_NP_COMP.flv;P148_290512_OV_NP_COMP.flv;P150_300512_OV_NP_COMP.flv;P151_300512_OV_NP_COMP.flv;P155_060612_OV_NP_COMP.flv;P159_280612_OV_NP_COMP.flv;P161_280612_OV_NP_COMP.flv;P163_020712_OV_NP_COMP.flv;P165_040712_OV_NP_COMP.flv;P166_050712_OV_NP_COMP.flv;P168_071112_OV_NP_COMP.flv;P169_081112_OV_NP_COMP.flv;P170_091112_OV_NP_COMP.flv;P171_151112_OV_NP_COMP.flv;P172_161112_OV_NP_COMP.flv;"/> -->
+<!-- 	PO_STIM="P002_180811_OV_PO_COMP.flv;P003_190811_OV_PO_COMP.flv;P004_190811_OV_PO_COMP.flv;P006_010911_OV_PO_COMP.flv;P007_020911_OV_PO_COMP.flv;P008_020911_OV_PO_COMP.flv;P012_140911_OV_PO_COMP.flv;P013_150911_OV_PO_COMP.flv;P014_160911_OV_PO_COMP.flv;P015_190911_OV_PO_COMP.flv;P016_190911_OV_PO_COMP.flv;P017_200911_OV_PO_COMP.flv;P018_210911_OV_PO_COMP.flv;P019_210911_OV_PO_COMP.flv;P020_220911_OV_PO_COMP.flv;P021_220911_OV_PO_COMP.flv;P027_041011_OV_PO_COMP.flv;P029_051011_OV_PO_COMP.flv;P031_171011_OV_PO_COMP.flv;P034_181011_OV_PO_COMP.flv;P036_201011_OV_PO_COMP.flv;P038_241011_OV_PO_COMP.flv;P042_261011_OV_PO_COMP.flv;P044_271011_OV_PO_COMP.flv;P046_281011_OV_PO_COMP.flv;P047_071111_OV_PO_COMP.flv;P050_091111_OV_PO_COMP.flv;P052_101111_OV_PO_COMP.flv;P053_151111_OV_PO_COMP.flv;P057_281111_OV_PO_COMP.flv;P058_291111_OV_PO_COMP.flv;P060_301111_OV_PO_COMP.flv;P061_160212_OV_PO_COMP.flv;P064_190212_OV_PO_COMP.flv;P070_240112_OV_PO_COMP.flv;P075_260112_OV_PO_COMP.flv;P076_270112_OV_PO_COMP.flv;P077_270112_OV_PO_COMP.flv;P078_060212_OV_PO_COMP.flv;P079_070212_OV_PO_COMP.flv;P080_070212_OV_PO_COMP.flv;P083_090212_OV_PO_COMP.flv;P085_100212_OV_PO_COMP.flv;P086_100212_OV_PO_COMP.flv;P089_140212_OV_PO_COMP.flv;P092_160212_OV_PO_COMP.flv;P098_230212_OV_PO_COMP.flv;P103_060312_OV_PO_COMP.flv;P109_120312_OV_PO_COMP.flv;P110_130312_OV_PO_COMP.flv;P112_150312_OV_PO_COMP.flv;P117_210312_OV_PO_COMP.flv;P119_220312_OV_PO_COMP.flv;P121_120412_OV_PO_COMP.flv;P123_130412_OV_PO_COMP.flv;P124_160412_OV_PO_COMP.flv;P125_170412_OV_PO_COMP.flv;P126_170412_OV_PO_COMP.flv;P127_180412_OV_PO_COMP.flv;P128_180412_OV_PO_COMP.flv;P129_190412_OV_PO_COMP.flv;P130_090512_OV_PO_COMP.flv;P132_100512_OV_PO_COMP.flv;P134_110512_OV_PO_COMP.flv;P140_170512_OV_PO_COMP.flv;P142_240512_OV_PO_COMP.flv;P143_240512_OV_PO_COMP.flv;P144_250512_OV_PO_COMP.flv;P147_280512_OV_PO_COMP.flv;P148_290512_OV_PO_COMP.flv;P150_300512_OV_PO_COMP.flv;P151_300512_OV_PO_COMP.flv;P155_060612_OV_PO_COMP.flv;P159_280612_OV_PO_COMP.flv;P161_280612_OV_PO_COMP.flv;P163_020712_OV_PO_COMP.flv;P165_040712_OV_PO_COMP.flv;P166_050712_OV_PO_COMP.flv;P168_071112_OV_PO_COMP.flv;P169_081112_OV_PO_COMP.flv;P170_091112_OV_PO_COMP.flv;P171_151112_OV_PO_COMP.flv;P172_161112_OV_PO_COMP.flv"/> -->
+<!-- 	PS_STIM="P002_180811_OV_PS_COMP.flv;P003_190811_OV_PS_COMP.flv;P004_190811_OV_PS_COMP.flv;P006_010911_OV_PS_COMP.flv;P007_020911_OV_PS_COMP.flv;P008_020911_OV_PS_COMP.flv;P012_140911_OV_PS_COMP.flv;P013_150911_OV_PS_COMP.flv;P014_160911_OV_PS_COMP.flv;P015_190911_OV_PS_COMP.flv;P016_190911_OV_PS_COMP.flv;P017_200911_OV_PS_COMP.flv;P018_210911_OV_PS_COMP.flv;P019_210911_OV_PS_COMP.flv;P020_220911_OV_PS_COMP.flv;P021_220911_OV_PS_COMP.flv;P027_041011_OV_PS_COMP.flv;P029_051011_OV_PS_COMP.flv;P031_171011_OV_PS_COMP.flv;P034_181011_OV_PS_COMP.flv;P036_201011_OV_PS_COMP.flv;P038_241011_OV_PS_COMP.flv;P042_261011_OV_PS_COMP.flv;P044_271011_OV_PS_COMP.flv;P046_281011_OV_PS_COMP.flv;P047_071111_OV_PS_COMP.flv;P050_091111_OV_PS_COMP.flv;P052_101111_OV_PS_COMP.flv;P053_151111_OV_PS_COMP.flv;P057_281111_OV_PS_COMP.flv;P058_291111_OV_PS_COMP.flv;P060_301111_OV_PS_COMP.flv;P061_160212_OV_PS_COMP.flv;P064_190212_OV_PS_COMP.flv;P070_240112_OV_PS_COMP.flv;P075_260112_OV_PS_COMP.flv;P076_270112_OV_PS_COMP.flv;P077_270112_OV_PS_COMP.flv;P078_060212_OV_PS_COMP.flv;P079_070212_OV_PS_COMP.flv;P080_070212_OV_PS_COMP.flv;P083_090212_OV_PS_COMP.flv;P085_100212_OV_PS_COMP.flv;P086_100212_OV_PS_COMP.flv;P089_140212_OV_PS_COMP.flv;P092_160212_OV_PS_COMP.flv;P098_230212_OV_PS_COMP.flv;P103_060312_OV_PS_COMP.flv;P109_120312_OV_PS_COMP.flv;P110_130312_OV_PS_COMP.flv;P112_150312_OV_PS_COMP.flv;P117_210312_OV_PS_COMP.flv;P119_220312_OV_PS_COMP.flv;P121_120412_OV_PS_COMP.flv;P123_130412_OV_PS_COMP.flv;P124_160412_OV_PS_COMP.flv;P125_170412_OV_PS_COMP.flv;P126_170412_OV_PS_COMP.flv;P127_180412_OV_PS_COMP.flv;P128_180412_OV_PS_COMP.flv;P129_190412_OV_PS_COMP.flv;P130_090512_OV_PS_COMP.flv;P132_100512_OV_PS_COMP.flv;P134_110512_OV_PS_COMP.flv;P140_170512_OV_PS_COMP.flv;P142_240512_OV_PS_COMP.flv;P143_240512_OV_PS_COMP.flv;P144_250512_OV_PS_COMP.flv;P147_280512_OV_PS_COMP.flv;P148_290512_OV_PS_COMP.flv;P150_300512_OV_PS_COMP.flv;P151_300512_OV_PS_COMP.flv;P155_060612_OV_PS_COMP.flv;P159_280612_OV_PS_COMP.flv;P161_280612_OV_PS_COMP.flv;P163_020712_OV_PS_COMP.flv;P165_040712_OV_PS_COMP.flv;P166_050712_OV_PS_COMP.flv;P168_071112_OV_PS_COMP.flv;P169_081112_OV_PS_COMP.flv;P170_091112_OV_PS_COMP.flv;P171_151112_OV_PS_COMP.flv;P172_161112_OV_PS_COMP.flv"/> -->
+			  
+			  
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be shown a series of videos and asked to rate the women/men in them for attractiveness. Just click on the rating that you consider best applies - don't think about it too much! We are interested in people's intuitive responses. 
+At the end of the study we will tell you more about the purpose of the study. You can contact Andrew.Clark@brunel.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  order="fixed" block="1" trials="1">
+	
+	<addText  colour="COLOUR"  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%" height="10%" x="50%" y="1%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}
+Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' fontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' 
+	circles="3" width='90%'	height="50%"  fontSizes='13' position="random" circleNames='emotion,briefly,identify'
+	texts="feeling,quickly,classify,slowly,pick-up,photo,river,jarring" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='briefly:quickly emotion:feeling identify:classify'?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addComboBox peg="orientation" items="heterosexual,homosexual,bisexual" label="what is your sexual orientation?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="70%"/>
+		
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&orientation.result!=''&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true"  text=
+"In this study, you will see videos of women walking. Each video lasts 15 seconds long. Please watch each one carefully.
+After each video is completed, you should judge how attractive the woman was on a scale of 1-7 using the numbers on your keyboard.
+To begin click START.
+"
+		timeStart="0" horizontal="left" x="10%" timeEnd="forever" fontSize="22"></addText> 
+
+   	<addVideo horizontal="right" x="90%"  shuffle_something="filename ;" width="240" height="432" filename="DEMO_STIM"/>
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10,4" blockOrder="random" forceBlockDepthPositions='1/2'  trials="1">
+	<addText colour="COLOUR" wordWrap="true" text=
+		"You have completed half the trials. Click START to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	<addHideMouse enable="true"/>
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+<TRIAL block="10,1" trials="43" trialName="t">
+	
+	<addHideMouse dontDisableAtEnd="true"/>
+	
+	<addResults timeStart="0" peg="filename"/>
+
+ 	<addVideo if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" save="vid" peg="np" width="240" height="432" filename="NP_STIM"/> 
+ 	<addVideo if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" save="vid" peg="po" width="240" height="432" filename="PO_STIM"/> 
+ 	<addVideo  if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" save="vid" peg="ps" width="240" height="432" filename="PS_STIM"/> 
+	
+	
+	<behavRand peg="type" usePegs="np,po,ps" timeStart="100"/>
+	
+	<addText colour="white" peg="txt" selectable="false" text="how attractive was that woman?" fontSize="30" align='center' y="40%" width="100%"/>
+	<addMultipleChoice  disableButtons="true" useKeys="1,2,3,4,5,6,7" if="this.click?nextTrial.start()" peg="mc" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+	<addHideMouse enable="true"/>	  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how attractive different body motions are in our videos. Have a lovely day! 
+
+Don't forget to enter the code below in Mechanical Turk. You can close this screen."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+
+	
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

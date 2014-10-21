@@ -1,0 +1,67 @@
+﻿<Unilever exptType="WEB">
+
+ <SETUP>  
+              <info id="1671b14a658c4a50bdc37932c31f4b21" />
+              <results saveSuccessMessage="" saveDataURL="http://www.opensourcesci.com/experiments/EmotionAlertness/" cloudURL='http://www.xpt.mobi/gateway/' saveToCloud="true" saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email emailResults="true" username="andy.woods@xperiment.mobi" toWhom="large.cupboard@gmail.com" />
+			  <computer  stimuliFolder="graphics" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" block="1" order="fixed" trials="1">
+
+<addText howMany="2" multiline="true" id="SJid---session"  
+	text="Bitte geben Sie Ihre Nummer der Testperson---Bitte geben Sie die Session-Nummer"
+	timeStart="0" colour="0xFFFFFF"  align="left"  width="90%"  height="10%" x="50%" y="30%---60%" fontSize="23" border="true"  />
+
+<addInputTextBox background="0xfafafa" peg="id---session" howMany="2" multiline="true" id="SJid---session"  restrict="0-9" maxChars="5"
+	timeStart="0" colour="0xFF0000"  align="centre"  width="50%"  height="10%" x="50%" y="40%---70%" fontSize="30" 	border="true"  />
+
+<addButton width="200" height="50" text="Weiter..." if="this.click&&id.text!=''&&session.text!=''?nextTrial.start()" goto="" resultFileName="Weiter" timeStart="100"  x="50%" y="95%"></addButton>             
+ 
+<behavNextTrial peg="nextTrial"/>
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="2" order="random" trials="1">
+
+	<addTwoDimensionalEmotionScale peg="2d" textInputBoxFontSize="20"
+		shiftYtextRight="-40" shiftXtextUp="15"  showLocationOverTime="false" slowDownTail="4" mouthSize="20" 
+		shiftMouthUp="-10" startVal="0" textBackgroundColour="0xffffff" textColour="0x000000" flipTheAxes="no" 
+		shiftEyesUp="5" shiftEyesApart="15" eyeSize="12" eyeColour="0xfffc00" mouthColour="0x000000" 
+		faceLineColour="0x000000" faceColour="0xeb84bc" thicknessofMouthLine="2" thicknessofEyesLine="1" 
+		thicknessofFaceLine="2" faceSize="20" width="100%" axisLength="90%" height="100%"  timeStart="10" timeEnd="900000" 
+		pointerSize="10" numberTailSegments="40" tailDecayRate="98" lineColour="0xd0caca" tailColour="0xffffff"
+		XlabelList="sehr negativ&&sehr positiv"
+		XlabelLocation="1&&109"
+		YlabelList="sehr erregt&&sehr ruhig"
+		YlabelLocation="0&&100"
+		neatLabels="true"		
+	/>
+	
+	<addButton width="150" height="20" text="Eis aufgegessen" resultFileName="Weiter" horizontal="right" timeStart="300"  x="100%" y="95%" ></addButton>                        
+	
+	<behavNextTrial if="2d.onFinish?this.start()" peg="nextTrial"/>
+	
+</TRIAL>
+
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText wordWrap="true" colour="0xdadada" height="30%" width="100%" x="50%" y="65%" text=
+	"Vielen dank, bitte erwarten Sie den weiteren Anweisungen des Testleiters."
+	timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+	
+	
+
+</TRIAL>
+</Unilever>	

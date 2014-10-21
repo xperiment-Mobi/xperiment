@@ -1,0 +1,22 @@
+ Volume in drive C has no label.
+ Volume Serial Number is D407-7441
+
+ Directory of C:\Users\Andy\Adobe Flash Builder 4.7\xperiment\src\touchStim2
+
+07/01/2014  19:47         1,351,364 Kate_armA_01.flv
+07/01/2014  19:47         1,354,125 Kate_armA_02.flv
+07/01/2014  19:47         1,354,773 Kate_armA_03.flv
+07/01/2014  19:47         1,344,872 Kate_armB_01.flv
+07/01/2014  19:47         1,345,885 Kate_armB_02.flv
+07/01/2014  19:47         1,344,534 Kate_armB_03.flv
+07/01/2014  19:47         1,432,064 Kate_back_01.flv
+07/01/2014  19:47         1,381,328 Kate_back_02.flv
+07/01/2014  19:47         1,343,183 Kate_back_03.flv
+07/01/2014  19:47         1,369,636 Kate_hand_01.flv
+07/01/2014  19:47         1,350,690 Kate_hand_02.flv
+07/01/2014  19:47         1,349,503 Kate_hand_03.flv
+07/01/2014  19:47         1,351,747 Kate_uparm_01.flv
+07/01/2014  19:47         1,359,704 Kate_uparm_02.flv
+07/01/2014  19:47         1,357,156 Kate_uparm_03.flv
+              15 File(s)     20,390,564 bytes
+               0 Dir(s)  10,826,788,864 bytes free

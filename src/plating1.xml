@@ -1,0 +1,144 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" />
+              <screen BGcolour="0xffffff" orientation="vertical" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="platingStim1" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />\
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="0">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" vertical="top" 
+	 text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to carry out three quick tasks:  
+Task A: Dragging colour patches into ‘weight’ order, from heaviest to lightest.
+Task B: Deciding which colours go with words that describe weight, e.g. ‘ tiny’ or ‘huge’.
+Task C: Deciding which colours go with objects that have different weights, e.g. .’feather’ or ‘building’
+The order in which these tasks are presented will be randomised, so Task A may not be the first task you are asked to do. 
+At the end of the study we will tell you more about the purpose of the studywhy we are doing this research. You can also contact the researchers – Dr Kirsten McKenzie (kirsten.mckenzie@nottingham.edu.my) or Dr Andy Woods (andy@xperiment.mobi) for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block='1' trials="1">
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png" width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study on food plating
+Here at the Crossmodal Research Lab, at the Department of Experimental Psychology, University of Oxford, we are currently conducting a study designed to assess how people 
+
+
+
+The study will take about 5 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. If you need glasses, please wear them before starting the experiment.
+We hope you enjoy it!
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL block="10" trialName="p" trials="20">
+
+<addJPG if="this.doBefore?results.plate=this.filename"  peg="plate" timeStart="0" shuffle_something='filename,;' 
+filename="rectW.png;rectB.png;circleW.png;circleB.png" exactSize="true" />
+
+<addJPG peg="c" vertical="bottom" horizontal="left" x="0%" y="100%" timeStart="0" howMany="1" shuffle_something='filename,---' 
+filename="courgette.png---redTomato.png---tomatoDiced.png---greenTomato.png" width="180" height="153" />
+
+<addJPG peg="b" vertical="top" horizontal="right" x="100%" y="0%" timeStart="0" howMany="1" shuffle_something='filename,---' 
+filename="bread1.png---crisp.png---olives.png---orange.png---edamCheese.png" width="180" height="153" />
+
+<addJPG peg="a" vertical="top" horizontal="left" x="0%" y="0%" timeStart="0" howMany="1" shuffle_something='filename,---'
+filename="grilledSalmon.png;haggis.png;prawn.png;salmonSteak.png;steak.png" width="180" height="153" />
+
+<behavResults timeStart="0" peg="results"/>
+
+<behavSaveImage usePegs="plate" useAsFrame="plate" peg="saveImage"/>
+
+<behavTransformDragCopy showInfo="true" usePegs="a,b,c,plate" containerPeg="plate" />
+
+<behavSwap timeStart="0" usePegs="a,b,c"  />
+
+<addButton width="200" height="50"goto="" if="this.click?saveImage.save()" hideResults="true" text="save image" y="91%" x="50%" />
+
+<addButton width="200" height="50" text="Continue" hideResults="true" x="85%" y="91%" />
+
+</TRIAL>  
+
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"Thank you for your participation."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+</Taste>	

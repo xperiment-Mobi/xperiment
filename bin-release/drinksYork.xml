@@ -1,0 +1,247 @@
+<CBCondition1 exptType="PC">
+
+<SETUP>
+	<info id="27b2031a2bdb48ce83e100de5f0597d8"></info>
+	<screen BGcolour="white" fullScreen="true" fullScreenMessage="true" orientation="vertical"></screen>
+	<email emergencyEmail="false" toWhom=" andytwoods@gmail.com" subject="test" />
+	<computer stimuliFolder="drinksStim"/>
+	<results mock='false' cloudURL='http://www.xpt.mobi/gateway/' saveToCloud="true" saveToServerFile="true" />
+	<defaults ITI="100"/>
+	<style BUTTON_FACE="0xe1eefc" LABEL_TEXT="0x002d62" BUTTON_DOWN="0xff5656" />
+	<variables trialNum='0'/>
+</SETUP>
+
+
+	<TRIAL  hideResults="true" block='0' order="fixed" trialName="startMenu">
+
+			<addText  width="100%" y="30%" text="{u}Welcome to this experiment on perception{/u}
+{p}If you have not done the experiment already, please click DO EXPERIMENT.  If you have completed the study already and want to learn about what is being tested, click on DEBRIEF  Click on RESULTS to see your data if you have already done the experiment.  Thankyou.{/p}" fontSize="20" />
+
+			<addButton howMany="3" width="140" height="40"
+				text="do experiment---debrief---results" goto="nextTrial---debrief---results"
+				resultFileName="continue" timeStart="0" timeEnd="forever" x="50%"
+				y="60%---70%---80%" />
+
+	</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block='0' order="fixed" trials='1'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="17"
+	text="Dear participant,
+Welcome to our study!
+
+Here at the Crossmodal Research Lab, at the Department of Experimental Psychology, University of Oxford, we are currently conducting a study designed to assess how people perceive different drinks. If you decide that you would like to take part in this study, we will show you pictures of different drinks and ask you to answer some questions about them. The study will take about 20 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. 
+We hope you enjoy it. Your pariticipation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" resultFileName="continue" x="100%" horizontal="right" y="91%" ></addButton>                
+	
+	<addText  colour="gray" y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="60%" height="10%"  timeStart="0" fontSize="17"
+	text="When the stimuli have loaded (if they have not, there will be a loading bar below), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="95%" />
+	
+
+	            
+</TRIAL> 
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be asked what taste you associate with different glasses of coloured liquid.
+At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="3" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%---10%---30%" x="40%" y="20%---34%---70%"  text="sex---age---my colour vision is normal"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="female,male"  padding="10" x="44%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="30%" height="10%" horizontal='left' peg="age" startingVal="22" x="45%" y="35%" timeStart="0" />
+	
+	<addComboBox peg="country" label="what country do you come from?" horizontal='left'  scale="1" timeStart="0" width="50%" height="7%" text_background="0x000000" x="45%" y="50%"/>
+	
+	<addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="yes,no"  padding="10" x="44%" y="70%" timeStart="0"   /> 
+
+	<addButton width="300" height="50" horizontal='right' text="Continue" if="this.click&&sex.result!=''&&age.result!=''&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  x="100%" y="90%"/>             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	<addUrlVariable  _ip="notGiven" />                          
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='0' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="Next, we are going to show you some pictures of drinks and ask you to make some judgements based on the colour of each of the drinks that you see.
+Please note that you must answer each question in order to continue with the following questions.
+
+Thank you very much."/>   
+	
+	<addButton width="200" height="50" text="Continue"  resultFileName="continue" x="100%" horizontal="right" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+<TRIAL TYPE="Trial" trialName="A-blue;A-brown;A-green;A-orange;A-red;A-water;A-yellow;B-blue;B-brown;B-green;B-orange;B-red;B-water;B-yellow;C-blue;C-brown;C-green;C-orange;C-red;C-water;C-yellow;D-blue;D-brown;D-green;D-orange;D-red;D-water;D-yellow" order="random" block="10" trials="28">
+	
+	<addText timeStart="0" behaviours="doBefore:this.text=trialNum+'/32 trials completed',doNow:trialNum=trialNum+1" fontSize="13" align="left" height="3%"  vertical="bottom" horizontal="left" width="30%" x='0%' y="99%"/>	
+	
+	<addJPG y="0%" vertical="top" filename="A-blue.JPG;A-brown.JPG;A-green.JPG;A-orange.JPG;A-red.JPG;A-water.JPG;A-yellow.JPG;B-blue.JPG;B-brown.JPG;B-green.JPG;B-orange.JPG;B-red.JPG;B-water.JPG;B-yellow.JPG;C-blue.JPG;C-brown.JPG;C-green.JPG;C-orange.JPG;C-red.JPG;C-water.JPG;C-yellow.JPG;D-blue.JPG;D-brown.JPG;D-green.JPG;D-orange.JPG;D-red.JPG;D-water.JPG;D-yellow.JPG" exactSize="true" width='180' height='240' />
+	
+			 
+	<addText  y="35%" horizontal="left" vertical="bottom" x="0%" wordWrap="true" autoSize="false" width="30%" verticalAlign="bottom" height="30%"  timeStart="0" fontSize="13" 
+	text="When you look at this picture, what is the first flavour that comes to you mind, based on the colour of the drink? Please choose one from the following options:"/>
+	
+	
+	<addMultipleChoice timeStart="0" randomPositions="1-22" peg="taste" autoSize="center"  wordWrap="true"  timeEnd="forever" fontSize="15"  height="25%" width="100%"  seperation="horizontal" grid="4x6" padding="10" x="50%" y="52.8%"
+	labels="apple,banana,blackcurrant,blueberry,cherry,cola,cranberry,grape,kiwi,lemon,lime,lychee,mandarine,melon,mint,orange,peach,pear,pineapple,raspberry,strawberry,watermelon,flavourless,other"  />   
+	
+	<addInputTextBox timeStart="0" peg="other" horizontal='right' emptyWhenClicked="true" width="50%" x="97.6%" y="67.7%" height="4%" text="if you have clicked 'other', please specify here"/>
+	
+	
+	<addText  y="72%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="13" 
+	text="Please rate how familiar this drink looks to you on a 7-point scale, based only on its colour."/>
+
+<addMultipleChoice timeStart="0" peg="familiar" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="100%"  seperation="horizontal" padding="10" x="50%" y="77%"
+	labels="Extremely unfamiliar,Very unfamiliar,Somewhat unfamiliar,Neutral,Somewhat familiar,Very familiar,Extremely familiar"  />   
+	
+
+	<addText y="90%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="13" 
+	text="Please rate how pleasant you imagine this drink to be on a 7-point scale, based only on its colour." vertical="bottom"/>
+
+<addMultipleChoice timeStart="0" peg="pleasant" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="100%"  seperation="horizontal" padding="10" x="50%" y="95%"
+	labels="Extremely unpleasant,Very unpleasant,Somewhat unpleasant,Neutral,Somewhat pleasant,Very pleasant,Extremely pleasant" vertical="bottom" />   
+	
+	<addButton if="this.click&&familiar.result!=''&&pleasant.result!=''&&taste.result!=''?nextTrial.start(),this.click?this.text='please answer all the questions'"
+	timeStart="0"  width="50%" height="30" goto="" text="NEXT TRIAL"  hideResults="true" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='20' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="Next, we are going to show you some pictures of GLASSES  and ask you to make some judgements based on the GLASSES.
+Please note that you must answer each question in order to continue with the following questions.
+
+Thank you very much."/>   
+	
+	<addButton width="200" height="50" text="Continue"  resultFileName="continue" x="100%" horizontal="right" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="A-water;B-water;C-water;D-water" order="random" block="21" trials="4">
+	
+	<addText behaviours="doBefore:this.text=trialNum+'/32 trials completed',doNow:trialNum=trialNum+1" timeStart="0"  fontSize="15" align="left" height="3%"  vertical="bottom" horizontal="left" width="30%" x='0%' y="99%"/>	
+	
+	<addJPG y="2%" vertical="top" filename="A-water.JPG;B-water.JPG;C-water.JPG;D-water.JPG" exactSize="true" width='180' height='240' />
+	
+	<addText  y="60%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="what drink do you most associate most with the cup or glass?"/>
+		
+	<addInputTextBox peg="drink" timeStart="0" emptyWhenClicked="true" width="60%"  y="64%" height="4%" text=""/>
+	
+	
+	<addText  y="72%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="Please rate how familiar this glass looks to you on a 7-point scale."/>
+
+<addMultipleChoice timeStart="0"  autoSize="center" peg="familiar"  timeEnd="forever" fontSize="15" height="7%" width="100%"  seperation="horizontal" padding="10" x="50%" y="77%"
+	labels="Extremely unfamiliar,Very unfamiliar,Somewhat unfamiliar,Neutral,Somewhat familiar,Very familiar,Extremely familiar"  />   
+	
+
+	<addText y="90%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="Please rate how pleasant you find the glass to be on a 7-point scale." vertical="bottom"/>
+
+<addMultipleChoice timeStart="0" peg="pleasant" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="100%"  seperation="horizontal" padding="10" x="50%" y="95%"
+	labels="Extremely unpleasant,Very unpleasant,Somewhat unpleasant,Neutral,Somewhat pleasant,Very pleasant,Extremely pleasant" vertical="bottom" />   
+	
+	<addButton if="this.click&&familiar.result!=''&&pleasant.result!=''&&drink.text!=''?nextTrial.start(),this.click?this.text='please answer all the questions'"
+	timeStart="0"  width="50%" height="30" goto="" text="NEXT TRIAL"  hideResults="true" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='100' order='fixed'>
+	
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="Thank you for taking part. Click CONTINUE for an experiment debrief" 
+	timeStart="0" fontSize="20" ></addText>   
+	
+	<behavSaveData timeStart='0'/>
+	
+	<addButton  width="140" height="40"text="continue" y="80%" />
+ 
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="debrief" hideResults="true" block='100' order='fixed'>
+	
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="The primary aim of the present study, was to investigate whether the shape of a receptacle – specifically different glasses containing a transparent coloured liquid would influence people’s colour-flavour associations. A secondary question of interest was whether there would be any cross-cultural differences either in terms of the crossmodal colour-flavour associations held by participants from different parts of the world, and/or in terms of the shape glass on the meaning of colour. In particular, this study was designed to address the following questions: (1) Are there any differences in the nature of colour-flavour associations between Chinese and British participants, (2) Are such colour-flavour associations affected by the shape of glass (or container) in which the coloured liquid is presented, and (3) How, if at all, do these two factors (shape of glass and culture) interact."
+	timeStart="0" fontSize="20" ></addText>   
+	
+	
+	
+	<addText  wordWrap="true" height="30%" width="90%" x="50%" y="85%" text=
+	"Thank you for your participation. Have a lovely day!"
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+		<addButton width="60%" height="40"
+				text="see the findings from our USA participants" goto="results"
+				resultFileName="continue" vertical="bottom" timeStart="0" timeEnd="forever" 
+				y="99%" />
+ 
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="results" hideResults="true" block='100' order='fixed'>
+	
+   	<addJPG y="0%" peg="pic" timeStart="0" vertical="top" filename="drinksResults.png" exactSize="true" width='600' height='600'  />
+	
+		<addText  wordWrap="true" height="20%" width="100%" x="50%" y="100%" vertical="bottom" verticalAlign="bottom" text=
+	"These are the findings from the participants we have ran this study on in the USA. Think about the answers you gave and whether you chose similar flavours for the colours / receptacles."
+	timeStart="0"  timeEnd="forever" fontSize="13"></addText> 
+	
+	<behavSaveImage useAsFrame="screen" usePegs="pic" peg="clipboard" />
+	
+		<addButton howMany="3" width="110" height="40" 
+				text="startMenu---debrief---save image" if="------this.click?clipboard.start()" goto="startMenu---debrief---"
+				resultFileName="continue" vertical="bottom" timeStart="0" timeEnd="forever" x="90%"
+				y="68%---75%---82%" />
+ 
+</TRIAL>
+
+  
+</CBCondition1>

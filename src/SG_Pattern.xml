@@ -1,0 +1,140 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="white" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  encrypt='true' stimuliFolder="SG_Pattern" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables practice='0' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" x="50%" y="10%" vertical="top" text=
+			"{b}Pattern Matching Game.{/b}"timeStart="0"  timeEnd="forever" fontSize="50"/>
+	
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" vertical="top" text=
+		"{b}PARENTS: We are interested in your child’s answers. To make sure you do not influence your child’s response, please do not look at the screen once your child has started the game.{/b}"
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	
+	
+	<addButton width="140" key=" " timeStart="0" enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" trialName="instructions" block="1" order="fixed" trials="8">
+	<addText  drawBox="true"  autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="5%"
+	text="In this game you will see patterns with a piece cut out like the one below.;Your job is to choose a piece to complete the pattern.;Each of these 6 pieces fill the space, but only one of them is the right pattern.;This is the correct piece to complete this pattern.;You answer by clicking with the mouse on the correct piece.;The piece you’ve clicked on will have a black box around it.;If you want to change your answer, you can click on a different piece to move the box.;When the box is around the piece you think is correct, press next to move on." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	<addShape shape="arrow" order="top" fill="false" height="5%" width="20%" y="75%" x="14%" lineColour="red" present="false;false;false;true;false;false;false;false" />
+	
+	
+	<addJPG copyOverID="img"  y="49%" exactSize="true" extension="jpg" filename="A1_blank;A1_demo;A1_demo;A1_demo;A1_demo;A1_demo;A1_demo;A1_demo"/>
+	
+	<addShape fill="false" present="false;false;false;false;false;true;true;true" width="13%" x="36%;36%;36%;36%;36%;36%;50%" y="74.5%" height="12%"/>
+	
+	<addButton width="140" key=" "  height="40" text="next"   x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial"  hideResults="true" block="1" order="fixed" trials="1">
+	<addText  drawBox="true"  autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"
+	text="You now have a chance to practise before you start.
+Click next to move on to the practice or back to go through the instructions again. " timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	
+	<addButton howMany="2" width="140"  height="40" text="back---next" goto="instructions---nextTrial" timeStart="0" timeEnd="forever" x="40%---60%" vertical="top" y="80%"/>
+</TRIAL>
+
+
+
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="1" order="fixed" trials="1" trialName="practice">
+	
+	
+	<addJPG copyOverID="img"   extension="jpg"  filename="A2"/>
+		<addClickArea copyOverID="ans"  answer="E"/>
+		<addButton  copyOverID="button" goto="" if="this.click&&A.answer==true?nextT.start(),this.click&&A.answer!=true?next.text='try again'"/>
+		<behavNextTrial peg="nextT"/>
+	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="3" order="fixed" trials="1">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"  text="When you are ready to begin click on the next button. This task will take around 30 minutes.
+	If you want to go through the instructions again, click the Redo button.
+	
+	
+	{b}PARENTS: Please do not watch the screen after this point!{/b}" timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton howMany="2" width="140"  height="40" text="back---next" goto="instructions---nextTrial" timeStart="0" timeEnd="forever" x="40%---60%" vertical="top" y="80%"/>
+</TRIAL>
+
+
+
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="10" order="fixed" trials="24" trialName="A1;A2;A3;A4;A5;A6;A7;A8;A9;A10;A11;A12;B1;B2;B3;B4;B5;B6;B7;B8;B9;B10;B11;B12">
+	
+	<aaddText depth="top" text="answer        = " text1="D;E;A;B;F;C;F;B;A;C;D;E;B;F;A;B;A;C;E;F;D;C;D;E"  
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="5%" x="5%"/>
+	
+	<aaddText depth="top" text="answer        = " text1="A1;A2;A3;A4;A5;A6;A7;A8;A9;A10;A11;A12;B1;B2;B3;B4;B5;B6;B7;B8;B9;B10;B11;B12"
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="10%" x="5%"/>
+	
+	<addJPG copyOverID="img"  extension="jpg"  filename="A1;A2;A3;A4;A5;A6;A7;A8;A9;A10;A11;A12;B1;B2;B3;B4;B5;B6;B7;B8;B9;B10;B11;B12"/>
+		
+	<addClickArea copyOverID="ans"	 answer="D;E;A;B;F;C;F;B;A;C;D;E;B;F;A;B;A;C;E;F;D;C;D;E"/>
+	
+</TRIAL>
+
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="10" order="fixed" trials="36" trialName="C1;C2;C3;C4;C5;C6;C7;C8;C9;C10;C11;C12;D1;D2;D3;D4;D5;D6;D7;D8;D9;D10;D11;D12;E1;E2;E3;E4;E5;E6;E7;E8;E9;E10;E11;E12">
+	
+	<aaddText depth="top" text="answer        = " text1="H;B;C;H;G;D;E;A;G;F;A;B;C;D;C;G;H;F;E;D;A;B;E;F;G;F;H;B;A;E;A;F;C;B;D;E"  
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="5%" x="5%"/>
+	
+	<aaddText depth="top" text="answer        = " text1="C1;C2;C3;C4;C5;C6;C7;C8;C9;C10;C11;C12;D1;D2;D3;D4;D5;D6;D7;D8;D9;D10;D11;D12;E1;E2;E3;E4;E5;E6;E7;E8;E9;E10;E11;E12"
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="10%" x="5%"/>
+	
+	<addJPG copyOverID="img"  extension="jpg" filename="C1;C2;C3;C4;C5;C6;C7;C8;C9;C10;C11;C12;D1;D2;D3;D4;D5;D6;D7;D8;D9;D10;D11;D12;E1;E2;E3;E4;E5;E6;E7;E8;E9;E10;E11;E12"/>
+		
+	<addClickArea copyOverID="ans"	peg="A---B---C---D---E---F---G---H"  answer="H;B;C;H;G;D;E;A;G;F;A;B;C;D;C;G;H;F;E;D;A;B;E;F;G;F;H;B;A;E;A;F;C;B;D;E" howMany="8" 
+	y="72%---72%---72%---72%---91%---91%---91%---91%" height="135" width="17%" x="24.5%---42%---60%---78%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Well done! 
+You have finished the word matching naming game."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+</TRIAL>
+  	
+
+<myTemplate>
+	<behavRT peg="rt" timeStart="0"/>
+	
+	<addButton copyOverID="button" hideResults="true" peg="next" width="100" key=" " order="top" height="25%"  text="next (or press
+Space)"  x="100%" horizontal="right" vertical="bottom" y="93%"/>
+
+	<addJPG extension="jpg" depth="bottom"   copyOverID="img" y="47%" exactSize="true"/>
+	
+	<addClickArea colourSelected="black" peg="A---B---C---D---E---F" copyOverID="ans" timeStart="0" buttonGroup="myGroup" if="this.mouseDown?next.start()" howMany="6" y="69%---69%---69%---90%---90%---90%" height="135" width="24%" x="26.5%---50.5%---74.5%" fill="false" depth="top"/>
+	
+</myTemplate>
+
+
+
+
+</Bouba2>	

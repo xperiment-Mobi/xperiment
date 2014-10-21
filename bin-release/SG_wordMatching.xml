@@ -1,0 +1,152 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  />
+              <screen BGcolour="white" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  encrypt='true' stimuliFolder="SG_Words" sstimuliFolder="https://www.xpt.mobi/stimuli/377097e7f19247a3a8a43cb3b8fb42a2" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+</SETUP>
+
+<myProgression onlyOnce="true">
+</myProgression>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" x="50%" y="10%" vertical="top" text=
+			"{b}Word Matching Game{/b}"timeStart="0"  timeEnd="forever" fontSize="50"/>
+	
+
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" vertical="top" text=
+		"{b}PARENTS: We are interested in your child’s answers. To make sure you do not influence your child’s response, please do not look at the screen once your child has started the game.{/b}"
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="1" trialName="instructions" order="fixed" trials="1">
+	<addText  drawBox="true" howMany="2" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="20%---70%"
+	text="In this game you will be listening to some words. Please click on the play button to hear an example.---If you cannot hear anything make sure your speakers are switched on and the sound is turned up.
+Press the button as many times as you like until you have made sure that you can hear the word clearly.  
+Press next to start the examples." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	<addSound filename="A.mp3" controls="mini" width="15%" autostart="false" height="aspectRatio" y="40%"/>
+	<addButton width="140" key=" "  height="40" text="next"   x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="2" order="fixed" trials="5">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="10%"
+	text="In this game you are going to hear me say some words. 
+After you hear each word, you will see four pictures appear on the screen like the ones below.;Your job is to choose the picture that matches the word by clicking on the picture with the mouse.;A black box will appear around the picture you have clicked on.;If you want to change your answer, you can click on a different picture and the box will move.;When the box is around the picture you think matches the word, click next to move on." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	<addJPG filename="A.jpg" exactSize="true"/>
+	<addShape fill="false" x="60%;60%;60%;79%;60%" width="15%" present="false;false;true;true;true"/>
+	<addButton width="140" key=" "  height="40" text="next"   x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="2" trialName="practice" order="fixed">
+	<addText  if="doBefore?practice=0"
+	drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%"
+	text="You now have a chance to practise before you start. 
+The first practice word is the same as you just saw in the instructions.
+Click next to move on to the practice or back to go through the instructions again." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	<addButton howMany="2" width="140" key="--- "  goto="instructions---next" height="40" text="back---next"  x="25%---75%" vertical="top" y="90%"/>
+</TRIAL>
+
+  
+<TRIAL template="myTemplate"  TYPE="Trial"  hideResults="true" block="2" order="fixed" trials="4">
+	<addJPG copyOverID="img"  filename="A;B;C;D"/>
+	<addText text="Practice " text1="1;2;3;4" text2="/4" height="5%" fontSize="30" width="20%" vertical="top" horizontal="left" y="5%" x="5%"/>
+	<addSound copyOverID="mp3"filename="A;B;C;D"/>	
+	
+
+	<addButton  copyOverID="button" goto="" if="this.click&&A.answer==true?nextT.start(),this.click&&A.answer!=true?this.text='try again',sound.play()"/>
+	<addClickArea copyOverID="ans"	answer="C;B;D;A"/>
+	<behavNextTrial peg="nextT"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="2" order="fixed">
+	
+	<behavGotoTrial peg="redo" goto="practice"/>
+	
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="20%"
+	text="Well done, you got all of the practice items correct! 
+You are now ready to start the game. In this part you will not be told whether or not your answers are correct. 
+This task will take around 15-20 minutes to complete. Press start when you are ready to begin." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+    <addButton howMany="2" width="140" height="40" text="start"   vertical="top" y="80%"/>
+	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="2" order="fixed" trials="1">
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="20%"
+	text="To begin, please tell us your age by clicking on one of the buttons below." timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" y="95%"
+	text="{b}PARENTS: Please do not watch the screen after this point!{/b}" timeStart="0"  timeEnd="forever" fontSize="30"/>
+
+	<addButton howMany="6" width="140"  goto="t45---t55---t65---t75---t85---t95" height="35" text="6---7---8-9---10-11---12-13---14+"   y="40%---45%---etc---"/>
+	
+</TRIAL>
+
+
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="10" trialOrderScheme="myProgression" order="fixed" trials="190" trialName="t">
+	<addJPG copyOverID="img"   filename="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;51;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;69;70;71;72;73;74;75;76;77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98;99;100;101;102;103;104;105;106;107;108;109;110;111;112;113;114;115;116;117;118;119;120;121;122;123;124;125;126;127;128;129;130;131;132;133;134;135;136;137;138;139;140;141;142;143;144;145;146;147;148;149;150;151;152;153;154;155;156;157;158;159;160;161;162;163;164;165;166;167;168;169;170;171;172;173;174;175;176;177;178;179;180;181;182;183;184;185;186;187;188;189;190"/>
+	<addSound copyOverID="mp3" filename="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;51;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;69;70;71;72;73;74;75;76;77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98;99;100;101;102;103;104;105;106;107;108;109;110;111;112;113;114;115;116;117;118;119;120;121;122;123;124;125;126;127;128;129;130;131;132;133;134;135;136;137;138;139;140;141;142;143;144;145;146;147;148;149;150;151;152;153;154;155;156;157;158;159;160;161;162;163;164;165;166;167;168;169;170;171;172;173;174;175;176;177;178;179;180;181;182;183;184;185;186;187;188;189;190"/>	
+	
+	
+	<aaddText visible="true" text="answer        = " text1="shoe;fish;chair;balloon;spoon;door;bed;hand;car;lion;carrot;hat;house;socks;rabbit;clock;flower;belt;people;sun;bear;thumb;bowl;happy;cutting;cookie;nose;spilling;crab;mailman;knees;pear;barking;open;jump;groceries;jungle;round;juggler;oval;snake;diamond;celebration;camera;baseball;mailing;broken;coat;letter;stack;mop;melting;number;pilot;hatching;liquid;pitching;swan;sailboat;onion;core;cliff;eruption;unicycle ;saxophone;vine;frame;protect;reflection;reflection;discussion;octagon;division;distress;examination;safe;tornado ;snorkel;gems;fingerprint;satellite;shred;wreath;shaggy;entertainer;faucet;slumber;solving;inscription ;appetizer;even;sob;visor;layers;gossiping;quarters;blowtorch;jagged;competitive;burners ;enclose;constellation;checker;hazardous;empress;parallel;demonstration ;pondering ;aquatic;spokes;calipers;crescent;stitching;tassel;tame;civilian;tusk;feline;packet;talon;justice;monarch;confined;tandem;fowl;provisions;palette;Trident;diameter;emblem;organism ;discharge;marsupial;suspended;concave;cranium ;rustic;plaid;sever;gush;buoyant;periodical;banister;solitary;repetitious;illumination;maternal;exuberant;entice;dormant;officiate;maritime;crevice;coronation ;caricature;ascend;flush;tangible;rappel;girder;dovetail;sconce;foil;pirouette;saunter;bolster;motley;buffoon;buttress;extirpate;bunting;succulent;atomizer;mottled;pachyderm;berm;fluke;transom;fjord;aperture;sunder;stratified ;spinet;polyhedron;sash;superscript;progeny;peristyle;coadjutor;askew"  
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="5%" x="5%"/>
+	<aaddText text="trial = " text1="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;51;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;69;70;71;72;73;74;75;76;77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98;99;100;101;102;103;104;105;106;107;108;109;110;111;112;113;114;115;116;117;118;119;120;121;122;123;124;125;126;127;128;129;130;131;132;133;134;135;136;137;138;139;140;141;142;143;144;145;146;147;148;149;150;151;152;153;154;155;156;157;158;159;160;161;162;163;164;165;166;167;168;169;170;171;172;173;174;175;176;177;178;179;180;181;182;183;184;185;186;187;188;189;190"  
+	height="5%" fontSize="30" width="20%" vertical="top" horizontal="left" y="15%" x="5%"/>
+	
+	
+	<aaddText text="pos_answer = " text1="A;C;C;B;D;B;B;D;C;A;A;D;B;D;B;C;A;A;C;B;D;B;A;C;D;C;C;D;B;B;C;D;A;D;B;A;D;B;D;C;D;A;A;C;D;D;C;A;B;C;C;A;A;C;B;C;B;D;B;A;D;A;B;A;D;C;D;A;A;C;C;B;B;B;C;B;C;C;B;D;B;A;A;D;D;D;C;D;A;C;B;D;A;A;B;C;D;D;B;A;D;D;C;B;D;B;A;A;C;C;B;A;A;D;A;B;B;A;B;A;D;B;A;D;D;B;C;A;B;D;C;C;C;C;B;D;B;A;A;C;A;B;D;B;D;C;A;B;C;A;B;D;C;A;A;C;D;A;B;D;C;D;C;C;C;D;B;D;B;A;C;D;D;C;B;A;D;A;B;D;A;A;C;C;A;B;C;B;B;D"
+	height="5%" fontSize="30" width="30%" vertical="top" horizontal="left" y="10%" x="5%"/>
+		
+		
+	<addClickArea copyOverID="ans"	answer="A;C;C;B;D;B;B;D;C;A;A;D;B;D;B;C;A;A;C;B;D;B;A;C;D;C;C;D;B;B;C;D;A;D;B;A;D;B;D;C;D;A;A;C;D;D;C;A;B;C;C;A;A;C;B;C;B;D;B;A;D;A;B;A;D;C;D;A;A;C;C;B;B;B;C;B;C;C;B;D;B;A;A;D;D;D;C;D;A;C;B;D;A;A;B;C;D;D;B;A;D;D;C;B;D;B;A;A;C;C;B;A;A;D;A;B;B;A;B;A;D;B;A;D;D;B;C;A;B;D;C;C;C;C;B;D;B;A;A;C;A;B;D;B;D;C;A;B;C;A;B;D;C;A;A;C;D;A;B;D;C;D;C;C;C;D;B;D;B;A;C;D;D;C;B;A;D;A;B;D;A;A;C;C;A;B;C;B;B;D"/>
+	
+	
+	
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Well done! 
+You have finished the word matching game."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+</TRIAL>
+  	
+
+<myTemplate>
+	<addSound hideResults="true" extension="mp3" timeStart="0" peg="sound" copyOverID="mp3" />
+	<behavRT peg="rt" timeStart="0"/>
+	<addClickArea colourSelected="black" peg="A---B---C---D" copyOverID="ans" timeStart="100" buttonGroup="myGroup" if="this.mouseDown?next.start()" howMany="4" width="16%" x="20%---40%---60%---80%" fill="false" depth="top"/>
+	<addJPG extension="jpg"   copyOverID="img" depth="bottom" exactSize="true"/>
+	<addButton hideResults="true" copyOverID="button" peg="next" width="140" key=" " height="40" text="next"  x="50%" vertical="top" y="90%"/>
+	
+	<addText timeStart="end 0" visible="false" duration="500" />
+</myTemplate>
+
+
+
+
+</Bouba2>	

@@ -1,0 +1,134 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results trickleToServer="true" saveToServerFile="true" saveDataURL = "http://www.opensourcesci.com/experiments/Oxford/Sound" />
+              <screen BGcolour="black" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  _stimuliFolder="http://www.opensourcesci.com/experiments/Oxford/Sound/SoundAdStim" __stimuliFolder="SoundAdStim" stimuliFolder="http://54.194.134.47/stimuli/fe64d8e6d9c74fc9b99737a73087f6ca" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />
+</SETUP>
+
+
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='0' order="fixed" trials='1'>
+   
+ 
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study!
+Here at the Crossmodal Research Lab, at the Department of Experimental Psychology, University of Oxford, we are currently conducting a study designed to assess how people perceive different drinks. If you decide that you would like to take part in this study, we will show you videos and ask you to answer some questions about drinks shown in the videos. The study will take about 20 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. 
+Approximately 50MB of stimuli need to be downloaded for this study.
+We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	<addButton y="20%" vertical="top" horizontal="right" width="350" height="100" x="99%" text="quit" goto="quit" />
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="2" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%" x="20%" y="20%---34%"  text="sex---age"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="65%" height="15%" seperation='horizontal' labels="female,male"  padding="10" x="30%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="65%" height="35%" lineAlpha="0x000000" horizontal='left' peg="age" startingVal="22" x="31%" y="50%" timeStart="0" />
+	
+	<addButton  horizontal="right" x="99%" y="99%" vertical="bottom"  text="Continue" if="this.click&&sex.result!=''&&age.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100"  width="350"  height="200"   />             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	<addUrlVariable  _ip="notGiven" />                          
+         
+</TRIAL>
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="Some questions about yourself ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" wordWrap="true" align="right" autoSize="false" height="13%" width="10%" x="20%" y="55%"  text="my colour vision is normal"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	
+	<addComboBox buttonHeight="100" fontSize="30" itemHeight="100" peg="country" label="what country do you come from?" horizontal='left'  scale="1" timeStart="0" width="86%" height="70%" vertical="top" text_background="0x000000" x="10%" y="23%"/>
+	
+	<addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="70%" height="20%" seperation='horizontal' labels="yes,no"  padding="10" x="25%" y="55%" timeStart="0"   /> 
+
+	<addButton horizontal="right" x="99%" y="99%" vertical="bottom" width="350"  height="200" text="Continue" if="this.click&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='please answer all questions'" goto="" resultFileName="Weiter" timeStart="100" />             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+                      
+         
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" HideResults="true" block='0' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" colour="white" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="Next, we are going to show you some videos.  You will then be asked some questions about drinks shown in the videos.
+Please note that you must answer each question in order to continue with the following questions.  Be aware that the same video may be presented three times.
+
+
+Thank you very much."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                 
+	                
+</TRIAL> 
+		 
+
+<TRIAL TYPE="Trial" HideResults="true" block='10' trials='24'>
+
+	<addVideo width="50%" height="aspectRatio" if="this.onFinish?liking.start(),temp.start(),willing.start()" 
+OLD_filename="Champagne_Congruent.flv;Champagne_Incongruent.flv;Champagne_Normal.flv;Heineken_Congruent.flv;Heineken_Incongruent.flv;Heineken_Normal.flv;IceTea_Incongruent.flv;IceTea_Congruent.flv;IceTea_Normal.flv;Lemonade_Congruent.flv;Lemonade_Incongruent.flv;Lemonade_Normal.flv;Nescafe_Congruent.flv;Nescafe_Incongruent.flv;Nescafe_Normal.flv;Taylors_Incongruent.flv;Taylors_Congruent.flv;Taylors_Normal.flv;Tetley_Congruent.flv;Tetley_Incongruent.flv;Tetley_Normal.flv;Twinings_Congruent.flv;Twinings_Incongruent.flv;Twinings_Normal.flv"
+filename="Champagne-Congruent.flv;Champagne-Incongruent.flv;Champagne-Normal.flv;Heineken-Congruent.flv;Heineken-Incongruent.flv;Heineken-Normal.flv;IceTea-Incongruent.flv;IceTea-Congruent.flv;IceTea-Normal.flv;Lemonade-Congruent.flv;Lemonade-Incongruent.flv;Lemonade-Normal.flv;Nescafe-Congruent.flv;Nescafe-Incongruent.flv;Nescafe-Normal.flv;Taylors-Incongruent.flv;Taylors-Congruent.flv;Taylors-Normal.flv;Tetley-Congruent.flv;Tetley-Incongruent.flv;Tetley-Normal.flv;Twinings-Congruent.flv;Twinings-Incongruent.flv;Twinings-Normal.flv"
+
+/>
+
+	<addVAS SHUFFLE_SOMETHING="y ---" if="this.mouseUp&&liking.result!=-100000&&temp.result!=-100000&&willing.result!=-100000?next.visible=true" pointerSize="130" distBetweenScaleAndTitle="30" titleSize="35" fontSize="25" howMany="3" width="70%" labelList="cold,hot---not at all,very much---not at all,very much" sliderTitle="How hot do you think the drink is?---How much do you like the drink?---How willing are you to try the product?" height="20%"  peg="liking---temp---willing" y="14%---37%---60%"/>
+	
+	<addButton visible="false" peg="next" timeStart="0" width="50%" height="150" text="Continue" resultFileName="continue"  y="99%" vertical="bottom" ></addButton>                 
+	                
+</TRIAL>
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  colour="white"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"Finished!
+
+Thank you very much for participating. Your email address has been added to our prize list. You will be informed of whether you were successful or not by email once the study has concluded.
+You may be contacted to take part in a follow up to this study and invited to the Oxford Centre for Human Brain Activity at the Warneford Hospital in Oxford.
+If you have any questions please feel free to email me:
+ben.crittenden@psych.ox.ac.uk"
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton y="80%" vertical="top" horizontal="right" width="350" height="150" x="99%" text="quit" goto="quit" />
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+</TRIAL>
+
+
+
+
+</Taste>	

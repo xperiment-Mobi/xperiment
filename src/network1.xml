@@ -1,0 +1,57 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="stimuli" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+	<addP2P boss="true" peg="boss" studyName="abc" password=""  y="25%" height="40%"/>
+	<addP2P boss="false" peg="notBoss" y="75%" height="40%"/>
+	
+	<addButton howMany="2" if="this.click?boss.start()---this.click?notBoss.start()" width="140" goto="" height="40" y="80%" text="Boss---notBoss"  x="60%---75%"  />
+	
+<addButton width="140"  height="40" text="I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="false" block="1" order="fixed" trials="4">
+	
+	<addJPG filename="soft.png" exactSize="true" />
+	
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+	
+	<addButton width="140"  height="40" text="I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+
+
+
+
+
+
+
+</Bouba2>	

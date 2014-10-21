@@ -1,0 +1,231 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results trickleToServer="true" save="webfile,trickletofile" saveDataURL = "http://www.opensourcesci.com/experiments/Oxford/rotation" />
+              <screen BGcolour="0x000000" orientation="vertical" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="angleStim" />
+			  <variables trialNum='0' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  block='1' order="fixed" trials="1">
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.jpg" width='1024' height='108' hideResults="true" trials="1" />
+	
+	<addText  drawBox="true" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to the working memory experiment!
+This task is designed to test your ability to keep visual information in memory for short periods of time (just a few seconds). The task will take around 15-20mins to complete. Once completed, you are automatically entered into a competition to win £100 for yourself, plus £400 for a charity of your choice. You will only be entered once.
+Some participants may be asked to take part in a follow up study which takes place at the Oxford Centre for Human Brain Activity in Oxford.
+Please find a place where you can concentrate and wear glasses/contacts if you need to. 
+
+{a href='http://www.opensourcesci.com/experiments/Oxford/rotation/angleStim/InformationPage.pdf' target='_blank'}Click here to see our Information Sheet.{/a}
+"/>   
+	
+	<addButton  peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	
+	<addText y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true"  block="1" order="fixed" trials="1">
+	
+	 <addText autoSize="false" align="left" wordWrap="true"  width="100%" height="90%" horizontal="left" x="0%" y="1%" vertical="top" 
+	 text=
+"CONSENT FORM
+Title of Project: Investigating human working memory ability
+Lead Researcher: Mark Stokes
+1.	I confirm that I have read and understand the information sheet for the above study. I have had the opportunity to consider the information, ask questions and have had these answered satisfactorily.
+2.	I understand that my participation is voluntary and that I am free to withdraw at any time without giving any reason, without my medical care or legal rights being affected. 
+3.	I understand that personal data collected during the study will be securely stored on computer and used solely for the purpose of contacting me with respect to the study or for monitoring or audit of the study by designated individuals from the University of Oxford.
+4.	I understand that data collected during the study may be looked at by individuals from the University of Oxford and from regulatory authorities, where it is relevant to my taking part in this research.  I give permission for these individuals to have access to my records.
+5.	I agree for data collected in this study to be given to researchers, including those working outside of the EU, to be used in other research studies.  I understand that any data that leaves the department will have been anonymised so that I cannot be identified from it.
+6.	I agree that I may be contacted to take part in a follow-up study as outlined in the information sheet.
+7.	I give permission for data from this study to be used in publications. I understand that any information that would allow me to be identified will be removed from the data before publication.
+8.	I understand that this project has been reviewed by, and received ethics clearance through the University of Oxford Central University Research Ethics Committee
+9.	I understand that if I have any concerns or complaints about the study, I can contact the Principal Investigator or the Research Sponsor (Clinical Trials and Research Governance) who is not directly involved in this project.
+10.	I agree to take part in the above study."
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+	
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5"width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" vertical="top"
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="54%"/>
+	
+	<addInputBox peg="email" timeStart="0" text="what is your email address?" height="10%" y="75%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&email.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	
+	
+	<addComboBox peg="charity" vertical="top"
+	label="Which charity do you wish to vote for?" items="Brain Research Trust,Alzheimers Society,Samaritans,Parkinsons,Stroke Association"
+	timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="30%"/>
+	
+	<addText y="60%" width="70%" fontSize="25" text="
+	www.brt.org.uk
+	www.alzheimers.org.uk
+	www.samaritans.org
+	www.parkinsons.org.uk
+	www.stroke.org.uk" />
+	
+	
+	<addButton timeStart='0' hideResults="true" width="340" height="40" peg='next' 
+	text="next"  vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL template="InstructTemplate" TYPE="Trial" trialName="DoExpt"  block="1" order="fixed" trials="1">
+	
+	<addText copyOverID="text"   text="Instructions"/> 
+
+</TRIAL>
+
+<TRIAL template="InstructTemplate" TYPE="Trial" trialName="DoExpt"  block="1" order="fixed" trials="5">
+	
+	 <addJPG filename="I1.png;dot.png;I2.png;I3.png;dot.png"/>
+	
+	 <addText copyOverID="text"   text=
+"Remember the orientation of the gratings (circles with a hash pattern);There will then be a brief delay;Use your mouse to rotate the circle to match the orientation of the grating previously in that location.
+Click the left mouse button to confirm your answer;You will be shown the grating so you know how accurate you were;Focus on the dot in the middle of the screen during the experiment.
+
+If you don’t know the answer, just guess."
+		/> 
+	
+	
+</TRIAL>
+
+<TRIAL template="InstructTemplate" TYPE="Trial" trialName="DoExpt"  block="1" order="fixed" trials="1">
+
+
+	<addText copyOverID="text"   text="The first three trials are for practice
+
+
+Click to start the experiment"/> 
+		 
+</TRIAL>
+		 
+
+
+<TRIAL template="myTemplate" block="9" trialName="p1" trials="23" ><addJPG copyOverID="stim" howMany='2' x='812---212' y='384---384' visible="true---false"/></TRIAL>  
+<TRIAL template="myTemplate" block="10" trialName="p2"><addJPG copyOverID="stim" howMany='2' x='812---212' y='384---384' /></TRIAL>  
+<TRIAL template="myTemplate" block="11" trialName="p3"><addJPG copyOverID="stim" howMany='3' x='812---362---362' y='384---643.8---124.2' /></TRIAL>  
+<TRIAL template="myTemplate" block="12" trialName="p4"><addJPG copyOverID="stim" howMany='4' x='812---512---212---512' y='384---684---384---84' /></TRIAL>  
+<TRIAL template="myTemplate" block="13" trialName="p5"><addJPG copyOverID="stim" howMany='5' x='812---604.7---269.3---269.3---604.7' y='384---669.3---560.3---207.7---98.7' /></TRIAL>  
+<TRIAL template="myTemplate" block="14" trialName="p6"><addJPG copyOverID="stim" howMany='6' x='812---662---362---212---362---662' y='384---643.8---643.8---384---124.2---124.2' /></TRIAL>    
+
+
+<myTemplate trials="20">
+
+	<addHideMouse timeStart="0" peg="mouse"/>
+
+	<addRT peg="rt" timeStart="0"/>
+	
+	<addTime peg="time" timeStart="0" />
+
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/123',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>
+
+	<addJPG smoothing="true" showBox="false" if="this.doBefore?time.stimOnset='now',this.onFinish?time.stimOffset='now'------------------" shuffle_somethings="x,y,---" copyOverID="stim" filename="stim2.png"   peg="stim---other---other---other---other---other" timeStart="100" rotate="rand(0:359)---rand(0:359)---rand(0:359)---rand(0:359)---rand(0:359)---rand(0:359)" howMany="1" timeEnd="500" duration="500" exactSize="true"/>
+
+	<addShape shape="circle" lineColour="white" lineThickness="2" width="7" fill="false" height="7" timeStart="0" />
+	
+	<addShape lineThickness="5" showBox="false" lineColour="white" fill="false" shape="stopSign" peg="rotateMe" width="120" height="120" timeStart="2400"
+	if="this.doBefore?time.respOnset='now',rotateMe.y=stim.y,rotateMe.x=stim.x,this.doAfterAppeared?rotate.start(),cursor.start(),screen.start(),mouse.stop(),this.onFinish?time.respOffset='now'" />
+	
+	<behavSwap timeStart="0" usePegs="other,stim"/>
+	
+	<behavCursor  peg="cursor" if="screen.click?screen.stop(),rt.stop(),stim.start(),nextTrial.start(),rotateMe.stop(),results.x=stim.x,results.y=stim.y,results.rotated=rotateMe.rotate,results.target=stim.rotate" />
+	
+	<behavRotate usePegs="rotateMe"  peg="rotate" rotateWithMouseDown="true"/>
+	
+	<addResults/>
+	
+	<addScreen peg="screen"/>
+	<behavNextTrial peg='nextTrial' delay="2000" />
+
+</myTemplate>  
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+			
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"Finished!
+
+Thank you very much for participating. Your email address has been added to our prize list. You will be informed of whether you were successful or not by email once the study has concluded.
+You may be contacted to take part in a follow up to this study and invited to the Oxford Centre for Human Brain Activity at the Warneford Hospital in Oxford.
+If you have any questions please feel free to email me:
+ben.crittenden@psych.ox.ac.uk"
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+<InstructTemplate>
+	
+	
+	 <addText colour="white" y="6%" autoSize="false" copyOverID="text" align="center" wordWrap="true" height="20%"  vertical="top" 
+	 text=
+"Instructions;Remember the orientation of the gratings;
+There will then be a brief delay.---
+Use your mouse to rotate the circle to match the orientation of the grating previously in that location.
+Click the left mouse button to confirm your answer;
+You will be shown the grating so you know how accurate you were;
+Thanks and good luck!
+Email ben.crittenden@psych.ox.ac.uk if you have any questions."
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton width="140" howMany="2" height="40" text="Previous---Continue" goto="prevTrial---nextTrial" timeEnd="forever" x="30%---70%" vertical="top" y="90%"/>
+
+</InstructTemplate>
+
+
+
+</Taste>	

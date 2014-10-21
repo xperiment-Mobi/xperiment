@@ -1,0 +1,205 @@
+<drink exptType="PC">
+
+<SETUP>
+	<info id="27b2031a2bdb48ce83e100de5f0597d8"></info>
+	<screen BGcolour="white" fullScreen="true" fullScreenMessage="true" orientation="vertical"></screen>
+	<email emergencyEmail="false" toWhom=" thuspacelab@hotmail.com" subject="test" />
+	<computer stimuliFolder="drinksStim"/>
+	<results mock='false' saveToServerFile="true" 
+	saveFailMessage="결과를 저장하려고 할 때 문제가 발생했습니다. 우리는 당신이 생각하지 않았 으면,하지만 당신은 EMAILADDRESS 아래의 텍스트를 보낼 수 있습니다. 귀하의 편의를 위해,이 텍스트는 클립 보드에 복사되었습니다. 감사" 
+	saveSuccessMessage="성공적으로 데이타가 저장되었습니다. 이 메세지 화면을 끄셔도 됩니다. (오른쪽 위 모서리의 ‘x’버튼을 클릭하세요) 감사합니다."
+	 />
+	<defaults ITI="100"/>
+	<style BUTTON_FACE="0xe1eefc" LABEL_TEXT="0x002d62" BUTTON_DOWN="0xff5656" />
+	<variables trialNum='0'/>
+	
+	
+			
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" block="0" order="fixed" trials="1">
+	
+	 <addText drawBox="true"  autoSize="false" align="center" wordWrap="true"  width="85%" height="90%" y="20%" text=
+		"비밀번호를 입력해 주세요."
+		timeStart="0"  timeEnd="forever" fontSize="40"></addText> 
+		
+	<addInputTextBox correct="27152,66271,14478,46702,40304,91393,86458,34867,68835,18497,65615,46247,56793,12476,18508,56016,19500,12471,39922,23888,54558,99119,80735,37703,24991,13819,76137,74264,16602,44900,79963,45910,52103,17758,70142,12025,66778,40204,50511,91628,69681,56987,51278,70217,34361,16609,85261,29697,81465,47902,20442,23576,57414,93368,57325,12918,63082,27287,59199,88275,81291,96434,41512,68087,99064,85162,68160,13078,96654,72430,31387,57263,99174,56307,89661,45087,79370,59336,65166,64586,45487,72985,95294,37447,50358,33941,63653,35285,12528,52139,51351,83634,28522,78897,75114,56751,54384,11052,51087,67054,13964,48638,37722,19140,24116,93273,85933,78476,68197,95052,99458,14231,31162,18572,15629,49846,74069,24715,25557,82722,29662,60209,76401,23500,46450,22092,71767,79561,12925,96039,50619,26933,17094,59915,19367,10910,72567,61798,15137,73281,46958,14779,83104,66687,85359,78835,19899,35726,27500,11308,11748,97626,21246,97613,50141,97641,30420,52063,67922,66842,43721,13852,15121,11985,27309,85186,61699,70323,31971,53100,69638,44677,11962,62376,16431,61797,44701,50015,48666,99857,10734,19113,25618,31567,84568,81707,45501,19629,50526,90778,37169,26633,75610,14144,49294,96663,78934,41685,25689,36219,51736,24723,85584,16619,20274,17988,91788,19375,26149,14828,93852,27789,93612,67028,72634,86368,50879,11326,77046,70091,29371,33213,38304,45710,30024,49270,19246,13146,65982,68329,14758,51943,14461,38786,16642,68092,16877,19392,94378,70759,15016,35963,47780,21765,91861,20177,54284,43509,65380,79679,52634,92656,11350,61690,98943,83983,50179,86263,51098,97399,15790,76824,52122,93977,31569,10387,32013,22062,24100,36785,40511,18106,38125,64313,90137,58921,18490,11736,21276,96147,74474,18175,17244,95179,53640,35921,77192,56525,76210,10200,50280,91580,53009,37692,55938,95073,46243,23712,90805,95407,21477,36229,87671,12637,63941,46879,93678,25926,17195,95304,59246,45130,79376,10644,14893,60308,15608,17102,62983,70591,95930,97547,37862,35024,10273,97376,12271,54633,29076,71598,72442,92315,72455,47004,39347,62536,23734,74967,48403,70153,12808,21938,88884,51399,69582,24582,57149,52672,88468,10338,65428,29345,56572,76182,78650,15058,95529,98068,97800,31404,82080,59730,39140,29102,35710,14872,19129,53034,14499,97971,64817,88246,89214,22608,36211,65685,45727,95408,45843,45389,21504,86858,84279,51270,48468,31326,76748,39075,18412,62941,22519,49989,10731,88600,66832,39096,94002,61542,53166,36035,75987,38135,34696,10435,99218,42017,32663,33544,53292,65825,30849,60690,57340,79242,63211,82462,25960,53227,92787,14322,20391,11192,54228,71617,61396,44951,69917,30629,99478,33870,98131,77800,68597,55605,47069,44611,16502,10524,67328,77141,65024,22632,73114,52044,28095,12699,96253,45609,17964,21031,29088,82546,31631,47091,97615,19124,43933,52552,16735,68485,38675,27483,60550,17925,37279,29135,28178,51145,25258,14858,97667,94257,78857,67153,44011,67709,88114,73490,80941,36307,30628,85442,17711,11011,26791,13095,47744,64431,62439,41520,44684,13057,21438,18631,34294,79266,85191,65603,45466,46387" 
+	timeStart="0" peg="pword" width="30%" height="10%" fontSize="40"/>
+	
+	<addButton hideResults="true" width="300" if="this.click?this.text='비밀번호를 입력해 주세요',this.click&&pword.correct==true?nextTrial.start()" goto="" height="40" text="동의합니다" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" ignoreData="true" block='0' order="fixed" trials='1'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="친애하는 참가자 여러분, 
+안녕하십니까!
+
+저희는 옥스포드 대학 실험심리학과 교차양상 연구실험실의 연구원입니다. 저희는 현재 사람들이 여러 가지 다른 음료를 어떻게 인식하는지 평가하는 연구를 실시하고 있습니다. 연구과정 중 저희는 다양한 음료의 사진을 보여주고, 그것에 관한 몇 가지 질문을 할 것입니다. 이 연구는 대략 20분 정도가 소요됩니다. 
+만약 당신이 본 연구에 참여하기 원하신다면, 조용하고 안정된 장소에서 참여해 주시기를 바랍니다. 
+
+당신의 지지와 협조에 매우 감사드립니다."/>   
+
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="계속" resultFileName="continue" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="실험자극물이 로딩 완료되었을 때(아래 바), '계속'을 클릭해 주세요"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+           
+</TRIAL> 
+
+ <TRIAL TYPE="Trial" ITI="0" block='0' order="fixed" trials='1'>
+	 
+	<addText autoSize="autocenter"  x="50%" y="6%" text="참가자에 대한 몇 가지 질문 ..." 
+	timeStart="0"   width="80%" height="10%"  timeEnd="forever" fontSize="30"/> 
+	
+	<addText horizontal="right" howMany="3" wordWrap="true" align="right" autoSize="false" height="8%---8%---13%" width="10%---10%---30%" x="40%" y="20%---34%---70%"  text="성별---나이---내 색각은 정상입니다"  timeStart="0"  timeEnd="forever" fontSize="25" /> 
+	
+	<addMultipleChoice distanceApart="5" peg="sex" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="여성,남성"  padding="10" x="44%" y="20%" timeStart="0" />
+	
+	<addMultiNumberSelector width="20%" height="10%" horizontal='left' peg="age" startingVal="22" x="45%" y="35%" timeStart="0" />
+	
+	<addComboBox peg="country" label="참가자의 국적은 어디입니까?" horizontal='left'  scale="1" timeStart="0" width="50%" height="7%" text_background="0x000000" x="45%" y="50%"/>
+	
+	<addMultipleChoice peg="vision" distanceApart="5" id="vision" horizontal='left' width="40%" height="8%" seperation='horizontal' labels="네,아니오"  padding="10" x="44%" y="70%" timeStart="0"   /> 
+
+	<addButton width="300" height="50" horizontal='right' text="계속" if="this.click&&sex.result!=''&&age.result!=''&&country.result!=''&&vision.result!=''?nextTrial.start(),this.click?this.text='모든 질문에 답해주시기 바랍니다'" goto="" resultFileName="Weiter" timeStart="100"  x="100%" y="90%"/>             
+ 
+	<behavNextTrial peg="nextTrial"/>    
+	
+	<addUrlVariable  _ip="notGiven" />                          
+         
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" ignoreData="true" block='1' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="다음으로, 몇 가지 음료사진을 보여 드릴 것입니다. 보여지는 각 음료의 색상에 근거하여 판단을 해주시기 바랍니다.
+주의하실 점은 해당 페이지의 모든 문제를 다 푸셔야 다음 페이지의 문제를 진행하실 수 있습니다. 
+협조해 주셔서 감사합니다. "/>   
+	
+	<addButton width="200" height="50" text="계속"  resultFileName="continue" x="85%" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="A-blue;A-brown;A-green;A-orange;A-red;A-water;A-yellow;B-blue;B-brown;B-green;B-orange;B-red;B-water;B-yellow;C-blue;C-brown;C-green;C-orange;C-red;C-water;C-yellow;D-blue;D-brown;D-green;D-orange;D-red;D-water;D-yellow" order="random" block="10" trials="28">
+	
+	<addText timeStart="0" behaviours="doBefore:this.text=trialNum+'/32 테스트 완료',doNow:trialNum=trialNum+1" fontSize="15" align="left" height="3%"  vertical="bottom" horizontal="left" width="20%" x='0%' y="99%"/>	
+	
+	<addJPG y="2%" vertical="top" filename="A-blue.JPG;A-brown.JPG;A-green.JPG;A-orange.JPG;A-red.JPG;A-water.JPG;A-yellow.JPG;B-blue.JPG;B-brown.JPG;B-green.JPG;B-orange.JPG;B-red.JPG;B-water.JPG;B-yellow.JPG;C-blue.JPG;C-brown.JPG;C-green.JPG;C-orange.JPG;C-red.JPG;C-water.JPG;C-yellow.JPG;D-blue.JPG;D-brown.JPG;D-green.JPG;D-orange.JPG;D-red.JPG;D-water.JPG;D-yellow.JPG" exactSize="true" width='180' height='240' />
+	
+		
+			 
+	<addText  y="37%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="이 사진을 봤을 때, 음료의 색상에 근거하여, 가장 먼저 생각나는 맛은 무엇입니까? 아래 항목 중 하나를 선택해 주세요."/>
+	
+	
+	<addMultipleChoice timeStart="0" randomPositions="1-22" peg="taste" autoSize="center"  wordWrap="true"  timeEnd="forever" fontSize="15"  height="25%" width="95%"  seperation="horizontal" grid="4x6" padding="10" x="50%" y="52%"
+	labels="사과,바나나,블랙커런트,블루베리,앵두,콜라,크랜베리,포도,키위,레몬,라임,리치,귤,멜론,박하,오렌지,복숭아,배,파인애플,라즈베리,딸기,수박,맛이 없는,기타"  />   
+	
+	<addInputTextBox timeStart="0" peg="other" horizontal='right' emptyWhenClicked="true" width="60%" x="97.6%" y="67.3%" height="4%" text="만약 당신이 “기타” 항목을 선택했다면, 구체적으로 어떤 맛인지 적어주세요."/>
+	
+	
+	<addText  y="72%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="색상측면에서 봤을 때, 당신은 이런 종류의 음료에 대해 어느 정도 익숙한지, 7점 척도표 위에 평가를 해주시기 바랍니다."/>
+
+<addMultipleChoice timeStart="0" peg="familiar" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10" x="50%" y="77%"
+	labels="극도로 생소하다,아주 생소하다,약간 생소하다,보통이다,약간 익숙하다,아주 익숙하다,극도로 익숙하다"  />   
+	
+
+	<addText y="90%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="색상측면에서 봤을 때, 이런 종류의 음료는 당신을 어느 정도 유쾌하게 하는지, 7점 척도표 위에 평가를 해주시기 바랍니다." vertical="bottom"/>
+
+<addMultipleChoice timeStart="0" peg="pleasant" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10" x="50%" y="95%"
+	labels="극도로 불쾌하다,아주 불쾌하다,약간 불쾌하다,보통이다,약간 유쾌하다,아주 유쾌하다,극도로 유쾌하다" vertical="bottom" />   
+	
+	<addButton if="this.click&&familiar.result!=''&&pleasant.result!=''&&taste.result!=''?nextTrial.start(),this.click?this.text='모든 질문에 답해 주시기 바랍니다'"
+	timeStart="0"  width="50%" height="30" goto="" text="다음 테스트"  resultFileName="continue" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" ignoreData="true" block='20' order="fixed" trials='1'>
+   
+
+	<addText  y="40%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="25"
+	text="다음으로, 몇 가지 컵 사진을 보여 드릴 것입니다 (컵 속에 물이 들어 있음). 컵에 근거하여 몇가지 판단을 해주시기 바랍니다.
+주의하실 점은 해당 페이지의 모든 문제를 다 푸셔야 다음 페이지의 문제를 진행하실 수 있습니다. 
+협조해 주셔서 감사합니다."/>   
+	
+	<addButton width="200" height="50" text="계속"  resultFileName="continue" x="85%" y="91%" ></addButton>                
+	                
+</TRIAL> 
+
+
+<TRIAL TYPE="Trial" trialName="A-water;B-water;C-water;D-water" order="random" block="21" trials="4">
+	
+	<addText behaviours="doBefore:this.text=trialNum+'/32 테스트 완료',doNow:trialNum=trialNum+1" timeStart="0"  fontSize="15" align="left" height="3%"  vertical="bottom" horizontal="left" width="20%" x='0%' y="99%"/>	
+	
+	<addJPG y="2%" vertical="top" filename="A-water.JPG;B-water.JPG;C-water.JPG;D-water.JPG" exactSize="true" width='180' height='240' />
+	
+	<addText  y="60%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="이 컵은 당신으로 하여금 어떤 종류의 음료가 연상됩니까?"/>
+		
+	<addInputTextBox peg="drink" timeStart="0" emptyWhenClicked="true" width="60%"  y="64%" height="4%" text=""/>
+	
+	
+	<addText  y="72%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="컵의 형태 측면에서 봤을 때, 당신은 이런 종류의 컵에 대해 어느 정도 익숙한지, 7점 척도표 위에 평가를 해주시기 바랍니다."/>
+
+<addMultipleChoice timeStart="0"  autoSize="center" peg="familiar"  timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10" x="50%" y="77%"
+	labels="극도로 생소하다,아주 생소하다,약간 생소하다,보통이다,약간 익숙하다,아주 익숙하다,극도로 익숙하다"  />   
+	
+
+	<addText y="90%" x="50%" wordWrap="true" align="centre" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="15" 
+	text="컵의 형태 측면에서 봤을 때, 이런 종류의 컵은 당신을 어느 정도 유쾌하게 하는지, 7점 척도표 위에 평가를 해주시기 바랍니다." vertical="bottom"/>
+
+<addMultipleChoice timeStart="0" peg="pleasant" autoSize="center"   timeEnd="forever" fontSize="15" height="7%" width="95%"  seperation="horizontal" padding="10" x="50%" y="95%"
+	labels="극도로 불쾌하다,아주 불쾌하다,약간 불쾌하다,보통이다,약간 유쾌하다,아주 유쾌하다,극도로 유쾌하다" vertical="bottom" />   
+	
+	<addButton if="this.click&&familiar.result!=''&&pleasant.result!=''&&drink.text!=''?nextTrial.start(),this.click?this.text='모든 질문에 답해주시기 바랍니다'"
+	timeStart="0"  width="50%" height="30" goto="" text="다음 테스트"  resultFileName="continue" y="100%" vertical="bottom" ></addButton>    
+	
+	<behavNextTrial peg="nextTrial"/>   
+	  
+</TRIAL>
+
+
+
+
+
+<TRIAL TYPE="Trial" ignoreData="true" block='-100' order='fixed'>
+	
+	<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='1024' height='108'  />
+	
+	
+	<addText x="50%" y="50%" wordWrap="true" align="centre" width="90%" height="80%" autoSize="false"  
+	text="이 실험의 목적은 투명한 채색액체가 담긴 용기 형태가 사람들의 색상-맛 연결에 영향을 주는지, 그리고 서로 다른 국가의 사람에게 주는 영향이 다를 수 있는지 연구하기 위함입니다. 
+	만약 당신이 원한다면 thuspacelab@hotmail.com에 연락하여 더 많은 정보를 얻으실 수 있습니다." 
+	timeStart="0" fontSize="20" ></addText>   
+	
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true" height="30%" colour='red' width="90%" x="50%" y="75%" text=
+	"참여해 주셔서 감사합니다. 좋은 하루 보내세요! "
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+</TRIAL>
+
+  
+</drink>

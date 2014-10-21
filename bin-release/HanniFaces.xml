@@ -1,0 +1,203 @@
+﻿
+<photo>
+
+ <SETUP>  
+      <info cutOffTime='50' betweenSJ='exptName' id="692d6c08b8c34a62bfeab2be581291ea"></info>
+      <screen BGcolour="black" orientation="vertical" ></screen>                          
+      <computer stimuliFolder="HanniStimuli" />
+	  <defaults defaultITI="500" />
+	  <trials blockDepthOrder="10,*=random" />
+	  <variables trialNum='0'/>
+	  <results mock="false" save="webfile"/>
+	  <style LABEL_TEXT="0xcbcbcb" BUTTON_FACE="0x6a6a6a" />
+</SETUP>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="DoExpt"  block="1" order="fixed" trials='1'>
+
+	<addText drawBox="true"  autoSize="false" align="left" wordWrap="true"  width="100%;100%;80%" height="95%" x="50%" y="0%" vertical="top" 
+	text="{b}{u}Face Rating Experiment{/u}{/b}
+	
+	
+In this experiment you will be presented with face images. After viewing each face image, you will be asked to rate it based on {b}one dimension{/b}, for example how kind or dull you think it is. You will be given the specific, detailed instructions before you begin the experiment.
+The experiment takes up to 15 minutes to complete.
+Before the test begins we would like you to answer some general background questions and give your consent to participate in the research. After the experiment you can read a short description of our project at the end.
+Thank you for your interest!"
+	timeStart="0"  timeEnd="forever" fontSize="19;17;19"></addText> 
+	
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<addButton hideResults="true" width="140;140;340" height="40" text="continue;I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="2" order="fixed" trials='1'>
+	
+	<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%;100%;80%" height="95%" x="50%" y="0%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}"
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+	
+	<addShape width="100%" colour='0x222222' height="25%" y="22%" />
+	
+	<addText  fontSize="19" autoSize="false" align="centre" wordWrap="true"  height="20%"  width="100%" y="20%" text="How would you rate someone who is extremely happy on the scale below?  Please do so now. Click on the scale for a triangle to appear and drag the triangle to an appropriate position."/>	
+	<addSlider peg='slider' timeStart='0' y="28%"  pointerSize="40" fontSize="20" labelList="not happy ,very happy" labelLocation="0%,100%" behaviourss='mouseDown:continue.start()'  height="20%" />
+	
+	<addShape width="100%" colour='0x222222' height="41%" y="61%" />
+	
+	<addText  fontSize="19" autoSize="false" align="centre" wordWrap="true"  height="20%"  width="100%" y="49%" text="Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."/>	
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' circles="3" width='90%' height="30%" y="67%" fontSizes='13' position="random" circleNames='liberty,honest,friendship'
+	texts="independence,truthful,amiability,aim,vacation,cloud,gaze,lake,sleep" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='friendship:amiability honest:truthful liberty:independence'&&slider.result>80?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="consent"  block="3" order="fixed" trials='1' >
+
+		
+	<addText drawBox="true"  autoSize="false" align="left" wordWrap="true"  width="100%;100%;80%" height="95%" x="50%" y="0%" vertical="top" 
+	text="{b}{u}Consent Form{/u}{/b}
+	{b}{u}By clicking “I consent” you agree that:{/u}{/b}
+	1.	You are free to withdraw at any time without penalty. If you withdraw from this study, you can still take part in any of the other on-going experiments.
+	2.	Your final results will be kept strictly confidential and stored anonymously using a unique ID number and, as such, the experimenter will not be able to identify your data or link your personal details with your data. We will not be able to identify your data or associate your data with your name - therefore, the Freedom of Information Act does not apply in this case.
+	3.	Your data will be grouped with other participants and these group results will be presented in scientific papers and conferences.
+	If you have any questions, please do not hesitate to contact the experimenter."
+	timeStart="0"  timeEnd="forever" fontSize="19;17;19"></addText> 
+	
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<addButton hideResults="true" width="140;140;340" height="40" text="I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial"  trialName="Qs" block="4" order="fixed" trials="1">
+ 
+	<addUrlVariable  _ip="notGiven" />
+	<addText fontSize="15" autoSize="false" wordWrap="true" align="right" horizontal="right" height="10%" x="45%" width="50%" y="11%" text="sex?"/>
+	<addMultipleChoice  peg="sex" timeStart="0" howMany="1" labels="male,female" fontSize="20" x="50%" y="10%" horizontal="left" height="10%" width="36%" seperation="horizontal"/> 
+	
+	<addText fontSize="15" autoSize="false" wordWrap="true" align="right" horizontal="right" height="16%" x="45%" width="50%" y="33%" text="where do you come from?"/>
+	<addComboBox timeStart="0" peg="origin" label="select answer" y="49%" x="75%" width="50%" height="40%" />
+	
+	<addText timeStart="0" fontSize="15" autoSize="false" align="right" horizontal="right" wordWrap="true"  height="16%" x="43%" width="50%" y="60%" text="What is your age?"/>
+	
+	<addMultiNumberSelector peg="age" selectors="2" width="20%" height="20%" id="age" startingVal="00000"  x="60%" y="58%" timeStart="0" timeEnd="forever" />
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton enabled='false' timeStart='0' hideResults="true" width="340" goto='' goto.mock="nextTrial" height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' timeStart='0' height="5%" width="90%" y="95%"/>
+		                                              
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="DoExpt"  block="5" trials="1" order="fixed">
+
+	<addText betweenSJ='instructions' drawBox="true"  autoSize="false" align="left" wordWrap="true"  width="100%;100%;80%" height="95%" x="50%" y="0%" vertical="top" 
+
+	
+	text="Instructions:
+	In this experiment, you will be asked to view a number of face images. 
+	"
+	text1="Your task is to rate what you think the person’s {b}INTENTIONS{/b} are on the basis of their face image."
+	text2="
+		
+		To give your rating, drag a triangle-shaped indicator to your preferred position on a scale from ‘bad intentions’ to ‘good intentions’. Please use the whole scale when responding. " 
+	text4="This experiment will take up to 15 minutes to complete.
+	Thank you!"
+	timeStart="0"  timeEnd="forever" fontSize="19;17;19"></addText> 
+	
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<addButton hideResults="true" width="140;140;340" height="40" text="continue;I consent"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial"  trialName="begin" hideResults="true" block="6" order="fixed">
+ 
+	<addText fontSize="30" autoSize="false" wordWrap="true" height="16%" width='100%' align='centre'  text="Click 'begin' to start the study."/>
+	
+	<addButton timeStart='0' hideResults="true" width="140" height="40" peg='next' text="begin"  timeEnd="forever" x="50%" vertical="top" y="80%"/>
+	                                   
+</TRIAL>
+
+
+<TRIAL template="myTemplate" block="10,1" order="random" trials="27" trialName='MF1;MF10;MF11;MF12;MF13;MF14;MF15;MF16;MF17;MF18;MF19;MF2;MF20;MF21;MF22;MF23;MF24;MF25;MF26;MF27;MF3;MF4;MF5;MF6;MF7;MF8;MF9'>
+	<addJPG	copyOverID="jpg" filename="MF1;MF10;MF11;MF12;MF13;MF14;MF15;MF16;MF17;MF18;MF19;MF2;MF20;MF21;MF22;MF23;MF24;MF25;MF26;MF27;MF3;MF4;MF5;MF6;MF7;MF8;MF9"/>	                                        
+</TRIAL>
+
+<TRIAL template="myTemplate" block="10,2" order="random" trials="29" trialName='MM1;MM10;MM11;MM12;MM13;MM14;MM15;MM16;MM17;MM18;MM19;MM2;MM20;MM21;MM22;MM23;MM24;MM25;MM26;MM27;MM28;MM29;MM3;MM4;MM5;MM6;MM7;MM8;MM9'>
+	<addJPG	copyOverID="jpg" filename="MM1;MM10;MM11;MM12;MM13;MM14;MM15;MM16;MM17;MM18;MM19;MM2;MM20;MM21;MM22;MM23;MM24;MM25;MM26;MM27;MM28;MM29;MM3;MM4;MM5;MM6;MM7;MM8;MM9"/>	                                        
+</TRIAL>
+
+<TRIAL template="myTemplate" block="10,3" order="random" trials="28" trialName='OF1;OF10;OF11;OF12;OF13;OF14;OF15;OF16;OF17;OF18;OF19;OF2;OF20;OF21;OF22;OF23;OF24;OF25;OF26;OF27;OF28;OF3;OF4;OF5;OF6;OF7;OF8;OF9'>
+	<addJPG	copyOverID="jpg" filename="OF1;OF10;OF11;OF12;OF13;OF14;OF15;OF16;OF17;OF18;OF19;OF2;OF20;OF21;OF22;OF23;OF24;OF25;OF26;OF27;OF28;OF3;OF4;OF5;OF6;OF7;OF8;OF9"/>	                                        
+</TRIAL>
+
+<TRIAL template="myTemplate" block="10,4" order="random" trials="28" trialName='OM1;OM10;OM11;OM12;OM13;OM14;OM15;OM16;OM17;OM18;OM19;OM2;OM20;OM21;OM22;OM23;OM24;OM25;OM26;OM27;OM28;OM3;OM4;OM5;OM6;OM7;OM8;OM9'>
+	<addJPG	copyOverID="jpg" filename="OM1;OM10;OM11;OM12;OM13;OM14;OM15;OM16;OM17;OM18;OM19;OM2;OM20;OM21;OM22;OM23;OM24;OM25;OM26;OM27;OM28;OM3;OM4;OM5;OM6;OM7;OM8;OM9"/>	                                        
+</TRIAL>
+
+<TRIAL template="myTemplate" block="10,5" order="random" trials="29" trialName='YF1;YF10;YF11;YF12;YF13;YF14;YF15;YF16;YF17;YF18;YF19;YF2;YF20;YF21;YF22;YF23;YF24;YF25;YF26;YF27;YF28;YF29;YF3;YF4;YF5;YF6;YF7;YF8;YF9'>
+	<addJPG	copyOverID="jpg" filename="YF1;YF10;YF11;YF12;YF13;YF14;YF15;YF16;YF17;YF18;YF19;YF2;YF20;YF21;YF22;YF23;YF24;YF25;YF26;YF27;YF28;YF29;YF3;YF4;YF5;YF6;YF7;YF8;YF9"/>	                                        
+</TRIAL>
+
+<TRIAL template="myTemplate" block="10,6" order="random" trials="29" trialName='YM1;YM10;YM11;YM12;YM13;YM14;YM15;YM16;YM17;YM18;YM19;YM2;YM20;YM21;YM22;YM23;YM24;YM25;YM26;YM27;YM28;YM29;YM3;YM4;YM5;YM6;YM7;YM8;YM9'>
+	<addJPG	copyOverID="jpg" filename="YM1;YM10;YM11;YM12;YM13;YM14;YM15;YM16;YM17;YM18;YM19;YM2;YM20;YM21;YM22;YM23;YM24;YM25;YM26;YM27;YM28;YM29;YM3;YM4;YM5;YM6;YM7;YM8;YM9"/>	                                        
+</TRIAL>
+
+
+
+
+<myTemplate  TYPE="Trial"  order="random" >
+	<addJPG copyOverID="jpg" extension="jpg" y="40%" />
+	
+	<addButton key=" " peg='continue' hideResults="true" betweenSJ='123' width="250"  height="40" text="continue (or press SPACE)" timeEnd="forever" x="50%" vertical="top" y="93%"/>
+	
+	<addText peg="info" timeStart="0" betweenSJ='scaleLabel' fontSize="23" autoSize="false" align="centre" wordWrap="true"  height="20%"  width="80%" y="81.5%" text="What intentions are conveyed by the {b}face{/b}?"/>	
+	<addSlider peg='input' timeStart="0" y="90%" betweenSJ='slider' hidePegFromResults='true' pointerSize="40" fontSize="20" labelList="bad intentions ,good intentions" labelLocation="0%,100%" behaviours='mouseDown:continue.start()'  height="20%" />
+	
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/170 trials completed',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="centre" wordWrap="true"  height="10%"  width="30%" x='15%' y="8%" text="ddd"/>	                                          
+</myTemplate>
+
+
+
+
+
+
+            
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+	<behavSaveData timeStart="0" /> 
+
+	
+	<addText  width="100%" wordWrap="true" height="80%" y="40%" selectable='true' text=
+	"Thank you for your participation. 
+{u}Debrief{/u}
+So far, it is not known which facial features make us want to interact with some people more than others. In this experiment we investigate the role of facial features in the perception of social appeal and engagement. Although all faces are built in the same basic template, they differ in many different respects, such as how typical, attractive or familiar they are to us. A large number of dimensions are needed to fully characterise facial appearance- these include distinctiveness, attractiveness, dominance, trustworthiness. Over the course of this study as a whole, ratings are collected on these various dimensions. 
+
+This study aims to find out which facial features convey traits related to fictional realistic characters, and to what extent. The ultimate goal of the research project is to apply principles of human perceptual processing to endow virtual social agents with maximum appeal. These virtual characters may then be applied to different settings, such as gaming, health care and education. The research project is conducted as a collaboration between the Multisensory Cognition Group and the Graphics, Vision and Visualisation Group (GV2), and funded by Science Foundation Ireland. More information can be found on {a href='http://gv2.cs.tcd.ie/captavatar/' target='_blank'}http://gv2.cs.tcd.ie/captavatar/{/a}. Thank you for your interest in our study!
+BELOW IS THE CODE TO ENTER INTO MTURK. THANKS!"
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="20%" width="100%" border='5' autosize="centre" background="0xffffff" borderThickess='2'/>                                         
+</TRIAL>
+
+</photo>	
+

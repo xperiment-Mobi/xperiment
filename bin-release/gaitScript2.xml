@@ -1,0 +1,165 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="gaitStim2" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+		You will be asked to identify emotion in faces. Just click on the word that you consider goes describes the emotion in the face - don't think too much, and don't worry if you feel like you're guessing! We are interested in people's intuitive responses. 
+		At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+		Please read the below consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		
+		4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="1" trials="0">
+	
+	<addText  colour="COLOUR"  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%" height="10%" x="50%" y="1%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}
+Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' fontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' 
+	circles="3" width='90%'	height="50%"  fontSizes='13' position="random" circleNames='emotion,briefly,identify'
+	texts="feeling,quickly,classify,slowly,pick-up,photo,river,jarring" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='briefly:quickly emotion:feeling identify:classify'?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true"  text=
+"In this study, you will see brief animations (simple dot patterns) of WOMEN walking. 
+You should judge how attractive each person is on a scale of 1-7 using the numbers on your keyboard.
+To begin click START."
+		timeStart="0" horizontal="left" x="10%" timeEnd="forever" fontSize="22"></addText> 
+
+<addVideo horizontal="right" x="90%"  onFinish="repeatx10" SHUFFLE_SOMETHING="filename,;" width="300" height="450" filename="P005_NP.flv;P009_NP.flv;P010_NP.flv;P011_NP.flv;P022_NP.flv;P023_NP.flv;P024_NP.flv;P025_NP.flv;P026_NP.flv;P028_NP.flv;P030_NP.flv;P032_NP.flv;P033_NP.flv;P035_NP.flv;P037_NP.flv;P039_NP.flv;P041_NP.flv;P043_NP.flv;P045_NP.flv;P048_NP.flv;P049_NP.flv;P051_NP.flv;P054_NP.flv;P055_NP.flv;P059_NP.flv;P062_NP.flv;P063_NP.flv;P065_NP.flv;P066_NP.flv;P067_NP.flv;P068_NP.flv;P069_NP.flv;P071_NP.flv;P072_NP.flv;P073_NP.flv;P074_NP.flv;P081_NP.flv;P082_NP.flv;P084_NP.flv;P087_NP.flv;P088_NP.flv;P091_NP.flv;P093_NP.flv;P094_NP.flv;P095_NP.flv;P096_NP.flv;P097_NP.flv;P099_NP.flv;P100_NP.flv;P101_NP.flv;P104_NP.flv;P105_NP.flv;P106_NP.flv;P107_NP.flv;P108_NP.flv;P111_NP.flv;P113_NP.flv;P114_NP.flv;P115_NP.flv;P116_NP.flv;P118_NP.flv;P120_NP.flv;P122_NP.flv;P131_NP.flv;P133_NP.flv;P135_NP.flv;P136_NP.flv;P137_NP.flv;P138_NP.flv;P139_NP.flv;P141_NP.flv;P145_NP.flv;P146_NP.flv;P149_NP.flv;P152_NP.flv;P153_NP.flv;P154_NP.flv;P156_NP.flv;P157_NP.flv;P158_NP.flv;P160_NP.flv;P162_NP.flv;P164_NP.flv;P167_NP.flv;P005_PO.flv;P009_PO.flv;P010_PO.flv;P011_PO.flv;P022_PO.flv;P023_PO.flv;P024_PO.flv;P025_PO.flv;P026_PO.flv;P028_PO.flv;P030_PO.flv;P032_PO.flv;P033_PO.flv;P035_PO.flv;P037_PO.flv;P039_PO.flv;P041_PO.flv;P043_PO.flv;P045_PO.flv;P048_PO.flv;P049_PO.flv;P051_PO.flv;P054_PO.flv;P055_PO.flv;P059_PO.flv;P062_PO.flv;P063_PO.flv;P065_PO.flv;P066_PO.flv;P067_PO.flv;P068_PO.flv;P069_PO.flv;P071_PO.flv;P072_PO.flv;P073_PO.flv;P074_PO.flv;P081_PO.flv;P082_PO.flv;P084_PO.flv;P087_PO.flv;P088_PO.flv;P091_PO.flv;P093_PO.flv;P094_PO.flv;P095_PO.flv;P096_PO.flv;P097_PO.flv;P099_PO.flv;P100_PO.flv;P101_PO.flv;P104_PO.flv;P105_PO.flv;P106_PO.flv;P107_PO.flv;P108_PO.flv;P111_PO.flv;P113_PO.flv;P114_PO.flv;P115_PO.flv;P116_PO.flv;P118_PO.flv;P120_PO.flv;P122_PO.flv;P131_PO.flv;P133_PO.flv;P135_PO.flv;P136_PO.flv;P137_PO.flv;P138_PO.flv;P139_PO.flv;P141_PO.flv;P145_PO.flv;P146_PO.flv;P149_PO.flv;P152_PO.flv;P153_PO.flv;P154_PO.flv;P156_PO.flv;P157_PO.flv;P158_PO.flv;P160_PO.flv;P162_PO.flv;P164_PO.flv;P167_PO.flv;P005_PS.flv;P009_PS.flv;P010_PS.flv;P011_PS.flv;P022_PS.flv;P023_PS.flv;P024_PS.flv;P025_PS.flv;P026_PS.flv;P028_PS.flv;P030_PS.flv;P032_PS.flv;P033_PS.flv;P035_PS.flv;P037_PS.flv;P039_PS.flv;P041_PS.flv;P043_PS.flv;P045_PS.flv;P048_PS.flv;P049_PS.flv;P051_PS.flv;P054_PS.flv;P055_PS.flv;P059_PS.flv;P062_PS.flv;P063_PS.flv;P065_PS.flv;P066_PS.flv;P067_PS.flv;P068_PS.flv;P069_PS.flv;P071_PS.flv;P072_PS.flv;P073_PS.flv;P074_PS.flv;P081_PS.flv;P082_PS.flv;P084_PS.flv;P087_PS.flv;P088_PS.flv;P091_PS.flv;P093_PS.flv;P094_PS.flv;P095_PS.flv;P096_PS.flv;P097_PS.flv;P099_PS.flv;P100_PS.flv;P101_PS.flv;P104_PS.flv;P105_PS.flv;P106_PS.flv;P107_PS.flv;P108_PS.flv;P111_PS.flv;P113_PS.flv;P114_PS.flv;P115_PS.flv;P116_PS.flv;P118_PS.flv;P120_PS.flv;P122_PS.flv;P131_PS.flv;P133_PS.flv;P135_PS.flv;P136_PS.flv;P137_PS.flv;P138_PS.flv;P139_PS.flv;P141_PS.flv;P145_PS.flv;P146_PS.flv;P149_PS.flv;P152_PS.flv;P153_PS.flv;P154_PS.flv;P156_PS.flv;P157_PS.flv;P158_PS.flv;P160_PS.flv;P162_PS.flv;P164_PS.flv;P167_PS.flv"/>
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10,4" blockOrder="random" forceBlockDepthPositions='1/2'  trials="1">
+	<addText colour="COLOUR" wordWrap="true" text=
+		"You have completed half the trials. Click START to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	
+	<addHideMouse />
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+<TRIAL block="10,1" trials="84" trialName="P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P041;P043;P045;P048;P049;P051;P054;P055;P059;P062;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P104;P105;P106;P107;P108;P111;P113;P114;P115;P116;P118;P120;P122;P131;P133;P135;P136;P137;P138;P139;P141;P145;P146;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167">
+	
+	<addHideMouse dontDisableAtEnd="true"/>
+	
+	<addResults timeStart="0" peg="filename"/>
+	
+	<addVideo if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" peg="np" width="300" height="450" filename="P005_NP.flv;P009_NP.flv;P010_NP.flv;P011_NP.flv;P022_NP.flv;P023_NP.flv;P024_NP.flv;P025_NP.flv;P026_NP.flv;P028_NP.flv;P030_NP.flv;P032_NP.flv;P033_NP.flv;P035_NP.flv;P037_NP.flv;P039_NP.flv;P041_NP.flv;P043_NP.flv;P045_NP.flv;P048_NP.flv;P049_NP.flv;P051_NP.flv;P054_NP.flv;P055_NP.flv;P059_NP.flv;P062_NP.flv;P063_NP.flv;P065_NP.flv;P066_NP.flv;P067_NP.flv;P068_NP.flv;P069_NP.flv;P071_NP.flv;P072_NP.flv;P073_NP.flv;P074_NP.flv;P081_NP.flv;P082_NP.flv;P084_NP.flv;P087_NP.flv;P088_NP.flv;P091_NP.flv;P093_NP.flv;P094_NP.flv;P095_NP.flv;P096_NP.flv;P097_NP.flv;P099_NP.flv;P100_NP.flv;P101_NP.flv;P104_NP.flv;P105_NP.flv;P106_NP.flv;P107_NP.flv;P108_NP.flv;P111_NP.flv;P113_NP.flv;P114_NP.flv;P115_NP.flv;P116_NP.flv;P118_NP.flv;P120_NP.flv;P122_NP.flv;P131_NP.flv;P133_NP.flv;P135_NP.flv;P136_NP.flv;P137_NP.flv;P138_NP.flv;P139_NP.flv;P141_NP.flv;P145_NP.flv;P146_NP.flv;P149_NP.flv;P152_NP.flv;P153_NP.flv;P154_NP.flv;P156_NP.flv;P157_NP.flv;P158_NP.flv;P160_NP.flv;P162_NP.flv;P164_NP.flv;P167_NP.flv"/>
+	<addVideo if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" peg="po" width="300" height="450" filename="P005_PO.flv;P009_PO.flv;P010_PO.flv;P011_PO.flv;P022_PO.flv;P023_PO.flv;P024_PO.flv;P025_PO.flv;P026_PO.flv;P028_PO.flv;P030_PO.flv;P032_PO.flv;P033_PO.flv;P035_PO.flv;P037_PO.flv;P039_PO.flv;P041_PO.flv;P043_PO.flv;P045_PO.flv;P048_PO.flv;P049_PO.flv;P051_PO.flv;P054_PO.flv;P055_PO.flv;P059_PO.flv;P062_PO.flv;P063_PO.flv;P065_PO.flv;P066_PO.flv;P067_PO.flv;P068_PO.flv;P069_PO.flv;P071_PO.flv;P072_PO.flv;P073_PO.flv;P074_PO.flv;P081_PO.flv;P082_PO.flv;P084_PO.flv;P087_PO.flv;P088_PO.flv;P091_PO.flv;P093_PO.flv;P094_PO.flv;P095_PO.flv;P096_PO.flv;P097_PO.flv;P099_PO.flv;P100_PO.flv;P101_PO.flv;P104_PO.flv;P105_PO.flv;P106_PO.flv;P107_PO.flv;P108_PO.flv;P111_PO.flv;P113_PO.flv;P114_PO.flv;P115_PO.flv;P116_PO.flv;P118_PO.flv;P120_PO.flv;P122_PO.flv;P131_PO.flv;P133_PO.flv;P135_PO.flv;P136_PO.flv;P137_PO.flv;P138_PO.flv;P139_PO.flv;P141_PO.flv;P145_PO.flv;P146_PO.flv;P149_PO.flv;P152_PO.flv;P153_PO.flv;P154_PO.flv;P156_PO.flv;P157_PO.flv;P158_PO.flv;P160_PO.flv;P162_PO.flv;P164_PO.flv;P167_PO.flv"/>
+	<addVideo if="this.onFinish?filename.stim=this.filename,mc.start(),txt.start()" peg="ps" width="300" height="450" filename="P005_PS.flv;P009_PS.flv;P010_PS.flv;P011_PS.flv;P022_PS.flv;P023_PS.flv;P024_PS.flv;P025_PS.flv;P026_PS.flv;P028_PS.flv;P030_PS.flv;P032_PS.flv;P033_PS.flv;P035_PS.flv;P037_PS.flv;P039_PS.flv;P041_PS.flv;P043_PS.flv;P045_PS.flv;P048_PS.flv;P049_PS.flv;P051_PS.flv;P054_PS.flv;P055_PS.flv;P059_PS.flv;P062_PS.flv;P063_PS.flv;P065_PS.flv;P066_PS.flv;P067_PS.flv;P068_PS.flv;P069_PS.flv;P071_PS.flv;P072_PS.flv;P073_PS.flv;P074_PS.flv;P081_PS.flv;P082_PS.flv;P084_PS.flv;P087_PS.flv;P088_PS.flv;P091_PS.flv;P093_PS.flv;P094_PS.flv;P095_PS.flv;P096_PS.flv;P097_PS.flv;P099_PS.flv;P100_PS.flv;P101_PS.flv;P104_PS.flv;P105_PS.flv;P106_PS.flv;P107_PS.flv;P108_PS.flv;P111_PS.flv;P113_PS.flv;P114_PS.flv;P115_PS.flv;P116_PS.flv;P118_PS.flv;P120_PS.flv;P122_PS.flv;P131_PS.flv;P133_PS.flv;P135_PS.flv;P136_PS.flv;P137_PS.flv;P138_PS.flv;P139_PS.flv;P141_PS.flv;P145_PS.flv;P146_PS.flv;P149_PS.flv;P152_PS.flv;P153_PS.flv;P154_PS.flv;P156_PS.flv;P157_PS.flv;P158_PS.flv;P160_PS.flv;P162_PS.flv;P164_PS.flv;P167_PS.flv"/>
+	
+	<behavRand peg="type" usePegs="np,po,ps" timeStart="100"/>
+	
+	<addText colour="white" peg="txt" selectable="false" text="how attractive was that woman?" fontSize="30" align='center' y="40%" width="100%"/>
+	<addMultipleChoice disableButtons="true" useKeys="1,2,3,4,5,6,7" if="this.click?nextTrial.start()" peg="mc" labels="1 - very unattractive,2,3,4,5,6,7 - very attractive" seperation="horizontal" width="100%" height="10%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how attractive different body motions are in our videos. Have a lovely day! 
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+
+	
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

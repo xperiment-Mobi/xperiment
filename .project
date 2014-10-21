@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>xperiment</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] assets</name>
+			<type>2</type>
+			<location>C:/Users/Andy/Desktop/xperiment/assets</location>
+		</link>
+		<link>
+			<name>[source path] classes</name>
+			<type>2</type>
+			<location>C:/Users/Andy/Desktop/xperiment/classes</location>
+		</link>
+		<link>
+			<name>bin-release1</name>
+			<type>2</type>
+			<location>C:/Users/Andy/Documents/xperiment_django_latest/xperiment/themes/bootstrap/static/swf</location>
+		</link>
+	</linkedResources>
+</projectDescription>

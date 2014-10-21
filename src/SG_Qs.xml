@@ -1,0 +1,93 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+
+              <screen BGcolour="white" orientation="vertical" ></screen>                          
+			  <computer  stimuliFolder="SG_faces" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" howMany="1" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="100%" height="120%" y="0%" x="0%" vertical="top" text=
+"{b}INFORMATION SHEET{/b}
+Before you consent to your child taking part in this study, it is important for you to understand why the research is being done and what it would involve. Please take time to read the following information carefully.
+ 
+{b}What is the purpose of the research?{/b} The purpose of the study is to see how the intensity of facial expression affects how easily they are recognised by children with and without ASD.  We are also interested in verbal and non-verbal IQ as this may have an effect on how easily an individual can label facial expressions. The long term aim of the project is to develop better methods of teaching expression recognition to children/adolescents with ASD.  
+ 
+{b}Who is able to take part in the study?{/b} Two groups of children will be recruited to take part in the study: children with a diagnosis of ASD and children without ASD or any family history of ASD. All children must be between the ages of 6 and 16, have English as their first language and have normal or corrected to normal vision.  Children who have a learning disorder (other than ASD), psychiatric illness or a history of head injury will not be able to take part in the study. 
+ 
+{b}What does the research involve?{/b} If you decide you would like your child to take part in the study, they would complete 3 tasks. The first task is a test of emotion recognition which involves picking the emotion word (happy, sad, angry, scared, disgusted or surprised) that best fits a facial expression. The second is a verbal IQ test which involves matching a spoken word with a picture. The third is a non-verbal IQ test which involves picking a pattern which fits in to a sequence. Finally we ask that you, the parent or guardian, answer some questions about your child's diagnostic history and fill in a questionnaire about your child’s social and communication skills. All parts of the study can be completed online. 
+ 
+{b} What will happen to my/my child’s data?{/b} Your and your child’s involvement in the study will remain confidential. This information will only be available to research staff and national bodies which monitor whether research studies are conducted properly. The data will be anonymised once data collection is complete. This means that it will be given an identification number and any identifying information about you will be removed (e.g email addresses). Therefore, it will not be possible to identify you or your child from any aspect of documentation or reporting for this research study.
+At the end of the study the data will become “open data”. This means that it will be stored in an online, publically available database. It will be available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised before it is made available and therefore there will be no way to identify you or your child from the research data. Sharing research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publicly funded, the outcomes of the research should be made publicly available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+ 
+{b}Will I be able to withdraw my child’s data after they have taken part in the study?{/b} You can do this up to one year after the study ends or up until the point the data are shared as “open data” (whichever comes first). At this point links between your identify and your child’s anonymised data set will be destroyed, and therefore we will no longer be able to withdraw your child’s data as we will no longer be able to identify which data set belongs to you.
+ 
+{b}What will happen if I don’t want my child to carry on with the study?{/b} You are free to end your child’s participation in the study at any point without having to give a reason for their withdrawal. 
+ 
+{b}What will happen to the results of the research study?{/b} When the study has finished, we will analyse the data we have collected and report the findings in a scientific journal and present it at a scientific meeting. We will also provide a summary of results to all of the schools and support groups who have helped to recruit participants, and put it on our website which you can access by the following link. http://www.bris.ac.uk/expsych/research/brain/targ
+ 
+{b}Who is organising and funding the research?{/b} The University of Bristol.
+ 
+{b}Who has reviewed the study?{/b} The study has been reviewed and approved by the Faculty of Science Ethics Committee.
+ 
+{b}What should I do if I have problems whilst completing the study?{/b} If you experience any problems whilst completing the experiment or have any questions about the procedure, you can contact Sarah Griffiths on the email address below.
+
+{b}If you have any questions about the study please contact Sarah Griffiths on sarah.griffiths@bristol.ac.uk{/b}" timeStart="0"  timeEnd="forever" fontSize="12"/>
+
+
+	<addButton width="20%" height="40"  text="continue" resultFileName="continue" vertical="bottom" y="100%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText  drawBox="true" howMany="2" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%---100%" height="90%" y="0%---40%" x="0%" vertical="top" text=
+"{b}PARENTAL CONSENT{/b} 
+
+Have you read the information on the previous screen explaining the study?	
+	
+Do you understand that:
+
+     you are free to withdraw your consent at any time prior to the data being anonymised? 
+     
+     without having to give a reason for withdrawing? 
+     
+     that your child may stop participating at any point during the experiment?---I understand the nature and purpose of the procedures involved in this study as communicated to me above.
+     
+I understand that the investigation is designed to promote scientific knowledge and I agree that the University of Bristol can keep and use the data my family provide for research purposes only. 
+
+I understand that the data my family provide will be kept confidential, and that consent is conditional upon the University complying with its obligations under the Data Protection Act.
+
+I understand that on completion of the study my child’s data will be anonymised by removing all links between his/her name and his/her study data. This will be done by (01/08/2016), and before any presentation or publication of data.
+
+I understand that after data has been annonymised it will be made “open data”. I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data. 
+" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addMultipleChoice height="40" width="18%" labels="yes,no" required="==yes" horizontal="left" howMany="4" y="7.5%---19%---25%---31%" x="80%" seperation="horizontal"/>
+
+	<addButton width="90%" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exist the study.',this.click&&required==true?next.start()" height="40"  text="I hereby fully and freely consent to my child’s participation in this study" vertical="bottom" y="100%"/>
+	
+	<behavNextTrial peg="next" />
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thank you for completing the consent form. You can now start  the experiment."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+</TRIAL>
+  	
+
+
+
+
+
+
+</Bouba2>	

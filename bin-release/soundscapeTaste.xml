@@ -1,0 +1,194 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results saveDataURL='http://www.opensourcesci.com/experiments/soundscape' mock="false" id="expt"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+			  <computer  stimuliFolder="soundscapeStim" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false"/>
+			  <variables COLOUR='0xe9e9e9' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+		You will be asked to match sounds and pictures. Just click on the picture that you consider goes best with the sound - don't think too much! We are interested in whether people intuitively pair the same sounds and pictures across different cultures. 
+		At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+		Please read the below Consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="60%" height="10%" x="50%" y="4%" vertical="top" text=
+		"Please adjust the volume on your computer so that you can hear the sound clearly."
+		timeStart="0"  timeEnd="forever" fontSize="30"/>
+	
+	<addSound repeat="true" filename="crowd.mp3" />
+	
+	<addButton width="140"  height="40" text="continue" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="Qs" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself"  
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male" padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="Qs2" block="1" order="fixed" trials="1">
+
+	<addUrlVariable _ip="notGiven" />
+
+	<addText colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself, related to music" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="3"  padding="10" width="25%" horizontal="left" height="10%" x="0%" y="27%---49%---67%" text=
+	"how many years have you been playing an instrument---what is your level of musical expertise---what instrument do you play (if applicable)"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+	<addMultiNumberSelector peg="musicYears" width="30%" height="20%" horizontal="left" startingVal="00"  x="36%" y="30%" timeStart="0" timeEnd="forever" />
+
+	
+	<addMultipleChoice seperation="horizontal" peg="expertise" horizontal="left" distanceApart="5"  width="50%" height="5%" horizontalDistanceApart="210" labels="none,beginner,good,advanced" x="35%" padding="10" y="50%" timeStart="0"  timeEnd="forever" /> 	
+	
+	
+	<addInputTextBox width="30%" timeStart="0" peg="instrument" height="5%" y="68%" horizontal="left" x="36%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue" 
+	if="this.click?this.text='please answer the questions',this.click&&expertise.result!=''&&musicYears.result!=''?nextTrial.start()"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+	<addText colour="COLOUR" autosize="true" wordWrap="true"  width="100%" height="10%" x="50%" y="0%" vertical="top" text=
+		" {u}Instructions{/u}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+
+	<addText colour="COLOUR" autSize="false"  wordWrap="true" width="100%" height="15%" x="50%" y="70%" vertical="top" text=
+		"Please respond accurately but also quickly as we measure reaction times. The experiment takes around 10-15 minutes to complete. To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addJPG filename="instructions.png" width='600' height='303' x="50%" y="40%" timeStart="0"/>
+	
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+
+
+
+<TRIAL trialName="bitter;salty;sour;sweet" block="10,1" blockOrder="random" order="random" trials="1">
+	<addText colour="COLOUR" align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="drag each sound to its most appropriate label" fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<behavDragToShiftingArea indicator="3,0x004455" if="this.onFinish?next.start()" actionsAfterHowManyFilled="4" peg='selected' usePegs="bitterS,saltyS,sourS,sweetS,bitterT,saltyT,sourT,sweetT" dragPegs="bitterS,saltyS,sourS,sweetS" 
+	areaDropZonesX="40" snapBackToOriginalLocation="true" timeStart="0" timeEnd="forever"/>
+	
+	<behavSwap usePegs="bitterS,saltyS,sourS,sweetS" timeStart="0" timeEnd="forever"/>
+	<addSound timePlayed="true" howMany='4' timeStart="0" autostart='false' peg='bitterS---saltyS---sourS---sweetS' filename="bitter.mp3---salty.mp3---sour.mp3---sweet.mp3"  y="50%" x="20%---40%---60%---80%" width='10%' height='10%' controls="mini"/>
+	
+	<behavSwap usePegs="bitterT,saltyT,sourT,sweetT" timeStart="0" timeEnd="forever"/>
+	<addText  howMany='4' text="bitter---salty---sour---sweet" timeStart="0" align="centre" fontSize="40"
+	peg='bitterT---saltyT---sourT---sweetT' width='183' height='183' x="20%---40%---60%---80%"  y="80%"/>
+	
+	
+	<behavNextTrial peg='next' />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="Qs" block="15" order="fixed" trials="1">
+
+
+
+	<addText colour="COLOUR" howMany="2"  padding="10" width="20%" height="10%" horizontal="right" x="35%" y="18%---35%" text=
+	"could you hear the sounds in the task?---how distracted were you during the task?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="hear" distanceApart="5"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no" padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addLineScale timeStart="0" y="36%" x="57%" peg="distracted" hidePointerAtStart="false" labelList="not at all,little,very" width="40%" />
+
+	<addComboBox peg="whatSound" items="jungle sounds,waves crashing and the the sea,aeroplane landing,classical music,clapping,crowd of people,popcorn popping,heavy metal music,baby crying,cars on a busy road" label="what was the sound you heard when asked to adjust your computer's volume?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&hear.result!=''&&whatSound.result!=''&&distracted.result!=-100000?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="100%" x="50%" y="65%" text=
+	"Thank you for your participation. Have a lovely day! Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+		 <addText colour="COLOUR"  autoSize="false" wordWrap="true" fontSize="20" width="95%" height="80%" x="50%" y="0%" vertical="top" text=
+"{b}What we were testing.{/b}
+Past research has found that concepts that should have not relationship with each other often do.  For example, a blob shape with the word 'bouba' are often linked, as well as an angular shape with the word 'kiki'.  A popular explanation is that it is the shape our mouths form when we speak which leads to these associations - our mouths form a rounded shape when speaking 'bouba' which is currently thought to make an actual rounded shape more likely to linked to the word 'bouba'. This study explored whether other links exist that are not linked to mouth shape (e.g. 'lemon' and 'fast' - preliminary data suggests these words are linked!)."
+timeStart="0"  timeEnd="forever"></addText> 
+	
+</TRIAL>
+
+
+
+
+</Bouba2>	

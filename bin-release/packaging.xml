@@ -1,0 +1,343 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" />
+              <screen orientation="horizontal" BGcolour="0xffffff"></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="packaging1" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />
+			  <defaults ITI="100"/>
+</SETUP>
+
+
+<TRIAL TYPE="Trial" ITI="0" trialName="splash" hideResults="true" block='0' trials='1' >
+  
+  	<addText y="20%" fontSize="40" align="centre" text="Welcome to this study
+Bienvenido a este estudio" width="100%" />
+
+	<addButton howMany="2" fontSize="30" text="English---español" behaviours="click:lang.language='default',lang.start(),next.start()---click:lang.language='spanish',lang.start(),next.start()" width="20%" height="100" y="60%" x="40%---60%"  goto=""/>
+	
+	<behavTrial peg="trial" enable="Code" />
+	
+	<behavLanguage peg="lang" />
+	<behavSaveData timeStart='0'/>
+	
+	<behavNextTrial peg="next"/>               
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='1'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study on colour-flavour associations!
+Here at the Crossmodal Research Lab, at the Department of Experimental Psychology, University of Oxford, we are currently conducting a study designed to assess how people associate colours and flavours in potato chips (crisps). 
+If you decide that you would like to take part in this study, we will show you pictures of different potato chips packages and ask you to match them to a colour. 
+The study will take about 20 minutes to complete. If you would like to participate, we would only ask that you complete the study if you are somewhere quiet. If you need glasses, please wear them before starting the experiment.
+We hope you enjoy it!"
+text.chinese="欢迎参加我们的颜色-味道联想研究。
+我们是牛津大学实验心理学系跨通道研究实验室的研究人员。我们正在研究人们如何把颜色和薯片口味联系起来。
+如果您决定参加这个研究，我们将会给您呈现一些薯片的图片，并请您把它们和颜色进行配对。
+这个研究大约需要20分钟完成。如果您愿意参加，请在安静的环境下参加这个研究。如果您需要戴眼镜，请在开始实验前就戴好眼镜。
+谢谢您的参与。"
+text.spanish="¡Bienvenido a nuestro estudio sobre asociaciones entre colores y sabores!
+En el Crossmodal Research Lab, en el Departamento de Psicología Experimental de la Universidad de Oxford, estamos haciendo un estudio diseñado para evaluar la forma en la que las personas asocian colores y sabores en papas de paquete.
+Si usted decide participar, le mostraremos unas imágenes con diferentes paquetes de papas y le pediremos que los asocie a un color.
+El estudio toma aproximadamente 20 minutos. Si quiere participar, le pediremos que solo lo haga si se encuentra en un lugar silencioso. Si usted necesita gafas, por favor póngaselas antes de empezar el experimento.
+¡Esperamos que lo disfrute!"
+/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="Continue" text.chinese="继续" text.spanish="Continuar" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"
+	text.chinese="当下面的进度条显示图片已下载完成，请点击“继续”。"
+	text.spanish="Cuando los estímulos se hayan cargado (barra de abajo), por favor haga click en 'continuar'"
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" vertical="top" 
+	 text=
+"Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.
+
+At the end of the study we will tell you more about the purpose of the study. You can contact carlos.velasco@psy.ox.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+Statement of Informed Consent
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.
+"
+	 text.chinese=
+"{b}参加实验前，请先阅读以下说明。 当你点击页面下方的‘我同意’按钮时，说明你已同意参加本实验。{/b}{p align='left'}
+在实验中，我们会请你把相似的词和图片连接起来。我们旨在研究不同文化背景的人是否会把同样的词和图片连接起来。 
+在实验结束时，我们会更详细地告诉你本实验的目的。如果你愿意，你还可以联系andy@xperiment.mobi 以获取更多的信息。
+请阅读以下关于同意参加本实验的说明，并回答你是否同意参加。
+{u}关于知情同意的声明{/u}
+1. 我理解这个实验的一般目的。
+2. 我知道我可以在实验的任何阶段退出实验，我退出实验后数据将不会得到保存。
+3. 我知道我是匿名参加这个实验的。
+4. 我同意参加这个网络实验。{/p}"
+	text.spanish=
+	"Antes de empezar, por favor lea el texto de abajo. Al hacer click en “DOY MI CONSENTIMIENTO” usted indica que ha dado su consentimiento para participar.
+Al final del estudio, le contaremos mas sobre el propósito del estudio. Si usted quiere, también puede contactarnos a carlos.velasco@psy.ox.ac.uk para mayor información.
+Por favor lea la declaración del consentimiento abajo e indique si da su consentimiento.
+Declaración de consentimiento:
+1. Entiendo el propósito general de este experimento.
+2. Entiendo que puedo retirarme del estudio en cualquier momento y que, al hacerlo, borraremos sus datos.
+3. Entiendo que mis respuestas son anónimas.
+4. Acepto participar en este estudio en línea."
+
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+	
+	<addButton width="200" sstartID="next" height="40" text="I consent" text.chinese="我同意" text.spanish="Doy mi consentimiento" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="2%" height="20%"
+	text = "some questions"
+	text.chinese="请提供一些关于你的信息。" 
+	text.spanish="Algunas preguntas"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="4" width="200" height="10%" x="20%" y="10%---30%---80%---62%" 
+	text="sex---age---my colour vision is normal---How long have you been living there?"
+	text.spanish="sexo---edad---mi visión de color es normal---¿Cuánto tiempo lleva viviendo en este lugar?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required='' peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	labels.chinese="女,男" 
+	labels.spanish="hombre,mujer"
+ 	x="50%" y="10%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required='' peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="30%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required='' peg="origin" 
+	label="where do you live now?"
+	label.chinese="你来自哪个国家？" 
+	label.spanish="¿En que país vive?"
+	timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="48%"/>
+	
+	<addInputTextBox emptyWhenClicked="true" y="81.3%"  x="65%" width="20%" height="10%" multiline="true" text="If not normal, how so?" text.chinese="如果不正常，是什么问题？" text.spanish="¿Si no es normal, cómo es?" horizontal="left" />
+	
+	<addMultipleChoice required='' peg="vision" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="yes,no"
+ 	labels.chinese="是,否" 
+	labels.spanish="si,no"
+ 	x="50%" y="81%" timeStart="0"  timeEnd="forever" /> 	
+ 	
+ 	
+	<addMultiNumberSelector required='00' peg="time" width="25%" height="20%" startingVal="00"  x="50%" y="63%" timeStart="0" timeEnd="forever" />
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	text.chinese="继续"
+	text.spanish="siguiente"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	if.chinese="this.click?this.text='请回答问题',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   
+	if.spanish="this.click?this.text='por favor responda las preguntas',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed">
+
+	<addComboBox required='' peg="real_origin" 
+	label="where do you come from?"
+	label.chinese="你来自哪个国家？" 
+	label.spanish="¿En que país vive?"
+	timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="48%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	text.chinese="继续"
+	text.spanish="siguiente"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	if.chinese="this.click?this.text='请回答问题',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   
+	if.spanish="this.click?this.text='por favor responda las preguntas',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="4" order="fixed">
+
+	<addText autSize="false"  wordWrap="true" width="100%" height="15%" x="50%" vertical="top" text.chinese=
+		"请快而准确地回答问题，我们会测量你的反应时间。整个实验需要大约8分钟完成。请点击开始按钮，开始实验。"
+		text.spanish="A continuación, le presentaremos unas imágenes de paquetes de papas. Cada paquete incluirá el nombre del sabor. Debajo, usted encontrara una serie de colores. Su tarea consiste en seleccionar el color que usted crea que mejor se asocie con el sabor de las papas. 
+Usted debe responder cada pregunta para poder continuar con las siguientes.
+Muchas gracias."
+		text="Next, we are going to show you some pictures of potato chips packages. Each package will include the name of the flavour. Below the package, you will find a variety of colours. Your task consists of selecting the colour that you think best matches the flavour of the potato chips. 
+Please note that you must answer each question in order to continue with the following questions.
+Thank you very much.
+		"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="begin" text.chinese="开始" text.spanish="empezar" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+
+  
+<TRIAL template="myTemplate" block="10,1" trialName="a_pac;b_pac;c_pac;d_pac;e_pac;f_pac" trials="11">
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/18',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+
+	<addJPG peg="image" timeStart="0" width="234" height="334"
+			filename="e_BBQ.jpg;e_Cheddar_Cheese_and_Bacon.jpg;e_Cheese_and_Onion.jpg;e_Chicken.jpg;e_Cucumber.jpg;e_Lemon.jpg;e_Meat.jpg;e_Natural.jpg;e_Original.jpg;e_Salt_and_Vinegar.jpg;e_Tomato.jpg" 
+	filename.chinese="c_BBQ.jpg;c_Cheese_and_Bacon.jpg;c_Cheese_and_Onion.jpg;c_Chicken.jpg;c_Cucumber.jpg;c_Lemon.jpg;c_Meat.jpg;c_Natural.jpg;c_Original.jpg;c_Salt_and_vinager.jpg;c_Tomato.jpg"
+	filename.spanish="s_BBQ.jpg;s_Carne.jpg;s_Limon.jpg;s_Natural.jpg;s_Original.jpg;s_Pepino.jpg;s_Pollo.jpg;s_Queso_Cheddar_y_Tocineta.jpg;s_Queso_y_cebolla.jpg;s_Sal_y_vinagre.jpg;s_Tomate.jpg"
+	y="35%"/>
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="Match the colour with a flavour"
+	text.chinese="把颜色和味道配对" 
+	text.spanish="Asocie el color con el sabor"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addResults timeStart="0" peg="result" />
+	
+	<behavSwap usePegs="a,b,c,d,e,f,g" timeStart="0" timeEnd="forever"/>
+	
+	<addText howMany="7" selectable="false" timeStart="0" behaviours="click:result.selected=this.peg,result.image=image.filename,nextTrial.start()" peg="a---b---c---d---e---f---g"
+	background="yellow---blue---orange---0xFF0080---red---green---0x8C001A"
+	text="yellow---blue---orange---fucsia---red---green---burgundy" 
+	text.chinese="黄色---蓝色---橙色---玫红色---红色---绿色---玫红色" 
+	text.spanish="amarillo---azul---naranja---fucsia---rojo---verde---vino tinto"
+	align="center" width="10%" height="80" x="29%---43%---57%---71%---36%---50%---64%" y="70%---70%---70%---70%---85%---85%---85%" timeEnd="forever" fontSize="20"/> 
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+<TRIAL template="myTemplate" blockOrder="random" block="10,2" trialName="a_col;b_col;c_col;d_col;e_col;f_col" trials="7">
+	
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/18',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+
+	<behavSwap usePegs="a,b,c,d,e,f,g" timeStart="0" timeEnd="forever"/>
+
+	<addJPG peg="a---b---c---d---e---f---g" howMany="7" timeStart="0"
+	behaviours="click:result.selected=this.filename,result.colour=colour.plainText,nextTrial.start()"
+				filename="e_BBQ.jpg---e_Cheddar_Cheese_and_Bacon.jpg---e_Cheese_and_Onion.jpg---e_Chicken.jpg---e_Cucumber.jpg---e_Lemon.jpg---e_Meat.jpg---e_Natural.jpg---e_Original.jpg---e_Salt_and_Vinegar.jpg---e_Tomato.jpg" 
+	filename.chinese="c_BBQ.jpg---c_Cheese_and_Bacon.jpg---c_Cheese_and_Onion.jpg---c_Chicken.jpg---c_Cucumber.jpg---c_Lemon.jpg---c_Meat.jpg---c_Natural.jpg---c_Original.jpg---c_Salt_and_vinager.jpg---c_Tomato.jpg"
+	filename.spanish="s_BBQ.jpg---s_Carne.jpg---s_Limon.jpg---s_Natural.jpg---s_Original.jpg---s_Pepino.jpg---s_Pollo.jpg---s_Queso_Cheddar_y_Tocineta.jpg---s_Queso_y_cebolla.jpg---s_Sal_y_vinagre.jpg---s_Tomate.jpg"
+	x="20%---40%---60%---80%---30%---50%---70%" y="43%---43%---43%---43%---82%---82%---82%" 
+	width="200" height="300"/>
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="Match the flavour with a colour"
+	text.chinese="把颜色和味道配对" 
+	text.spanish="Asocie el sabor con el color"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addResults timeStart="0" peg="result" />
+
+	
+	<addText selectable="false" peg="colour" timeStart="0"
+	background="yellow;blue;orange;0xFF0080;red;green;0x8C001A"
+	text="yellow;blue;orange;fucsia;red;green;burgundy" 
+	text.chinese="黄色;蓝色;橙色;红色;绿色;玻璃餐" align="center"
+	text.spanish="amarillo;azul;naranja;fucsia;rojo;verde;vino tinto"
+	width="33%" height="100"  y="15%" timeEnd="forever" fontSize="20"/> 
+	
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+<TRIAL   block="20" trialName="afterQs">
+
+	<addText y="10%"x="0" horizontal="left" width="100%" fontSize="32"
+	text="Before you finish, we have some final questions" 
+	text.chinese="最后，我们还有一些问题要问您。"
+	text.spanish="Antes de que termine, tenemos unas preguntas finales para usted."
+	/>
+	
+	<addInputTextBox emptyWhenClicked="true" required='' height="70" y="30%" 
+	text="What’s brand of potato chips do you usually eat?" 
+	text.chinese="您经常吃的薯片是哪个牌子的？"
+	text.spanish="¿Cuál es la marca de papas de paquete que usted come generalmente?"
+	/>
+	
+	<addInputTextBox emptyWhenClicked="true" required='' height="70" y="50%"
+	text="What’s your favourite brand of potato chips?"
+	text.chinese="您最喜欢吃的薯片是哪个牌子的？"
+	text.spanish="¿Cuál es su marca favorita de papas de paquete?"
+	/>
+	
+	<addText align="center" y="64%" 
+	text="How often do you eat potato chips?" 
+	text.chinese="您有多经常吃薯片？"
+	text.spanish="¿Qué tan frecuentemente come papas de paquete?"
+	/>
+	
+	<addMultipleChoice required='' peg="vision" distanceApart="5" height="10%" 
+ 	labels="never,maybe once per year,maybe once per month,weekly,daily"
+ 	labels.chinese="以前的研究已经揭示，在薯片的包装中存在着外显的和内隐的颜色-味道联系。有些颜色-味道联系在不同的文化背景下是一致的。在这些研究的基础之上，我们试图研究颜色-味道联系中是否存在跨文化差异。我们尤其希望研究与薯片包装有关的颜色-味道联系，以及其中的跨文化差异。" seperation="horizontal" 
+	labels.spanish="nunca,de pronto una vez al año, de pronto una vez al mes, semanalmente, diariamente"
+ 	y="75%"  timeStart="0"  timeEnd="forever" width="80%"/> 	
+	
+	
+<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	text.chinese="继续"
+	text.spanish="siguiente"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	if.chinese="this.click?this.text='请回答问题',this.click&&required==true?nextTrial.start()"   
+	if.spanish="this.click?this.text='por favor responda las preguntas',this.click&&required==true?nextTrial.start()"   
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100">
+		
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"Previous studies have demonstrated the existence of both explicit and implicit colour-flavour correspondences in product packaging of crisps. What is more, it appears that some of these correspondences may be consistent across cultures. Based on previous studies, we aim to assess the existence of any cultural differences in the colour-flavour associations. In particular, we want to investigate how people match colours and flavours in product packaging, and whether there are cultural differences."
+text.spanish="Estudios previos han demostrado la existencia de correspondencias explícitas e implícitas entre colores y sabores en empaques papas. De hecho, parece que estas correspondencias son consistentes entre culturas. Basado en estudios previos, nuestro objetivo es evaluar la existencia de las diferencias culturales entre la forma en que las personas asociaciones entre colores y sabores. En particular, queremos investigar cómo las personas asocian colores y sabores en empaques de producto, y si hay diferencias culturales."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+</Taste>	

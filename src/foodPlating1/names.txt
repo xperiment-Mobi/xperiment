@@ -1,0 +1,24 @@
+ Volume in drive C has no label.
+ Volume Serial Number is D407-7441
+
+ Directory of C:\Users\Andy\Adobe Flash Builder 4.7\xperiment\src\foodPlating1
+
+26/06/2014  08:09           178,240 1.png
+26/06/2014  08:51            49,296 circleW_old.png
+12/09/2014  13:14           156,929 circW.png
+12/09/2014  13:35            44,606 diamond.png
+12/09/2014  13:35            45,202 evenBalLeft.png
+12/09/2014  13:35            42,502 evenBalRight.png
+12/09/2014  13:35            45,249 evenLinear.png
+10/11/2013  13:13             9,359 lab.png
+12/09/2014  13:35            34,639 oddBalLeft.png
+12/09/2014  13:35            33,724 oddBalRight.png
+12/09/2014  13:35            31,982 oddLinear.png
+12/09/2014  13:14           146,048 rectW.png
+26/06/2014  08:51           144,140 rectW_old.png
+26/06/2014  08:52           172,594 redCircTart.png
+26/06/2014  08:53           187,766 redTriaTart.png
+12/09/2014  13:35            45,346 square.png
+12/09/2014  13:35            34,687 triangle.png
+              17 File(s)      1,402,309 bytes
+               0 Dir(s)   8,926,167,040 bytes free

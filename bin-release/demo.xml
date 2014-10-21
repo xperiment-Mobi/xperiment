@@ -1,0 +1,24 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste" mock="false" saveToServerFile="true"  />
+              <screen BGcolour="black" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="fontTastes" />
+			  <trials blockDepthOrder="10,*=random 10,*,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="black" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="2">
+
+
+	<addButton peg="next" howMany="3" timeStart="0" width="350"  height="200" x="30%---50%---70%;30%---60%" y="30%---60%;30%---50%---70%" text="a---b---c;n---o" fontSize="40" resultFileName="continue" horizontal="right"  vertical="bottom" />                
+	
+</TRIAL>
+
+[1,2]%3 = 1;
+
+</Taste>	

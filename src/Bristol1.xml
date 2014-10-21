@@ -1,0 +1,179 @@
+﻿<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results id="bristol"  saveToServerFile="true" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+              <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+			  <computer  stimuliFolder="BristolStim" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+		"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+		You will be asked to identify emotion in faces. Just click on the word that you consider goes describes the emotion in the face - don't think too much, and don't worry if you feel like you're guessing! We are interested in people's intuitive responses. 
+		At the end of the study we will tell you more about the purpose of the study. You can contact andy@xperiment.mobi for further information at a later date if you wish.
+		Please read the below consent statement and indicate whether you consent.
+		{u}Statement of Informed Consent{/u}
+		1. I understand the general purpose of this experiment.
+		2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+		3. I understand that my responses are anonymous.
+		4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+		
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="1">
+	
+	<addText  colour="COLOUR"  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="100%" height="10%" x="50%" y="1%" vertical="top" 
+	text="{b}Before we can begin, it is important to test your comprehension of instructions used in the study{/b}
+Note the words in the coloured circles. Please match one floating word with one word in a circle that has similar meaning. Leave the other words outside the circles."
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+		
+	
+	<addVennDiagram circleFontColours='0xDDDDDD' fontColours='0xDDDDDD' textBackgroundColour="0x39382c" circleX="15%,50%,85%" circleY="25%,75%,25%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' 
+	circles="3" width='90%'	height="50%"  fontSizes='13' position="random" circleNames='emotion,briefly,identify'
+	texts="feeling,quickly,classify,slowly,pick-up,photo,river,jarring" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' goto.mock='nextTrial'
+	if="this.click?this.text='try again',this.click&&venn.abcResults=='briefly:quickly emotion:feeling identify:classify'?nextTrial.start()" width="140" height="40" 
+	text="check if correct"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true" width="70%" y="10%" text=
+"You will briefly see a picture of a face. Please identify the emotion in the face.
+Please respond quickly but accurately. The experiment takes around 10-15 minutes to complete. To begin click START."
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+<addText colour="COLOUR"  y="40%" wordWrap="true" width="30%" x="20" horizontal="left" text=
+"These are example pictures, shown for the same time as in the study (actual pictures will be larger):"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+	<addJPG howMany="6" y="40%" filename="anger15.jpg---disgust15.jpg---fear15.jpg---happy15.jpg---sad15.jpg---surprise15.jpg" 
+	timeStart="0---4000---8000---etc---" timeEnd='200---4200---8200---etc---' width="229.6" height="300" />	
+	
+<addText colour="COLOUR"  y="65%" wordWrap="true" width="90%"   text=
+"You have to identify one of these emotions with the face: angry, happy, sad, fearful, surprised and disgusted"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10,4" blockOrder="random" forceBlockDepthPositions='1/2'  trials="1">
+	<addText colour="COLOUR" wordWrap="true" text=
+		"You have completed half the trials. Click START to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText>
+	
+	<addButton  peg='nextTr' width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+  
+  
+<TRIAL block="10,1" trials="90" trialName="anger01;anger02;anger03;anger04;anger05;anger06;anger07;anger08;anger09;anger10;anger11;anger12;anger13;anger14;anger15;disgust01;disgust02;disgust03;disgust04;disgust05;disgust06;disgust07;disgust08;disgust09;disgust10;disgust11;disgust12;disgust13;disgust14;disgust15;fear01;fear02;fear03;fear04;fear05;fear06;fear07;fear08;fear09;fear10;fear11;fear12;fear13;fear14;fear15;happy01;happy02;happy03;happy04;happy05;happy06;happy07;happy08;happy09;happy10;happy11;happy12;happy13;happy14;happy15;sad01;sad02;sad03;sad04;sad05;sad06;sad07;sad08;sad09;sad10;sad11;sad12;sad13;sad14;sad15;surprise01;surprise02;surprise03;surprise04;surprise05;surprise06;surprise07;surprise08;surprise09;surprise10;surprise11;surprise12;surprise13;surprise14;surprise15">
+	
+	<addHideMouse timeEnd="2450"/>
+
+	<behavPause timeStart='100' time="rand(0:1000)" />
+
+	<addJPG filename="anger01.jpg;anger02.jpg;anger03.jpg;anger04.jpg;anger05.jpg;anger06.jpg;anger07.jpg;anger08.jpg;anger09.jpg;anger10.jpg;anger11.jpg;anger12.jpg;anger13.jpg;anger14.jpg;anger15.jpg;disgust01.jpg;disgust02.jpg;disgust03.jpg;disgust04.jpg;disgust05.jpg;disgust06.jpg;disgust07.jpg;disgust08.jpg;disgust09.jpg;disgust10.jpg;disgust11.jpg;disgust12.jpg;disgust13.jpg;disgust14.jpg;disgust15.jpg;fear01.jpg;fear02.jpg;fear03.jpg;fear04.jpg;fear05.jpg;fear06.jpg;fear07.jpg;fear08.jpg;fear09.jpg;fear10.jpg;fear11.jpg;fear12.jpg;fear13.jpg;fear14.jpg;fear15.jpg;happy01.jpg;happy02.jpg;happy03.jpg;happy04.jpg;happy05.jpg;happy06.jpg;happy07.jpg;happy08.jpg;happy09.jpg;happy10.jpg;happy11.jpg;happy12.jpg;happy13.jpg;happy14.jpg;happy15.jpg;sad01.jpg;sad02.jpg;sad03.jpg;sad04.jpg;sad05.jpg;sad06.jpg;sad07.jpg;sad08.jpg;sad09.jpg;sad10.jpg;sad11.jpg;sad12.jpg;sad13.jpg;sad14.jpg;sad15.jpg;surprise01.jpg;surprise02.jpg;surprise03.jpg;surprise04.jpg;surprise05.jpg;surprise06.jpg;surprise07.jpg;surprise08.jpg;surprise09.jpg;surprise10.jpg;surprise11.jpg;surprise12.jpg;surprise13.jpg;surprise14.jpg;surprise15.jpg" 
+	timeStart="2000" timeEnd='2200' width="459" height="600" />
+	
+	<addJPG filename="mask.jpg" 
+	timeStart="2200" timeEnd='2450' width="459" height="600" />
+	
+	<addText colour="white" selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='2000'/>
+	
+	<behavSwap doOnce="true" peg="randomSwapChoice" usePegs="angry,happy,sad,fearful,surprised,disgusted" timeStart="0"/>
+	
+	<behavRT peg="rt" timeStart='2450'/>
+	
+	<addButton buttonGroup="selected" hideResults='false' timeStart="2450" howMany="6" text='angry---happy---sad---fearful---surprised---disgusted'
+	peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
+	
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/90 trials completed',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="centre" wordWrap="true"  height="10%"  width="30%" x='85%' y="95%" text="ddd"/>	
+	
+</TRIAL>  
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how recognizable different emotions are in our photos. Have a lovely day! 
+
+Don't forget to enter the below code in Mechanical Turk."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addMechanicalTurk selectable="true" align='center' colour='black' y="90%" height="10%" width="95%" border='5' background="0xffffff" borderThickess='2'/>
+	
+
+	
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

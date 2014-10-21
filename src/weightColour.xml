@@ -1,0 +1,212 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" saveDataURL="http://www.opensourcesci.com/experiments/weightColour" />
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="weightCol" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to carry out three quick tasks:  
+Task A: Dragging colour patches into ‘weight’ order, from heaviest to lightest.
+Task B: Deciding which colours go with words that describe weight, e.g. ‘ tiny’ or ‘huge’.
+Task C: Deciding which colours go with objects that have different weights, e.g. .’feather’ or ‘building’
+The order in which these tasks are presented will be randomised, so Task A may not be the first task you are asked to do.
+-Continued on the next page-; 
+At the end of the study we will tell you more about the purpose of the studywhy we are doing this research. You can also contact the researchers – Dr Kirsten McKenzie (kirsten.mckenzie@nottingham.edu.my) or Dr Andy Woods (andy@xperiment.mobi) for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed"  trials="1">
+
+	<addText   x="50%" y="12%" height="20%" text=
+	"Some further questions" 
+    width="80%"  fontSize="20"></addText> 
+	
+	<addComboBox peg="lang" height="40%" vertical="top" label="What is your first/native Language?" items='Bahasa Malaysia,Chinese - Cantonese,Chinese - Mandarin,Chinese - Other (e.g. Haka Hokkien Teochew etc),English,Indian - Other (e.g. Malayalam Punjabi Telugu etc),Malaysian Tamil,Other - Malaysian language (e.g. Iban Kadazan etc),Other - Non Malaysian language (e.g. Arabic Sinhalese Urdu etc)' scale="1" timeStart="0" width="100%" timeEnd="forever" x="50%" y="50%"/>
+		
+	<addComboBox peg="ethnicity" height="40%" vertical="top" label="what is your ethnicity?" items='Malay,Malaysian Chinese,Malaysian Indian,Other - Malaysian,Other - Non-Malaysian' scale="1" timeStart="0" width="70%" timeEnd="forever" x="50%" y="64%"/>
+	
+	<addText text="How would you rate your command of the English language?" y='25%' fontSize='17' height="10%" align="center" width="100%" />
+	
+	<addMultipleChoice peg="fluencyFC" seperation='horizontal' distanceApart="5" id="fluent"  width="100%" height="10%" fontSize='15' labels="beginner,conversation,fluent,native-language" x="50%" y="33%" timeStart="0"  /> 
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&ethnicity.result!=''&&fluencyFC.result!=''&&lang.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+  
+<TRIAL block="-20" trialName="rainbowDrag" trials="1">
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these colours into ‘weight’ order in the box, starting with the heaviest colours on the right."
+	if="this.doNow&&RAND==1?this.text='Please drag these colours into ‘weight’ order starting with the heaviest colours on the left',swap.start()"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavSwap how="flipped" peg="swap" usePegs="light,heavy" />
+
+	<addResults timeStart="0" peg="hack" heavyLeft="RAND" />
+	
+	<behavDrag timeStart="0" peg="drag" save="x" usePegs="Purple,Blue,Green,Yellow,Red,RedPurple,PurpleBlue,BlueGreen,YellowGreen,YellowRed,White,Black,LightGrey,DarkGrey,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="Purple,Blue,Green,Yellow,Red,RedPurple,PurpleBlue,BlueGreen,YellowGreen,YellowRed,White,Black,LightGrey,DarkGrey,box" timeStart="0" timeEnd="forever"/>
+	
+	
+	<addText howMany="14" align="centre" selectable="false" timeStart="0" peg="Purple---Blue---Green---Yellow---Red---RedPurple---PurpleBlue---BlueGreen---YellowGreen---YellowRed---White---Black---LightGrey---DarkGrey"
+	background="0x790894---0x2D859C---0x186F50---0xFFE51D---0xF4083D---0xE61C8E---0x2062A5---0x228982---0x9CBC27---0xDD7D15---0xFFFFFF--- 0x000000---0xADADAD---0x494949"
+	text="+" 
+	width="10%" height="40" y="20%---25%---etc---" timeEnd="forever" fontSize="20"
+	/> 
+	
+	<addShape peg="box" timeStart="0" width="740" height="200" colour="none" visible="false" y="35%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="740" height="200" colour="none" lineThickness="1" y="70%"/>
+	
+	<addText howMany="2" y="87%" align="right" timeStart="0" peg="light---heavy" width="20%" fontSize="30" text="least heavy---heaviest" x="15%---70%" />
+	
+	<addButton peg="b" goto="" if="this.click?this.text='place all colours please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+
+<TRIAL block="30,2" blockOrder="random" trialName="Heavy;Weighty;Large;Substantial;Bulky;Hefty;Cumbersome;Big;Huge;Gigantic;Giant;Immense;Enormous;Vast;Whopping;Sizeable;Wide;Dense;Towering;Solid;Light;Small;Tiny;Petite;Miniature;Diminutive;Undersized;Little;Insubstantial;Weightless;Buoyant;Fluffy;Feathery;Wispy;Flimsy;Thin;Slight;Skinny;Airy;Unsubstantial" 
+trials="40">
+
+	<addResults timeStart="0" peg="results" />
+
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/77',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+	
+	<addText copyOverID="instruct" align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="Select the colour you think is most associated with the word below." verticalAlign="top"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<addText copyOverID="weightWord" text="Heavy;Weighty;Large;Substantial;Bulky;Hefty;Cumbersome;Big;Huge;Gigantic;Giant;Immense;Enormous;Vast;Whopping;Sizeable;Wide;Dense;Towering;Solid;Light;Small;Tiny;Petite;Miniature;Diminutive;Undersized;Little;Insubstantial;Weightless;Buoyant;Fluffy;Feathery;Wispy;Flimsy;Thin;Slight;Skinny;Airy;Unsubstantial"
+	y="30%" height="10%" align="centre" fontSize="60"/>
+
+	<behavSwap  timeStart="0" usePegs="Purple,Blue,Green,Yellow,Red,RedPurple,PurpleBlue,BlueGreen,YellowGreen,YellowRed,White,Black,LightGrey,DarkGrey" />
+
+	<addText howMany="7" align="centre" selectable="false" timeStart="0" peg="BlueGreen---YellowGreen---YellowRed---White---Black---LightGrey---DarkGrey"
+	background="0x228982---0x9CBC27---0xDD7D15---0xFFFFFF--- 0x000000---0xADADAD---0x494949"
+	text="+" 
+	width="80" height="80" y="55%" x="15.6%---27%---etc---" timeEnd="forever" fontSize="20"
+	if="this.click?results.picked=this.peg,nextTrial.start()"
+	/> 
+	
+	<addText howMany="7" align="centre" selectable="false" timeStart="0" peg="Purple---Blue---Green---Yellow---Red---RedPurple---PurpleBlue"
+	background="0x790894---0x2D859C---0x186F50---0xFFE51D---0xF4083D---0xE61C8E---0x2062A5"
+	text="+" 
+	width="80" height="80" y="70%" x="15.6%---27%---etc---" timeEnd="forever" fontSize="20"
+	if="this.click?results.picked=this.peg,nextTrial.start()"
+	/> 
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+
+
+<TRIAL block="30,3" blockOrder="random" trialName="Heavy_helicopter;Heavy_Baby-Stroller;Heavy_bicycle;Heavy_Car_1;Heavy_Car_2;Heavy_Car_3;Heavy_Car_4;Heavy_Chair;Heavy_Drawers;Heavy_Luggage_1;Heavy_Luggage_2;Heavy_motorcycle;Heavy_Sofa_1;Heavy_Train;Light_Bag;Light_Balloon;Light_Beads;Light_Bucket2;Light_Feather;Light_iPod;Light_Lego;Light_Scarf;Light_Shoe;Light_Toothbrush;Light_Top;Light_Umbrella;Light_wool;Light_wool_2" 
+trials="36">
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/77',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+	
+	<behavSwap usePegs="a,b"/>
+	
+	<behavColour save="true" peg="c1" usePegs="a" timeStart="0" colour="blue"/>
+	<behavColour save="true" peg="c2" usePegs="b" timeStart="0" colour="blue"/>
+	
+	<addResults peg="result" timeStart="0" />
+	
+	<addJPG  peg="a---b" if="this.click?result.selected=this.peg,result.pic=this.filename,nextTrial.start()" timeStart="0" 
+	filename="Heavy_helicopter.png;Heavy_Baby-Stroller.png;Heavy_bicycle.png;Heavy_Car_1.png;Heavy_Car_2.png;Heavy_Car_3.png;Heavy_Car_4.png;Heavy_Chair.png;Heavy_Drawers.png;Heavy_Luggage_1.png;Heavy_Luggage_2.png;Heavy_motorcycle.png;Heavy_Sofa_1.png;Heavy_Train.png;Light_Bag.png;Light_Balloon.png;Light_Beads.png;Light_Bucket2.png;Light_Feather.png;Light_iPod.png;Light_Lego.png;Light_Scarf.png;Light_Shoe.png;Light_Toothbrush.png;Light_Top.png;Light_Umbrella.png;Light_wool.png;Light_wool_2.png" 
+	howMany="2"x="30%---70%" exactSize="true" />
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Which object is heavier?"
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>  
+
+
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation. DEBRIEF SVP."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

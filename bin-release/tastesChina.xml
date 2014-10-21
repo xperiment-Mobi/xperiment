@@ -1,0 +1,252 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" />
+              <screen BGcolour="0xd9d9d9" orientation="vertical" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="stimuli" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />\
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true"  autoSize="false" align="center" wordWrap="true"  width="85%" height="90%" y="20%" text=
+		"请输入你的密码"
+		timeStart="0"  timeEnd="forever" fontSize="40"></addText> 
+		
+	<addInputTextBox correct="27152,66271,14478,46702,40304,91393,86458,34867,68835,18497,65615,46247,56793,12476,18508,56016,19500,12471,39922,23888,54558,99119,80735,37703,24991,13819,76137,74264,16602,44900,79963,45910,52103,17758,70142,12025,66778,40204,50511,91628,69681,56987,51278,70217,34361,16609,85261,29697,81465,47902,20442,23576,57414,93368,57325,12918,63082,27287,59199,88275,81291,96434,41512,68087,99064,85162,68160,13078,96654,72430,31387,57263,99174,56307,89661,45087,79370,59336,65166,64586,45487,72985,95294,37447,50358,33941,63653,35285,12528,52139,51351,83634,28522,78897,75114,56751,54384,11052,51087,67054,13964,48638,37722,19140,24116,93273,85933,78476,68197,95052,99458,14231,31162,18572,15629,49846,74069,24715,25557,82722,29662,60209,76401,23500,46450,22092,71767,79561,12925,96039,50619,26933,17094,59915,19367,10910,72567,61798,15137,73281,46958,14779,83104,66687,85359,78835,19899,35726,27500,11308,11748,97626,21246,97613,50141,97641,30420,52063,67922,66842,43721,13852,15121,11985,27309,85186,61699,70323,31971,53100,69638,44677,11962,62376,16431,61797,44701,50015,48666,99857,10734,19113,25618,31567,84568,81707,45501,19629,50526,90778,37169,26633,75610,14144,49294,96663,78934,41685,25689,36219,51736,24723,85584,16619,20274,17988,91788,19375,26149,14828,93852,27789,93612,67028,72634,86368,50879,11326,77046,70091,29371,33213,38304,45710,30024,49270,19246,13146,65982,68329,14758,51943,14461,38786,16642,68092,16877,19392,94378,70759,15016,35963,47780,21765,91861,20177,54284,43509,65380,79679,52634,92656,11350,61690,98943,83983,50179,86263,51098,97399,15790,76824,52122,93977,31569,10387,32013,22062,24100,36785,40511,18106,38125,64313,90137,58921,18490,11736,21276,96147,74474,18175,17244,95179,53640,35921,77192,56525,76210,10200,50280,91580,53009,37692,55938,95073,46243,23712,90805,95407,21477,36229,87671,12637,63941,46879,93678,25926,17195,95304,59246,45130,79376,10644,14893,60308,15608,17102,62983,70591,95930,97547,37862,35024,10273,97376,12271,54633,29076,71598,72442,92315,72455,47004,39347,62536,23734,74967,48403,70153,12808,21938,88884,51399,69582,24582,57149,52672,88468,10338,65428,29345,56572,76182,78650,15058,95529,98068,97800,31404,82080,59730,39140,29102,35710,14872,19129,53034,14499,97971,64817,88246,89214,22608,36211,65685,45727,95408,45843,45389,21504,86858,84279,51270,48468,31326,76748,39075,18412,62941,22519,49989,10731,88600,66832,39096,94002,61542,53166,36035,75987,38135,34696,10435,99218,42017,32663,33544,53292,65825,30849,60690,57340,79242,63211,82462,25960,53227,92787,14322,20391,11192,54228,71617,61396,44951,69917,30629,99478,33870,98131,77800,68597,55605,47069,44611,16502,10524,67328,77141,65024,22632,73114,52044,28095,12699,96253,45609,17964,21031,29088,82546,31631,47091,97615,19124,43933,52552,16735,68485,38675,27483,60550,17925,37279,29135,28178,51145,25258,14858,97667,94257,78857,67153,44011,67709,88114,73490,80941,36307,30628,85442,17711,11011,26791,13095,47744,64431,62439,41520,44684,13057,21438,18631,34294,79266,85191,65603,45466,46387" 
+	timeStart="0" peg="pword" width="30%" height="10%" fontSize="40"/>
+	
+	<addButton hideResults="true" width="140" if="this.click?this.text='请输入你的密码。',this.click&&pword.correct==true?nextTrial.start()" goto="" height="40" text="我同意" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" vertical="top" text=
+		"{b}参加实验前，请先阅读以下说明。 当你点击页面下方的‘我同意’按钮时，说明你已同意参加本实验。{/b}{p align='left'}
+		在实验中，我们会请你把相似的词和图片连接起来。我们旨在研究不同文化背景的人是否会把同样的词和图片连接起来。 
+		在实验结束时，我们会更详细地告诉你本实验的目的。如果你愿意，你还可以联系andy@xperiment.mobi 以获取更多的信息。
+		请阅读以下关于同意参加本实验的说明，并回答你是否同意参加。
+		{u}关于知情同意的声明{/u}
+		1. 我理解这个实验的一般目的。
+		2. 我知道我可以在实验的任何阶段退出实验，我退出实验后数据将不会得到保存。
+		3. 我知道我是匿名参加这个实验的。
+		4. 我同意参加这个网络实验。{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+	
+	<addButton width="140" sstartID="next" height="40" text="我同意" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" trialName="comprehensionTest"  block="2" order="fixed">
+
+	<addText  autoSize="false" align="centre" wordWrap="true"  width="100%;100%;80%" height="20%" x="50%" y="0%" vertical="top" 
+	text="{b}首先我们讲测试一下你是否理解这个实验中的指导语。{/b}"
+	timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+	
+	<addText  fontSize="19" autoSize="false" align="centre" wordWrap="true"  height="20%"  width="100%" y="29%" text="请移动这个圈子中的词，把它和周围与之意义相似的词重叠起来，表示将它们配对，并保证其他的词留在颜色圈外部。{b}{a href='http://zh.wikipedia.org/wiki/%E9%AE%AE%E5%91%B3' target='_blank'}这里{/a}{/b} (将打开一个新的窗口)."/>	
+	
+	<addVennDiagram circleX="50%" circleY="50%" circleWidth="30%" circleHeight="30%" peg='venn' timeStart='0' circles="1" width='90%' height="30%" y="60%" fontSizes='13' position="random" circleNames='umami'
+	texts="美味,甜味,紫色,黄色,桌子,纸" />
+		
+	<addLoadingIndicator  height="5%" width="90%" y="95%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton betweenSJ='compTestLogic' hideResults="true" goto='' 
+	if="this.click?this.text='再试一次',this.click&&venn.abcResults=='umami:美味'?nextTrial.start()" width="140" height="40" 
+	text="检查一下是否正确"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="83%"/>
+		
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%" text=
+	"请提供一些关于你的信息。" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"性别---年龄"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" id="sex"  width="25%" height="10%" horizontalDistanceApart="210" labels="女,男"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="你来自哪个国家？" scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="58%"/>
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="继续"
+	if="this.click?this.text='请回答问题',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed">
+
+
+
+	<addText   x="50%" y="12%" height="20%" text=
+	"请再提供一些关于你的信息。" 
+    width="80%"  fontSize="20"></addText> 
+	
+	<addComboBox peg="lang" label="你的母语是?" items='汉语,其它' scale="1" timeStart="0" width="100%" height="5%" timeEnd="forever" x="50%" y="50%"/>
+		
+	<addComboBox peg="ethnicity" label="你的民族是?" items='汉族,壮族,回族,满族,维吾尔族,苗族,彝族,土家族,藏族,蒙古族,侗族,布依族,瑶族,白族,朝鲜族,哈尼族,黎族,哈萨克族,傣族,其他民族' scale="1" timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="64%"/>
+	
+	<addText text="你如何评价你的英语水平?" y='25%' fontSize='17' height="10%" align="center" width="100%" />
+	
+	<addMultipleChoice peg="fluencyFC" seperation='horizontal' distanceApart="5" id="fluent"  width="100%" height="10%" fontSize='15' labels="初学,基本会话,流利,母语" x="50%" y="33%" timeStart="0"  /> 
+
+	
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="继续"
+	if="this.click?this.text='请回答问题',this.click&&ethnicity.result!=''&&fluencyFC.result!=''&&lang.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="4" order="fixed">
+
+	<addText autosize="true" wordWrap="true"  width="100%" height="10%" x="50%" y="4%" vertical="top" text=
+		" {u}指导语{/u}"
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+	<addText autSize="false"  wordWrap="true" width="100%" height="15%" x="50%" y="70%" vertical="top" text=
+		"请快而准确地回答问题，我们会测量你的反应时间。整个实验需要大约8分钟完成。请点击开始按钮，开始实验。"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+
+	<addJPG filename="instructionsChinese.png" width='600' height='303' x="50%" y="40%" timeStart="0"/>
+	
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="开始" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+
+</TRIAL>
+
+
+  
+<TRIAL TYPE="Trial" trialName="black;grey;white;red;orange;yellow;green;blue;purple;pink;brown" block="10" order="random" trials="11">
+
+<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/40',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="把颜色和味道配对" fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<behavSwap peg="randomSwapChoice" usePegs="sweet,sour,salty,bitter,umami" timeStart="0" timeEnd="forever"/>
+	
+	<behavDragToShiftingArea peg='selected' usePegs="sweet,sour,salty,bitter,umami,stim" dragPegs="stim" id="selected" rt="true" behaviours="onFinish:confid.start(),confidTxt.start(),startRT.stop(),instruct.stop()" areaDropZonesX="40" snapBackToOriginalLocation="true" timeStart="0" timeEnd="forever"/>
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addText align="centre" peg="confidTxt" width="100%" height="50" x="50%" y="5%" 
+	text="你有多自信其他人的反应会和你的反应一样？" fontSize="25" wordWrap="true" timeEnd="forever" /> 
+	
+	<addMultipleChoice behaviours="click:nextButton.start()" peg="confid" autoSize="center" id="confidence" wordWrap="true" 
+	boxHeight="100" height="70" width="100%" boxWidth="110" seperation="horizontal" labels="很不自信,不自信,不确定,自信,很自信" padding="10" x="50%" y="20%" 
+	 timeEnd="forever" fontSize="20"/> 
+	
+	<addShape peg="stim" y="66%"  width="15%" height="aspectRatio" colour="black;grey;white;red;orange;yellow;green;blue;purple;pink;brown" timeStart="0" timeEnd="forever" lineThickness="0"/>
+	
+	
+	<addText howMany="5"fontSize='25' peg='sweet---sour---salty---bitter---umami' align="centre" text="甜味---酸味---咸味---苦味---鲜味" width="20%" height="100" 
+	x="69%---33%---22%---51%---80%"  y="91%---91%---59%---37%---58%" timeStart="0" timeEnd="forever"/>
+	
+	
+	<addButton peg="nextButton" hideResults="true" width="140" height="40" text="继续" y="66%"/>
+ 
+</TRIAL>  
+
+<TRIAL TYPE="Trial" trialName="monday;tuesday;wednesday;thursday;friday;saturday;sunday" block="10" order="random" trials="0">
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="把星期几和味道配对" fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavSwap peg="randomSwapChoice" usePegs="sweet,sour,salty,bitter,umami" timeStart="0" timeEnd="forever"/>
+	
+	<behavDragToShiftingArea peg='selected' usePegs="sweet,sour,salty,bitter,umami,stim" dragPegs="stim" id="selected" rt="true" behaviours="onFinish:confid.start(),confidTxt.start(),startRT.stop(),instruct.stop()" areaDropZonesX="40" snapBackToOriginalLocation="true" timeStart="0" timeEnd="forever"/>
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addText align="centre" peg="confidTxt" width="100%" height="50" x="50%" y="5%" 
+	text="你有多自信别人的反应会和你的反应一样？" fontSize="25" wordWrap="true" timeEnd="forever" /> 
+	
+	<addMultipleChoice behaviours="click:nextButton.start()" peg="confid" autoSize="center" id="confidence" wordWrap="true" 
+	boxHeight="100" height="70" width="100%" boxWidth="110" seperation="horizontal" labels="很不自信,不自信,不确定,自信,很自信" padding="10" x="50%" y="20%" 
+	 timeEnd="forever" fontSize="20"/> 
+	
+	<addText peg="stim" y="66%" selectable='false' background='black' align='center' colour="white" fontSize='25' width="22%" height="aspectRatio" text="星期一;星期二;星期三;星期四;星期五;星期六;星期天" timeStart="0" timeEnd="forever" lineThickness="0"/>
+
+	<addText howMany="5" selectable='false' fontSize='25' peg='sweet---sour---salty---bitter---umami' align="centre" text="甜味---酸味---咸味---苦味---鲜味" width="20%" height="100" 
+	x="69%---33%---22%---51%---80%"  y="91%---91%---59%---37%---58%" timeStart="0" timeEnd="forever"/>
+	
+	
+	<addButton peg="nextButton" width="140" height="40" text="继续" y="66%"/>
+ 
+</TRIAL> 
+
+<TRIAL TYPE="Trial" block="10" order="random" trials="30"trialName="arrow;asymStar;blob;circle;cloud;cross;diamond;drop;ellipse;heart;moon;rect;rough;soft;square;star;triangle;arch;donut;hexagon;lightning;octagon;parallelagram;pentagon;reverseMoon;rightAngTriangle;rotSquare;roundRect;sun;upsideDownChoppedPyramid" >
+	
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/40',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+	
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="把图形和味道配对" fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<behavSwap peg="randomSwapChoice" usePegs="sweet,sour,salty,bitter,umami" timeStart="0" timeEnd="forever"/>
+	
+	<behavDragToShiftingArea peg='selected' usePegs="sweet,sour,salty,bitter,umami,stim" dragPegs="stim" id="selected" rt="true" behaviours="onFinish:confid.start(),confidTxt.start(),startRT.stop(),instruct.stop()" areaDropZonesX="40" snapBackToOriginalLocation="true" timeStart="0" timeEnd="forever"/>
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addText align="centre" peg="confidTxt" width="100%" height="50" x="50%" y="5%" 
+	text="你有多自信别人的反应会和你的反应一样？" fontSize="25" wordWrap="true" timeEnd="forever" /> 
+	
+	<addMultipleChoice behaviours="click:nextButton.start()" peg="confid" autoSize="center" id="confidence" wordWrap="true" 
+	boxHeight="100" height="70" width="100%" boxWidth="110" seperation="horizontal" labels="很不自信,不自信,不确定,自信,很自信" padding="10" x="50%" y="20%" 
+	 timeEnd="forever" fontSize="20"/> 
+	
+	<addJPG filename="arrow.png;asymStar.png;blob.png;circle.png;cloud.png;cross.png;diamond.png;drop.png;ellipse.png;heart.png;moon.png;rect.png;rough.png;soft.png;square.png;star.png;triangle.png;arch.png;donut.png;hexagon.png;lightning.png;octagon.png;parallelagram.png;pentagon.png;reverseMoon.png;rightAngTriangle.png;rotSquare.png;roundRect.png;sun.png;upsideDownChoppedPyramid.png" peg="stim" y="66%"  width="15%" height="aspectRatio" colour="black" timeStart="0" timeEnd="forever" lineThickness="0"/>
+	
+	<addText howMany="5"fontSize='25' peg='sweet---sour---salty---bitter---umami' align="centre" text="甜味---酸味---咸味---苦味---鲜味" width="20%" height="100" 
+	x="68%---32%---21%---50%---79%"  y="91%---91%---59%---37%---58%" timeStart="0" timeEnd="forever"/>
+	
+	
+	<addButton peg="nextButton" width="140" height="40" text="继续" y="66%"/>
+ 
+</TRIAL>  
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="65%" text=
+	"谢谢你参加本实验。"
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	
+		 <addText  autoSize="false" wordWrap="true" fontSize="20" width="95%" height="50%" x="50%" y="0%" vertical="top" text=
+"{b}这个实验测试的是什么？{/b}
+前人研究发现，一些看起来无关的概念实际上是彼此联系的. 例如，人们经常把圆润的不规则形状和'bouba' 这个词联系起来，而把有尖角的不规则形状和'kiki'这个词联系起来。一种广为接受的解释是，我们发音时的口型导致了这种联系。当发'bouba'这个音时口型是圆的，使这个词更可能和圆润的不规则图形联系起来。而本实验则研究其它一些联系，如颜色、形状、星期几这些和口型无关的概念。"
+timeStart="0"  timeEnd="forever"></addText> 
+	
+
+</TRIAL>
+</Taste>	

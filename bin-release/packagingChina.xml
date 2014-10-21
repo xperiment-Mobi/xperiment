@@ -1,0 +1,263 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste"  saveToServerFile="true" />
+              <screen orientation="vertical" BGcolour="0xffffff"></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="packaging1" />
+			  <loadFilesInAdvance>true</loadFilesInAdvance>
+			  <variables trialNum='0' />
+			  <defaults ITI="100"/>
+</SETUP>
+
+
+<TRIAL TYPE="Trial" ITI="0" trialName="splash" hideResults="true" block='0' trials='1' >
+  
+  	<addText y="20%" fontSize="40" align="centre" text="欢迎光临本研究" width="100%" />
+
+	<addButton fontSize="30" text="中国的" behaviours="click:lang.language='default',lang.start(),next.start()---click:trial.start(),lang.language='chinese',lang.start(),next.start()---click:lang.language='spanish',lang.start(),next.start()" width="20%" height="100" y="60%"  goto=""/>
+	
+	<behavTrial peg="trial" enable="Code" />
+	
+	<behavLanguage peg="lang" />
+	
+	<behavNextTrial peg="next"/>               
+
+</TRIAL>
+
+<TRIAL  TYPE="Trial" trialName="Code" block="0" order="fixed" trials="1">
+
+
+	 <addText drawBox="true"  autoSize="false" align="center" wordWrap="true"  width="85%" height="90%" y="20%" text="请输入你的密码"
+		timeStart="0"  timeEnd="forever" fontSize="40"></addText> 
+		
+	<addInputTextBox correct="27152,66271,14478,46702,40304,91393,86458,34867,68835,18497,65615,46247,56793,12476,18508,56016,19500,12471,39922,23888,54558,99119,80735,37703,24991,13819,76137,74264,16602,44900,79963,45910,52103,17758,70142,12025,66778,40204,50511,91628,69681,56987,51278,70217,34361,16609,85261,29697,81465,47902,20442,23576,57414,93368,57325,12918,63082,27287,59199,88275,81291,96434,41512,68087,99064,85162,68160,13078,96654,72430,31387,57263,99174,56307,89661,45087,79370,59336,65166,64586,45487,72985,95294,37447,50358,33941,63653,35285,12528,52139,51351,83634,28522,78897,75114,56751,54384,11052,51087,67054,13964,48638,37722,19140,24116,93273,85933,78476,68197,95052,99458,14231,31162,18572,15629,49846,74069,24715,25557,82722,29662,60209,76401,23500,46450,22092,71767,79561,12925,96039,50619,26933,17094,59915,19367,10910,72567,61798,15137,73281,46958,14779,83104,66687,85359,78835,19899,35726,27500,11308,11748,97626,21246,97613,50141,97641,30420,52063,67922,66842,43721,13852,15121,11985,27309,85186,61699,70323,31971,53100,69638,44677,11962,62376,16431,61797,44701,50015,48666,99857,10734,19113,25618,31567,84568,81707,45501,19629,50526,90778,37169,26633,75610,14144,49294,96663,78934,41685,25689,36219,51736,24723,85584,16619,20274,17988,91788,19375,26149,14828,93852,27789,93612,67028,72634,86368,50879,11326,77046,70091,29371,33213,38304,45710,30024,49270,19246,13146,65982,68329,14758,51943,14461,38786,16642,68092,16877,19392,94378,70759,15016,35963,47780,21765,91861,20177,54284,43509,65380,79679,52634,92656,11350,61690,98943,83983,50179,86263,51098,97399,15790,76824,52122,93977,31569,10387,32013,22062,24100,36785,40511,18106,38125,64313,90137,58921,18490,11736,21276,96147,74474,18175,17244,95179,53640,35921,77192,56525,76210,10200,50280,91580,53009,37692,55938,95073,46243,23712,90805,95407,21477,36229,87671,12637,63941,46879,93678,25926,17195,95304,59246,45130,79376,10644,14893,60308,15608,17102,62983,70591,95930,97547,37862,35024,10273,97376,12271,54633,29076,71598,72442,92315,72455,47004,39347,62536,23734,74967,48403,70153,12808,21938,88884,51399,69582,24582,57149,52672,88468,10338,65428,29345,56572,76182,78650,15058,95529,98068,97800,31404,82080,59730,39140,29102,35710,14872,19129,53034,14499,97971,64817,88246,89214,22608,36211,65685,45727,95408,45843,45389,21504,86858,84279,51270,48468,31326,76748,39075,18412,62941,22519,49989,10731,88600,66832,39096,94002,61542,53166,36035,75987,38135,34696,10435,99218,42017,32663,33544,53292,65825,30849,60690,57340,79242,63211,82462,25960,53227,92787,14322,20391,11192,54228,71617,61396,44951,69917,30629,99478,33870,98131,77800,68597,55605,47069,44611,16502,10524,67328,77141,65024,22632,73114,52044,28095,12699,96253,45609,17964,21031,29088,82546,31631,47091,97615,19124,43933,52552,16735,68485,38675,27483,60550,17925,37279,29135,28178,51145,25258,14858,97667,94257,78857,67153,44011,67709,88114,73490,80941,36307,30628,85442,17711,11011,26791,13095,47744,64431,62439,41520,44684,13057,21438,18631,34294,79266,85191,65603,45466,46387" 
+	timeStart="0" peg="pword" width="30%" height="10%" fontSize="40"/>
+	
+	<addButton hideResults="true" width="140" if="this.click?this.text='请输入你的密码。',this.click&&pword.correct==true?nextTrial.start()" goto="" height="40" text="我同意" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block='1'>
+   
+ 
+   	<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+	
+	<addText  y="50%" x="50%" wordWrap="true" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="欢迎参加我们的颜色-味道联想研究。
+我们是牛津大学实验心理学系跨通道研究实验室的研究人员。我们正在研究人们如何把颜色和薯片口味联系起来。
+如果您决定参加这个研究,我们将会给您呈现一些薯片的图片,并请您把它们和颜色进行配对。
+这个研究大约需要20分钟完成。如果您愿意参加,请在安静的环境下参加这个研究。如果您需要戴眼镜,请在开始实验前就戴好眼镜。
+谢谢您的参与。"
+/>   
+	
+	<addButton peg="next" timeStart="0" width="200" enabled="false" height="50" text="继续" text.spanish="Continuar" x="85%" y="91%" ></addButton>                
+	
+	<addText  y="86%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="false" width="100%" height="10%"  timeStart="0" fontSize="20"
+	text="当下面的进度条显示图片已下载完成,请点击“继续”。"
+
+	/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+	
+
+	            
+</TRIAL> 
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" vertical="top" 
+	 text=
+"{b}参加实验前,请先阅读以下说明。 当你点击页面下方的‘我同意’按钮时,说明你已同意参加本实验。{/b}{p align='left'}
+在实验中,我们会请你把相似的词和图片连接起来。我们旨在研究不同文化背景的人是否会把同样的词和图片连接起来。 
+在实验结束时,我们会更详细地告诉你本实验的目的。如果你愿意,你还可以联系andy@xperiment.mobi 以获取更多的信息。
+请阅读以下关于同意参加本实验的说明,并回答你是否同意参加。
+{u}关于知情同意的声明{/u}
+1. 我理解这个实验的一般目的。
+2. 我知道我可以在实验的任何阶段退出实验,我退出实验后数据将不会得到保存。
+3. 我知道我是匿名参加这个实验的。
+4. 我同意参加这个网络实验。{/p}"
+
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+	
+	<addButton width="200" sstartID="next" height="40" text="我同意" text.spanish="Doy mi consentimiento" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="2%" height="20%"
+	text = "请提供一些关于你的信息。" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="4" width="200" height="10%" x="20%" y="10%---30%---80%---62%" 
+	text="性别---年龄---我的颜色视觉正常。---你在这里住了多久?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required='' peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="女,男" 
+ 	x="50%" y="10%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required='' peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="30%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required='' peg="origin" 
+	label="你现在住在哪里?"
+	timeStart="0" width="70%" height="5%" timeEnd="forever" x="50%" y="48%"/>
+	
+	
+	<addMultiNumberSelector required='00' peg="time" width="25%" height="20%" startingVal="00"  x="50%" y="63%" timeStart="0" timeEnd="forever" />
+
+	<addInputTextBox emptyWhenClicked="true" y="81.3%"  x="65%" width="20%" height="10%" multiline="true" text="如果不正常,是什么问题？" horizontal="left" />
+	
+	<addMultipleChoice required='' peg="vision" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="是,否" 
+ 	x="50%" y="81%" timeStart="0"  timeEnd="forever" /> 	
+ 	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="继续"
+	if="this.click?this.text='请回答问题',this.click&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="4" order="fixed">
+
+	<addText autSize="false"  wordWrap="true" width="100%" height="15%" x="50%" vertical="top" text=
+		"请快而准确地回答问题,我们会测量你的反应时间。整个实验需要大约8分钟完成。请点击开始按钮,开始实验。"
+		timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+
+	<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+	
+	<addButton enabled='false' peg='nextTr' width="140" height="40" text="开始" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+
+  
+<TRIAL template="myTemplate" block="10,1" trialName="a_pac;b_pac;c_pac;d_pac;e_pac;f_pac" trials="11">
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/18',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+
+	<addJPG peg="image" timeStart="0" width="234" height="334"
+			filename="e_BBQ.jpg;e_Cheddar_Cheese_and_Bacon.jpg;e_Cheese_and_Onion.jpg;e_Chicken.jpg;e_Cucumber.jpg;e_Lemon.jpg;e_Meat.jpg;e_Natural.jpg;e_Original.jpg;e_Salt_and_Vinegar.jpg;e_Tomato.jpg" 
+	filename.chinese="c_BBQ.jpg;c_Cheese_and_Bacon.jpg;c_Cheese_and_Onion.jpg;c_Chicken.jpg;c_Cucumber.jpg;c_Lemon.jpg;c_Meat.jpg;c_Natural.jpg;c_Original.jpg;c_Salt_and_vinager.jpg;c_Tomato.jpg"
+	filename.spanish="s_BBQ.jpg;s_Carne.jpg;s_Limon.jpg;s_Natural.jpg;s_Original.jpg;s_Pepino.jpg;s_Pollo.jpg;s_Queso_Cheddar_y_Tocineta.jpg;s_Queso_y_cebolla.jpg;s_Sal_y_vinagre.jpg;s_Tomate.jpg"
+	y="35%"/>
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="把颜色和味道配对" 
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addResults timeStart="0" peg="result" />
+	
+	<behavSwap usePegs="a,b,c,d,e,f,g" timeStart="0" timeEnd="forever"/>
+	
+	<addText howMany="7" selectable="false" timeStart="0" behaviours="click:result.selected=this.peg,result.image=image.filename,nextTrial.start()" peg="a---b---c---d---e---f---g"
+	background="yellow---blue---orange---0xFF0080---red---green---0x8C001A"
+	text="黄色---蓝色---橙色---玫红色---红色---绿色---紫红色"
+	align="center" width="10%" height="80" x="29%---43%---57%---71%---36%---50%---64%" y="70%---70%---70%---70%---85%---85%---85%" timeEnd="forever" fontSize="20"/> 
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+<TRIAL template="myTemplate" blockOrder="random" block="10,2" trialName="a_col;b_col;c_col;d_col;e_col;f_col" trials="7">
+	
+	<addText peg="trialnumber" timeStart="0" behaviours="doBefore:this.text=trialNum+'/18',doNow:trialNum=trialNum+1" fontSize="23" autoSize="false" 
+	align="right" wordWrap="true"  height="10%"  width="30%" x='100%' y="100%"  horizontal="right" vertical="bottom"/>	
+
+	<behavSwap usePegs="a,b,c,d,e,f,g" timeStart="0" timeEnd="forever"/>
+
+	<addJPG peg="a---b---c---d---e---f---g" howMany="7" timeStart="0"
+	behaviours="click:result.selected=this.filename,result.colour=colour.plainText,nextTrial.start()" 
+	filename="c_BBQ.jpg---c_Cheese_and_Bacon.jpg---c_Cheese_and_Onion.jpg---c_Chicken.jpg---c_Cucumber.jpg---c_Lemon.jpg---c_Meat.jpg---c_Natural.jpg---c_Original.jpg---c_Salt_and_vinager.jpg---c_Tomato.jpg"
+	x="20%---40%---60%---80%---30%---50%---70%" y="43%---43%---43%---43%---82%---82%---82%" 
+	width="200" height="300"/>
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="50" x="50%" y="5%" 
+	text="把颜色和味道配对" 
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+
+	<behavRT timeStart="0" peg="startRT" />
+	
+	<addResults timeStart="0" peg="result" />
+
+	
+	<addText selectable="false" peg="colour" timeStart="0"
+	background="yellow;blue;orange;0xFF0080;red;green;0x8C001A"
+	text="黄色;蓝色;橙色;玫红色;红色;绿色;紫红色" align="center"
+	width="33%" height="100"  y="15%" timeEnd="forever" fontSize="20"/> 
+	
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+<TRIAL   block="20" trialName="afterQs">
+
+	<addText y="10%"x="0" horizontal="left" width="100%" fontSize="32"
+	text="最后,我们还有一些问题要问您。"
+	/>
+	
+	<addInputTextBox emptyWhenClicked="true" required='' height="70" y="30%" 
+	text="您经常吃的薯片是哪个牌子的？"
+	/>
+	
+	<addInputTextBox emptyWhenClicked="true" required='' height="70" y="50%"
+	text="您最喜欢吃的薯片是哪个牌子的？"
+	/>
+	
+	<addText align="center" y="64%" 
+	text="您有多经常吃薯片？"
+	/>
+	
+	<addMultipleChoice required='' peg="frequncy" autoSize="center" timeEnd="forever" fontSize="15"  width="95%"  padding="10" x="50%" y="77%" distanceApart="5" height="10%" 
+	labels="从不,大约每年一次,大约每个月一次,每周,每天" seperation="horizontal" /> 	
+	
+	
+<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	text.chinese="继续"
+	text.spanish="siguiente"
+	if="this.click?this.text='请回答问题',this.click&&required==true?nextTrial.start()"     
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100">
+		
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+text = 
+"以前的研究已经揭示,在薯片的包装中存在着外显的和内隐的颜色-味道联系。有些颜色-味道联系在不同的文化背景下是一致的。在这些研究的基础之上,我们试图研究颜色-味道联系中是否存在跨文化差异。我们尤其希望研究与薯片包装有关的颜色-味道联系,以及其中的跨文化差异。"
+text.spanish="Estudios previos han demostrado la existencia de correspondencias explícitas e implícitas entre colores y sabores en empaques papas. De hecho, parece que estas correspondencias son consistentes entre culturas. Basado en estudios previos, nuestro objetivo es evaluar la existencia de las diferencias culturales entre la forma en que las personas asociaciones entre colores y sabores. En particular, queremos investigar cómo las personas asocian colores y sabores en empaques de producto, y si hay diferencias culturales."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+</Taste>	

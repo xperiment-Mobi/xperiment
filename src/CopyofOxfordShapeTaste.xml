@@ -1,0 +1,190 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="taste" mock="false" saveToServerFile="true" saveDataURL="http://www.opensourcesci.com/experiments/Oxford/ShapeTaste" />
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="OxfordShapeTaste" />
+			   <trials blockDepthOrder="20,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to drag packaging shapes into ‘taste names’ scales, as well as to match different ‘taste names’ to a variety of shapes.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to drag packaging shapes into ‘taste names’ scales, as well as to match different ‘taste names’ to a variety of shapes.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Mr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr Andy Woods (andy@xperiment.mobi) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL block="20,1" order="random" trialName="A_bitter;B_bitter;C_bitter;D_bitter;A_salty;B_salty;C_salty;D_salty;A_sour;B_sour;C_sour;D_sour;A_sweet;B_sweet;C_sweet;D_sweet;E_bitter;F_bitter;G_bitter;H_bitter;E_salty;F_salty;G_salty;H_salty;E_sour;F_sour;G_sour;H_sour;E_sweet;F_sweet;G_sweet;H_sweet" 
+trials="32">
+	
+	<addText align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please indicate where on the scale you would place a mark to represent a " text1="bitter;bitter;bitter;bitter;salty;salty;salty;salty;sour;sour;sour;sour;sweet;sweet;sweet;sweet" text2="-tasting food. Click on the scale and move the mark to do so." 
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<addResults if="this.doBefore?this.type=instruct.text1,this.im1=i1.filename,this.im2=i2.filename"/>
+
+	<addJPG exactSize="true" timeStart="0" peg="i1---i2" howMany="2" filename="kiki.png---bouba.png;angular1.png---rounded1.png;angular2.png---rounded2.png;square.png---circle.png;kiki.png---bouba.png;angular1.png---rounded1.png;angular2.png---rounded2.png;square.png---circle.png;kiki.png---bouba.png;angular1.png---rounded1.png;angular2.png---rounded2.png;square.png---circle.png;kiki.png---bouba.png;angular1.png---rounded1.png;angular2.png---rounded2.png;square.png---circle.png;bouba.png---kiki.png;rounded1.png---angular1.png;rounded2.png---angular2.png;circle.png---square.png;bouba.png---kiki.png;rounded1.png---angular1.png;rounded2.png---angular2.png;circle.png---square.png;bouba.png---kiki.png;rounded1.png---angular1.png;rounded2.png---angular2.png;circle.png---square.png;bouba.png---kiki.png;rounded1.png---angular1.png;rounded2.png---angular2.png;circle.png---square.png"	
+	x="5%---95%" y="70%" horizontal="left---right"/>
+	
+	<linescale timeStart="0" peg="scale" if="this.mouseDown?b.start()" labelList="," width="70%"/>
+	
+	<addButton  peg="b" hideResults="true" key=" " y="100%" vertical="bottom" width="200" height="40" text="next (space bar)"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>  
+
+
+<TRIAL block="20,2" order="random" trialName="CSweet;CSour;CBitter;CSalty" 
+trials="4">
+	
+
+	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these pictures of packages according to how appropriate would each package be for a  {b}" text1="SWEET;SOUR;BITTER;SALTY" text2="{/b} product in respect to the others. Not that the " text3="sweet;sour;bitter;salty" text4=" scale ranges from 'not at all " text5="sweet;sour;bitter;salty" text6="' to 'very much " text7="sweet;sour;bitter;salty" text8="' and that the vertical position does not matter. So, for example, if you think a package would be ideal for a " text9="sweet;sour;bitter;salty" text10="-tasting product drag the packaging to the right of the screen." 
+	fontSize="25" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<addResults if="this.doBefore?this.taste=instruct.text1"/>
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" timeEnd="forever"/>
+	
+	<addJPG timeStart="0" howMany="20" peg="pics" width="75" height="aspectRatio" filename="1.png---10.png---11.png---12.png---13.png---14.png---15.png---16.png---17.png---18.png---19.png---2.png---20.png---21.png---22.png---3.png---4.png---7.png---8.png---9.png" />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="35%" colour="none" visible="false" y="40%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="20%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+<TRIAL block="20,3" order="random" trialName="JSweet;JSour;JBitter;JSalty" 
+trials="4">
+	
+	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these pictures of packaging into the box, arranging them according to the extent to which you associate them to a {b}" text1="SWEET;SOUR;BITTER;SALTY" text2="{/b} taste in respect to the others. Not that the " text3="sweet;sour;bitter;salty" text4=" scale ranges from 'not at all " text5="sweet;sour;bitter;salty" text6="' to 'very much " text7="sweet;sour;bitter;salty" text8="' and that the vertical position does not matter. So, for example, if you think a package would be ideal for a " text9="sweet;sour;bitter;salty" text10="-tasting product drag the packaging to the right of the screen." 
+	fontSize="22" wordWrap="true"  timeStart="0" peg="instruct" /> 
+	
+	<addResults if="this.doBefore?this.taste=instruct.text1"/>
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />	
+	
+	<backgroundImage timeStart="0" y="80%" background="bg" usePegs="pics,bg"/>
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" />
+	
+	<addJPG height="100%" exactSize="true" filename="jar.png" peg="bg"/>
+	
+	<addJPG timeStart="0" howMany="20" peg="pics" width="30" height="aspectRatio" filename="J1.png---J10.png---J11.png---J14.png---J15.png---J16.png---J2.png---J20.png---J21.png---J22.png---J23.png---J26.png---J3.png---J4.png---J5.png---J6.png---J7.png---J8.png---J9.png---J24.png" />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="43%" colour="none" visible="false" y="35%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="20%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation to this study. We're exploring the way people associate shapes to tastes. In previous studies, we found that people associated angular shapes to sourness, and rounded shapes to sweetness. Still, when it comes to other tastes, depending on the shape, there seems to be less agreement. This is what you helped us assessing by taking part to this online experiment. 
+If you have any questions or would like to here more about our research, please contact us at carlos.velasco@psy.oc.ac.uk"
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

@@ -1,0 +1,320 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results  mock="false" save="webfile" saveDataURL="http://www.opensourcesci.com/experiments/Oxford/ShapeTasteLab" />
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+			  <computer  stimuliFolder="OxfordShapeTaste" />
+			  <trials blockDepthOrder="20,*=random 20,*,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to tastes. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
+	text="You will now begin the experiment. In each block, you will be asked to take a sip of a taste solution, then spit it out and respond. Before moving to another block, you will be asked to cleanse your palate with water."/>   
+	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="0"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="11"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="22"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="33"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="44"/>
+
+<TRIAL block="20,1,1" template="templateLineScale" trialName="A_bitter;B_bitter;C_bitter;D_bitter;E_bitter;F_bitter;G_bitter;H_bitter">
+	<addText copyOverID="taste" text1="382"/>
+</TRIAL>
+
+<TRIAL block="20,1,2" template="templatePackage" trialName="CBITTER">
+	<addText copyOverID="taste" text1="382"/>
+</TRIAL>
+
+<TRIAL block="20,1,3" template="templateJam" trialName="JBITTER">
+	<addText copyOverID="taste" text1="382" />
+</TRIAL>
+
+<TRIAL block="20,1,4" template="templateLiking" trialName="Liking_BITTER">
+	<addText copyOverID="taste" text1="382" />
+</TRIAL>
+
+
+<TRIAL block="20,2,1" template="templateLineScale" trialName="A_umami;B_umami;C_umami;D_umami;E_umami;F_umami;G_umami;H_umami">
+	<addText copyOverID="taste" text1="346"/>
+</TRIAL>
+
+<TRIAL block="20,2,2" template="templatePackage" trialName="Cumami">
+	<addText copyOverID="taste" text1="346"/>
+</TRIAL>
+
+<TRIAL block="20,2,3" template="templateJam" trialName="Jumami">
+	<addText copyOverID="taste" text1="346" />
+</TRIAL>
+
+<TRIAL block="20,2,4" template="templateLiking" trialName="Liking_umami">
+	<addText copyOverID="taste" text1="346" />
+</TRIAL>
+
+
+<TRIAL block="20,3,1" template="templateLineScale" trialName="A_salty;B_salty;C_salty;D_salty;E_salty;F_salty;G_salty;H_salty">
+	<addText copyOverID="taste" text1="414"/>
+</TRIAL>
+
+<TRIAL block="20,3,2" template="templatePackage" trialName="Csalty">
+	<addText copyOverID="taste" text1="414"/>
+</TRIAL>
+
+<TRIAL block="20,3,3" template="templateJam" trialName="Jsalty">
+	<addText copyOverID="taste" text1="414" />
+</TRIAL>
+
+<TRIAL block="20,3,4" template="templateLiking" trialName="Liking_salty">
+	<addText copyOverID="taste" text1="414" />
+</TRIAL>
+
+
+<TRIAL block="20,4,1" template="templateLineScale" trialName="A_sour;B_sour;C_sour;D_sour;E_sour;F_sour;G_sour;H_sour">
+	<addText copyOverID="taste" text1="991"/>
+</TRIAL>
+
+<TRIAL block="20,4,2" template="templatePackage" trialName="Csour">
+	<addText copyOverID="taste" text1="991"/>
+</TRIAL>
+
+<TRIAL block="20,4,3" template="templateJam" trialName="Jsour">
+	<addText copyOverID="taste" text1="991" />
+</TRIAL>
+
+<TRIAL block="20,4,4" template="templateLiking" trialName="Liking_sour">
+	<addText copyOverID="taste" text1="991" />
+</TRIAL>
+
+
+
+<TRIAL block="20,5,1" template="templateLineScale" trialName="A_sweet;B_sweet;C_sweet;D_sweet;E_sweet;F_sweet;G_sweet;H_sweet">
+	<addText copyOverID="taste" text1="523"/>
+</TRIAL>
+
+<TRIAL block="20,5,2" template="templatePackage" trialName="Csweet">
+	<addText copyOverID="taste" text1="523"/>
+</TRIAL>
+
+<TRIAL block="20,5,3" template="templateJam" trialName="Jsweet">
+	<addText copyOverID="taste" text1="523" />
+</TRIAL>
+
+<TRIAL block="20,5,4" template="templateLiking" trialName="Liking_sweet">
+	<addText copyOverID="taste" text1="523" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="25" order="fixed"  trials="1">
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
+	text="Now, we will ask you to rate how much you like some abstract shapes"/>   
+	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL order="random" block="30" trials="3" trialName="packageLiking;boubaLiking;JarLiking">
+	
+
+	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these pictures of " text1="packages;shapes;packages" text2=" into the box, arranging them according to the extent to which you like them in respect to the others. Not that the scale ranges from 'not at all' to 'very much' and that the vertical position does not matter. So, for example, if you like a lot a package, drag the packaging to the right of the screen." 
+	fontSize="25" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" timeEnd="forever"/>
+	
+	<addJPG timeStart="0" howMany="20;8;24" peg="pics" width="75;82;30" height="aspectRatio" filename="1.png---10.png---11.png---12.png---13.png---14.png---15.png---16.png---17.png---18.png---19.png---2.png---20.png---21.png---22.png---3.png---4.png---7.png---8.png---9.png;angular1.png---angular2.png---bouba.png---circle.png---kiki.png---rounded1.png---rounded2.png---square.png;J1.png---J10.png---J11.png---J14.png---J15.png---J16.png---J2.png---J20.png---J21.png---J22.png---J23.png---J26.png---J3.png---J4.png---J5.png---J6.png---J7.png---J8.png---J9.png---J24.png" />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="35%" colour="none" visible="false" y="40%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="20%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" key=" " goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	
+	<backgroundImage present="false;false;true" timeStart="0" y="80%" width="75" background="bg" usePegs="pics,bg"/>
+	<addJPG present="false;false;true" height="100%" exactSize="true" filename="jar.png" peg="bg"/>
+	
+</TRIAL>  
+
+
+<templatePause  order="fixed" trials="1">
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
+	text="Now, you will answer questions about a new taste. Before doing so, we will ask you to cleanse your palate with water."/>   
+	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
+</templatePause>
+
+<templateLiking order="random" trials="1">
+<addText copyOverID="taste" align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please indicate how much you like the taste {b}" text1="" text2="{/b}. Click on the scale and move the mark to do so." 
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<linescale timeStart="0" peg="scale" if="this.mouseDown?b.start()" labelList="not at all,very much" width="70%"/>
+	
+	<addButton  peg="b" hideResults="true" key=" " y="100%" vertical="bottom" width="200" height="40" text="next (space bar)"/>
+
+</templateLiking>
+
+
+
+<templateLineScale order="random" trials="8">
+	
+	<addText copyOverID="taste" align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please indicate where on the scale you would place a mark to represent the taste {b}" text1="" text2="{/b}. Click on the scale and move the mark to do so." 
+	fontSize="40" wordWrap="true" timeEnd="forever" /> 
+	
+	<addResults if="this.doBefore?this.type=instruct.text1,this.im1=i1.filename,this.im2=i2.filename"/>
+
+	<addJPG exactSize="true" timeStart="0" peg="i1---i2" howMany="2" filename="kiki.png---bouba.png;angular1.png---rounded1.png;angular2.png---rounded2.png;square.png---circle.png;bouba.png---kiki.png;rounded1.png---angular1.png;rounded2.png---angular2.png;circle.png---square.png"	
+	x="5%---95%" y="70%" horizontal="left---right"/>
+	
+	<linescale timeStart="0" peg="scale" if="this.mouseDown?b.start()" labelList="," width="70%"/>
+	
+	<addButton  peg="b" hideResults="true" key=" " y="100%" vertical="bottom" width="200" height="40" text="next (space bar)"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+</templateLineScale>  
+
+
+<templatePackage order="random" trials="1">
+	
+
+	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these pictures of packaging into the box, arranging them according to the extent to which you associate them with the taste {b}" text1="" text2="{/b} in respect to the others. Not that the scale ranges from 'not at all' to 'very much' and that the vertical position does not matter. So, for example, if you think a package would be ideal for the taste drag the packaging to the right of the screen." 
+	fontSize="25" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<addResults if="this.doBefore?this.taste=instruct.text1"/>
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" timeEnd="forever"/>
+	
+	<addJPG timeStart="0" howMany="20" peg="pics" width="75" height="aspectRatio" filename="1.png---10.png---11.png---12.png---13.png---14.png---15.png---16.png---17.png---18.png---19.png---2.png---20.png---21.png---22.png---3.png---4.png---7.png---8.png---9.png" />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="35%" colour="none" visible="false" y="40%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="20%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" key=" " goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</templatePackage>  
+
+<templateJam order="random" trials="1">
+	
+	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these pictures of packaging into the box, arranging them according to the extent to which you associate them with the taste {b}" text1="" text2="{/b} in respect to the others. Not that the scale ranges from 'not at all' to 'very much' and that the vertical position does not matter. So, for example, if you think a package would be ideal for the taste drag the packaging to the right of the screen." 
+	fontSize="22" wordWrap="true"  timeStart="0" peg="instruct" /> 
+	
+	<addResults if="this.doBefore?this.taste=instruct.text1"/>
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />	
+	
+	<backgroundImage timeStart="0" y="80%" background="bg" usePegs="pics,bg"/>
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" />
+	
+	<addJPG height="100%" exactSize="true" filename="jar.png" peg="bg"/>
+	
+	<addJPG timeStart="0" howMany="20" peg="pics" width="30" height="aspectRatio" filename="J1.png---J10.png---J11.png---J14.png---J15.png---J16.png---J2.png---J20.png---J21.png---J22.png---J23.png---J26.png---J3.png---J4.png---J5.png---J6.png---J7.png---J8.png---J9.png---J24.png" />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="43%" colour="none" visible="false" y="35%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+	
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="light---heavy" width="20%" fontSize="30" text="not at all---very much" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" key=" " goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</templateJam>  
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation to this study." timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+</TRIAL>
+
+
+
+
+</Taste>	
