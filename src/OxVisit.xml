@@ -1,0 +1,132 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results  mock="false"  />
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+			  <computer  stimuliFolder="OxVisit" />
+			  <trials blockDepthOrder="30,*=random" />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to tastes. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL >
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+<addText fontSize="40" text="In this experiment, we will show you several images of products and will ask you to rate how sweet or sour you expect each product to be." />
+<addButton peg="b"  hideResults="true" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" key=" " text="click to start the study"/>
+	
+</TRIAL>
+
+
+
+
+
+
+<TRIAL block="30,1" template="myTemplate" trialName="SourdetergentSmoFontSmo;SourdetergentSmoFontAng;SourdetergentAngFontSmo;SourdetergentAngFontAng;SourperfumeAngFontAng;SourperfumeAngFontSmo;SourperfumeSmoFontAng;SourperfumeSmoFontSmo;SourcoffeeSmoFontSmo;SourcoffeeSmoFontAng;SourcoffeeAngFontSmo;SourcoffeeAngFontAng;SourJuiceAngFontAng;SourJuiceAngFontSmo;SourJuiceSmoFontAng;SourJuiceSmoFontSmo">
+  <addSlider copyOverID="scale" sliderTitle="how sour?"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="30,1" forceBlockDepthPositions="16" trials="1">
+<addText fontSize="40" text="Half way! Note that the attribute you are rating the items for will change now." />
+<addButton peg="b"  hideResults="true" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" key=" " text="click to start the study"/>
+
+</TRIAL>
+
+<TRIAL block="30,3" template="myTemplate" trialName="SweetdetergentSmoFontSmo;SweetdetergentSmoFontAng;SweetdetergentAngFontSmo;SweetdetergentAngFontAng;SweetperfumeAngFontAng;SweetperfumeAngFontSmo;SweetperfumeSmoFontAng;SweetperfumeSmoFontSmo;SweetcoffeeSmoFontSmo;SweetcoffeeSmoFontAng;SweetcoffeeAngFontSmo;SweetcoffeeAngFontAng;SweetJuiceAngFontAng;SweetJuiceAngFontSmo;SweetJuiceSmoFontAng;SweetJuiceSmoFontSmo">
+  <addSlider copyOverID="scale" sliderTitle="how sweet?"/>
+</TRIAL>
+
+
+
+
+<myTemplate  order="random" trials="16">
+	
+	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please drag these images into the box, arranging them according to the extent to which you like them. Note that the scale ranges from 'not at all' to 'very much' and that the vertical position does not matter." 
+	fontSize="25" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<addText y="5%" width="30%" align="middle" fontSize="40" height="5%" text="laundry detergent;laundry detergent;laundry detergent;laundry detergent;perfume;perfume;perfume;perfume;coffee;coffee;coffee;coffee;juice;juice;juice;juice" />
+	
+	<addJPG copyOverID="pics" timeStart="0" howMany="1" peg="pics" y="30%" extension="png" exactSize="true" filename="detergentSmoFontSmo;detergentSmoFontAng;detergentAngFontSmo;detergentAngFontAng;perfumeAngFontAng;perfumeAngFontSmo;perfumeSmoFontAng;perfumeSmoFontSmo;coffeeSmoFontSmo;coffeeSmoFontAng;coffeeAngFontSmo;coffeeAngFontAng;JuiceAngFontAng;JuiceAngFontSmo;JuiceSmoFontAng;JuiceSmoFontSmo" />
+	
+	<addSlider copyOverID="scale" titleSize="40" peg="dv" required="" timeStart="0" y="75%" labelList="not at all,most intense imaginable" />
+	
+	<addButton peg="b"  hideResults="true" goto="" if="this.click&&required==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" key=" " text="next (space bar)"/>
+
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</myTemplate> 
+			
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation to this study." timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+</TRIAL>
+
+
+
+
+</Taste>	

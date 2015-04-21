@@ -1,0 +1,159 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+              <results id="dots" />
+              <screen BGcolour="black" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="fontTastes" />
+			  <trials blockDepthOrder="10,*=random 10,*,*=random" />
+			  <defaults ITI="50" />
+			  <style   />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="100%"  y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}PARTICIPANT INFORMATION{/b}
+This is a study run by the Department of Psychology at the University of Sheffield.
+Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information.
+{b}Background{/b} This is a study which investigates how we make simple decisions about what we are seeing. Although the decisions will not feel like they involve lots of thought, as scientists we can still learn a lot about how the brain processes information by examining the speed and the accuracy of these decisions
+{b}Procedures{/b} We are looking for adults normal or corrected-to-normal vision (i.e. glasses or contact lens), who don’t have any problems moving their hands (i.e. no hand injuries or peristent motor problems such as dyspraxia or Parkinson’s Disease). The experiment may take up to 15 minutes but should be finished quicker than that. During the experiment you will first be asked some basic questions about your age, health and handedness, you will then be asked to make a series of quick and accurate judgements about the dominant motion in a cloud of moving dots. 
+{b}Your Data{/b} Your involvement in the study will remain confidential and the data collected is anonymous (it will be stored without your name or ID attached). At the end of the study your data will be made “Open Data”. This means that it will be stored in an online database so that it is publicly available. Only the data you provide as part of this task will be stored.
+{b}What is Open Data?{/b}Open data means that data are made available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised before it is made available and therefore there will be no way to identify you from the research data.
+{b}Why Open Data?{/b}Open access to research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publically funded, the outcomes of the research should be made publically available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+{b}Contact{/b} Tom Stafford, Department of Psychology, University of Sheffield, Sheffield, S10 2TP, UK, t.stafford@shef.ac.uk"
+		timeStart="0"  timeEnd="forever" fontSize="16"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="90%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trialName="ethics2" trials="1">
+
+ <addText drawBox="true" howMany="12" autoSize="false" align="left" selectable="false" wordWrap="true" x="55%" width="85%" height="100%"  y="10%---20%---25%---30%---35%---40%---45%---50%---55%---60%---65%---70%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}CONSENT QUESTIONS{/b}
+Are aged over 18 and 40 years?---Are not currently taking any psychiatric medication?---Do not have impaired or uncorrected vision?---Do not have injuries or other motor problems which affect your hand-eye coordination---HAVE YOU---      Been given information explaining about the study?---      Been given contact information to ask questions and discuss this study?---      Received enough information about the study for you to make a decision about participation?---DO YOU UNDERSTAND THAT YOU MAY:---      Withdraw from the study and / or withdraw your data at any time?---      Withdraw from the study and / or withdraw your data without having to give a reason?---I understand the nature and purpose of the procedures involved in this study. These have been communicated to me on the information sheet accompanying this form.
+I understand and acknowledge that the investigation is designed to promote scientific knowledge and that the University of Sheffield will use the data I provide for no purpose other than research.
+I agree that the data collected from me as part of the study will be anonymised, and that after the study will be made open access. I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.
+" timeStart="0"  timeEnd="forever" fontSize="16"></addText> 
+
+ <addMultipleChoice height="35" width="10%" labels="yes,no" required="==yes" horizontal="left" howMany="12" y="16%---21%---26%---31%---41%---46%---51%---61%---66%---73%---80%---88%" x="0%---0%---0%---0%---3%---3%---3%---3%---3%" seperation="horizontal"/>
+	
+ <addButton width="90%" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exist the study.',this.click&&required==true?next.start()" height="40"  text="I fully consent to participation in this study" vertical="bottom" y="100%"/>
+ 		
+ <behavNextTrial peg="next" />
+ 	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	
+	<addInput text="do you have any visual or motor problems? Could you briefly details any here please." 
+	timeStart="0" peg="language" height="20%"  width="70%"/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" height="40" peg='next' 
+	text="next"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	
+	<addText fontSize="20---20---25" howMany="3" width="100%" verticalAlign="top" align="middle" vertical="top" y="0%---80%---90%" text="{b}INSTRUCTIONS{/b}
+Thank you for taking part. This is a test of decision making. On each trial please use the arrow keys to indicate whether more dots are moving to the left (left arrow) or right (right arrow). Below, the dots are moving mostly rightward. Please respond as quickly and accurately as possible.
+Throughout the experiment please keep focussed on the centre of the screen (marked by the white cross between trials).---Put the fingers from one hand on the arrow keys and press left or right when you are ready to start the experiment (if nothing happens, you may have NumLock on).---{b}The 10 most accurate participants will each be awarded a $5 bonus {/b}(several days after data collection)." />
+	
+	<addMotionPatch timeStart="450" angle="0;180" colour="white"  ratioCoherent=".7" />
+	
+
+	
+	<addButton timeStart='0' visible="false" howMany="2" key="left---right" hideResults="true" width="340" height="40" peg='next' 
+	text="next"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forcePositionInBlock='1/2'  trials="1">
+	<addText   text="Half way through! Press left/right to continue."	width="80%"  align="center" timeEnd="forever" fontSize="60"></addText>
+	<addButton  peg='nextTr' key="left---right" howMany="2" visible="false" width="140" height="40" text="continue"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  block="10" order="random" trials="80">
+	<addText text="+" timeEnd="450" align="middle" fontSize="50"/>
+	<results peg="results" timeStart="0"/>
+	<addMotionPatch timeStart="450" angle="0;180" colour="gray;gray;white;white"  ratioCoherent=".7;.7;.7;.7;.3;.3;.3;.3" if="this.doBefore?results.angle=this.angle,results.col=this.colour,results.ratio=this.ratioCoherent"/>
+	
+	<addText y="90%" text="press LEFT key if the dots are moving left or RIGHT key if moving right" align="centre"/>
+	
+	<behavRT peg="rt" timeStart="450" />
+	
+	<addTrialCounter trials="80"  y="5%" width="10%" height="5%"/>
+	
+	<addButton timeStart="450"  goto='' if="this.click?results.button=this.peg,nextTrial.start()" hideResults='true' peg="left---right" howMany="2" visible="false" key="left---right" width="12%" height="7%" y="90%" x="25%---75%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" trials="1">
+	<bbehavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="DEBRIEF INFORMATION
+Thank you for your participation in our study
+About the study: As you will have noticed, the different stimuli contained a great or smaller number of coherent dots. We also made the dots bright or less-bright. By comparing how these two factors - the coherence and the brightness - interact we can test particular theories of how the brain makes the computations which generate our decisions. For more information click below:
+{a href='http://www.frontiersin.org/Cognitive_Science/10.3389/fpsyg.2011.00287/abstract'}Stafford, T., & Gurney, K. N. (2011). Additive Factors Do Not Imply Discrete Processing Stages: A Worked Example Using Models of the Stroop Task. Frontiers in Psychology, 2. doi:10.3389/fpsyg.2011.00287{/a}{/font}
+If you have any questions please contact: Dr Tom Stafford, Department of Psychology, University of Sheffield, Westen Bank, Sheffield, S10 2TP, UK. t.stafford@shef.ac.uk"	y="0%" vertical="top" timeStart="0"  verticalAlign="top" height="80%" width="80%"  align="left" timeEnd="forever" fontSize="30"></addText>
+
+</TRIAL>
+  	
+
+</Taste>	
