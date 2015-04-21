@@ -2,11 +2,12 @@
 
 	<FacesShort exptType="WEB">
 	
-	 <SETUP>  
+	 <SETUP> 
+	  
         <screen BGcolour="white"></screen>                          
 		<computer stimuliFolder="MD_faces" />
 		<style BUTTON_DOWN="0xff5656"  />
-		<results save="webfile" mock="false" saveDataURL = "http://www.opensourcesci.com/experiments/Bristol/MD_faces" />
+		<results save="cloud" mock="false"  />
 					
 	</SETUP>
 		
@@ -23,12 +24,12 @@
 	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="10%;20%" verticalAlign="top" vertical="top" 
 	 text=
 "{b}BRISTOL EMOTION RECOGNITION TASK – ONLINE PILOT STUDY INFORMATION SHEET{/b}
-Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information. 
-{b}Background{/b}: this study is being conducted to investigate the feasibility of an online version of the Bristol emotion recognition task. Previous research on the ability to recognize different facial expressions of emotion among adults has produced mixed results and most studies have been quite small. This study is a pilot study to determine whether the Bristol emotion recognition task can be used online to conduct larger studies on emotion recognition in the future.
-{b}Procedures{/b}: we are looking for people aged between 18 and 40 who are currently in good psychiatric health with corrected-to-normal vision. Participants should be native English speakers or have an equivalent level of fluency, and not be taking any psychiatric medication. Participants should not be using any illicit substances (not including cannabis). Participants are free to withdraw from the study at any time and do not have to give a reason for this decision. The experiment may take up to 20 minutes. During the experiment you would be asked take part in a computer task that involves judging the emotion present in a face. All data collected would remain anonymous and you have the right to not answer particular questions and to withdraw your data at any time.  
-{b}Your Data{/b}: your involvement in the study will remain confidential. At the end of the study your data will be made “Open Access”. This means that it will be stored in an online database so that it is publicly available. 
+Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information.
+{b}Background{/b}: This study is being conducted to validate a new East-Asian face stimulus set to be used with the Bristol emotion recognition task. These stimuli will be used in future studies to assess recognition of facial expressions of emotion. This study is a validation study to determine whether images in this new face set accurately depict basic emotional expressions.
+{b}Procedures{/b}: We are looking for people aged between 18 and 40 who are currently in good psychiatric health with corrected-to-normal vision. Participants should be native English speakers or have an equivalent level of fluency, and not be taking any psychiatric medication. Participants should not be using any illicit substances (not including cannabis). Participants are free to withdraw from the study at any time and do not have to give a reason for this decision. The experiment may take up to 10 minutes. During the experiment you would be asked take part in a computer task that involves judging the emotion present in a face. All data collected would remain anonymous and you have the right to not answer particular questions and to withdraw your data at any time.  
+{b}Your Data{/b}: Your involvement in the study will remain confidential. This information will only be available to research staff and national bodies which monitor whether research studies are conducted properly.  Your study data will be anonymised. This means that it will be given an identification number and any identifying information about you will be removed. Therefore, it will not be possible to identify you by name from any aspect of documentation or reporting for this research study. At the end of the study your data will become “open data”. This means that the data will be stored in an online database and will be publicly available. 
 ;{b}What is open access?{/b} Open access means that data are made available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised before it is made available and therefore there will be no way to identify you from the research data. 
-{b}Why open access?{/b}: open access of research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publically funded, the outcomes of the research should be made publically available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+{b}Why open access?{/b}: Sharing research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publicly funded, the outcomes of the research should be made publicly available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research. 
 {b}If you have any questions about the study{/b} please contact Michael Dalili at michael.dalili@bristol.ac.uk.
 {b}If you have any concerns{/b} related to your participation in this study, please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0117 9546832, Email: liam.mckervey@bristol.ac.uk"
 		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
@@ -65,7 +66,7 @@ Before you decide to take part in this study, please take time to read the follo
 	<addButton width="90%" hideResults="true" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exit the study.',this.click&&required==true?next.start()" height="40"  text="continue" vertical="bottom" y="100%"/>
 	
 	<behavNextTrial peg="next" />
-
+	
 </TRIAL>
 
 <TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="1">
@@ -89,13 +90,35 @@ I agree to the University of Bristol keeping and processing the data I have prov
 		
 	<addLoadingIndicator behaviours="onFinish:confirm.goto='next'" width="50%" height="5%"  y="85%" />
 	
+	<addUrlVariable  _ip="notGiven" />
 
 </TRIAL>
+
+
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="how old are you?" />
+		<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+
+
+
+		
+	<demographics TYPE="Trial" block="-1" order="fixed" trials="1">
+	
+		<addText colour="COLOUR" x="50%" y="12%" height="20%" text="Some questions about yourself" timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+		<addText copyOverID="Q" colour="COLOUR" width="60" height="10%" y="25%"	/>
+		
+	
+	</demographics>
+	
+	
 		
 		
 		<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
 		
-			<addUrlVariable  _ip="notGiven" />
+			
 		
 			<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
 			"Some questions about yourself" 
@@ -129,7 +152,7 @@ I agree to the University of Bristol keeping and processing the data I have prov
 			"These are example pictures, shown for the same time as in the study (actual pictures will be larger):"
 				timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
 		
-			<addJPG howMany="6" y="40%" filename="anger15.jpg---disgust15.jpg---fear15.jpg---happy15.jpg---sad15.jpg---surprise15.jpg" 
+			<addJPG howMany="6" y="40%" filename="as_ma_anger14.jpg---as_fe_disgust14.jpg---as_ma_fear14.jpg---as_fe_happy14.jpg---as_ma_sad14.jpg---as_fe_surprise14.jpg" 
 			timeStart="0---4000---8000---etc---" timeEnd='200---4200---8200---etc---' width="229.6" height="300" />	
 			
 			<addText colour="COLOUR"  y="65%" wordWrap="true" width="90%"   text=
@@ -143,7 +166,6 @@ I agree to the University of Bristol keeping and processing the data I have prov
 			<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
 			
 			<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
-		
 		
 		</TRIAL>
 				
@@ -170,41 +192,104 @@ I agree to the University of Bristol keeping and processing the data I have prov
 		</TRIAL>
 		  
 		  
-		  
-		<TRIAL template="myTemplate" betweenSJ='longTrials' trials="0">	
-			<addJPG copyOverID="images" filename="f_anger00;f_anger01;f_anger02;f_anger03;f_anger04;f_anger05;f_anger06;f_anger07;f_anger08;f_anger09;f_anger10;f_anger11;f_anger12;f_anger13;f_anger14;f_disgust00;f_disgust01;f_disgust02;f_disgust03;f_disgust04;f_disgust05;f_disgust06;f_disgust07;f_disgust08;f_disgust09;f_disgust10;f_disgust11;f_disgust12;f_disgust13;f_disgust14;f_fear00;f_fear01;f_fear02;f_fear03;f_fear04;f_fear05;f_fear06;f_fear07;f_fear08;f_fear09;f_fear10;f_fear11;f_fear12;f_fear13;f_fear14;f_happy00;f_happy01;f_happy02;f_happy03;f_happy04;f_happy05;f_happy06;f_happy07;f_happy08;f_happy09;f_happy10;f_happy11;f_happy12;f_happy13;f_happy14;f_sad00;f_sad01;f_sad02;f_sad03;f_sad04;f_sad05;f_sad06;f_sad07;f_sad08;f_sad09;f_sad10;f_sad11;f_sad12;f_sad13;f_sad14;f_surprise00;f_surprise01;f_surprise02;f_surprise03;f_surprise04;f_surprise05;f_surprise06;f_surprise07;f_surprise08;f_surprise09;f_surprise10;f_surprise11;f_surprise12;f_surprise13;f_surprise14;m_anger00;m_anger01;m_anger02;m_anger03;m_anger04;m_anger05;m_anger06;m_anger07;m_anger08;m_anger09;m_anger10;m_anger11;m_anger12;m_anger13;m_anger14;m_disgust00;m_disgust01;m_disgust02;m_disgust03;m_disgust04;m_disgust05;m_disgust06;m_disgust07;m_disgust08;m_disgust09;m_disgust10;m_disgust11;m_disgust12;m_disgust13;m_disgust14;m_fear00;m_fear01;m_fear02;m_fear03;m_fear04;m_fear05;m_fear06;m_fear07;m_fear08;m_fear09;m_fear10;m_fear11;m_fear12;m_fear13;m_fear14;m_happy00;m_happy01;m_happy02;m_happy03;m_happy04;m_happy05;m_happy06;m_happy07;m_happy08;m_happy09;m_happy10;m_happy11;m_happy12;m_happy13;m_happy14;m_sad00;m_sad01;m_sad02;m_sad03;m_sad04;m_sad05;m_sad06;m_sad07;m_sad08;m_sad09;m_sad10;m_sad11;m_sad12;m_sad13;m_sad14;m_surprise00;m_surprise01;m_surprise02;m_surprise03;m_surprise04;m_surprise05;m_surprise06;m_surprise07;m_surprise08;m_surprise09;m_surprise10;m_surprise11;m_surprise12;m_surprise13;m_surprise14"/>
-		</TRIAL>  
 		
 		<TRIAL  template="myTemplate" betweenSJ='shortTrials' trials="96">
-			<addJPG copyOverID="images" filename="f_anger00;f_anger02;f_anger04;f_anger06;f_anger08;f_anger10;f_anger12;f_anger14;f_disgust00;f_disgust02;f_disgust04;f_disgust06;f_disgust08;f_disgust10;f_disgust12;f_disgust14;f_fear00;f_fear02;f_fear04;f_fear06;f_fear08;f_fear10;f_fear12;f_fear14;f_happy00;f_happy02;f_happy04;f_happy06;f_happy08;f_happy10;f_happy12;f_happy14;f_sad00;f_sad02;f_sad04;f_sad06;f_sad08;f_sad10;f_sad12;f_sad14;f_surprise00;f_surprise02;f_surprise04;f_surprise06;f_surprise08;f_surprise10;f_surprise12;f_surprise14;m_anger00;m_anger02;m_anger04;m_anger06;m_anger08;m_anger10;m_anger12;m_anger14;m_disgust00;m_disgust02;m_disgust04;m_disgust06;m_disgust08;m_disgust10;m_disgust12;m_disgust14;m_fear00;m_fear02;m_fear04;m_fear06;m_fear08;m_fear10;m_fear12;m_fear14;m_happy00;m_happy02;m_happy04;m_happy06;m_happy08;m_happy10;m_happy12;m_happy14;m_sad00;m_sad02;m_sad04;m_sad06;m_sad08;m_sad10;m_sad12;m_sad14;m_surprise00;m_surprise02;m_surprise04;m_surprise06;m_surprise08;m_surprise10;m_surprise12;m_surprise14"/> 	
+			<addJPG copyOverID="images" filename="as_fe_anger00;as_fe_anger02;as_fe_anger04;as_fe_anger06;as_fe_anger08;as_fe_anger10;as_fe_anger12;as_fe_anger14;as_fe_disgust00;as_fe_disgust02;as_fe_disgust04;as_fe_disgust06;as_fe_disgust08;as_fe_disgust10;as_fe_disgust12;as_fe_disgust14;as_fe_fear00;as_fe_fear02;as_fe_fear04;as_fe_fear06;as_fe_fear08;as_fe_fear10;as_fe_fear12;as_fe_fear14;as_fe_happy00;as_fe_happy02;as_fe_happy04;as_fe_happy06;as_fe_happy08;as_fe_happy10;as_fe_happy12;as_fe_happy14;as_fe_sad00;as_fe_sad02;as_fe_sad04;as_fe_sad06;as_fe_sad08;as_fe_sad10;as_fe_sad12;as_fe_sad14;as_fe_surprise00;as_fe_surprise02;as_fe_surprise04;as_fe_surprise06;as_fe_surprise08;as_fe_surprise10;as_fe_surprise12;as_fe_surprise14;as_ma_anger00;as_ma_anger02;as_ma_anger04;as_ma_anger06;as_ma_anger08;as_ma_anger10;as_ma_anger12;as_ma_anger14;as_ma_disgust00;as_ma_disgust02;as_ma_disgust04;as_ma_disgust06;as_ma_disgust08;as_ma_disgust10;as_ma_disgust12;as_ma_disgust14;as_ma_fear00;as_ma_fear02;as_ma_fear04;as_ma_fear06;as_ma_fear08;as_ma_fear10;as_ma_fear12;as_ma_fear14;as_ma_happy00;as_ma_happy02;as_ma_happy04;as_ma_happy06;as_ma_happy08;as_ma_happy10;as_ma_happy12;as_ma_happy14;as_ma_sad00;as_ma_sad02;as_ma_sad04;as_ma_sad06;as_ma_sad08;as_ma_sad10;as_ma_sad12;as_ma_sad14;as_ma_surprise00;as_ma_surprise02;as_ma_surprise04;as_ma_surprise06;as_ma_surprise08;as_ma_surprise10;as_ma_surprise12;as_ma_surprise14"/> 	
 		</TRIAL> 
 		
 		
+<TRIAL TYPE="Trial" block="18" blockOrder="random" trials="1">
+
+	<addText x="0%" colour="black" fontSize="22---17" howMany="2" horizontal="left" y="0%---87%" vertical="top" height="8%---15%" width="100%---50%" text="Over the last 2 weeks, how often have you been bothered by any of the following problems?---If you checked off {b}any{/b} problems, how {b}difficult{/b} have these problems made it for you to do your work, take care of things at home, or get along with other people?" />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="17" horizontal="left" y="18%---26%---etc---" howMany="9" height="8%" width="50%" text="1. Little interest or pleasure in doing things---2. Feeling down, depressed, or hopeless---3. Trouble falling or staying asleep, or sleeping too much---4. Feeling tired or having little energy---5. Poor appetite or overeating---6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down---7. Trouble concentrating on things, such as reading the newspaper or watching television---8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual---9. Thoughts that you would be better off dead or of hurting yourself in some way"/>	
+		
+	<addMultipleChoice fontSize="15" seperation="horizontal" required="" peg="QA"   horizontalDistanceApart="210" labels="Not at all,Several days,More than half the days,Nearly every day"  padding="10" horizontal="left" y="18%---26%---etc---" x="50%" howMany="9" height="5%" width="48%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addMultipleChoice fontSize="15" seperation="horizontal" peg="dif" required=""   horizontalDistanceApart="210" labels="Not difficult at all,Somewhat difficult,Very difficult,Extremely difficult"  padding="10" horizontal="left" y="95%" x="50%" howMany="1" height="5%" width="48%" timeStart="0"  timeEnd="forever" /> 
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40"  text="continue" horizontal="right"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()" timeEnd="forever" x="100%" vertical="top" y="8%"/>
+	
+	<behavNextTrial peg="next"/>		
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" block="18" blockOrder="random" trials="1">
+
+	<addText x="0%" colour="black" fontSize="20---20" howMany="1" horizontal="left" y="0%---87%" vertical="top" height="8%---15%" width="100%---50%" text="A number of statements which people have used to describe themselves are given below. Read each statement and circle the appropriate number to the right of the statement to indicate how you {b}generally feel in life{/b}. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel." />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="14" horizontal="left" y="18%---22%---etc---" howMany="20" height="5%" width="60%" text="1) I feel pleasant---2) I feel nervous & restless---3) I feel satisfied with myself---4) I wish I could be as  happy as others seem to be---5) I feel like a failure---6) I feel rested---7) I am 'calm, cool and collected'---8) I feel that difficulties are piling up so that I cannot overcome them---9) I worry too much over something that doesn't really matter---10) I am happy---11) I have disturbing thoughts---12) I lack self-confidence---13) I feel secure---14) I make decisions easily ---15) I feel inadequate ---16) I am content---17) Some unimportant thought  runs through my mind and bothers me---18) I take disappointments so keenly that I can't put them out of my mind---19) I am a steady person---20) I get in a state of tension or turmoil as I think over my recent concerns and interests"/>	
+		
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="QB"   horizontalDistanceApart="210" labels="Not at all,Somewhat,Moderately so,Very much so"  padding="10" horizontal="left" y="18%---22%---etc---" x="60%" howMany="20" height="4%" width="38%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="30"  text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()"   depth="top" timeEnd="forever" vertical="bottom" horizontal="right" y="100%"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="18" blockOrder="random" trials="1">
+
+	<addText x="0%" colour="black" fontSize="20---20" howMany="1" horizontal="left" y="0%---87%" vertical="top" height="8%---15%" width="100%---50%" text="A number of statements which people have used to describe themselves are given below. Read each statement and circle the appropriate number to the right of the statement to indicate how you {b}feel{/b} right {b}now{/b}, that is {b}at this moment{/b}. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best." />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="14" horizontal="left" y="18%---22%---etc---" howMany="20" height="5%" width="60%" text="1) I feel calm ---2) I feel secure ---3) I am tense ---4) I feel strained ---5) I feel at ease ---6) I feel upset ---7) I am presently worrying---over possible misfortunes---8) I feel satisfied ---9) I feel frightened ---10) I feel comfortable ---11) I feel self-confident ---12) I feel nervous---13) I am jittery ---14) I feel indecisive ---15) I am relaxed ---16) I feel content---17) I am worried ---18) I feel confused---19) I feel steady ---20) I feel pleasant"/>	
+		
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="QC"   horizontalDistanceApart="210" labels="Not at all,Somewhat,Moderately so,Very much so"  padding="10" horizontal="left" y="18%---22%---etc---" x="60%" howMany="20" height="4%" width="38%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="30"  text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()"   depth="top" timeEnd="forever" vertical="bottom" horizontal="right" y="100%"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="19" blockOrder="random" trials="1">
+
+	<addText x="0%"  colour="black" fontSize="20---20" howMany="2" horizontal="left" y="20%---30%" align="middle" vertical="top" height="8%" width="100%" text="Please click on the little blue circle at the bottom of the screen. Do not click on the scale items that are labelled from 1 to 9.---This is just to screen out random clicking." />
+
+	<addText x="0%---100%"  colour="black" fontSize="20" howMany="2" horizontal="left---right"  vertical="top" height="8%" y="47%" width="10%" text="Very Rarely---Very Frequently" />
+	
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="catchButton" if="this.click?results.catch='bad',next.start()"  horizontalDistanceApart="210" labels="1,2,3,4,5,6,7,8,9"  padding="10"     height="4%" width="70%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addShape shape="circle" width="20" y="90%" lineThickness="1" height="20" if="this.click?results.catch='true',next.start()" />
+	
+	<behavResults peg="results"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+
 		<TRIAL TYPE="Trial" hideResults="true" block="20" blockOrder="random" trials="1">
 			<behavSaveData timeStart='0'/>
 			<addText  wordWrap="true" text="{b}DEBRIEF SHEET{/b}
-Thank you for taking part in this experiment. The aim of this project is to investigate the feasibility of an online version of the Bristol emotion recognition task. This is a pilot study to determine whether the Bristol emotion recognition task can be used online to conduct larger studies on emotion recognition in the future.
-In this study participants were randomly assigned to either complete the full version of the Bristol emotion recognition task or a shorter version of the task with about half the number of trials. We will examine the effects of task length on responses between participants in each condition. 
-This research will allow us to assess whether we could use the shorter version of the Bristol emotion recognition task in future studies allowing for shorter testing sessions benefiting both participants and experimenters.
+Thank you for taking part in this experiment. The aim of this project is to validate a novel East-Asian face stimulus set to be used with the Bristol emotion recognition task. This study is a validation study to determine whether this new face set accurately depicts basic emotional expressions so they may be used in future studies.
+In this study participants completed a short version of the Bristol emotion recognition task where they were asked to identify the facial expression of emotion presented by each image from a novel East-Asian stimulus set. We will examine responses to each image to determine whether the stimuli accurately portray the intended emotional expression. 
+This research will allow us to assess whether we can use this stimulus set in future studies of emotion recognition and may offer insight into possible cultural influences in recognizing emotions.
 {b}Main contacts{/b}
 Michael Dalili, 0117 331 0494, michael.dalili@bristol.ac.uk
 Professor Marcus Munafò, 0117 954 6841 (internal 46841), marcus.munafo@bristol.ac.uk	
 Professor Ian Penton-Voak, 0117 928 8667 (internal 88667), i.s.penton-voak@bris.ac.uk"	
 timeStart="0" width="80%" y="10%" vertical="top" textAlign="top" align="center" timeEnd="forever" fontSize="20"></addText>
 
-			<addMechanicalTurk y="80%" fontSize="40" align="middle" />
 		</TRIAL>
 		  	
 		
 		<myTemplate order="random" block="10" trialName="t">
+			<addResults/>
 			<addHideMouse timeEnd="2450"/>
 			<behavPause peg="pause" timeStart='100' time="rand(0:1000)" />
 		
-			<addJPG extension="jpg" copyOverID="images"  
-			timeStart="2000" timeEnd='2500' width="459" height="600" />
-			
-			<addJPG filename="mask.jpg" 
+			<addJPG filename="mask.jpg" peg="mask" depth="top"
 			timeStart="2300" timeEnd='2550' width="459" height="600" />
+		
+			<addJPG extension="jpg" copyOverID="images" if="this.doBefore?results.image=this.filename" peg="face"
+			timeStart="2000" timeEnd='2500' width="459" height="600" />
 			
 			<addText  selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='2000'/>
 			
@@ -212,7 +297,7 @@ timeStart="0" width="80%" y="10%" vertical="top" textAlign="top" align="center" 
 			
 			<behavRT peg="rt" timeStart='2450'/>
 			
-			<addButton copyOverID="buttons" buttonGroup="selected" hideResults='false' timeStart="2550" howMany="6" text='angry---happy---sad---fearful---surprised---disgusted'
+			<addButton copyOverID="buttons" buttonGroup="selected" timeStart="2250" howMany="6" text='angry---happy---sad---fearful---surprised---disgusted'
 			peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
 		
 		</myTemplate>

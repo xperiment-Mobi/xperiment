@@ -75,7 +75,7 @@ There are not right or wrong responses, please respond according to what it feel
 	<addText copyOverID="labels" text="very relaxed---very alert" />
 </TRIAL>
 
-<TRIAL template="template" TYPE="Trial" block="3" trials="1" order="random" trialName="bitter">
+<TRIAL template="template" TYPE="Trial" block="-3" trials="1" order="random" trialName="bitter">
 	<addText copyOverID="taste" text="Please arrange these tablets in order of how bitter would you expect each to taste?" />
 	<addText copyOverID="labels" text="not at all bitter---bitter" />
 </TRIAL>
@@ -117,7 +117,7 @@ DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK." timeStart="0"  time
 <template order="random" trials="1">
 	
 
-	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"fontSize="50" wordWrap="true" timeStart="0" peg="instruct" /> 
+	<addText copyOverID="taste" align="centre" width="100%" height="20%" x="50%" y="0%	" vertical="top" verticalAlign="top"fontSize="50" wordWrap="true" timeStart="0" peg="instruct" /> 
 	
 
 	<behavDrag saveProperty="peg" timeStart="0" peg="drag" save="x" usePegs="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,checker" box="checker" />

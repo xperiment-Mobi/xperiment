@@ -1,0 +1,169 @@
+<expt>
+	
+	 <SETUP>  
+	              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+	              <results mock="false" />
+	              <screen BGcolour="black" orientation="vertical" ></screen>                          
+				  <computer  encrypt='false'  stimuliFolder="Oxford/marchTaste" />
+				  <style BUTTON_DOWN="0xff5656"  />
+				  <variables practice='0' />
+	</SETUP>
+	
+	
+	<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+	
+		<addJPG filename="lab.png" depth="bottom" vertical="top" y="0" />
+	
+		<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" x="50%"  text=
+	"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to tastes. You may also be asked to rotate images to make them seem most apealing to you.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."timeStart="0"  timeEnd="forever" fontSize="20"/>
+				
+		
+		<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+		
+		<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+	
+	</TRIAL>
+	
+	
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to drag packaging shapes into ‘taste names’ scales, as well as to match different ‘taste names’ to a variety of shapes.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr Andy Woods (andy.woods@bristol.ac.uk) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+		<behavNextTrial peg="next" />
+		
+	</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	
+		<addUrlVariable  _ip="notGiven" />
+	
+		<addText   x="50%" y="12%" height="20%"
+		text = "some questions"
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+		
+		<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+		text="sex---age"
+		timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+	
+	 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+	 	labels="male,female"
+	 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+		
+		<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+	
+		<addComboBox peg="origin" 
+		label="where is your country of birth?"
+		timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+		
+		<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+	
+		<behavNextTrial peg='nextTrial'/>
+		
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+		text="next"
+		if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+		timeEnd="forever" x="50%" vertical="top" y="90%"/>
+		
+	
+	</TRIAL>
+	
+	
+	
+	
+	<TRIAL TYPE="Trial" block="10" order="fixed" trials="1">
+		<addText   x="50%" height="40%" betweenSJ='instruct'
+			text = 
+	"In this experiment you will be given basic taste words (e.g. sweet, sour, salty) and are asked to drag those words to images that you think best represents that taste. There are 2 trials."
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="30"></addText> 
+			
+		
+			
+			<addButton width="140" key=" " timeStart="0" height="40" peg="next" text="begin"  vertical="top" y="87%"/>
+	</TRIAL>
+	
+	
+	
+	
+	
+	
+<TRIAL template="template"  block="20" order="random" trialName="J">
+	<addText   y="0" vertical="top" verticalAlign="center"  height="10%" betweenSJ='instruct'
+			text = 
+	"Please match up the taste-words to the spoonful of food you think is most appropriate. Drag the taste-words and drop them on the food."
+			timeStart="0"  width="80%" align="center" timeEnd="forever" fontSize="30"></addText> 
+			
+	<behavDragToShiftingArea if="this.onFinish?next.start()" usePegs="red,green,brown,white,salty,bitter,sour,sweet" dragPegs="salty,bitter,sour,sweet"/>
+			
+	<addShape shape="circle" howMany="4" width="150" height="aspectRatio" x="15%---40%---65%---87%" visible="false" peg="red---green---brown---white" timeStart="0" y="72% "/>		
+			
+	<addText text="salty---bitter---sour---sweet" colour="pink" peg="salty---bitter---sour---sweet" x="52.2%" shuffle_somethings="text peg ---" depth="top" selectable="false" fontSize="30" timeStart="500---1000---etc---" howMany="4" y="20%---30%---etc---" width="10%" height="5%" align="center" verticalAlign="center" />
+	
+	<addJPG filename="Jozef.png"/>
+				
+	<addButton width="140" key=" "   height="40" peg="next" text="next"  vertical="top" y="87%"/>
+</TRIAL>
+	
+	
+	
+	
+<TRIAL TYPE="Trial" block="20" order="random" trials="1" trialName="S">
+	<addText   y="0" vertical="top" verticalAlign="center"  height="10%" betweenSJ='instruct'
+			text = 
+	"Please match up the taste-words to the spoonful of food you think is most appropriate. Drag the taste-words and drop them on the food."
+			timeStart="0"  width="80%" align="center" timeEnd="forever" fontSize="30"></addText> 
+			
+	<behavDragToShiftingArea showDropZones="true" if="this.onFinish?next.start()" usePegs="W,W2,W3,W4,W5,salty,bitter,sour,sweet,umami" dragPegs="salty,bitter,sour,sweet,umami"/>
+			
+			
+	<addText text="salty---bitter---sour---sweet---umami" colour="pink" peg="salty---bitter---sour---sweet---umami" x="52.2%" shuffle_somethings="text peg ---" depth="top" selectable="false" fontSize="30" timeStart="500---1000---etc---" howMany="5" y="20%---27%---etc---" width="10%" height="5%" align="center" verticalAlign="center" />
+	
+	<addJPG howMany="5" y="70%" x="10%---30%---etc---" timeStart="0" shuffle_something="x ---" filename="W---W2---W3---W4---W5" peg="W---W2---W3---W4---W5" extension="png"/>
+				
+	<addButton width="140" key=" "   height="40" peg="next" text="next"  vertical="top" y="87%"/>
+	
+	<addText text="Umami is a savory taste (https://en.wikipedia.org/wiki/Umami)" y="100%" align="centre" verticalAlign="bottom" vertical="bottom" width="100%" fontSize="20" height="5%" />
+	
+</TRIAL>	
+	
+
+
+
+	
+	<TRIAL TYPE="Trial" hideResults="true" block="101" trials="1">
+	
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thank you for your participation to this study. We're exploring the way people associate shapes to tastes. In previous studies, we found that people associated angular shapes to sourness, and rounded shapes to sweetness. Still, when it comes to other tastes, depending on the shape, there seems to be less agreement. This is what you helped us assessing by taking part to this online experiment. 
+If you have any questions or would like to here more about our research, please contact us at carlos.velasco@psy.oc.ac.uk or andy.woods@bristol.ac.uk
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK."	y="10%" vertical="top" verticalAlign="top" timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="25"></addText>
+		
+	
+	</TRIAL>
+
+</expt>
+	
+	
+	
+	

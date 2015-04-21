@@ -1,0 +1,283 @@
+<multi>	
+	<MULTISETUP overSJs="cond" forceCondition="ARIGHT" />
+
+	<ARIGHT exptType="WEB">
+	
+	 <SETUP>  
+	              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+	              <screen BGcolour="black" orientation="vertical" ></screen>                          
+				  <computer  stimuliFolder="Janet/navon"/>
+				  <style BUTTON_DOWN="0xff5656"  />
+				  <trials blockDepthOrder="10,*=random 10,*,*=fixed" />
+				  <defaults ITI="250"/>
+				  <core makeMode="false" />
+				  <variables COLOUR='0xe9e9e9' />	  
+				  
+	</SETUP>
+	
+	
+	
+	
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="100%" height="90%" x="50%" y="4%" verticalAlign="top" vertical="top" text=
+"{b}PARTICIPANT INFORMATION{/b}: Online testing of attention and perception
+This is a study run by the Department of Psychology at the University of Bath. Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information.
+{b}Background{/b}: This is a study that investigates how we make simple decisions about what we are seeing. Although such decisions will not feel like they involve lots of thought, as scientists we can still learn a lot about how the brain processes information by examining the speed and the accuracy of these decisions
+{b}Procedures{/b}: We are looking for adults with normal or corrected-to-normal vision (i.e. glasses or contact lens), who don’t have any neurological disorders (e.g. Parkinson’s disease, stroke or brain injury). The experiment may take up to 20 minutes but should be finished quicker than that.
+During the experiment you will first be asked some basic questions about your age, health and handedness. You will then be asked to make a series of judgments about pictures containing letters. The speed and accuracy of your decisions will be recorded.
+{b}Risks{/b}: There are no anticipated risks associated with participating in this study, although you may find the task somewhat boring. 
+{b}Benefits{/b}: There are no direct benefits to you. We hope that this research will help us to understand the way that people process visual information.
+{b}Payment / Compensation{/b}
+	{b}Mechanical Turk participants{/b}: You will receive the  monetry compensation s specified in MTurk for participation in this study (amount to be determined based on piloting).
+	{b}Other participants{/b}: You will receive 1 credit per half hour of participation.
+{b}Your Data{/b}:Your involvement in the study will remain confidential and the data collected is anonymous (it will be stored without your name attached). We may share these data with other researchers, however there will be no way to identify you from the research data.
+{b}Contact{b}: Janet Bultitude, Department of Psychology, University of Bath, Bath, North East Somerset, BA2 7AY, j.bultitude@bath.ac.uk"
+		timeStart="0"  timeEnd="forever" fontSize="15"/>
+	
+	<addButton width="140" height="40" text="next" vertical="bottom" y="100%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1"  order="fixed" trials="1">
+
+	<addText howMany="11" height="5%" width="60%" align="right" horizontal="right" x="60%" y="7%---15%---etc---" fontSize="20"
+	text="{b}DO YOU CONFIRM THAT YOU{/b}:---Are aged between 18 and 60 years?---Do not have impaired or uncorrected vision?---Do not have any neurological condition, such as Parkinson’s Disease, brain injury, or stroke---HAVE YOU:---Been given information explaining about the study?---Been given contact information to ask questions and discuss this study?---Received enough information about the study for you to make a decision about participation?---{b}DO YOU UNDERSTAND THAT YOU MAY{/b}:---Withdraw from the study and / or withdraw your data at any time?---Withdraw from the study and / or withdraw your data without having to give a reason?"
+	/>
+
+	<addMultipleChoice  labels="yes,no" required="" seperation="horizontal" howMany="8" y="15%---23%---31%---47%---55%---63%---79%---87%" horizontal="left" x="65%" width="10%" height="5%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' width="250" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   vertical="bottom" y="100%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="75%"/>
+
+	<addInputTextBox required="" y="72%" width="50%" height="5%" text="what is your FIRST language?" />
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' width="250" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   vertical="bottom" y="100%"/>
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+<addText width="100%" align="center" height="20%" y="0" text="If you are a Mechanical Turker (not a student at Bath University), please ignore the below and just click 'continue'." fontSize="40" vertical="top" />
+
+	<addText width="100%" fontSize="20" height="80%" text="We will ask you to use an anonymous identifier to allow us to compare the performance of individuals across experiments. It is important that you use the SAME identifier each time. Your anonymous identifier will be a six-item string created as follows:
+ - The FIRST and SECOND letter will be the first two letters of the street where you lived when your were born (or as early as you can remember)
+ - The THIRD and FOURTH letter will be the first two letters of your mother’s maiden name
+ - The FIFTH and SIXTH letter will be the number of letters in the name of their favourite band. For numbers lower than 10 enter '07', '08' etc
+So, if you lived on Mongoose road when you are born, your mother's maiden name is Jones, and your favourite band is the Spice Girls, your anonymous identifier will be mojo10"
+/>
+
+	<addInputTextBox  timeStart="0" peg="pword" y="80%" width="50%" height="5%" text="" />
+	
+	<addButton timeStart='0' width="250"  height="40" peg='next' text="continue"  vertical="bottom" y="100%"/>
+</TRIAL>
+
+
+
+<TRIAL block="1" order="fixed" trials="1">
+
+	<addText  colour="COLOUR" x="0%" y="0%" horizontal="left" align="left" vertical="top" height="5%" text=
+	"Questions on handedness" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="30"></addText> 
+
+	<addText howMany="5" width="13%" height="10%" y= "5%" vertical="top" colour="white" verticalAlign="bottom" x="30%---45%---etc---"
+	text="I always use my left hand for this---I mostly use my left hand, but sometimes use my right hand for this---I use my left hand or my right hand equally as often for this---I mostly use my right hand, but sometimes use my left hand for this---I always use my right hand for this" />
+	
+	<addText howMany="10" width="17%" height="7%" x= "20%" align="right" horizontal="right" colour="white"  y="18%---26%---etc---"
+	text="1. Writing---2. Drawing---3. Throwing---4. Scissors---5. Toothbrush---6. Hand that holds the knife when you are cutting bread---7. Spoon---8. Upper hand when you hold a broom---9. Hand that holds the match when you strike a match---10.  Hand that holds the lid when you open a box or jar" />
+	
+	<addMultipleChoice required="" howMany="10" saveLabelNumber="true" seperation="horizontal" peg="A---B---C---D---E---F---G---H---I---J" distanceApart="5" id="sex"  width="72%" height="5%" horizontal="left"  labels=" , , , , "  padding="10" x="23%" y="18%---26%---etc---" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+
+	<addButton timeStart='0' width="250" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   vertical="bottom" y="100%"/>
+
+</TRIAL>	
+
+
+	
+	
+	<TRIAL template="break" block="10,1,1">
+		<addText copyOverID="txt" betweenSJ="button1" text=
+	"You will see a plus sign (+) in the middle of the screen. Keep your eyes on the plus sign for the entire block. One of the following four pictures will appear.
+	Your job is to identify the LARGE letters that appear in the picture without moving your eyes from the cross. Press the " text1="m" text2=" button if the answer is 'A' and press the " text3="z" text4=" button if the answer is 'S'. Please be as fast and as accurate as possible. Press SPACE to continue.
+	"/>
+	</TRIAL>
+	<TRIAL template="feedback,global,template" trials="10" block="10,1,2"></TRIAL>  
+	<TRIAL template="next" block="10,1,3"/>
+	<TRIAL template="feedback,global,template" trials="64" block="10,1,4"  trialName="L"></TRIAL>  
+	
+	
+
+
+
+	
+	<TRIAL template="break" block="10,2,1">
+		<addText copyOverID="txt"  betweenSJ="button1" text=
+	"You will see a plus sign (+) in the middle of the screen. Keep your eyes on the plus sign for the entire block. One of the following four pictures will appear.
+	Your job is to identify the SMALL letters that appears in the picture without moving your eyes from the cross. Press the " text1="m" text2=" button if the answer is 'A' and press the " text3="z"  text4=" button if the answer is 'S'. Please be as fast and as accurate as possible. Press SPACE to continue.
+	"/>
+	</TRIAL>
+	<TRIAL template="feedback,local,template" trials="10" block="10,2,2"></TRIAL>  
+	<TRIAL template="next" block="10,2,3"/>
+	<TRIAL template="feedback,local,template" trials="64" block="10,2,4"  trialName="L"></TRIAL>  
+	
+	
+
+	
+	<!-- TEMPLATES -->
+	
+	<next trials="1" hideResults="true" forcePositionInBlockDepth='3' >
+		<addText copyOverID="txt" colour="COLOUR" width="100%" text="Press SPACE to start the actual trials." align="centre" timeStart="0"  timeEnd="forever" fontSize="30"/>
+		<addButton  peg='nextTr' key=" " visible="false" width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+	</next>
+	
+	<feedback hideResults="false" forcePositionInBlockDepth='2'>
+		<addButton copyOverID="key" if3=",feedback.text='wrong'"  />
+		<addText colour="COLOUR" peg="feedback" wordWrap="true" fontSize="50" text="correct" align="centre" timeStart="end"  timeEnd="200" />
+		<behavNextTrial copyOverID="nextTrial" if="this.doBefore?results.ans='-',feedback.text='no response'" />
+	</feedback>
+	
+	
+	<global>
+		<addJPG betweenSJ='ans1' copyOverID="image" wrongB="z;z;m;m" correct="A;A;S;S"/>
+		<addText betweenSJ='ans1_large' copyOverID="help" text1="z"  text3="LARGE '" text4="S"  text6="m" text8="LARGE '" text9="A"/>
+	</global>
+	
+	
+	<local>
+		<addJPG betweenSJ='ans2' copyOverID="image" wrongB="z;m;z;m" correct="A;S;A;S"/>
+		<addText betweenSJ='ans2_small' copyOverID="help"  text1="z"  text3="SMALL '" text4="S"   text6="m" text8="SMALL '" text9="A"/>
+	</local>
+	
+	
+	<template  trialOrder="random">
+		<addResults copyOver="true" timeStart="0" ans="right" />
+		<behavRT prg="rt" timeStart="200" />
+		<addFixationCross timeStart="600" timeEnd="1200" fontSize="50" colour="white"/>
+	 	<addJPG copyOverID="image" filename="AaThin;AsThin;SaThin;SsThin" extension="png"	timeStart="1100" timeEnd="1200" peg="image" if="this.doNow?results.image=this.filename" />
+		<addButton howMany="2" key="z---m" copyOverID="key" timeStart="1100" visible="false"  peg="z---m" if="this.click?results.key=this.peg,nextTrial.kill(),this.click&&image.wrongB=='" if1="z---m" if2="'?results.ans='wrong'" />
+		<behavNextTrial copyOverID="nextTrial" peg="nextTrial" if="this.doBefore?results.ans=''" timeStart="2200" />
+		<addText text="press " text1="Z" text2=" if " text3="SMALL '" text4="S" text5="' or " text6="blablabla" text7=" if " text8="SMALL '" text9="bla" text10="'" copyOverID="help" colour="COLOUR" width="100%" align="centre" y="75%" timeStart="0"  timeEnd="forever" fontSize="30"/>
+	</template> 
+	
+	
+	<break TYPE="Trial" hideResults="true"   forcePositionInBlockDepth='0'  trials="1">
+		<addText copyOverID="txt" colour="COLOUR" wordWrap="true" vertical="top" y="0%" width="100%" text1="Press SPACE to perform some practice trials." align="centre" timeStart="0"  timeEnd="forever" fontSize="30"/>
+		<addJPG copyOverID="image"	filename="AaThin---AsThin---SaThin---SsThin" extension="png" y="60%---85%" x="43%---43%---57%---57%" timeStart="0" howMany="4" peg="limb" />
+		<addButton  peg='nextTr' key=" " visible="false" width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+	</break>
+	
+	
+	
+	
+	<TRIAL TYPE="Trial" trialName="DoExpt" block="19"  order="fixed" trials="1">
+	
+		<addText howMany="11" height="5%" width="60%" align="right" horizontal="right" x="60%" y="7%---15%---etc---" fontSize="20"
+		text="{b}POST-EXPERIMENT QUESTIONNAIRE{/b}---Do you have any condition that restricts your mobility in any way (e.g. paralysis, limb amputation, trapped nerve etc)?---If so, please give details of which limb(s) are affected and to what extent.---Are you currently in pain?---{b}If your answer to this question is YES, then please answer the following additional questions.{/b}---Where is your pain (choose any that apply)?---		Left hand and/or arm---		Right hand and/or arm---		Left foot, leg and/or hip---		Right food, leg and/or hip---		Other (please specify)---Please rate your pain from 0 (=no pain at all) to 10 (=worst pain imaginable)---Please list any medication (prescription or otherwise) that you are CURRENTLY taking for your pain. "
+		/>
+	
+		<addMultipleChoice  labels="yes,no---yes,no---yes,no,n/a---yes,no,n/a---yes,no,n/a---yes,no,n/a" required="" seperation="horizontal" timeStart="0" peg="a---b---c---d---e---f" howMany="6" y="15%---31%---55%---63%---71%---79%" horizontal="left" x="65%" width="10%" height="5%"/>
+	
+		<addInputText width="35%" height="60" howMany="2" multiLine="true" wordWrap="true" x="65%" horizontal="left" y="23%---87%" timeStart="0" peg="limbs---other"/>
+	
+		<behavNextTrial peg='nextTrial'/>
+		<addButton timeStart='0' width="250" goto='' height="40" peg='next' text="continue"
+		if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   vertical="bottom" y="100%"/>
+		
+	</TRIAL>
+	
+	<TRIAL TYPE="Trial" trialName="DoExpt"  block="19"  order="fixed" trials="1">
+		<addText howMany="2" height="5%" width="60%" align="right" horizontal="right" x="60%" y="17%---45%---etc---" fontSize="20"
+		text="Please rate your pain from 0 (=no pain at all) to 10 (=worst pain imaginable)---Please list any medication (prescription or otherwise) that you are CURRENTLY taking for your pain. "
+		/>
+		<addMultiNumberSelector required=""  peg="pain" width="25%" height="20%" id="age" startingVal="00" horizontal="left" x="65%" y="17%" timeStart="0"  />
+		<addInputText width="35%" height="60" multiLine="true" wordWrap="true" x="65%" horizontal="left" y="45%" timeStart="0" peg="med"/>
+		<addButton timeStart='0' width="250"  height="40" text="continue"  vertical="bottom" y="100%"/>
+	</TRIAL>
+	
+	<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+	  	
+		<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+		"DEBRIEF: Online testing of attention and perception
+	Thank you for participating in this study.
+	So far it is known that handedness is associated with tiny differences in the way that we process visual information. On an individual level these differences are meaningless – for example, reports often appear in the media saying that left- and right-handed people have different thinking styles, and these are greatly misleading. However scientists have found that by looking at the subtle relationship between handedness and visual processing across large numbers of people they are able to make inferences about how the brain develops and ages, and how visual processing is affected by problems such as brain injury. Most of the previous work that has been conducted on this subject has required participants to attend university or hospital laboratories, which greatly limits the number of people who can be tested. By testing people over the internet we aim to test larger numbers of people, which may make our experiments more sensitive to subtle relationships between handedness and visual processing. The ultimate aim of our research is to use these online tests to examine whether clinical problems such as chronic pain in a limb changes the association between handedness and visual processing. 
+	
+	The research project is conducted by Dr Janet Bultitude at the University of Bath. If you have any questions or concerns about the study then you can contact her at j.bultitude@bath.ac.uk. 
+	
+	More information about individual differences in visual processing can be found by clicking on the links below.
+	{a href='http://www.rightleftrightwrong.com/brain.html' target='_blank'}http://www.rightleftrightwrong.com/brain.html{/a}
+	{a href='http://www.flinders.edu.au/sabs/psychology/research/labs/brain-and-cognition-laboratory/current-research-interests.cfm' target='_blank'}http://www.flinders.edu.au/sabs/psychology/research/labs/brain-and-cognition-laboratory/current-research-interests.cfm{/a}
+	You can close this window. Press Escape to escape from fullscreen."
+		timeStart="0"  timeEnd="forever" fontSize="17"></addText> 
+		
+	</TRIAL>
+	
+	
+	</ARIGHT>	
+	
+	<SRIGHT>
+		<a betweenSJ='button1'> -->
+	 		<editAttributes text1="z" text3="m"  />  
+	 	</a>
+	 	
+	 	<a betweenSJ='ans1'> -->
+	 		<editAttributes wrongB="m;m;z;z"  />  
+	 	</a>
+	 	
+	 	<a betweenSJ='ans2'> -->
+	 		<editAttributes wrongB="m;z;m;z"  />  
+	 	</a>
+	 	
+	 	
+	 	
+	 	<a betweenSJ='ans1_large'>
+	 		<editAttributes  text1="m"  text4="S"  text6="z"  text9="A"/>
+	 	</a>
+	
+		 <a betweenSJ='ans2_small'>
+	 		<editAttributes  text1="m"  text4="A"   text6="z" text9="S"/>
+	 	</a>
+	
+
+	
+
+	 	
+	</SRIGHT>
+	
+	
+	
+	
+</multi>

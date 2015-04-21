@@ -1,0 +1,175 @@
+<multi>	
+
+<MULTISETUP overSJs="cond" forceCondition="expt1" />
+	
+<expt1>
+
+ <SETUP>   
+              <results mock="false"    />
+              <screen BGcolour="black"></screen>                          
+			  <computer  stimuliFolder="TCD\gaze" />
+			  <style BUTTON_DOWN="0xff5656" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.jpg"  width='1024' height='108'  />
+		
+		
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Thank you for your interest in this study. In this experiment, you will be asked to view a number of computer generated male and female face images. Your task will be to rate how attractive each face is. 
+This experiment will take approximately 20 minutes to complete. Prior to the experiment, you will be asked to answer a few general background questions and give your consent to participate in the research. You will also be required to complete a short pre-test. Finally, you can read a short description of the study at the end."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" colour="white" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Consent form:{/b}
+Your final results will be kept strictly confidential. Your data will be stored using a unique ID number and, as such, the experimenter will not be able to identify your data or link your personal details (e.g. your name, email) with your data.
+You are free to withdraw from this study at any time during the duration of the experiment without any penalty. Incomplete data will be excluded from analysis. If you withdraw from this study, you can still take part in any of the other on-going experiments.
+Statement of Informed consent:
+1.   I understand the general purpose of this experiment
+2.   I understand that I can withdraw from the study at any time and that in doing so my data will be destroyed and not included in the study. 
+3.   I understand that my responses are anonymous. 
+4.   My data will be grouped with other participants and these group results will be presented in scientific papers and conferences.
+5.   I agree to take part in this experiment.
+By clicking the “I consent” button below you agree to participate in the study.
+"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent"  y="99%" vertical="bottom" />
+
+</TRIAL>
+
+
+
+
+		<TRIAL TYPE="Trial" block="1" background="white" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever"  fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%"  text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector textColour="white" required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+		<TRIAL TYPE="Trial" block="1" background="white" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some more questions" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addComboBox required="" peg="whereLive" label="Which country do you currently live in?" timeStart="0" width="70%" height="40%" y="45%"/>
+		
+		 	<addComboBox required="" peg="ethnic---sexual---relationship" label="what is your ethnicity?---sexual orientation?---relationship status?" items="White,Hispanic or Latino,Black or African,Native American,Asian/Pacific Islander,Other---Straight,Gay,Bisexual,Other---Single,In a relationship" howMany="3" timeStart="0" width="70%" height="40%" timeEnd="forever" y="55%---65%---75%"/>
+		
+			<addText   width="50%" height="10%"  x="25%" y="75%" text=
+			"Are you currently using hormonal contraceptives (for example birth control pill/shot/implant/hormonal intrauterine device)?"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="70%" y="75%" timeStart="0"  timeEnd="forever" /> 		
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" colour="white" align="left" selectable="false" width="80%"
+	 text=
+"You will see a series of faces, each for 1 second only (one per trial). Your task is to rate how ATTRACTIVE you think each face is. After each image presentation, drag the triangle-shaped indicator to your preferred position on a scale from “very unattractive” to “very attractive.” Please utilize the whole scale when rating the faces and respond as quickly as possible."
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton width="300"  height="40" text="start the study"  y="99%" vertical="bottom" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="f"  block="10" trials="84">
+
+	<addTrialCounter trials="84" y="5%" height="30" width="200"/>
+	
+	<addResults />
+	
+	<addJPG peg="face" timeStart="0" timeEnd="1000" if="this.doNow?results.face=this.filename" betweenSJ='faces' filename="F01_constriction_D.jpg;F01_constriction_EL.jpg;F01_constriction_SR.jpg;F04_dilation_D.jpg;F04_dilation_EL.jpg;F04_dilation_SR.jpg;F08_constriction_D.jpg;F08_constriction_EL.jpg;F08_constriction_SR.jpg;F12_dilation_D.jpg;F12_dilation_EL.jpg;F12_dilation_SR.jpg;F14_constriction_D.jpg;F14_constriction_EL.jpg;F14_constriction_SR.jpg;F16_dilation_D.jpg;F16_dilation_EL.jpg;F16_dilation_SR.jpg;F18_constriction_D.jpg;F18_constriction_EL.jpg;F18_constriction_SR.jpg;F22_constriction_D.jpg;F22_constriction_ER.jpg;F22_constriction_SL.jpg;F26_dilation_D.jpg;F26_dilation_ER.jpg;F26_dilation_SL.jpg;F32_constriction_D.jpg;F32_constriction_ER.jpg;F32_constriction_SL.jpg;F56_dilation_D.jpg;F56_dilation_ER.jpg;F56_dilation_SL.jpg;F57_constriction_D.jpg;F57_constriction_ER.jpg;F57_constriction_SL.jpg;F58_dilation_D.jpg;F58_dilation_ER.jpg;F58_dilation_SL.jpg;F61_constriction_D.jpg;F61_constriction_ER.jpg;F61_constriction_SL.jpg;M03_dilation_D.jpg;M03_dilation_ER.jpg;M03_dilation_SL.jpg;M07_constriction_D.jpg;M07_constriction_ER.jpg;M07_constriction_SL.jpg;M09_dilation_D.jpg;M09_dilation_ER.jpg;M09_dilation_SL.jpg;M10_constriction_D.jpg;M10_constriction_ER.jpg;M10_constriction_SL.jpg;M15_dilation_D.jpg;M15_dilation_ER.jpg;M15_dilation_SL.jpg;M23_constriction_D.jpg;M23_constriction_ER.jpg;M23_constriction_SL.jpg;M24_dilation_D.jpg;M24_dilation_ER.jpg;M24_dilation_SL.jpg;M25_constriction_D.jpg;M25_constriction_ER.jpg;M25_constriction_SL.jpg;M28_dilation_D.jpg;M28_dilation_ER.jpg;M28_dilation_SL.jpg;M33_constriction_D.jpg;M33_constriction_ER.jpg;M33_constriction_SL.jpg;M36_dilation_D.jpg;M36_dilation_ER.jpg;M36_dilation_SL.jpg;M46_constriction_D.jpg;M46_constriction_ER.jpg;M46_constriction_SL.jpg;M47_dilation_D.jpg;M47_dilation_ER.jpg;M47_dilation_SL.jpg;M49_constriction_D.jpg;M49_constriction_ER.jpg;M49_constriction_SL.jpg"
+	/>
+	
+	<addScale y="83%" if="this.mouseUp?next.start()" textColour="white" peg="attract"  labelList="not very attractive,very attractive" timeStart="0" />
+	
+	<addButton width="300"  peg="next" height="40" text="next (SPACE)" key=" "  y="99%" vertical="bottom" />
+
+</TRIAL>
+		
+		
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" colour="white" text="Debrief
+Thank you for participating in our study. There has been a lot of research in human studies involving behavioral and physical features of a person that can facilitate attraction in a viewer.  Through this experiment we are investigating how different facial features impact perceived attractiveness of virtual characters. We explored the concept by asking you to rate the attractiveness of characters which had been manipulated on the basis of the features. Your answers on the questionnaire will be used in the research to investigate the effects of hormonal contraceptive use on preferences as well as sex and sexual orientation differences with regards to different facial features.
+This experiment was part of a larger project (http://gv2.scss.tcd.ie/captavatar/), to determine apply principles of human perceptual processing to endow virtual social agents with maximum appeal. These virtual characters may then be applied to different settings, such as gaming, health care and education. 
+Thank you for participating! If you have any further questions regarding this study please do not hesitate to contact me.
+Yours sincerely,
+Zora Knauf (knaufz@tcd.ie)
+Principle Investigator: Professor Fiona Newell
+Institute of Neuroscience and School of Psychology, Trinity College Dublin, Ireland
+Press ESCAPE to leave full screen mode."
+timeStart="0" width="80%"  align="left" verticalAlign="top" vertical="top" y="5%" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</expt1>	
+
+
+
+
+<expt2>
+		<a betweenSJ='faces'> -->
+	 		<editAttributes filename="F01_dilation_D.jpg;F01_dilation_ER.jpg;F01_dilation_SL.jpg;F04_constriction_D.jpg;F04_constriction_ER.jpg;F04_constriction_SL.jpg;F08_dilation_D.jpg;F08_dilation_ER.jpg;F08_dilation_SL.jpg;F12_constriction_D.jpg;F12_constriction_EL.jpg;F12_constriction_SR.jpg;F14_dilation_D.jpg;F14_dilation_ER.jpg;F14_dilation_SL.jpg;F16_constriction_D.jpg;F16_constriction_ER.jpg;F16_constriction_SL.jpg;F18_dilation_D.jpg;F18_dilation_ER.jpg;F18_dilation_SL.jpg;F22_dilation_D.jpg;F22_dilation_EL.jpg;F22_dilation_SR.jpg;F26_constriction_D.jpg;F26_constriction_EL.jpg;F26_constriction_SR.jpg;F32_dilation_D.jpg;F32_dilation_EL.jpg;F32_dilation_SR.jpg;F56_constriction_D.jpg;F56_constriction_EL.jpg;F56_constriction_SR.jpg;F57_dilation_D.jpg;F57_dilation_EL.jpg;F57_dilation_SR.jpg;F58_constriction_D.jpg;F58_constriction_EL.jpg;F58_constriction_SR.jpg;F61_dilation_D.jpg;F61_dilation_EL.jpg;F61_dilation_SR.jpg;M03_constriction_D.jpg;M03_constriction_EL.jpg;M03_constriction_SR.jpg;M07_dilation_D.jpg;M07_dilation_EL.jpg;M07_dilation_SR.jpg;M09_constriction_D.jpg;M09_constriction_EL.jpg;M09_constriction_SR.jpg;M10_dilation_D.jpg;M10_dilation_EL.jpg;M10_dilation_SL.jpg;M15_constriction_D.jpg;M15_constriction_EL.jpg;M15_constriction_SR.jpg;M23_dilation_D.jpg;M23_dilation_EL.jpg;M23_dilation_SR.jpg;M24_constriction_D.jpg;M24_constriction_EL.jpg;M24_constriction_SR.jpg;M25_dilation_D.jpg;M25_dilation_EL.jpg;M25_dilation_SR.jpg;M28_constriction_D.jpg;M28_constriction_EL.jpg;M28_constriction_SR.jpg;M33_dilation_D.jpg;M33_dilation_EL.jpg;M33_dilation_SR.jpg;M36_constriction_D.jpg;M36_constriction_EL.jpg;M36_constriction_SR.jpg;M46_dilation_D.jpg;M46_dilation_EL.jpg;M46_dilation_SR.jpg;M47_constriction_D.jpg;M47_constriction_EL.jpg;M47_constriction_SR.jpg;M49_dilation_D.jpg;M49_dilation_EL.jpg;M49_dilation_SR.jpg" />  
+	 	</a>
+</expt2>
+	
+</multi>	
+

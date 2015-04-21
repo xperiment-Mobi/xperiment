@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="xperiment" default="all">
+  
+  
+  <property file="xperiment.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="project.jdk.home" value=""/>
+  <property name="project.jdk.bin" value=""/>
+  <property name="project.jdk.classpath" value=""/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module xperiment -->
+  
+  <dirname property="module.xperiment.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.xperiment" value="${jdk.home.airsdk}"/>
+  <property name="module.jdk.bin.xperiment" value="${jdk.bin.airsdk}"/>
+  <property name="module.jdk.classpath.xperiment" value="jdk.classpath.airsdk"/>
+  
+  <property name="compiler.args.xperiment" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="xperiment.output.dir" value="${module.xperiment.basedir}/out/production/xperiment"/>
+  <property name="xperiment.testoutput.dir" value="${module.xperiment.basedir}/out/test/xperiment"/>
+  
+  <path id="xperiment.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="xperiment.module.production.classpath">
+    <path refid="${module.jdk.classpath.xperiment}"/>
+  </path>
+  
+  <path id="xperiment.runtime.production.module.classpath">
+    <pathelement location="${xperiment.output.dir}"/>
+  </path>
+  
+  <path id="xperiment.module.classpath">
+    <path refid="${module.jdk.classpath.xperiment}"/>
+    <pathelement location="${xperiment.output.dir}"/>
+  </path>
+  
+  <path id="xperiment.runtime.module.classpath">
+    <pathelement location="${xperiment.testoutput.dir}"/>
+    <pathelement location="${xperiment.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.xperiment">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.xperiment">
+    <patternset refid="excluded.from.module.xperiment"/>
+  </patternset>
+  
+  <path id="xperiment.module.sourcepath">
+    <dirset dir="${module.xperiment.basedir}">
+      <include name="src"/>
+    </dirset>
+    <dirset dir="${module.xperiment.basedir}/../../Desktop/xperiment">
+      <include name="assets"/>
+    </dirset>
+    <dirset dir="${module.xperiment.basedir}/../../Desktop/xperiment">
+      <include name="classes"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.xperiment" depends="compile.module.xperiment.production,compile.module.xperiment.tests" description="Compile module xperiment"/>
+  
+  <target name="compile.module.xperiment.production" depends="register.custom.compilers" description="Compile module xperiment; production classes">
+    <mkdir dir="${xperiment.output.dir}"/>
+    <javac2 destdir="${xperiment.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.xperiment}/javac">
+      <compilerarg line="${compiler.args.xperiment}"/>
+      <bootclasspath refid="xperiment.module.bootclasspath"/>
+      <classpath refid="xperiment.module.production.classpath"/>
+      <src refid="xperiment.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.xperiment"/>
+    </javac2>
+    
+    <copy todir="${xperiment.output.dir}">
+      <fileset dir="${module.xperiment.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.xperiment.basedir}/../../Desktop/xperiment/assets">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.xperiment.basedir}/../../Desktop/xperiment/classes">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.xperiment.tests" depends="register.custom.compilers,compile.module.xperiment.production" description="compile module xperiment; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.xperiment" description="cleanup module">
+    <delete dir="${xperiment.output.dir}"/>
+    <delete dir="${xperiment.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.xperiment" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.xperiment" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

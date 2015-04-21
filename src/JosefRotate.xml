@@ -1,0 +1,127 @@
+
+<A exptType="WEB">
+
+ <SETUP>  
+            
+              <screen BGcolour="0x7A7A79"></screen>                          
+			  <computer  stimuliFolder="Oxford/JosefRotate" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+			  <variables practice='0' />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. 'If you decide to take part in this experiment, you will be asked questions about plates of food, as well as to provide us with some information about yourself.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+<TRIAL block="20" trials="1" trialName="kikiBouba" >
+	
+	<addJPG  extension="png" filename="boubaKiki" y="50%" />
+	<addText y="0" height="60" width="100%" fontSize="25" vertical="top" align="center" text="What names would you give each side of the plate? Please select one of the two options below."/>
+	<behavSwap usePegs="leftBouba,leftKiki" timeStart="0" />
+	<addButton howMany="2" peg="leftBouba---leftKiki" timeStart="0" text="left = 'bouba'     right = 'kiki'---left = 'kiki'     right = 'bouba'" height="60" width="40%" x="25%---75%" y="100%" vertical="bottom"/>
+</TRIAL>
+
+
+<TRIAL template="myTemplate" trials="2" >
+	<addText copyOverID="txt" text1="plate" />
+	<addJPG  copyOverID="r"  filename="bar;circle" />
+</TRIAL>
+
+
+<myTemplate block="15" trialName="R" trials="1">
+	<addText copyOverID="txt" align="centre" width="25%" height="50%" x="0%" y="0%" colour="black" horizontal="left" vertical="top" verticalAlign="top"
+	text="Please rotate the " text1="food" text2=" so that it is orientated so it looks most appealing by moving your mouse around the screen. Press SPACE when you are done." 	fontSize="22" wordWrap="true"  timeStart="2000" peg="instruct" /> 
+	
+	<addResults />
+	
+	<behavRotate yz="45" rotateAtStart="360,2000" randomStartRotation="true" peg="angle" timeStart="0" rotateWithMouseDown="true" usePegs="pic"/>
+
+	<addJPG copyOverID="r" timeStart="10" if="this.doNow?results.img=this.filename" peg="pic" smoothing="true" extension="png" />
+	<behavRT timeStart="0" peg="rt"/>
+	<addButton copyOverID="b" hideResults="true" visible="false" key=" "/>
+	
+</myTemplate>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thanks for taking part in this study. We're exploring how different ways of arranging the elements of a dish on a plate can have an effect on its perceived enjoyment and your expectations regarding food. In previous studies, we found that the visual aspects of plating can have an effect on people's perception of the flavour of the food and on consumption behaviour. People also appear to pay more for food if presented symmetrically on a plate, rather than asymmetrically.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again!"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</A>	

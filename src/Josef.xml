@@ -1,0 +1,138 @@
+<multi>	
+
+	<MULTISETUP overSJs_forceCondition="forceCondition" forceCondition="A" />
+		
+
+
+
+<A exptType="WEB">
+
+ <SETUP>  
+            
+              <screen BGcolour="0x7A7A79"></screen>                          
+			  <computer  stimuliFolder="Oxford/Josef" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+			  <variables practice='0' />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. 'If you decide to take part in this experiment, you will be asked questions about plates of food, as well as to provide us with some information about yourself.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+
+
+<TRIAL block="15" trialName="t" trials="2">
+
+	<addText text="The following dish: " if="this.doNow?results.nam=this.text1" peg="intro" timeStart="0" text1="Taste of nature;Smoked cox apple crème cobb nuts, homemade curd, apple caviar & beetroot reduction" fontSize="50" align="middle" width="100%" />
+	<addButton text="click to see the dish" y="75%" width="30%" height="60" goto="" if="this.click?pic.start(),nxt.start(),this.stop(),intro.stop()"/>
+
+    <addJPG extension="png" if="this.doBefore?results.face=this.filename" peg="pic" vertical="top" betweenSJ='image' filename="circle;bar" y="0%" />
+    <addResults timeStart="0" peg="results" />
+    <behavSchedule  peg="nxt" schedule="[appetizing,appetizingTxt,appetizingTxta,appetizingTxtb],[artistic,artisticTxt,artisticTxta,artisticTxtb],[sweet,sweetTxt,sweetTxta,sweetTxtb]" usePegs="appetizing,appetizingTxt,artistic,artisticTxt,sweet,sweetTxt,pay,payTxt,appetizingTxta,artisticTxta,sweetTxta,appetizingTxtb,artisticTxtb,sweetTxtb" doAfter="pay,payTxt" />
+    <addText y="85%" fontSize="30" width="100%" align="middle" peg="appetizingTxt---artisticTxt---sweetTxt---payTxt" howMany="4" 
+    text="how appetizing does the dish look?---how artistic does the dish look?---how sweet or savoury does the dish look?---how much would you be willing to pay for the dish (in USD)?"  />
+     <addText y="90%" x="5%---95%" horizontal="left---right" align="left---right" fontSize="20" width="30%" peg="appetizingTxta---appetizingTxtb---artisticTxta---artisticTxtb---sweetTxta---sweetTxtb" howMany="6" 
+    text="Not at all---Very much so---Not at all---Very much so---Very Sweet---Very savoury"  />
+    <addMultipleChoice if="this.click?nxt.next()" fontSize="18" peg="appetizing---artistic---sweet" howMany="3" height="50" width="90%" labels="1,2,3,4,5,6,7" y="100%" vertical="bottom" seperation="horizontal" />
+    <addInput text="" required="" y="95%" fontSize="30" width="20%" restrict="0123456789.," peg="pay" height="50" if="this.mouseDown?next.start()" />
+    
+    <addButton text="next" peg="next" y="95%" x="100%" hideResults="true" goto="" horizontal="right" width="30%" height="60" if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"/>
+    
+    <behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thanks for taking part in this study. We're exploring how different ways of arranging the elements of a dish on a plate can have an effect on its perceived enjoyment and your expectations regarding food. In previous studies, we found that the visual aspects of plating can have an effect on people's perception of the flavour of the food and on consumption behaviour. People also appear to pay more for food if presented symmetrically on a plate, rather than asymmetrically.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again!"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</A>	
+
+<B>
+	<a betweenSJ='image'> -->
+ 		<editAttributes filename="bar;circle" />  
+ 	</a>
+</B>
+
+</multi>

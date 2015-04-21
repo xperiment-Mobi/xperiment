@@ -1,0 +1,188 @@
+<multi>	
+	<MULTISETUP overSJs="cond" _forceCondition="left" />
+
+<left>
+
+ <SETUP>   
+              <results mock="false"    />
+              <screen BGcolour="black"></screen>                          
+			  <computer  stimuliFolder="Oxford/dress" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="white" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+	<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Thank you for your interest in this study. In this experiment, you will be asked to view a photo of a dress. Your task will be to rate what that dress looks like. 
+This experiment will take approximately 3 minutes to complete. Prior to the experiment, you will be asked to answer a few general background questions and give your consent to participate in the research. You will also be required to complete a short pre-test. Finally, you can read a short description of the study at the end."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" colour="white" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Consent form:{/b}
+Your final results will be kept strictly confidential. Your data will be stored using a unique ID number and, as such, the experimenter will not be able to identify your data or link your personal details (e.g. your name, email) with your data.
+You are free to withdraw from this study at any time during the duration of the experiment without any penalty. Incomplete data will be excluded from analysis. If you withdraw from this study, you can still take part in any of the other on-going experiments.
+Statement of Informed consent:
+1.   I understand the general purpose of this experiment
+2.   I understand that I can withdraw from the study at any time and that in doing so my data will be destroyed and not included in the study. 
+3.   I understand that my responses are anonymous. 
+4.   My data will be grouped with other participants and these group results will be presented in scientific papers and conferences.
+5.   I agree to take part in this experiment.
+By clicking the “I consent” button below you agree to participate in the study.
+"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent"  y="99%" vertical="bottom" />
+
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" block="1" background="white" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever"  fontSize="20"></addText> 
+	
+	<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%"  text=
+	"sex---age---handedness"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector textColour="white" required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+	
+	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+	
+</TRIAL>
+
+		
+<TRIAL TYPE="Trial" trialName="f"  block="10" trials="1">
+	
+	<addResults />
+	
+	<addText   text=
+	"You will see an image for two seconds after your click next. Your will be asked questions about the image." 
+	timeStart="0"  colour="white"  fontSize="20"></addText> 
+	
+	<addButton  timeStart="0"  width="300"  peg="nextB" height="40" text="next"  y="99%" vertical="bottom" />
+	
+	<behavNextTrial peg="next" />
+
+</TRIAL>
+		
+		
+		
+<TRIAL TYPE="Trial" trialName="f"  block="-15" trials="1">
+	
+	<addResults />
+	
+	<addComboBox timeStart="3000" required="" depth="top" peg="origin" label="what colour is the darker band on the dress?" if="this.click?nextB.start()" items="black,blue,gold,red" scale="1" width="70%"  height="45%" timeEnd="forever" x="50%" />
+	
+	<addText betweenSJ='text' if="this.doNow?results.cond=this.text" text=
+	"in sunlight" 
+	timeStart="0" timeEnd="1000" colour="white" align="centre" fontSize="100"></addText> 
+	
+	<addJPG height="80%" width="aspectRatio" peg="face" timeStart="1000" if="this.doNow?results.face=this.filename" timeEnd="3000" betweenSJ='faces' filename="dress.jpg"/>
+	
+
+	<addButton  required="" width="300"  peg="nextB" height="40" text="done"  y="99%" vertical="bottom" />
+	
+	<behavNextTrial peg="next" />
+
+</TRIAL>
+		
+		
+
+
+<TRIAL TYPE="Trial" block="50" background="white" order="fixed" trials="1">
+
+	<addText  x="50%" y="12%" height="20%" text=
+	"Some more questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever"  fontSize="20"></addText> 
+	
+	<addText  howMany="2"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%"  text=
+	"have you drunk an alcoholic drink in the last hour?---have you seen this dress before?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" howMany="2" seperation="horizontal" peg="alc---seen" distanceApart="5" id="alc"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="20%---39%" timeStart="0"  timeEnd="forever" /> 	
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<bbehavSaveData timeStart='0'/>
+	<addText  wordWrap="true" colour="white" text="Debrief
+Thank you for participating in our study. Over the last 24 hours, this image has been circulating popular media (eg twitter). We are interested in prior expectations influence how you view the dress and its colours. We wanted to know if telling half our participants 'sunny' and half our participants 'shady' would infleunce responses.
+Press ESCAPE to quit fullscreen mode.
+ARE YOU A MECHANICAL TURKER? DONT FORGET TO ENTER THE BELOW CODE INTO MTURK."
+timeStart="0" width="80%"  align="left" verticalAlign="top" vertical="top" y="5%" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</left>
+
+
+
+<right>
+	<a betweenSJ='text'> 
+ 		<editAttributes text="in shadow"  />  
+ 	</a>
+ 	
+</right>
+
+
+
+<neutral>
+	<a betweenSJ='text'> 
+ 		<editAttributes text=""  />  
+ 	</a>
+ 	
+</neutral>
+
+	
+	
+	
+	
+</multi>	
+
+
+
+

@@ -2,11 +2,10 @@
 
 <SETUP>  
               <info id="c856865c45b64f2da6ecde2bf0962a24" />
-              <results  mock="false" save="webfile" saveDataURL="http://www.opensourcesci.com/experiments/Oxford/ShapeTasteLab" />
+              <results  mock="false" />
               <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
-			  <computer  stimuliFolder="OxfordShapeTaste" />
+			  <computer  stimuliFolder="OxLab3" />
 			  <trials blockDepthOrder="20,*=random" />
-			  <variables RAND='rand(0:1:0)' trialNum='1' />
 			  <style  LABEL_TEXT="0x000000" />
 </SETUP>
 
@@ -21,8 +20,7 @@ We are interested in understanding how people associate information across the s
 There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
 	
 	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
-	
-	
+
 	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
 	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
 	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
@@ -73,50 +71,69 @@ There are not right or wrong responses, please respond according to what it feel
 <TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
 
 <addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
-	text="You will now begin the experiment. Every two trials you will taste a new drink. Before doing so, please cleanse your palate with water."/>   
+	text="You will now begin the experiment. Every trial you will taste a new drink. Before doing so, please cleanse your palate with water."/>   
 	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
 	
 </TRIAL>
 
 
+<TRIAL template="templatePause" TYPE="Trial" block="20,2" order="fixed" forceBlockDepthPositions="1"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,3" order="fixed" forceBlockDepthPositions="2"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,4" order="fixed" forceBlockDepthPositions="3"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,5" order="fixed" forceBlockDepthPositions="4"/>
+
+<TRIAL template="templatePause" TYPE="Trial" block="20,6" order="fixed" forceBlockDepthPositions="5"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,7" order="fixed" forceBlockDepthPositions="6"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,8" order="fixed" forceBlockDepthPositions="7"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,9" order="fixed" forceBlockDepthPositions="8"/>
+
+<TRIAL template="templatePause" TYPE="Trial" block="20,10" order="fixed" forceBlockDepthPositions="9"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,11" order="fixed" forceBlockDepthPositions="10"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,12" order="fixed" forceBlockDepthPositions="11"/>
+<TRIAL template="templatePause" TYPE="Trial" block="20,13" order="fixed" forceBlockDepthPositions="12"/>
 
 
-<TRIAL block="20,1,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="143" taste="bitterW"/></TRIAL>
-<TRIAL block="20,2,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="181" taste="bitterM"/></TRIAL>
-<TRIAL block="20,3,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="215" taste="bitterS"/></TRIAL>
-<TRIAL block="20,4,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="244" taste="sourW"/></TRIAL>
-<TRIAL block="20,5,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="260" taste="sourM"/></TRIAL>
-<TRIAL block="20,6,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="384" taste="sourS"/></TRIAL>
-<TRIAL block="20,7,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="455" taste="sweetW"/></TRIAL>
-<TRIAL block="20,8,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="460" taste="sweetM"/></TRIAL>
-<TRIAL block="20,9,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="466" taste="sweetS"/></TRIAL>
-<TRIAL block="20,10,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="506" taste="saltyW"/></TRIAL>
-<TRIAL block="20,11,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="540" taste="saltyM"/></TRIAL>
-<TRIAL block="20,12,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="618" taste="saltyS"/></TRIAL>
-<TRIAL block="20,13,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="663" taste="umamiW"/></TRIAL>
-<TRIAL block="20,14,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="688" taste="umamiM"/></TRIAL>
-<TRIAL block="20,15,1" template="templateLineScale" trialName="t"><addText copyOverID="taste" text1="712" taste="umamiS"/></TRIAL>
+<TRIAL block="20,1,1" template="templateLineScale" trialName="L1_A"><addText copyOverID="taste" text1="306" taste="L1"/></TRIAL>
+<TRIAL block="20,2,1" template="templateLineScale" trialName="L2_A"><addText copyOverID="taste" text1="270" taste="L2"/></TRIAL>
+<TRIAL block="20,3,1" template="templateLineScale" trialName="L3_A"><addText copyOverID="taste" text1="157" taste="L3"/></TRIAL>
+<TRIAL block="20,4,1" template="templateLineScale" trialName="L4_A"><addText copyOverID="taste" text1="364" taste="L4"/></TRIAL>
 
+<TRIAL block="20,5,1" template="templateLineScale" trialName="L1_B"><addText copyOverID="taste" text1="673" taste="L1"/></TRIAL>
+<TRIAL block="20,6,1" template="templateLineScale" trialName="L2_B"><addText copyOverID="taste" text1="868" taste="L2"/></TRIAL>
+<TRIAL block="20,7,1" template="templateLineScale" trialName="L3_B"><addText copyOverID="taste" text1="328" taste="L3"/></TRIAL>
+<TRIAL block="20,8,1" template="templateLineScale" trialName="L4_B"><addText copyOverID="taste" text1="225" taste="L4"/></TRIAL>
 
+<TRIAL block="20,9,1" template="templateLineScale" trialName="L1_C"><addText copyOverID="taste" text1="737" taste="L1"/></TRIAL>
+<TRIAL block="20,10,1" template="templateLineScale" trialName="L2_C"><addText copyOverID="taste" text1="488" taste="L2"/></TRIAL>
+<TRIAL block="20,11,1" template="templateLineScale" trialName="L3_C"><addText copyOverID="taste" text1="798" taste="L3"/></TRIAL>
+<TRIAL block="-20,12,1" template="templateLineScale" trialName="L4_C"><addText copyOverID="taste" text1="826" taste="L4"/></TRIAL>
 
+<templateLineScale order="random" trials="1">
 
-<templateLineScale order="random" trials="2">
-	
-	<addText  copyOverID="taste" align="centre" timeStart="0" peg="instruct" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
-	text="Please indicate where on the scale you would place a mark to represent the taste {b}" text1="" text2="{/b}. Click on the scale and move the mark to do so." 
-	fontSize="40" wordWrap="true" timeEnd="forever" /> 
-	
-	<addResults if="this.doBefore?this.type=instruct.text1,this.im1=i1.filename,this.im2=i2.filename,this.taste=instruct.taste"/>
-
-	<addJPG exactSize="true" timeStart="0" peg="i1---i2" howMany="2" filename="kiki.png---bouba.png;rounded1.png---angular1.png"	
-	x="5%---95%" y="70%" horizontal="left---right"/>
-	
-	<linescale timeStart="0" peg="scale" if="this.mouseDown?b.start()" labelList="," width="70%"/>
-	
-	<addButton  peg="b" hideResults="true" key=" " y="100%" vertical="bottom" width="200" height="40" text="next (space bar)"/>
-	
-	<behavNextTrial peg='nextTrial'/>
+    <addJPG extension="png" x="10%---10%---90%---90%---90%---90%---10%---10%" y="65%" if="this.doBefore?results.jpg=this.peg" howMany="8" peg="a1---a2---a3---a4---r1---r2---r3---r4" filename="angular1---angular2---angular3---angular4---round1---round2---round3---round4"  />
+    
+    <addLHS peg="lhs"  if="this.updated?nxtButton5.start()" />
+    <addLMS peg="lms"  if="this.updated?nxtButton6.start()" />
+    
+    <addResults timeStart="0" peg="results" />
+    <behavSchedule timeStart="0" peg="nxt" schedule="[a1,r1,LA],[a2,r2,LB],[a3,r3,LC],[a4,r4,LD],[lms],[lhs]" usePegs="a1,a2,a3,a4,r1,r2,r3,r4,nextTrial,LA,LB,LC,LD,lms,lhs" doAfter="nextTrial" />
+    <addText y="88%" fontSize="17" width="100%" align="middle" peg="" 
+    text="please rate the drink on this scale" />
+    <behavNextTrial peg="nextTrial" />
+    
+    <addLineScale peg="LA---LB---LC---LD" height="20%"  howMany="4" if="this.updated?nxtButton" if1="1---2---3---4" if2=".start()" y="50%" labelList="," width="80%"/>
+    
+    <addButton key=" " hideResults="true" width="340" height="40" goto="" if="this.click?nxt.next(),this.stop()" howMany="6" peg="nxtButton" peg1="1---2---3---4---5---6" text="next" x="50%" vertical="top" y="90%"/>
+    
+    <addText copyOverID="taste" y="0%" fontSize="17" vertical="top" horizontal="left" x="0%" width="10%" height="10%" align="middle"  text="drink " />
+    
 </templateLineScale>  
+
+<templatePause  order="fixed" trials="1">
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
+	text="Now, you will answer questions about a new taste. Before doing so, we will ask you to cleanse your palate with water."/>   
+	<addButton key=" " timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
+</templatePause>
 
 
 			

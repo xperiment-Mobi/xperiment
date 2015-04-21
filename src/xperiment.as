@@ -66,7 +66,6 @@ package
 			//var regularStart:WebStart = new WebStart(stage,'vibrofone.xml');
 			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTaste.xml');
 			
-			
 			//var regularStart:WebStart = new WebStart(stage,'Bike1.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'rainbow1.xml');
@@ -79,15 +78,22 @@ package
 			
 			//var regularStart:WebStart = new WebStart(stage,'MD_faces.xml');
 			//var regularStart:WebStart = new WebStart(stage,'CH_faces.xml');
+			//var regularStart:WebStart = new WebStart(stage,'MD_faces2.xml');
+			//var regularStart:WebStart = new WebStart(stage,'MD_faces3.xml');
+			//var regularStart:WebStart = new WebStart(stage,'MD_faces4.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'p2p.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTasteLab.xml');
 			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTasteLab2.xml');
+			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTasteLab3.xml');
 			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTaste2.xml');
+			//var regularStart:WebStart = new WebStart(stage,'OxfordShapeTaste3.xml');
 			//var regularStart:WebStart = new WebStart(stage,'pill.xml');
 			//var regularStart:WebStart = new WebStart(stage,'pill2.xml');
 			//var regularStart:WebStart = new WebStart(stage,'PitchTaste.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'Coffee1.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'fullness.xml');
 			//var regularStart:WebStart = new WebStart(stage,'foodPlating1.xml');
@@ -97,18 +103,67 @@ package
 			//var regularStart:WebStart = new WebStart(stage,'onion4.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'packageAngle.xml');
+			//var regularStart:WebStart = new WebStart(stage,'packageAngle2.xml');
 			//var regularStart:WebStart = new WebStart(stage,'michelAngle.xml');
 			//var regularStart:WebStart = new WebStart(stage,'HanniFaces.xml');
 			
 			//var regularStart:WebStart = new WebStart(stage,'fontFizzy.xml');
-			var regularStart:WebStart = new WebStart(stage,'fontTastes.xml');
+			//var regularStart:WebStart = new WebStart(stage,'fontTastes.xml');
+			//var regularStart:WebStart = new WebStart(stage,'fontTastes2.xml');
 		
-			
 			//var regularStart:WebStart = new WebStart(stage,'TeesideFaceLearning.xml');
+			//var regularStart:WebStart = new WebStart(stage,'gaitScriptScale.xml');
+			//var regularStart:WebStart = new WebStart(stage,'foodTime.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'wineGlass.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'eloStrength.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'J_hand.xml');
+			//var regularStart:WebStart = new WebStart(stage,'J_navon.xml');
+			//var regularStart:WebStart = new WebStart(stage,'J_lines.xml');
+			//var regularStart:WebStart = new WebStart(stage,'J_grey.xml');
+			//var regularStart:WebStart = new WebStart(stage,'J_toj.xml');
+			//var regularStart:WebStart = new WebStart(stage,'J_posner.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'shapeBK.xml');
+			//var regularStart:WebStart = new WebStart(stage,'shapeBK2.xml');
+			//var regularStart:WebStart = new WebStart(stage,'conceptBK.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'gaze.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'dress.xml');
+			//var regularStart:WebStart = new WebStart(stage,'ethics.xml');
+	
+			//var regularStart:WebStart = new WebStart(stage,'bodySize.xml');
+			//var regularStart:WebStart = new WebStart(stage,'socialTxt.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'marchTaste.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'magic.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'scales.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'draw1.xml');
+			//var regularStart:WebStart = new WebStart(stage,'names1.xml');
+			//var regularStart:WebStart = new WebStart(stage,'names2.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'names2.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'Josef.xml');
+			//var regularStart:WebStart = new WebStart(stage,'JosefRotate.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'WineShapeTaste1.xml');
+			
+			//var regularStart:WebStart = new WebStart(stage,'eat1.xml');
+			
+			var regularStart:WebStart = new WebStart(stage,'shapeApproach.xml');
+			
 		}	
 		
 	
 		
 	}
 }
+
 
