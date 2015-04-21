@@ -1,0 +1,93 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+             
+              <screen BGcolour="gray"  ></screen>                      
+			  <computer  stimuliFolder="Bus\names" />
+			  <trials blockDepthOrder="10,*=random 10,*,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="black" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+	
+			
+	<addText  y="40%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="50%"  timeStart="0" fontSize="30"
+	text="Bienvenido a esta encuesta. Estamos desarrollando una nueva empresa para realizar investigación online en países con altos índices de desarrollo. Estamos en el proceso de elegir un nombre. Podria por favor responder las siguientes preguntas para ayudarnos a decidir? De antemano gracias. Si tiene alguna duda, por favor no dude en contactarnos en andy.woods@xperiment.mobi."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continuar" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true"   align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="Cuando los estímulos hayan cargado(barra de abajo), por favor haga click en 'Continuar'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true'  colour="gray" width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+<TRIAL template="boxScale,myTemplate" order="random" block="10" trials="4">
+	<addText copyOverID="labels" text="nada memorable---muy memorable;nada serio---muy serio;poco probable---muy probable;poco probable---muy probable" />
+	<addResults copyOverID="res" timeStart="0" Q="mem;serious;Hit;succeed"/>
+	<addText copyOverID="instruct" text="¿qué tan fácil de recordar cree usted que son estos nombres?;¿Con que seriedad creería usted que otras empresas trataría a las empresas con los nombre presentados abajo?;¿Qué tan probable es que usted buscara empresas con los nombres que aparecen abajo?;¿Qué tan probable es que cada una de las empresas de abajo tenga éxito?" /> 
+</TRIAL>  
+
+
+
+<boxScale >
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />	
+	<behavRandPos box="box" width="100%" y="25%" height="50%" usePegs="pics,box" timeStart="0" />
+	<addShape peg="box" timeStart="0" width="1000" height="20%" colour="none" visible="false" y="35%"/>
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="45%" colour="none" lineThickness="1" y="70%"/>
+	<addButton depth="top" copyOverID="button" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" />
+</boxScale>
+
+<TRIAL order="random" block="15" trials="1">
+	<addButton copyOverID="button"   hideResults="true" depth="bottom" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<addText fontSize="30" text="Las próximas preguntas le pedirán que avalue los nombres con base en propiedades mas inusuales (esto es conocido como 'perfilamiento sensorial' y es útil para el diseño de marcas)." align="middle" width="80%"/>
+</TRIAL>  
+
+
+<TRIAL template="boxScale,myTemplate" order="random" block="20" trials="5">
+	<addText copyOverID="labels" y="95%" text="muy débil---muy fuerte;triste---feliz;grave---agudo;muy suave---muy áspero;muy desagradable---muy agradable" />
+	<addJPG copyOverID="images"  howMany="6" filename="BRICtastic---CloudSense---ePhy---FlyingFishResearch---MindHive---Nimbus9" />
+	<addResults copyOverID="res" timeStart="0" Q="strong;happy;pitch;rough;pleasant"/>
+	<addText copyOverID="instruct" text="¿qué tan débiles o fuertes cree usted que son estos nombres?;¿qué tan tristes o felices lo hacen sentir  cada uno de estos nombres?;¿qué tan graves o agudos le parecen estos nombres?;¿qué tan suaves or ásperos son estos nombres?;¿que tan desagradables o agradables son estos nombres?" /> 
+</TRIAL>  
+
+<myTemplate order="random">
+	<addButton copyOverID="button" peg="b" key=" " hideResults="true" depth="bottom" goto="" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next (SPACE)"/>
+	<addText copyOverID="instruct" align="centre" width="100%" height="20%" x="50%" y="0%" vertical="top" verticalAlign="top" fontSize="30" wordWrap="true"  timeStart="0" peg="instruct"/> 
+	<addJPG copyOverID="images" timeStart="0"  howMany="8" filename="BRICtastic---CloudSense---ePhy---FlyingFishResearch---MindHive---Nimbus9---Woovee---Savee" extension="png" peg="pics"  />
+	<addResults copyOverID="res" timeStart="0"/>
+	<addText copyOverID="labels" howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" width="50%" fontSize="30" x="5%---95%" />
+	<behavNextTrial peg='nextTrial'/>
+</myTemplate>  
+
+
+<TRIAL order="random" block="50" trials="5">
+	<addButton copyOverID="button" peg="b"  hideResults="true" depth="bottom" goto="" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<addInputText text="¿Se le ocurre algún otro nombre interesante? Si es así, por favor escríbalo abajo(opcional)." align="middle" width="80%"/>
+</TRIAL>  
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "¡Gracias por su ayuda!Por favor contacte a andy.woods@xperiment.mobi si tiene alguna pregunta.
+NO OLVIDE INGRESAR EL CÓDIGO DE ABAJO EN EL MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+</TRIAL>
+
+
+
+
+</Taste>	

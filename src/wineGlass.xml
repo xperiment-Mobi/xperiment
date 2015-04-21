@@ -1,0 +1,161 @@
+<expt exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <results mock="false" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+			  <computer  encrypt='false'  stimuliFolder="wineGlass" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <variables practice='0' />
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	<addText  drawBox="true" autoSize="false" howMany="2" align="centre" wordWrap="true"  width="85%" height="20%" x="50%" y="10%---40%" vertical="top" text=
+			"{b}Volume Judgement Experiment.{/b}---In this study we will show you two glasses of wine, and ask you to match the volume of wine in these two glasses. You will be asked to match 18 pairs of glasses. The study will realistically take about 5 minutes to complete."timeStart="0"  timeEnd="forever" fontSize="50---30"/>
+			
+			
+	
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText howMany="6" drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="80%" height="90%" x="50%" y="10%---20%---etc---" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Please check the box next to each statement that you agree to:{/b}---I confirm that I have read and understand the Participant Information Sheet---I have had the opportunity to ask questions and had them answered---I understand that all personal information will remain confidential and all efforts will be made to ensure I cannot be identified (except as might be required by law)---I agree that data gathered in this study may be stored anonymously and securely---I understand that my participation is voluntary and that I am free to withdraw at any time without giving a reason---I agree to take part in this study"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+		
+	<addText text="{a target='_blank' href='http://www.bhru.iph.cam.ac.uk/wordpress/wp-content/uploads/2015/02/Participant-Information-Sheet.pdf'}participant information sheet pdf{/a}" fontSize="20" colour="white"  x="90%" width="10%" y="21%" />
+	
+ 	<addMultipleChoice howMany="5" peg="sex" distanceApart="5" width="25" height="25" horizontalDistanceApart="210" 
+ 	labels=" " required='' y="22%---32%---etc---"
+ 	x="7%" timeStart="0"  timeEnd="forever" /> 
+ 	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	
+	<addText   x="50%" y="12%" height="20%"
+	text = "some more questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	
+
+	<addComboBox peg="ed" items="8th grade or less,Some high school (but did not graduate),High school graduate/General Equivalency Diploma,Some college (but did not graduate),College graduate or more"
+	label="What is the highest grade or level of school you have completed, or the highest degree you have received?"
+	timeStart="0" width="90%" height="40%" vertical="top" timeEnd="forever" x="50%" y="40%"/>
+	
+
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&ed.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+
+
+<TRIAL template="myTemplate" trialName="A">
+	<addJPG copyOverID="jpg" howMany="67" filenamePrefix="A_" />
+</TRIAL>
+<TRIAL template="myTemplate" trialName="B">
+	<addJPG copyOverID="jpg" howMany="83" filenamePrefix="B_" />
+</TRIAL>
+<TRIAL template="myTemplate" trialName="C">
+	<addJPG copyOverID="jpg" howMany="83" filenamePrefix="C_" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" trials="1">
+
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Many thanks for taking part in the study. This was conducted by researchers at the University of Cambridge and the University of Bristol. You can look at other work done by researchers in the Behaviour and Health Research Unit at the University of Cambridge at http://www.bhru.iph.cam.ac.uk/.
+The goal of this study was to explore people’s perceptions of how much wine there is in different wine glasses. All study data will be kept strictly confidential. If you have any questions regarding the study, please contact Dr Rachel Pechey (rachel.pechey@medschl.cam.ac.uk). 
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK."	y="10%" vertical="top" timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="30"></addText>
+	
+
+</TRIAL>
+  	
+
+<myTemplate TYPE="Trial"  hideResults="false" block="10" order="random" trials="6">
+
+	<mutateSwap random="true" key="mySwap" />
+
+	<addTrialCounter trials="18" width="100" height="30" x="6%" y="10%"  />
+	<behavSequence sortBy="seqID" usePegs="images" show="max;max;max;min;min;min" peg="mySeq" timeStart="0" if="this.doNow?results.startVol=this.show" />
+	<behavResults peg="results" timeStart="0" />
+	<addText text="Please match the volume of wine in the glass on the " text1="right;right;right;left;left;left" text2=" to the volume in the glass on the " text3="left.;left.;left.;right.;right.;right." align="center" width="100%" verticalAlign="top" height="10%" fontSize="25" y="5%" />
+	<addJPG mySwap="jitter" copyOverID="ref" jitter="[prop:y,max:4%,min:2%,random:true]" exactSize="true" timeStart="0" x="30%;30%;30%;70%;70%;70%" y="55%" extension="jpg" if="this.doBefore?results.percent=this.filename,results.refY=this.Y,results.refX=this.X,results.targY=mySeq.Y" filename="R_125;R_175;R_250" peg="ref"/>
+	<addJPG mySwap="jitter" copyOverID="jpg" jitter="[prop:y,min:-4%,max:-2%,random:true]" exactSize="true" timeStart="0" x="70%;70%;70%;30%;30%;30%" y="55%" extension="jpg" seqID="1---2---etc---" filename="1---2---etc---" peg="images"/>
+	<addText text="Press space when the amount of wine in the glasses is the same."  width="80%" height="5%" align="center" vertical="bottom" fontSize="20" y="100%" />
+	<behavNextTrial peg="next"/>
+	<addText peg="info" text="Please use the scroll button on your mouse or up/down cursor keys to change how much liquid is in the glass. The vertical position of the glasses randomly vary each trial." align="center" timeStart="0" fontSize="16" width="70%" y="10%" />
+	<addButton hideResults="true" visible="false" key=" " y="15%" width="200" goto='' if="this.click?info.text='please fill the glass',this.click&&scroll.result!=''?next.start()" height="40"/>
+ 
+
+	<behavScroll startingVal="100;100;100;0;0;0" acceleration="3" timeStart="0" orientation="y" if="this.doNow?results.startVal=this.startingVal,this.moved?mySeq.itemFromPercent=this.result" peg="scroll"/>
+
+
+</myTemplate>
+
+</expt>	

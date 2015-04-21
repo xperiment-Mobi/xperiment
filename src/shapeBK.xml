@@ -1,0 +1,144 @@
+<A>
+
+ <SETUP>   
+              <results mock="false"    />
+              <screen BGcolour="white"></screen>                          
+			  <computer  stimuliFolder="Oxford\shapeBK" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+This study aims to understand how people link visual patterns and sound. There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<behavAudioPassword autoStart="true" width="80%" height="80%" usePegs="1,2,3,4,5,6,7,8,9,0" if="this.onFinish?nextTrial.start()"/>
+	<addSound filename="1---2---3---4---5---6---7---8---9---0" peg="1---2---3---4---5---6---7---8---9---0" howMany="10" extension="mp3" />
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+	"sex---age---handedness"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+	
+	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="30%" x="50%"   
+	 text=
+"In this experiment you will be shown a shape and hear two sounds on each trial. Your task is to tell us if it is the first second or the sound that you think better represents the shape."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+	
+	<addButton width="140"  height="40" text="begin" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+
+<TRIAL template="template" block="10"  trials="72">
+
+	<addJPG copyOverID="images" 
+	filename="RF4A10T0.png;RF4A10T1.png;RF4A10T30.png;RF4A20T0.png;RF4A20T1.png;RF4A20T30.png;RF4A30T0.png;RF4A30T1.png;RF4A30T30.png;RF4A40T0.png;RF4A40T1.png;RF4A40T30.png;RF5A10T0.png;RF5A10T1.png;RF5A10T30.png;RF5A20T0.png;RF5A20T1.png;RF5A20T30.png;RF5A30T0.png;RF5A30T1.png;RF5A30T30.png;RF5A40T0.png;RF5A40T1.png;RF5A40T30.png;RF6A10T0.png;RF6A10T1.png;RF6A10T30.png;RF6A20T0.png;RF6A20T1.png;RF6A20T30.png;RF6A30T0.png;RF6A30T1.png;RF6A30T30.png;RF6A40T0.png;RF6A40T1.png;RF6A40T30.png;RF7A10T0.png;RF7A10T1.png;RF7A10T30.png;RF7A20T0.png;RF7A20T1.png;RF7A20T30.png;RF7A30T0.png;RF7A30T1.png;RF7A30T30.png;RF7A40T0.png;RF7A40T1.png;RF7A40T30.png;RF8A10T0.png;RF8A10T1.png;RF8A10T30.png;RF8A20T0.png;RF8A20T1.png;RF8A20T30.png;RF8A30T0.png;RF8A30T1.png;RF8A30T30.png;RF8A40T0.png;RF8A40T1.png;RF8A40T30.png;RF9A10T0.png;RF9A10T1.png;RF9A10T30.png;RF9A20T0.png;RF9A20T1.png;RF9A20T30.png;RF9A30T0.png;RF9A30T1.png;RF9A30T30.png;RF9A40T0.png;RF9A40T1.png;RF9A40T30.png"
+	/>
+	
+</TRIAL>
+
+<TRIAL template="template" block="11"  trials="2">
+	<addJPG copyOverID="images" filename="bouba;kiki"/>
+</TRIAL>
+
+
+
+
+<template order="random">
+	<addResults />
+	<addJPG copyOverID="images" if="this.doBefore?results.jpg=this.filename" extension="png"/>
+	<addButton depth="top" required="" key="1---2"  peg="First---Second" goto=""  if="this.click?results.pick=" if1="sound1.filename---sound2.filename" if2=",nextTrial.start()" timeStart="2000" howMany="2" text="sound played first (or press 1)---sound played second (or press 2)" fontSize="20" width="40%" x="25%---75%" height="60" vertical="bottom" y="100%" />
+	<addSound  timeStart="500---1500" howMany="2"  y="50%" width="10%" height="aspectRatio" controls="play" x="10%---90%" depth="top" extension="mp3" peg="sound1---sound2" if="this.doBefore?results.sound" if1="1---2" if2="=this.filename" shuffle_something="filename ;" filename="Bouba1---Kiki1;Bouba1---Kiki2;Bouba1---Kiki3;Bouba2---Kiki1;Bouba2---Kiki2;Bouba2---Kiki3;Bouba3---Kiki1;Bouba3---Kiki2;Bouba3---Kiki3;Kiki1---Bouba1;Kiki1---Bouba2;Kiki1---Bouba3;Kiki2---Bouba1;Kiki2---Bouba2;Kiki2---Bouba3;Kiki3---Bouba1;Kiki3---Bouba2;Kiki3---Bouba3" />
+	<behavNextTrial peg='nextTrial'/>
+</template>
+
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="
+Thanks for taking part in this study. 
+Past research has found that concepts that should have not relationship with each other often do.  For example, a blob shape with the word 'bouba' are often linked, as well as an angular shape with the word 'kiki'.  A popular explanation is that it is the shape our mouths form when we speak which leads to these associations - our mouths form a rounded shape when speaking 'bouba' which is currently thought to make an actual rounded shape more likely to linked to the word 'bouba'. This study explored how subtle changes in shape link with these words.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again!"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</A>	
+

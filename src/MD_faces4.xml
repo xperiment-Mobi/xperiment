@@ -1,0 +1,365 @@
+<multi>	
+	<MULTISETUP overSJs_forceCondition="forceCondition" forceCondition="AF125" />
+
+
+	<AF125 exptType="WEB">
+	
+	 <SETUP> 
+	  
+        <screen BGcolour="white"></screen>                          
+		<computer stimuliFolder="MD_faces" />
+		<style BUTTON_DOWN="0xff5656"  />
+		<results save="cloud" mock="false"  />
+		
+					
+	</SETUP>
+		
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="5%;20%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}ASSESSING THE RECOGNITION OF EMOTION WITH ETHNICALLY DIVERSE STIMULI AND VARYING PRESENTATION TIMES - INFORMATION SHEET{/b}
+Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information. 
+{b}Background{/b}: This study is being conducted to investigate the effects of stimulus presentation time on accuracy using an emotion recognition training task. Previous studies on the ability to recognize different facial expressions of emotion among adults have used various different presentation times and have produced mixed results, while most studies have been quite small and few have used ethnically diverse stimuli. The results of this study will allow us to determine how stimulus presentation times affect task performance and identify the appropriate presentation time to use in future studies.
+{b}Procedures{/b}: We are looking for people aged 18 years or older. Participants are free to withdraw from the study at any time by simply closing the web page and do not have to give a reason for this decision. The experiment may take up to 20 minutes.
+During the experiment you will be asked take part in a computer task that involves judging the emotion present in a face and complete some questionnaires. All data collected will remain anonymous and you will have the right to withdraw your data at any time during the study by simply closing the web page, at which point your data would be discarded.  
+{b}Your Data{/b}: Your involvement in the study will remain confidential. This information will only be available to research staff and national bodies which monitor whether research studies are conducted properly. Your study data will be anonymised. This means that it will be given an identification number and we will not collect any identifying information about you. Therefore, it will not be possible to identify you by name from any aspect of reporting for this research study. At the end of the study your data will become “open data”. This means that the data will be stored in an online database and will be publicly available.
+;{b}What is open access?{/b} Open data means that data are made available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised and therefore there will be no way to identify you from the research data.
+{b}Why open data?{/b}: Sharing research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publicly funded, the outcomes of the research should be made publicly available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+{b}If you have any questions about the study{/b} please contact Michael Dalili at michael.dalili@bristol.ac.uk.
+{b}If you have any concerns{/b} related to your participation in this study, please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0044 (0)117 9546832, Email: liam.mckervey@bristol.ac.uk"
+		timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+	
+	
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" vertical="bottom" timeEnd="forever" y="100%"  />
+	<addButton width="140" present="0;1" height="40" text="Continue" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="1%" x="0%" vertical="top" text=
+	"{b}CONSENT FORM{/b}. Please answer the following questions to the best of your knowledge.
+DO YOU CONFIRM THAT YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="1" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="8%" x="20%" vertical="top" text=
+	"Are aged 18 or older?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="17%" x="0%" vertical="top" text=
+	"HAVE YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="3" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="18%---23%---28%" x="20%" vertical="top" text=
+	"Been given information explaining about the study?---Been given contact information to ask questions and discuss this study?---Received enough information about the study for you to make a decision about participation?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="39%" x="0%" vertical="top" text=
+	"DO YOU UNDERSTAND THAT YOU MAY:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="2" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="40%---45%" x="20%" vertical="top" text=
+	"Withdraw from the study at any time?---Withdraw from the study without having to give a reason?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+
+	
+	<addMultipleChoice height="40" width="18%" peg="ethics" timeStart="0" labels="yes,no" required="==yes"   horizontal="left" howMany="6" y="13%---23%---28%---33%---45%---50%" x="0" seperation="horizontal"/>
+
+	<addButton width="90%" hideResults="true" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exit the study.',this.click&&required==true?next.start()" height="40"  text="I hereby fully and freely consent to my participation in this study." vertical="bottom" y="100%"/>
+	
+	
+	
+	<addText y="57%---64%---etc---" colour="black" width="100%" howMany="5"
+	text="I understand the nature and purpose of the procedures involved in this study. These have been communicated to me on the information sheet accompanying this form.---I understand and acknowledge that the investigation is designed to promote scientific knowledge and that the University of Bristol will use the data I provide for no purpose other than research.---I agree that the data collected from me as part of the study will be anonymised, and that after the study will be made “open data”. I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.---I understand that the University of Bristol may use the data collected for this study in a future research project but that the conditions on this form under which I have provided the data will still apply.---I agree to the University of Bristol keeping and processing the data I have provided during the course of this study. I understand that these data will be used only for the purpose(s) set out in the information sheet, and my consent is conditional upon the University complying with its duties and obligations under the 1998 Data Protection Act and will be stored in manual and/or electronic files in a secured encoded format" />
+	
+	<addShape width="100%" height="36%" border="0" colour="grey" y="72.5%" />
+	
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="how old are you?" />
+		<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="00"  x="50%" y="60%" timeStart="0" timeEnd="forever" />
+	</TRIAL>
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Sex?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Ethnicity?" />
+		<addComboBox required="" peg="ethnicity"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="White/European,African,South Asian,East Asian,Other"/> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is the highest level of education you have attained?" />
+		<addComboBox required="" peg="edu"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="Some High School,High School Graduate or Some College,Bachelor Degree,Graduate or Professional Degree"/> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="Are you currently undergoing any drug treatment for mental health problems?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="mHealth" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<TRIAL template="demographics" >
+		<addText copyOverID="Q" text="Are you currently undergoing any behavioural treatment for mental health problems?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="bHealth" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<demographics TYPE="Trial" block="1" order="fixed" trials="1">
+		<addText colour="COLOUR" x="50%" y="12%" height="20%" text="Some questions about yourself" timeStart="0"  width="100%" timeEnd="forever" fontSize="40"></addText> 
+		<addText copyOverID="Q" colour="COLOUR" width="100%" align="middle" height="10%" y="35%" fontSize="30"	/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" text="continue"if="this.click?this.text='please answer the question',this.click&&required==true?next.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>	
+		<behavNextTrial peg="next"/>
+	</demographics>
+			
+		
+				
+<TRIAL TYPE="Trial" block="2" order="fixed" trials="1">
+
+	<addText x="0%" colour="black" fontSize="22---17" howMany="2" horizontal="left" y="0%---87%" vertical="top" height="8%---15%" width="100%---50%" text="Over the last 2 weeks, how often have you been bothered by any of the following problems?---If you checked off {b}any{/b} problems, how {b}difficult{/b} have these problems made it for you to do your work, take care of things at home, or get along with other people?" />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="17" horizontal="left" y="18%---26%---etc---" howMany="9" height="8%" width="50%" text="1. Little interest or pleasure in doing things---2. Feeling down, depressed, or hopeless---3. Trouble falling or staying asleep, or sleeping too much---4. Feeling tired or having little energy---5. Poor appetite or overeating---6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down---7. Trouble concentrating on things, such as reading the newspaper or watching television---8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual---9. Thoughts that you would be better off dead or of hurting yourself in some way"/>	
+		
+	<addMultipleChoice fontSize="15" seperation="horizontal" required="" peg="QA"   horizontalDistanceApart="210" labels="Not at all,Several days,More than half the days,Nearly every day"  padding="10" horizontal="left" y="18%---26%---etc---" x="50%" howMany="9" height="5%" width="48%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addMultipleChoice fontSize="15" seperation="horizontal" peg="dif" required=""   horizontalDistanceApart="210" labels="Not difficult at all,Somewhat difficult,Very difficult,Extremely difficult"  padding="10" horizontal="left" y="95%" x="50%" howMany="1" height="5%" width="48%" timeStart="0"  timeEnd="forever" /> 
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40"  text="continue" horizontal="right"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()" timeEnd="forever" x="100%" vertical="top" y="8%"/>
+	
+	<behavNextTrial peg="next"/>		
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" block="2" order="fixed" trials="1">
+
+	<addText x="0%" colour="black" fontSize="20---20" howMany="1" horizontal="left" y="0%---87%" verticalAlign="top" vertical="top" height="8%---15%" width="100%---50%" text="A number of statements which people have used to describe themselves are given below. Read each statement and select the appropriate response to the right of the statement to indicate how you {b}generally feel in life{/b}. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel." />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="14" horizontal="left" y="18%---22%---etc---" howMany="20" height="5%" width="60%" text="1) I feel pleasant---2) I feel nervous & restless---3) I feel satisfied with myself---4) I wish I could be as  happy as others seem to be---5) I feel like a failure---6) I feel rested---7) I am 'calm, cool and collected'---8) I feel that difficulties are piling up so that I cannot overcome them---9) I worry too much over something that doesn't really matter---10) I am happy---11) I have disturbing thoughts---12) I lack self-confidence---13) I feel secure---14) I make decisions easily ---15) I feel inadequate ---16) I am content---17) Some unimportant thought  runs through my mind and bothers me---18) I take disappointments so keenly that I can't put them out of my mind---19) I am a steady person---20) I get in a state of tension or turmoil as I think over my recent concerns and interests"/>	
+		
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="QB"   horizontalDistanceApart="210" labels="Not at all,Somewhat,Moderately so,Very much so"  padding="10" horizontal="left" y="18%---22%---etc---" x="60%" howMany="20" height="4%" width="38%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="30"  text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()"   depth="top" timeEnd="forever" vertical="bottom" horizontal="right" y="100%"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="2" order="fixed" trials="1">
+
+	<addText x="0%" colour="black" fontSize="20---20" howMany="1" horizontal="left" y="0%---87%" verticalAlign="top" vertical="top" height="8%---15%" width="100%---50%" text="A number of statements which people have used to describe themselves are given below. Read each statement and select the appropriate option to the right of the statement to indicate how you {b}feel{/b} right {b}now{/b}, that is {b}at this moment{/b}. There are no right or wrong answers. Do not spend too much time on any one statement but give the answer which seems to describe your present feelings best." />
+
+	<addText colour="black" background="gray---white" x="0%" fontSize="14" horizontal="left" y="18%---22%---etc---" howMany="20" height="5%" width="60%" text="1) I feel calm ---2) I feel secure ---3) I am tense ---4) I feel strained ---5) I feel at ease ---6) I feel upset ---7) I am presently worrying over possible misfortunes---8) I feel satisfied ---9) I feel frightened ---10) I feel comfortable ---11) I feel self-confident ---12) I feel nervous---13) I am jittery ---14) I feel indecisive ---15) I am relaxed ---16) I feel content---17) I am worried ---18) I feel confused---19) I feel steady ---20) I feel pleasant"/>	
+		
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="QC"   horizontalDistanceApart="210" labels="Not at all,Somewhat,Moderately so,Very much so"  padding="10" horizontal="left" y="18%---22%---etc---" x="60%" howMany="20" height="4%" width="38%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="30"  text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?next.start()"   depth="top" timeEnd="forever" vertical="bottom" horizontal="right" y="100%"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="3" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" wordWrap="true" align="center"  height="90%" x="50%"  
+	 text=
+"We need to wait for all the stimuli to download unfortunately. If they have already done so, you can click button below to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+	
+	<addButton width="20%" enabled="false" peg="next" timeStart="0"  height="80" vertical="bottom" y="73%"/>
+	
+	<addLoadingIndicator if="this.onFinish?next.enabled=true" width="50%" height="5%"  y="85%" />
+	
+
+</TRIAL>
+		
+		
+		
+		<TRIAL TYPE="Trial" hideResults="true" block="4" order="fixed" trials="1">
+			<addText colour="COLOUR"  wordWrap="true" width="70%" y="10%" text=
+		"You will briefly see a picture of a face. Please identify the emotion the face is displaying.
+Please respond quickly but accurately. The experiment may take up to 15 minutes to complete. To begin click START."
+				timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+		
+			<addText colour="COLOUR"  y="40%" wordWrap="true" width="30%" x="20" horizontal="left" text=
+			"These are example pictures, shown for the same time as in the study (actual pictures will be larger):"
+				timeStart="0"  timeEnd="forever" fontSize="22"></addText> 
+		
+			<addJPG howMany="6" y="40%" betweenSJ="images" filename="af" filename1="_m_anger14.jpg---_f_disgust14.jpg---_m_fear14.jpg---_f_happy14.jpg---_m_sad14.jpg---_f_surprise14.jpg" 
+			timeStart="0---4000---8000---etc---" timeEnd='200---4200---8200---etc---' width="229.6" height="300" />	
+			
+			<addText colour="COLOUR"  y="65%" wordWrap="true" width="90%"   text=
+			"You must identify the displayed emotion with one of the following options: angry, disgusted, fearful, happy, sad, or surprised."
+				timeStart="0"  timeEnd="forever" fontSize="22"/> 
+		
+			<addText colour="COLOUR"  y="78%" wordWrap="true" width="90%"   text="If you have any questions please contact Michael Dalili at michael.dalili@bristol.ac.uk."
+			timeStart="0"  timeEnd="forever" fontSize="22"/> 
+		
+		
+			<addLoadingIndicator id="loading" behaviours="onFinish:nextTr.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+			
+			<addButton enabled='false' peg='nextTr' width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+		
+		</TRIAL>
+				
+		
+	
+		  
+		
+		<TRIAL  template="myTemplate"  trialName="T" betweenSJ='shortTrials' trials="96">
+			<addJPG betweenSJ='images' copyOverID="images" filename="af" filename1="_f_anger00.jpg;_f_anger02.jpg;_f_anger04.jpg;_f_anger06.jpg;_f_anger08.jpg;_f_anger10.jpg;_f_anger12.jpg;_f_anger14.jpg;_f_disgust00.jpg;_f_disgust02.jpg;_f_disgust04.jpg;_f_disgust06.jpg;_f_disgust08.jpg;_f_disgust10.jpg;_f_disgust12.jpg;_f_disgust14.jpg;_f_fear00.jpg;_f_fear02.jpg;_f_fear04.jpg;_f_fear06.jpg;_f_fear08.jpg;_f_fear10.jpg;_f_fear12.jpg;_f_fear14.jpg;_f_happy00.jpg;_f_happy02.jpg;_f_happy04.jpg;_f_happy06.jpg;_f_happy08.jpg;_f_happy10.jpg;_f_happy12.jpg;_f_happy14.jpg;_f_sad00.jpg;_f_sad02.jpg;_f_sad04.jpg;_f_sad06.jpg;_f_sad08.jpg;_f_sad10.jpg;_f_sad12.jpg;_f_sad14.jpg;_f_surprise00.jpg;_f_surprise02.jpg;_f_surprise04.jpg;_f_surprise06.jpg;_f_surprise08.jpg;_f_surprise10.jpg;_f_surprise12.jpg;_f_surprise14.jpg;_m_anger00.jpg;_m_anger02.jpg;_m_anger04.jpg;_m_anger06.jpg;_m_anger08.jpg;_m_anger10.jpg;_m_anger12.jpg;_m_anger14.jpg;_m_disgust00.jpg;_m_disgust02.jpg;_m_disgust04.jpg;_m_disgust06.jpg;_m_disgust08.jpg;_m_disgust10.jpg;_m_disgust12.jpg;_m_disgust14.jpg;_m_fear00.jpg;_m_fear02.jpg;_m_fear04.jpg;_m_fear06.jpg;_m_fear08.jpg;_m_fear10.jpg;_m_fear12.jpg;_m_fear14.jpg;_m_happy00.jpg;_m_happy02.jpg;_m_happy04.jpg;_m_happy06.jpg;_m_happy08.jpg;_m_happy10.jpg;_m_happy12.jpg;_m_happy14.jpg;_m_sad00.jpg;_m_sad02.jpg;_m_sad04.jpg;_m_sad06.jpg;_m_sad08.jpg;_m_sad10.jpg;_m_sad12.jpg;_m_sad14.jpg;_m_surprise00.jpg;_m_surprise02.jpg;_m_surprise04.jpg;_m_surprise06.jpg;_m_surprise08.jpg;_m_surprise10.jpg;_m_surprise12.jpg;_m_surprise14.jpg"/> 	
+		</TRIAL> 
+		
+		<myTemplate order="random" block="50" trialName="t">
+			<addResults/>
+			<addHideMouse peg="mouse" timeStart="0"/>
+			<behavPause peg="pause" timeStart='100' time="rand(0:1000)" />
+		
+			<addJPG filename="mask.jpg" peg="mask" depth="top" if="this.onFinish?results.d=this.duration,mouse.stop(),angry.start(),happy.start(),sad.start(),fearful.start(),surprised.start(),disgusted.start()"
+			duration='150' width="459" height="600" />
+		
+			<addJPG extension="jpg" betweenSJ="duration" copyOverID="images" if="this.doBefore?results.image=this.filename,results.dur=this.duration,this.onFinish?mask.start()" peg="face"
+			timeStart="2000" duration="125" width="459" height="600" />
+			
+			<addText  selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='2000'/>
+			
+			<behavSwap doOnce="true" peg="randomSwapChoice" usePegs="angry,happy,sad,fearful,surprised,disgusted" timeStart="0"/>
+			
+			<behavRT peg="rt" timeStart='2000'/>
+			
+			<addButton copyOverID="buttons" betweenSJ="timeStart" buttonGroup="selected" howMany="6" text='angry---happy---sad---fearful---surprised---disgusted'
+			peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
+		
+		</myTemplate>
+		
+
+<TRIAL TYPE="Trial" block="99" blockOrder="random" trials="1">
+
+	<addText x="0%"  colour="black" fontSize="20---20" howMany="2" horizontal="left" y="20%---30%" verticalAlign="top" align="middle" vertical="top" height="8%" width="100%" text="Please click on the little blue circle at the bottom of the screen. Do not click on the scale items that are labelled from 1 to 9.---This is just to screen out random clicking." />
+
+	<addText x="0%---100%"  colour="black" fontSize="20" howMany="2" horizontal="left---right"  vertical="top" height="8%" y="47%" width="10%" text="Very Rarely---Very Frequently" />
+	
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="catchButton" if="this.click?results.catch='bad',next.start()"  horizontalDistanceApart="210" labels="1,2,3,4,5,6,7,8,9"  padding="10"     height="4%" width="70%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addShape shape="circle" width="20" y="90%" lineThickness="1" height="20" if="this.click?results.catch='true',next.start()" />
+	
+	<behavResults peg="results"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" hideResults="true" block="100" blockOrder="random" trials="1">
+			<behavSaveData timeStart='0'/>
+			<addText  verticalAlign="top" wordWrap="true" text="{b}ASSESSING THE RECOGNITION OF EMOTION WITH ETHNICALLY DIVERSE STIMULI AND VARYING PRESENTATION TIMES
+DEBRIEF SHEET{/b}: Thank you for taking part in this study. The aim of this project is to determine whether stimulus presentation time influences emotion recognition performance across six different emotions using ethnically diverse stimulus sets. In this study participants were randomly assigned to complete the short version of the Bristol emotion recognition task with a randomly assigned stimulus presentation time and stimulus set. 
+We will also investigate whether sociodemographic characteristics (age, sex, and level of education) influence recognition performance.  In addition, we will examine whether there is any relationship between recognition performance and self-reported symptoms of depression and anxiety.
+This research will allow us to better understand how people recognize facial expressions of emotion and identify what factors may impact recognition performance.
+{b}Further Reading{/b}
+Dalili, M. N., Penton-Voak, I. S., Harmer, C. J., & Munafo, M. R. (2015). Meta-analysis of emotion recognition deficits in major depressive disorder. Psychol Med, 45(6), 1135-1144. doi: 10.1017/S0033291714002591
+Demenescu, L. R., Kortekaas, R., den Boer, J. A., & Aleman, A. (2010). Impaired attribution of emotion to facial expressions in anxiety and major depression. PLoS ONE, 5(12), e15058. doi: 10.1371/journal.pone.0015058
+Kessels, R. P., Montagne, B., Hendriks, A. W., Perrett, D. I., & de Haan, E. H. (2014). Assessment of perception of morphed facial expressions using the Emotion Recognition Task: normative data from healthy participants aged 8-75. J Neuropsychol, 8(1), 75-93. doi: 10.1111/jnp.12009
+{b}Main contacts:{/b} Michael Dalili 0117 331 0494 michael.dalili@bristol.ac.uk -- Professor Marcus Munafò 0117 954 6841 (internal 46841) marcus.munafo@bristol.ac.uk -- Professor Ian Penton-Voak 0117 928 8667 (internal 88667) i.s.penton-voak@bris.ac.uk
+If you have any concerns related to your participation in this study please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0117 9546832, Email: liam.mckervey@bristol.ac.uk).
+"	
+timeStart="0" width="80%" y="0" vertical="top" textAlign="top" align="center" timeEnd="forever" fontSize="17"></addText>
+
+		</TRIAL>
+	</AF125>	
+	
+	
+
+	<AF250>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</AF250>
+	<AF500>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</AF500>
+	<AF1000>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</AF1000>
+
+	
+	
+	
+	<EA125>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</EA125>
+	<EA250>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</EA250>
+	<EA500>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</EA500>
+	<EA1000>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</EA1000>
+	
+	
+	
+	
+	<CA125>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</CA125>
+	<CA250>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</CA250>
+	<CA500>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</CA500>
+	<CA1000>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</CA1000>
+	
+	
+	
+
+	
+	<SA125>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</SA125>
+	<SA250>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</SA250>
+	<SA500>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</SA500>
+	<SA1000>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</SA1000>
+	
+	
+
+	
+	
+</multi>

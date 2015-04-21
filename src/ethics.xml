@@ -1,0 +1,58 @@
+ <expt>
+<SETUP>   
+              <results mock="false"    />
+              <screen BGcolour="black"></screen>                          
+			  <computer  stimuliFolder="Oxford/ethics" />
+			  <style BUTTON_DOWN="0xff5656" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		
+	<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="We are interested to know how anonymous MTurkers really are. Here, we ask you to google your MTurk Worker ID and answer some questions about what you find. It should take less than 5 minutes to complete."/>   
+	
+	<addButton peg="next" timeStart="0" width="350"  height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+	
+	<addInput required="" text="how many Hits do you think you have done in total?" height="5%" y="6%" width="70%" fontSize="20" restrict="0123456789"/>
+	
+	<addJPG filename="eg1.png" y="30%" />
+	
+	<addText howMany="2" text="did your google search of your Worker ID find links to 'raw data' (answers you gave) from past studies you have taken part in? See above examples.---did your google search results contain information that revealed your name or IP address? see above examples." height="5%" x="75%" y="55%---75%" width="50%" fontSize="20"/>
+	
+	 <addMultipleChoice required="" howMany="2" peg="expt---ident" distanceApart="5" seperation="horizontal" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="yes,no"
+ 	x="35%" y="55%---75%" timeStart="0"  timeEnd="forever" />
+ 	
+ 	<Button goto="" if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  y="99%" vertical="bottom" width="350"  height="60" />
+	
+
+	<behavNextTrial peg='nextTrial'/>
+
+	
+</TRIAL>
+
+	
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" colour="white" text="Debrief
+Thank you! 
+I am writing a review about online research. A few of us discovered a potential ethical issue about anonymity and Mechanical Turk. Here were are assessing just how many people's indentify is available on google via their Worker ID. A v short survery found that: 'Entering 10 randomly chosen ID’s into a google search directly revealed the identical of 2 people and revealed data stored from past studies from 4 other individuals.'
+
+ARE YOU A MECHANICAL TURKER? DONT FORGET TO ENTER THE BELOW CODE INTO MTURK."
+timeStart="0" width="80%"  align="left" verticalAlign="top" vertical="top" y="5%" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</expt>

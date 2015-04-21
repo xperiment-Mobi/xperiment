@@ -1,0 +1,165 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+			  <computer  stimuliFolder="eloStrength"/>
+			  <style BUTTON_DOWN="0xff5656"  />
+			   <trials blockDepthOrder="10,*=random" />
+			  <core makeMode="false" />
+			  <variables COLOUR='0xe9e9e9' trialNum='0' shuffle_somethings_unique="STIM1 STIM2 ;" 
+STIM1="P002.jpg;P003.jpg;P004.jpg;P006.jpg;P007.jpg;P008.jpg;P012.jpg;P013.jpg;P014.jpg;P015.jpg;P016.jpg;P017.jpg;P018.jpg;P019.jpg;P020.jpg;P021.jpg;P027.jpg;P029.jpg;P031.jpg;P034.jpg;P036.jpg;P038.jpg;P040.jpg;P042.jpg;P044.jpg;P046.jpg;P047.jpg;P050.jpg;P052.jpg;P053.jpg;P057.jpg;P058.jpg;P060.jpg;P061.jpg;P070.jpg;P075.jpg;P076.jpg;P077.jpg;P078.jpg;P079.jpg;P080.jpg;P083.jpg;P085.jpg;P086.jpg;P089.jpg;P090.jpg;P092.jpg;P098.jpg;P103.jpg;P110.jpg;P112.jpg;P117.jpg;P119.jpg;P121.jpg;P123.jpg;P124.jpg;P125.jpg;P126.jpg;P127.jpg;P128.jpg;P129.jpg;P132.jpg;P134.jpg;P140.jpg;P142.jpg;P143.jpg;P144.jpg;P147.jpg;P148.jpg;P150.jpg;P151.jpg;P155.jpg;P159.jpg;P161.jpg;P163.jpg;P165.jpg;P166.jpg;P168.jpg;P169.jpg;P170.jpg;P171.jpg;P172.jpg"
+STIM2="P002.jpg;P003.jpg;P004.jpg;P006.jpg;P007.jpg;P008.jpg;P012.jpg;P013.jpg;P014.jpg;P015.jpg;P016.jpg;P017.jpg;P018.jpg;P019.jpg;P020.jpg;P021.jpg;P027.jpg;P029.jpg;P031.jpg;P034.jpg;P036.jpg;P038.jpg;P040.jpg;P042.jpg;P044.jpg;P046.jpg;P047.jpg;P050.jpg;P052.jpg;P053.jpg;P057.jpg;P058.jpg;P060.jpg;P061.jpg;P070.jpg;P075.jpg;P076.jpg;P077.jpg;P078.jpg;P079.jpg;P080.jpg;P083.jpg;P085.jpg;P086.jpg;P089.jpg;P090.jpg;P092.jpg;P098.jpg;P103.jpg;P110.jpg;P112.jpg;P117.jpg;P119.jpg;P121.jpg;P123.jpg;P124.jpg;P125.jpg;P126.jpg;P127.jpg;P128.jpg;P129.jpg;P132.jpg;P134.jpg;P140.jpg;P142.jpg;P143.jpg;P144.jpg;P147.jpg;P148.jpg;P150.jpg;P151.jpg;P155.jpg;P159.jpg;P161.jpg;P163.jpg;P165.jpg;P166.jpg;P168.jpg;P169.jpg;P170.jpg;P171.jpg;P172.jpg"			  
+			   />	  
+			  
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1">
+
+	 <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="4%" vertical="top" text=
+"{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+You will be shown a series of images and asked to rate the men in them for physical strength Just click on the rating that you consider best applies - don't think about it too much! We are interested in people's intuitive responses. 
+At the end of the study we will tell you more about the purpose of the study. You can contact i.s.penton-voak@bristol.ac.uk for further information at a later date if you wish.
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I understand the general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="17"/>
+	
+	<addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  colour="COLOUR" x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText colour="COLOUR" howMany="2"  padding="10" width="60" height="10%" x="20%" y="23%---40%" text=
+	"sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="75%"/>
+	
+	<addComboBox peg="orientation" items="heterosexual,homosexual,bisexual" label="what is your sexual orientation?" scale="1" timeStart="0" width="70%" height="31%" timeEnd="forever" x="50%" y="84%"/>
+		
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' enabled="false" hideResults="true" width="90%" goto='' height="40" peg='next' text="continue (if stimuli are still loading, please wait for them to load)"
+	if="this.click?this.text='please answer the questions',this.click&&orientation.result!=''&&sex.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="83%"/>
+	
+	<addLoadingIndicator id="loading" behaviours="onFinish:next.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%"/>
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1">
+
+
+	<addText colour="COLOUR"  wordWrap="true"  text=
+"In one part of this study, on each trial you will see 2 photos of men for 2 seconds, after which, you should judge which of the two men you thought as more strong looking by clicking on the appropriate button (or pressing z or m keys).
+In the other part of this study, on each trial you will see 1 photo of a man for 2 seconds, after which, you should judge how strong he looked using a scale." timeStart="0"  width="100%" fontSize="22"></addText> 
+
+
+	<addButton y="90%" text="begin the study" width="240" height="7%"/>
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL template="break" block="10,1">
+	<addText copyOverID="txt"  text=
+"In the following 1/2 of the study you will see an image of a man. Please rate how strong you think he is using the scale. 
+Click START to continue."/>
+</TRIAL>
+
+<TRIAL template="break" block="10,2">
+	<addText copyOverID="txt"  text=
+"In the following 1/2 of the study you will see two image of men. Please indicate which you think looks stronger. 
+Click START to continue."/>
+</TRIAL>
+
+
+
+<TRIAL block="10,1" trials="82" trialOrder="random" trialName="S">
+	
+	<addResults timeStart="0" />
+
+ 	<addJPG timeStart="0" timeEnd="2000"  if="this.doNow?results.image=this.filename" extension="jpg" filename="P002;P003;P004;P006;P007;P008;P012;P013;P014;P015;P016;P017;P018;P019;P020;P021;P027;P029;P031;P034;P036;P038;P040;P042;P044;P046;P047;P050;P052;P053;P057;P058;P060;P061;P070;P075;P076;P077;P078;P079;P080;P083;P085;P086;P089;P090;P092;P098;P103;P110;P112;P117;P119;P121;P123;P124;P125;P126;P127;P128;P129;P132;P134;P140;P142;P143;P144;P147;P148;P150;P151;P155;P159;P161;P163;P165;P166;P168;P169;P170;P171;P172"/>
+	
+	<addMultipleChoice timeStart="2000" if="this.click?nextTrial.start()" seperation="horizontal" peg="r" width="50%" height="5%" horizontalDistanceApart="210" labels="1,2,3,4,5,6,7"  padding="10"  y="75%" vertical="bottom" /> 
+	
+	<addText timeStart="2000" text="very weak---very strong" howMany="2"  y="72%" width="10%" fontSize="20" height="5%" align="right---left" horizontal="right---left" x="24%---76%" />
+	
+	<addText  timeStart="2000" selectable="false" text="How strong is this man?" fontSize="30" align='center' y="25%" width="100%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>  
+
+
+  
+<TRIAL template="elo" block="10,2" trials="82" trialName="E1"></TRIAL>
+  
+
+<break TYPE="Trial" hideResults="true"   forcePositionInBlock='0'  trials="1">
+	<addText copyOverID="txt" colour="COLOUR" wordWrap="true" align="centre" timeStart="0"  timeEnd="forever" fontSize="30"/>
+	<addButton  peg='nextTr' width="140" height="40" text="start"  timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%"/>
+</break>
+
+
+<elo trials="41">
+	<addResults timeStart="0" />
+
+ 	<addJPG if="this.doNow?results.stim1=this.filename" peg="stim1" x="25%" timeEnd="2000" timeStart="0" filename="STIM1"/> 
+ 	<addJPG if="this.doNow?results.stim2=this.filename" peg="stim2" x="75%" timeEnd="2000" timeStart="0" filename="STIM2"/> 
+	
+	<addText  timeStart="2000" selectable="false" text="Which man is the strongest?" fontSize="30" align='center' y="25%" width="100%"/>
+	<addButton  if="this.click?results.selected=" if1="stim1---stim2" if2=".filename,nextTrial.start()" x="35%---65%" timeStart="2000" howMany="2" key="z---m" y="75%" vertical="bottom" peg="left---right" text="the person on the left (z)---the person on the right (m)" width="240" height="7%"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</elo>
+
+ 
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1">
+  	
+	<addText  colour="COLOUR" wordWrap="true" height="30%" width="70%"  text=
+	"Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how attractive different body motions are in our videos. Have a lovely day! 
+
+Don't forget to enter the code below in Mechanical Turk. You can close this screen."
+	timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+</TRIAL>
+
+
+
+
+
+
+
+</Bouba2>	

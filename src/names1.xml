@@ -1,0 +1,94 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <info id="c856865c45b64f2da6ecde2bf0962a24" />
+             
+              <screen BGcolour="gray"  ></screen>                      
+			  <computer  stimuliFolder="Bus\names" />
+			  <trials blockDepthOrder="10,*=random 10,*,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="black" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+	
+			
+	<addText  y="40%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="50%"  timeStart="0" fontSize="30"
+	text="Welcome to this survey. We are setting up a company to do online research in up-and-coming countries. We need to decide on a name. Could you answer the following questions please, to help us decide? Thankyou. If you have any questions, please do not hesitate in contacting us at andy.woods@xperiment.mobi."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true"   align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true'  colour="gray" width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+<TRIAL template="boxScale,myTemplate" order="random" block="10" trials="4">
+	<addText copyOverID="labels" text="not memorable---very memorable;not serious---very serious;not likely---very likely;not likely---very likely" />
+	<addResults copyOverID="res" timeStart="0" Q="mem;serious;Hit;succeed"/>
+	<addText copyOverID="instruct" text="How memorable do you think these names are?;How serious do you think other companies would treat companies with the below names?;How likely would you be to do a Hit for companies of the below names?;How likely do you think each company is to succeed?" /> 
+</TRIAL>  
+
+
+
+<boxScale >
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="pics,checker" box="checker" />	
+	<behavRandPos box="box" width="100%" y="25%" height="50%" usePegs="pics,box" timeStart="0" />
+	<addShape peg="box" timeStart="0" width="1000" height="20%" colour="none" visible="false" y="35%"/>
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="45%" colour="none" lineThickness="1" y="70%"/>
+	<addButton depth="top" copyOverID="button" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" />
+</boxScale>
+
+<TRIAL order="random" block="15" trials="1">
+	<addButton copyOverID="button"   hideResults="true" depth="bottom" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<addText fontSize="30" text="The next 5 trials will ask you to rate these names on more unusual properties (this is called 'sensory profiling' and is useful for brand design)." align="middle" width="80%"/>
+</TRIAL>  
+
+
+<TRIAL template="boxScale,myTemplate" order="random" block="20" trials="5">
+	<addText copyOverID="labels" y="95%" text="very weak---very strong;sad---happy;low pitch---high pitch;very smooth---very rough;very unpleasant---very pleasant" />
+	<addResults copyOverID="res" timeStart="0" Q="strong;happy;pitch;rough;pleasant"/>
+	<addText copyOverID="instruct" text="How weak or strong do you think these names are?;How sad or happy do each of these names make you feel?;How low pitch or high pitch do these names seem?;How smooth or rough are these names?;How unpleasant or pleasant are these names?" /> 
+</TRIAL>  
+
+<myTemplate order="random">
+	<addButton copyOverID="button" peg="b" key=" " hideResults="true" depth="bottom" goto="" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next (SPACE)"/>
+	<addText copyOverID="instruct" text1="
+Vertical position does not matter." align="centre" width="100%" height="20%" x="50%" y="0%" vertical="top" verticalAlign="top" fontSize="30" wordWrap="true"  timeStart="0" peg="instruct"/> 
+	<addJPG copyOverID="images" timeStart="0"  howMany="8" filename="BRICtastic---CloudSense---ePhy---FlyingFishResearch---MindHive---Nimbus9---Woovee---Savee" extension="png" peg="pics"  />
+	<addResults copyOverID="res" timeStart="0"/>
+	<addText copyOverID="labels" howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" width="50%" fontSize="30" x="5%---95%" />
+	<behavNextTrial peg='nextTrial'/>
+</myTemplate>  
+
+
+<TRIAL order="random" block="50" trials="1">
+	<addButton copyOverID="button" peg="b"  hideResults="true" depth="bottom" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<addInputText text="can you think of other another good name? If so, please write it down here (optional)." align="middle" width="80%"/>
+</TRIAL>  
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your help! Please contact andy.woods@xperiment.mobi if you have any questions.
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addMechanicalTurk fontSize="50" align="middle" y="80%"/>
+</TRIAL>
+
+
+
+
+</Taste>	

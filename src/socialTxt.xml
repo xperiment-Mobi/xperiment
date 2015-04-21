@@ -1,0 +1,134 @@
+<A>
+
+ <SETUP>   
+              <results mock="false"    />
+              <trials blockDepthOrder="10,*=random" />
+              <screen BGcolour="black"></screen>                          
+			  <computer  stimuliFolder="Bristol\socialTxt" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial" background="white"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+This study aims to understand how people link visual patterns and sound. There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial"  background="white" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  background="white" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+	"sex---age---handedness"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+	
+	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial"  background="white" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="30%" x="50%"   
+	 text=
+"In this experiment you will be shown a shape or text and are asked to rate in on a scale."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+	
+	<addButton width="140"  height="40" text="begin" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+
+
+
+<TRIAL block="10" trials="10" >
+
+	<addShape howMany="4" width="45%" height="25%" x="25%---75%" y="15%---15%---85%---85%" lineColour="white" fill="false"/>
+	
+	<addText 
+	text="honest---liar------" peg="a---b---c---d" shuffle_somethings="x y if2 nice ---" fake="" if="this.doNow?" if1="buttonPos.key='---buttonNeg.key='---this.fake='---this.fake='" if2="q---p---z---m" if3="'" timeStart="0" nice="true---false---err---err"  howMany="4" x="25%---75%---25%---75%" y="15%---15%---85%---85%" colour="white" fontSize="40" align="centre" width="25%" height="25%" verticalAlign="middle" />
+
+
+	<addText text="correct" colour="white" align="middle" fontSize="80" peg="feedback" timeStart="end" duration="500" />
+
+	<addButton key=" " visible="false" goto="" peg="buttonPos---buttonNeg" if="this.click?" if1="pos---neg" if2=".start(),next.start()" howMany="2" timeStart="0"/>
+	
+	<behav peg="pos---neg" howMany="2" random="50%---50%" if="this.doBefore?feedback.text='wrong'"/>
+	
+	<addText text="I think you are..." fontSize="40" align="centre" width="100%" height="20%" colour="white"/>
+	
+	<behavNextTrial peg="next" />
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="
+Thanks for taking part in this study. 
+Past research has found that concepts that should have not relationship with each other often do.  For example, a blob shape with the word 'bouba' are often linked, as well as an angular shape with the word 'kiki'.  A popular explanation is that it is the shape our mouths form when we speak which leads to these associations - our mouths form a rounded shape when speaking 'bouba' which is currently thought to make an actual rounded shape more likely to linked to the word 'bouba'. This study explored how subtle changes in shape link with these words.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again!"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+
+  	
+
+</A>	
+
