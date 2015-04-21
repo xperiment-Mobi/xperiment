@@ -1,18 +1,19 @@
 <Taste exptType="WEB">
 
 <SETUP>  
-              <screen BGcolour="grey" orientation="horizontal" ></screen>                          
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
               <email emailResults="false"  />
 			  <computer  stimuliFolder="Oxford\ShapeApproach" />
-			   <trials blockDepthOrder="20,*=random" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
 			  <variables RAND='rand(0:1:0)' trialNum='1' />
 			  <style  LABEL_TEXT="0x000000" />
 </SETUP>
 
 
+
 <TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
 <addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
-		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
 	text="Dear participant,
 Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University.
 We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to descriptions. 
@@ -90,8 +91,12 @@ Please read the below consent statement and indicate whether you consent.
 </TRIAL>
 
 
+<TRIAL block="20,2,1" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" align="middle" text="In the folloiwng task, we will ask you to arrange different shapes on various scales. You will do this by dragging and droping the different images into a box that has labels on both sides (the scale), which indicate how you should place the shapes."/>
+	<addButton key=" " timeStart="0"  y="20%" vertical="bottom" width="300" height="40" text="next (SPACE)"/>
+</TRIAL>
 
-<TRIAL template="template" block="20,2" order="random" trialName="T" >
+<TRIAL block="20,2,2" order="random" trials="4" trialName="T" >
 
 	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
 	text="Please drag these images into the below box, positioning them according to the extent to which you associate them with the anchors of the box. Note that the vertical position does not matter. You can use the whole horizontal space in the box." 
@@ -107,7 +112,7 @@ Please read the below consent statement and indicate whether you consent.
 	
 	<addShape peg="box" timeStart="0" width="1000" height="40%" colour="none" visible="false" y="28%"/>
 	
-	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="400" colour="none" lineThickness="1" y="100%" vertical="bottom"/>
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="400" colour="none" lineThickness="1" y="99%" vertical="bottom"/>
 	
 
 	<addText howMany="4" y="72%---72%" timeStart="0---0---1000---1000" SHUFFLE_SOMETHING="text ---" verticalAlign="middle" timeEnd="1000---1000---forever---forever" align="left---right" horizontal="left---right" peg="label1---label2---l3---l4" width="30%" fontSize="70---70---30---30" label="advance;seek;persue;proceed" text="avoid---advance;retreat---seek;escape---pursue;evade---proceed" x="5%---95%" />
@@ -119,7 +124,15 @@ Please read the below consent statement and indicate whether you consent.
 </TRIAL>
 
 
-<TRIAL template="template" block="20,1" trials="32" order="random" trialName="F" >
+<TRIAL block="20,1,1" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" y="80%" align="middle" text="In the following task, we will ask you to categorize shapes according to concepts. For each shape you will have two words to decide between. These are located on the left and right side of the screen. You will need to press the 'z' (left-hand-side word) or 'm' keys (right-hand-side word) to indicate your choice of word. Please respond as fast an as accurate as possible after the shape appears on the screen. Above is a practice trial. Make your decision by pressing either 'z' or 'm' and the task will start."/>
+	
+	<addJPG copyOverID="images" if="this.doBefore?b1.keyEnabled=true,b2.keyEnabled=true" shuffle_something="filename1 ;" timeStart="2000"  peg="pics"  width="100" height="aspectRatio" extension="png" filename="Shape0" filename1="1;1;1;1;2;2;2;2;3;3;3;3;4;4;4;4;5;5;5;5;6;6;6;6;7;7;7;7;8;8;8;8" />
+	
+	<addButton peg="b1---b2" howMany="2"  timeStart="0" enabled="false" keyEnabled="false"  y="50%" key="z---m" shuffle_somethings="key x text2 ---" width="200" x="30%---70%" height="200" text1=" (" text2="z---m" text3=")" text="star---blob"/>
+</TRIAL>
+
+<TRIAL  block="20,1,2" trials="32" order="random" trialName="F" >
 
 	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
 	text="Please select the word that you feel best matches image." 
@@ -132,7 +145,7 @@ Please read the below consent statement and indicate whether you consent.
 	
 	<behavRT peg="rt" timeStart="2000"/>
 	
-	<addButton peg="b1---b2" howMany="2"  timeStart="0" enabled="false" keyEnabled="false"  y="50%" key="z---m" shuffle_somethings="key x text2 ---" width="200" x="30%---70%" height="200" text1=" (" text2="z---m" text3=")" text="avoid---advance;retreat---seek;escape---pursue;evade---proceed"/>
+	<addButton peg="b1---b2" howMany="2"  timeStart="0" enabled="false" keyEnabled="false"  y="50%" key="z---m" SHUFFLE_SOMETHINGS="key x text2 ---" width="200" x="30%---70%" height="200" text1=" (" text2="z---m" text3=")" text="avoid---advance;retreat---seek;escape---pursue;evade---proceed"/>
 	
 	
 </TRIAL>
