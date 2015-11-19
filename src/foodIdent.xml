@@ -1,0 +1,183 @@
+<food>
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="Bristol\FoodIdent" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="5%;20%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}ASSESSING THE RECOGNITION OF EMOTION WITH ETHNICALLY DIVERSE STIMULI AND VARYING PRESENTATION TIMES - INFORMATION SHEET{/b}
+Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information. 
+{b}Background{/b}: This study is being conducted to investigate the effects of stimulus presentation time on accuracy using an emotion recognition training task. Previous studies on the ability to recognize different facial expressions of emotion among adults have used various different presentation times and have produced mixed results, while most studies have been quite small and few have used ethnically diverse stimuli. The results of this study will allow us to determine how stimulus presentation times affect task performance and identify the appropriate presentation time to use in future studies.
+{b}Procedures{/b}: We are looking for people aged 18 years or older. Participants are free to withdraw from the study at any time by simply closing the web page and do not have to give a reason for this decision. The experiment may take up to 20 minutes.
+During the experiment you will be asked take part in a computer task that involves judging the emotion present in a face and complete some questionnaires. All data collected will remain anonymous and you will have the right to withdraw your data at any time during the study by simply closing the web page, at which point your data would be discarded.  
+{b}Your Data{/b}: Your involvement in the study will remain confidential. This information will only be available to research staff and national bodies which monitor whether research studies are conducted properly. Your study data will be anonymised. This means that it will be given an identification number and we will not collect any identifying information about you. Therefore, it will not be possible to identify you by name from any aspect of reporting for this research study. At the end of the study your data will become “open data”. This means that the data will be stored in an online database and will be publicly available.
+;{b}What is open access?{/b} Open data means that data are made available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised and therefore there will be no way to identify you from the research data.
+{b}Why open data?{/b}: Sharing research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publicly funded, the outcomes of the research should be made publicly available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+{b}If you have any questions about the study{/b} please contact Michael Dalili at michael.dalili@bristol.ac.uk.
+{b}If you have any concerns{/b} related to your participation in this study, please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0044 (0)117 9546832, Email: liam.mckervey@bristol.ac.uk"
+		timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+	
+	
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" vertical="bottom" timeEnd="forever" y="100%"  />
+	<addButton width="140" present="0;1" height="40" text="Continue" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="1%" x="0%" vertical="top" text=
+	"{b}CONSENT FORM{/b}. Please answer the following questions to the best of your knowledge.
+DO YOU CONFIRM THAT YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="1" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="8%" x="20%" vertical="top" text=
+	"Are aged 18 or older?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="17%" x="0%" vertical="top" text=
+	"HAVE YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="3" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="18%---23%---28%" x="20%" vertical="top" text=
+	"Been given information explaining about the study?---Been given contact information to ask questions and discuss this study?---Received enough information about the study for you to make a decision about participation?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="39%" x="0%" vertical="top" text=
+	"DO YOU UNDERSTAND THAT YOU MAY:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="2" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="40%---45%" x="20%" vertical="top" text=
+	"Withdraw from the study at any time?---Withdraw from the study without having to give a reason?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+
+	
+	<addMultipleChoice height="40" width="18%" peg="ethics" timeStart="0" labels="yes,no" required="==yes"   horizontal="left" howMany="6" y="13%---23%---28%---33%---45%---50%" x="0" seperation="horizontal"/>
+
+	<addButton width="90%" hideResults="true" goto="" if="this.click?this.text='To consent you must have clicked ‘yes’ to all of the above. If you do not wish to consent please press escape to exit the study.',this.click&&required==true?next.start()" height="40"  text="I hereby fully and freely consent to my participation in this study." vertical="bottom" y="100%"/>
+	
+	
+	
+	<addText y="57%---64%---etc---" colour="black" width="100%" howMany="5"
+	text="I understand the nature and purpose of the procedures involved in this study. These have been communicated to me on the information sheet accompanying this form.---I understand and acknowledge that the investigation is designed to promote scientific knowledge and that the University of Bristol will use the data I provide for no purpose other than research.---I agree that the data collected from me as part of the study will be anonymised, and that after the study will be made “open data”. I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.---I understand that the University of Bristol may use the data collected for this study in a future research project but that the conditions on this form under which I have provided the data will still apply.---I agree to the University of Bristol keeping and processing the data I have provided during the course of this study. I understand that these data will be used only for the purpose(s) set out in the information sheet, and my consent is conditional upon the University complying with its duties and obligations under the 1998 Data Protection Act and will be stored in manual and/or electronic files in a secured encoded format" />
+	
+	<addShape width="100%" height="36%" border="0" colour="grey" y="72.5%" />
+	
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="how old are you?" />
+		<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="00"  x="50%" y="60%" timeStart="0" timeEnd="forever" />
+	</TRIAL>
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Sex?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Ethnicity?" />
+		<addComboBox required="" peg="ethnicity"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="White/European,African,South Asian,East Asian,Other"/> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is the highest level of education you have attained?" />
+		<addComboBox required="" peg="edu"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="Some High School,High School Graduate or Some College,Bachelor Degree,Graduate or Professional Degree"/> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="Are you currently undergoing any drug treatment for mental health problems?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="mHealth" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<TRIAL template="demographics" >
+		<addText copyOverID="Q" text="Are you currently undergoing any behavioural treatment for mental health problems?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="bHealth" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<demographics TYPE="Trial" block="1" order="fixed" trials="1">
+		<addText colour="COLOUR" x="50%" y="12%" height="20%" text="Some questions about yourself" timeStart="0"  width="100%" timeEnd="forever" fontSize="40"></addText> 
+		<addText copyOverID="Q" colour="COLOUR" width="100%" align="middle" height="10%" y="35%" fontSize="30"	/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" text="continue"if="this.click?this.text='please answer the question',this.click&&required==true?next.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>	
+		<behavNextTrial peg="next"/>
+	</demographics>
+			
+
+
+
+
+<TRIAL block="10" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="20" vertical="top" y="0" verticalAlign="top" align="middle" text="INSTRUCTIONS SVP."/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="continue (SPACE)"/>
+</TRIAL>
+
+
+
+<TRIAL template="template_3_imagesVAS,template" TrialName="A" trials="1">
+
+
+</TRIAL>
+
+
+<template_3_imagesVAS>
+	<addJPG copyOverID="VAS_images" howMany="3" filename="Creamsauce1_5g---creamsauce2_20g---creamsauce3_46g;Milk1_100g---Milk2_200g---Milk3_300g;Milk1_100g---Milk2_200g---Milk3_300g;Milk1_100g---Milk2_200g---Milk3_300g;Milk1_100g---Milk2_200g---Milk3_300g;yogurt_or_custard1_40g---yogurt_or_custard2_70g---yogurt_or_custard3_155g;Cheese1_10g---Cheese2_30g---Cheese3_63g;Butter1_4g---Butter2_12g---Butter3_16g;Butter1_4g---Butter2_12g---Butter3_16g;Butter1_4g---Butter2_12g---Butter3_16g;Teaspoon_5ml---dessertspoon_10ml---tablespoon_15ml;Scrambledegg1_51g---Scrambledegg2_113g---Scrambledegg3_150;Muesli1_20g---Muesli2_55g---Muesli3_87g;Cornflakes1_25g---Cornflakes2_40g---Cornflakes3_70g;Rice1_55g---Rice2_140g---Rice3_260g;Maccaroni1_75g---Maccaroni2_140g---Maccaroni3_350g;Rice1_55g---Rice2_140g---Rice3_260g;pizza1_7inch_thinbase229g_thick253g---pizza2_10inch_thinbase470g_thick570g---pizza3_13inch_thinbase719gg_thick826g;Cake1_30g---Cake2_50g---Cake3_120g;Icecream1_30g---Icecream2_75g---Icecream3_180g;Teaspoon_5ml---dessertspoon_10ml---tablespoon_15ml;Jamspread1_6g---jamspread2_18g---jamspread3_35g;Meatpie1_72g---Meatpie2_138g---Meatpie3_205g;Meat1_50g---Meat2_147g---Meat3_212;Meatdish1_185g---Meatdish2_305g---Meatdish3_425g;Meat1_50g---Meat2_147g---Meat3_212;Liver1_8g---liver2_52g---liver3_81g;Friedfish1_105g---friedfish2_120g---friedfish3_170g;Fish1_28g---Fish2_90g---Fish3_190g;Fish1_28g---Fish2_90g---Fish3_190g;Chips1_70g---Chips2_150g---Chips3_260g;Roastpots1_45g---Roastpots2_105g---Roastpots3_185g;Potatoes1_70g---potatoes2_130g---potatoes3_280g;Broccoli1_33g---broccoli2_66g---broccoli3_132g;Peas1_16g---Peas2_42g---Peas3_80g;Greenbeans1_20g---greenbeans2_50g---greenbeans3_94g;Mushrooms1_27g---mushrooms2_55g---mushrooms3_82g;Carrots1_20g---carrots2_37g---carrots3_90g;Bakedbeans1_40g---bakedbeans2_80g---bakedbeans3_116g;Bakedbeans1_40g---bakedbeans2_80g---bakedbeans3_116g;Vegcurry1_69g---vegcurry2_168g---vegcurry3_317g;Tinnedfruit1_23g---tinnedfruit2_56g---tinnedfruit3_138g;Tinnedfruit1_23g---tinnedfruit2_56g---tinnedfruit3_138g;Driedfruit1_5g---driedfruit2_11g---driedfruit3_27g;Stewedfruit1_51g---stewedfruit2_87g---stewedfruit3_150g;Soup1_89g---soup2_200g---soup3_370g;Gravy1_20g---gravy2_60g---gravy3_122g;Creamsauce1_5g---creamsauce2_20g---creamsauce3_46g"
+	/>
+
+</template_3_imagesVAS>
+
+
+
+
+<template block="-20" order="random" trials="4" trialName="T" >
+
+	<addTrialCounter peg="startCounter" trials="78" timeStart="0" y="0%" vertical="top" width="100" height="40"/>
+	
+	<behavResults copyOverID="results" />
+	
+	<addJPG  timeStart="0" copyOverID="VAS_images"  extension="jpg"  />
+	
+	<behavRT peg="rt"  />
+	
+	<addSlider timeStart="0" lineColour="black" depth="top" y="95%" peg="slider" if="this.moved?next.start()" />
+	
+	<addButton depth="top" text="next" peg="next" />
+	
+</template>
+
+
+			
+			
+			
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation. We are testing different beer bottle designs on a number of attributes.
+If you have questions and would like to learn more about this investigation, please contact Alejandro Salgado alejandro.salgado@psy.oc.ac.uk.
+PLEASE DO NOT FORGET TO ENTER THE CODE BELOW IN MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</food>	

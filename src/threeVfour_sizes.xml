@@ -1,0 +1,234 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <screen BGcolour="white"  ></screen>                          
+			  <computer  encrypt='false'  stimuliFolder="Oxford\3v4_2" />
+			  <style BUTTON_DOWN="0xff5656"  />
+
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" text=
+		"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people decide whether or not they like a plate of food. If you decide to take part in this experiment, you will be asked to adjust the size of a food plate of food to match that of another portion of food. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+We also ask you some questions about yourself at the beginning.
+There are 36 trials."
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to adjust the size of a food plate of food to match that of another portion of food.
+You can contact Andy Woods (psy.ox.ac.uk) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="5"  trials="1">
+	
+	<addText  colour="black" wordWrap="true" text="In this study you will see several portions of food containing scallops on each trial. Please adjust the portion of food at the bottom of the screen so that it is the same amount of food as that in the portion above."	timeStart="0" width="100%" y="0%" vertical="top" verticalAlign="top"  align="center" timeEnd="forever" fontSize="25"></addText>
+	
+	<addJPG filename="instructions.jpg" y="55%" exactSize="true"/>
+
+<addButton timeStart='0' hideResults="true" width="340"  height="40" peg='next' 
+	text="start"
+	timeEnd="forever" x="50%" vertical="top" y="93%"/>
+</TRIAL>
+
+
+
+<TRIAL template="v_line2,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line3,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line4,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="diamond,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="triangle,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="duo,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="dot,largePlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line2,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="v_line3,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="v_line4,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="diamond,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="triangle,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="duo,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="dot,largePlate,squarePlate,template"></TRIAL>
+<TRIAL template="v_line2,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line3,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line4,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="diamond,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="triangle,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="duo,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="dot,regularPlate,roundPlate,template"></TRIAL>
+<TRIAL template="v_line2,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="v_line3,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="v_line4,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="diamond,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="triangle,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="duo,regularPlate,squarePlate,template"></TRIAL>
+<TRIAL template="dot,regularPlate,squarePlate,template"></TRIAL>
+
+<TRIAL template="v_line2,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="v_line3,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="v_line4,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="diamond,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="triangle,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="duo,regularPlate,noPlate,template"></TRIAL>
+<TRIAL template="dot,regularPlate,noPlate,template"></TRIAL>
+
+
+<v_line2><behavShapePattern copyOverID="p4" shape="v2" fillParentRatio=".55" /></v_line2>
+<v_line3><behavShapePattern copyOverID="p4" shape="v3" fillParentRatio=".55" /></v_line3>
+<v_line4><behavShapePattern copyOverID="p4" shape="v4" fillParentRatio=".55" /></v_line4>
+
+
+<diamond>	<behavShapePattern copyOverID="p4" shape="diamond" /></diamond>>
+<triangle>	<behavShapePattern copyOverID="p4" shape="triangle" /></triangle>
+<duo>	<behavShapePattern copyOverID="p4" shape="duo" /></duo>
+<dot>	<behavShapePattern copyOverID="p4" shape="dot" /></dot>>
+
+
+<largePlate>
+	<addJPG copyOverID="images2" width="50---50---50---50---50---320---320" height="50---50---50---50---50---320---320"/>
+	<behavResults copyOverID="results" plateSize="large"/>
+</largePlate>
+
+<regularPlate>
+	<behavResults copyOverID="results" plateSize="regular"/>
+</regularPlate>
+
+
+
+<roundPlate>
+	<behavShapePattern copyOverID="p4" background="round2" hide="square2"/>
+	<behavResults copyOverID="results" plateShape="round"/>
+</roundPlate>
+
+<squarePlate>
+	<behavShapePattern copyOverID="p4" background="square2" hide="round2"/>
+	<behavResults copyOverID="results" plateShape="square"/>
+</squarePlate>
+
+<noPlate>
+	<behavShapePattern copyOverID="p4" background="" hide="round2,square2"/>
+	<behavResults copyOverID="results" plateShape="none"/>
+</noPlate>
+
+<template block="-20" blockOrder="random" trials="1">
+	
+	<behavResults copyOverID="results"/>
+	
+	<addText y="0%" height="10%" width="100%" vertical="top" verticalAlign="top" align="middle" text="Please use the scroll button on your mouse, or your left/right keys, to resize all the items in {b}portion 2{/b} so that they are the same amount of food as {b}portion 1{/b}."  timeStart="0" fontSize="30" />
+
+	<addText howMany="2" y="27%---62%" x="84%" height="20%" width="16%" vertical="top"  verticalAlign="middle" align="left" text="Portion 1---Portion 2 (all the items combined)"  timeStart="0" fontSize="18" />
+
+	<addJPG smoothing="true" y="71.5%---36.5%" horizontal="right" x="73%---70%" howMany="2" filename="bracket.png---bracketSmall.png" timeStart="0" exactSize="true"/>
+
+	<addJPG smoothing="true" copyOverID="images1" howMany="5" peg="c1---c2---c3---c4---c5---round1---square1" extension="png" filename="1---2---3---4---5" timeStart="0" width="87" height="87"/>
+	<addJPG smoothing="true" copyOverID="images2" howMany="7" peg="d1---d2---d3---d4---d5---round2---square2" extension="png" filename="1---2---3---4---5---roundPlate---squarePlate" timeStart="0" width="50---50---50---50---50---250---250" height="50---50---50---50---50---250---250"/>
+	
+	<behavShapePattern copyOverID="p3" peg="p3" usePegs="c1,c2,c3,c4,c5" y="35%" timeStart="0" width="250" height="250" fillParentRatio=".22" shape="dot"/>
+	<behavShapePattern copyOverID="p4" peg="p4" usePegs="d1,d2,d3,d4,d5,square2,round2" y="70%" timeStart="0" width="250" height="250" fillParentRatio=".22" if="this.doNow?results.foodShape=this.shape"/>
+	
+	<behavScale min=".5" max="2.5"  usePegs="d1,d2,d3,d4,d5" timeStart="0" peg="scale"/>
+	
+	<behavScroll startValMin=".2" startValMax=".35" timeStart="0" if="this.moved?scale.itemFromPercent=this.result" peg="scroll"/> 
+	
+	<addButton timeStart='0' key=" " hideResults="true" width="340" height="40" peg='next' 
+	text="next (SPACE)"
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+</template>
+  	
+
+ <TRIAL TYPE="Trial" block="80" order="fixed" trials="1">
+
+	
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "One last question. We will accept your Hit irrespective of your answer. When you did the task, were you resizing Portion 2 so that:"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	
+
+ 	<addMultipleChoice peg="q" required="" distanceApart="5" width="100%" height="50%" horizontalDistanceApart="210" 
+ 	labels="one food item was the same size as Portion 1,all the items together in Portion 1 added up to the same amount as in Portion 2"
+ 	x="50%"  timeStart="0"  timeEnd="forever" /> 	
+	
+
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+ 
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100"  trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thankyou for taking part in this study! We are interested in how the arrangement of food on a plate influences your perception of food amount.
+Don't forget to enter the code below in Mechanical Turk."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="40"></addText>
+</TRIAL>
+  	
+
+
+
+
+</Bouba2>	

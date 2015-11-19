@@ -1,0 +1,209 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="ff\gonogo1" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are a company called Flying Fish Research-Neurosketch, that performs research for companies.
+Here, we are interested in understanding how people see different brands. We will ask you to look for a target brand. We will then show you a picture. If you see the target brand in one of 4 locations in the picture you are to press the 'SPACE' key, elsewise you are to wait for 2 seconds until the next trial.
+Your participation is very important to us.
+Please press ' Continue'."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When stimuli are loaded (bottom bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{B} Before we start we will ask you to read the following.{/b}
+Pressing the button that says 'I agree' you indicate that you agree to participate in this research.
+In this study we ask you to look for logos. Before you start the study we will tell you a little more about the purpose of the investigation. You may also contact Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr. Andy Woods (andy@xperiment.mobi) for more information.
+
+-continued On next page-;
+Please read the information presented below and indicate whether you agree or not.
+{U} Statement of Informed Consent {/U}
+1. I have read and understand the information presented above, and understand the general purpose of the experiment.
+2. I understand that I can withdraw from the study at any time and in doing so we will destroy your data. You can withdraw at any time for any reason. (NB - Note that the data collected is anonymous - if you change your mind at the end of the experiment, we can not track your specific data to delete it.
+3. I understand that my responses are anonymous.
+4. I agree to participate in this online experiment."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I agree" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "Some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="What country do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="What is your native language ? - Please answer writing in this space." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+
+
+</TRIAL>
+
+
+<TRIAL block="10" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="20" vertical="top" y="0" verticalAlign="top" align="middle" text="Please respond as quickly and accurately as possible in this study. In each trial, we will show you a logo of a target brand. We will then show you a photo. If the target logo is in the photo (it would be in one of the four corners of the photo), please press SPACE. Elsewise, please wait for 2 seconds until the next trial.
+We start with 4 practice trials."/>
+	<addJPG filename="instructions_eng.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="continue (SPACE)"/>
+</TRIAL>
+
+
+<TRIAL template="practicePresent,present,newLogo,template"  />
+<TRIAL template="practiceAbsent,absent,newLogo,template"   />
+<TRIAL template="practicePresent,present,oldLogo,template"   />
+<TRIAL template="practiceAbsent,absent,oldLogo,template"   />
+
+
+
+<practiceAbsent trials="1" block="15" trialName="P">
+	<addButton copyOverID="button" if="this.click?feedback.text='wrong'" />
+	<addText copyOverID="feedback" peg="feedback" timeStart="end" align="middle" duration="500" width="100%" text="correct" fontSize="80"/>
+</practiceAbsent>
+
+<practicePresent trials="1" block="15" trialName="P">
+	<addButton copyOverID="button" if="this.click?feedback.text='correct'" />
+	<addText copyOverID="feedback" peg="feedback" timeStart="end" align="middle" duration="500" width="100%" text="wrong" fontSize="80"/>
+</practicePresent>
+
+
+<TRIAL block="17" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="20" vertical="top" y="0" verticalAlign="top" align="middle" text="To start the actual experiment, please press SPACE. Please respond as quickly and accurately as possible in this study."/>
+	<addJPG filename="instructions_eng.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="continue (SPACE)"/>
+</TRIAL>
+
+<TRIAL block="20" template="present,newLogo,template" />
+<TRIAL block="20" template="absent,newLogo,template" />
+<TRIAL block="20" template="present,oldLogo,template" />
+<TRIAL block="20" template="absent,oldLogo,template" />
+
+<present>
+	<addJPG copyOverID="target" peg="target" present="1"/>
+	<addResults copyOverID="r" AmPresent="1"/>
+	
+</present>
+
+<absent>
+	<addJPG copyOverID="target" present="0"/>
+	<addResults copyOverID="r" AmPresent="0"/>
+</absent>
+
+
+
+<newLogo>
+<addJPG copyOverID="target" filename="1_Corona_nuevo"/>
+<addJPG copyOverID="targetStrt" filename="1_Corona_nuevo"/>
+</newLogo>
+
+<oldLogo>
+<addJPG copyOverID="target" filename="2_Corona_actual"/>
+<addJPG copyOverID="targetStrt" filename="2_Corona_actual"/>
+</oldLogo>
+
+
+<template block="20" order="random" trials="6" trialName="T" >
+	<addResults copyOverID="r" peg="results"/>
+ 	<addText peg="startTxt" timeStart="0" duration="1000" align="middle" y="30%" text="Only press SPACE if the below logo is present on the next screen." width="100%" fontSize="30"/>
+ 	
+ 	<addJPG timeStart="1000" if="this.doNow?results.bg=this.filename" extension="jpg" filename="alta1;alta2;baja1;baja2;media1;media2" />
+ 	<addJPG copyOverID="target" timeStart="1000"  howMany="4" extension="png" visible="true---false---false---false" shuffle_somethings="x y ---"
+ 	x="300---300---724---724"
+ 	y="10%---90%---10%---90%"
+ 	/> 
+ 	<addJPG copyOverID="targetStrt" timeStart="0" duration="1000" extension="png" if="this.doNow?results.target=this.filename"/>
+	<behavNextTrial peg='nextTrial' timeStart="3000"/>
+	
+	<behavRT timeStart="1000" peg="rt" />
+	<addButton copyOverID="button" key=" " visible="false" timeStart="1000" peg="space" />
+	
+</template>
+
+
+
+<TRIAL block="50" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="Do you know this brands"/>
+	<addText y="40%---60%" fontSize="20" width="30%" horizontal="left" height="10%" howMany="1" text="Corona (Latin American furniture brand---Alfa" />
+	
+	<addMultipleChoice horizontal="right" required="" peg="corona---alfa" howMany="1" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="yes,no"
+ 	x="45%" y="40%---60%" timeStart="0" seperation="horizontal" timeEnd="forever" /> 	
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="Continue"
+	if="this.click?this.text='Please answer the questions',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation. We are exploring ways in which the different characteristics of a brand logo change how people perceive that logo.
+If you have questions and would like to learn more about this investigation, please contact Alejandro Salgado alejandro.salgado@psy.oc.ac.uk.
+PLEASE DO NOT FORGET TO ENTER THE CODE BELOW IN MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

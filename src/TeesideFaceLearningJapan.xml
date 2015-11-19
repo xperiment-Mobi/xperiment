@@ -1,0 +1,93 @@
+<Bouba2 exptType="WEB" >
+  <SETUP >
+    <screen BGcolour="white" />
+    <computer stimuliFolder="TeesideFaces" />
+    <style BUTTON_DOWN="0xff5656" />
+    <variables trialNum="0" />
+    <trials overSJs="blockDepthOrder" blockDepthOrder="10,*=random" />
+  </SETUP>
+  
+  <TRIAL TYPE="Trial" block="1" order="fixed" trials="1" >
+    <fullScreen timeStart="0" if="this.onFinish?next.start()" 
+
+	    closeMessage="準備ができたら閉じる"
+	    header="実験を開始するには「フルスクリーン表示にする」（推奨）か、「準備ができたら閉じる」をクリックします。"
+	    header2="実験を開始するには「準備ができたら閉じる」をクリックします。"
+	    goFullScreen="フルスクリーン表示
+ にする"
+	    goSmallScreen="フルスクリーン表示
+をやめる"
+    />
+    <behavNextTrial peg="next" />
+    
+    
+  </TRIAL>
+  <TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1" >
+    <addText drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true" width="100%" height="80%" y="5%" x="0%" vertical="top" text="{b}参加者情報: 同人種および他人種の顔の知覚的評価{/b}&#xD;&#xA;イントロダクション&#xD;&#xA;人々は、通常、慣れ親しんだ顔を再認するのはとても得意です（例えば、友達の顔、同僚の顔、有名人の顔）。しかし、なじみのない顔の再認は比較的不得手です (Hancock, Bruce & Burton, 2000)。
+特に、自分と異なる他の人種の顔を再認するのは非常に不得手です（“他人種効果”, 以下OREとする）。OREがなぜ起こるかについて膨大な数の研究が行われてきました。
+証拠が示唆するのは、それは人種的偏見によるものでなく、OREを引き起こす、知覚的および社会的なカテゴリー化過程のコンビネーションによるということです。この実験は、同人種および他人種の顔の知覚を調査します。もし参加したら、何を尋ねられるのでしょうか？ 実験では、２３の顔を1ブロックとして、４ブロック呈示されます。ある１つのブロックでは、白人の顔が１つづつ表示され、その他のブロックでは日本人の顔が１つづつ表示されます。それぞれの顔を15秒間見て、その間に、７件法（７段階の尺度）で５つの要因、すなわち、魅力度、弁別性、記憶しやすさ、親近性、好ましさについて評価するよう求められます。さらに、日本人と白人（英国人）の顔にどれくらい接触があるかの質問に回答が求められます。この実験は３０分ほどで完了します。 データは匿名でかつ機密に保護されますか？  T参加者全員の氏名は、プロジェクトを通じて匿名が維持されます。得られたデータと反応は、参加者の名前と関連付けされません。また、データは機密に扱い、ここに記述する目的にのみ使用し、リサーチ・チーム外のいかなる者とも共有しません。 実験には必ず参加しなければなりませんか？ その必要はありません。何の損失も伴わずに、実験をやめることができます。実験参加後、ご自身の実験データを取り出すには、実験者にメールする必要があります（下記のメールアドレスをご利用ください）。次のページで発行するパスワードであなたの実験データをお渡します。パスワードは、ご本人のデータを確認するのに使用します。 詳しい情報が必要な際はどこで得られますか？ F詳しい情報については、Natalie Butcher （N.Butcher@tees.ac.uk）、Kazuyo Nakabayashi博士（K.Nakabayashi@hull.ac.uk） またはToby Lloyd-Jone教授  （t.j.lloyd-jones@swansea.ac.uk）にお尋ねください。" timeStart="0" timeEnd="forever" fontSize="16" />
+    <addButton width="20%" height="40" text="次へ" resultFileName="continue" vertical="bottom" y="100%" />
+  </TRIAL>
+  <TRIAL TYPE="Trial" hideResults="false" block="1" order="fixed" trials="1" >
+    <addText depth="bottom" drawBox="true" howMany="7" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true" width="80%" height="30%" y="0%---10%---20%---50%---60%---70%---77%---84%" x="0%" vertical="top" text="{b}同意書{/b} &#xD;&#xA;&#xD;&#xA;---1.&#x9;参加者情報ページを既にご覧になりましたか？&#xD;&#xA;---2.&#x9;本研究への参加は強制ではないことについてご理解いただけましたか？また、
+ 次の条件で参加を辞退することも可能です:-&#xD;&#xA;* 2015年6月30日まで &#xD;&#xA;* 辞退の理由なしに &#xD;&#xA;* 損失を被ることなく、自由に辞退することできます。&#xD;&#xA;---3. 本研究について十分な情報が得られましたか？ &#xD;&#xA;---4. 本研究への参加にご同意いただけますか？&#xD;&#xA;---年齢: &#xD;&#xA;---性別:&#xD;&#xA;" timeStart="0" timeEnd="forever" fontSize="20" />
+    <addMultipleChoice height="40" width="18%" timeStart="0" peg="read" labels="yes,no" required="==yes" horizontal="left" howMany="4" y="11.5%---41%---52%---62%" x="70%" seperation="horizontal" />
+    <addInputTextBox timeStart="0" width="18%" height="35" y="72%" x="20.1%" peg="age" restrict="0123456789." horizontal="left" />
+    <addMultipleChoice height="40" width="18%" peg="sex" timeStart="0" labels="男性,女性" required="" horizontal="left" y="78.5%" x="20%" seperation="horizontal" />
+    <addComboBox peg="origin" vertical="top" required="" label="ご出身を教えてください。" depth="0" timeStart="0" width="40%" height="31%" timeEnd="forever" x="60%" y="69.7%" items="日本,アメリカ,イギリス,アイルランド,フランス,アフガニスタン,アルバニア,アルジェリア,アメリカ領サモア,アンドラ,アンゴラ,アンギラ,南極,アンティグア・バーブーダ,アルゼンチン,アルメニア,アルバ,オーストラリア,オーストリア,アゼルバイジャン,バハマ,バーレーン,バングラディシュ,バルバドス,ベラルーシ,ベルギー,ベリーズ,ベナン,バミューダ諸島,ブータン,ボリビア,ボスニア・ヘルツェコビナ,ボツワナ,ブーベ島,ブラジル,イギリス領インド洋地域,ブルネイ・ダルサラーム,ブルガリア,ブルキナファソ,ブルンジ,カンボジア,カメルーン,カナダ,カーボベルデ,ケイマン諸島,中央アフリカ共和国,チャド,チリ,中国,クリスマス諸島,ココス（キーリング）諸島,コロンビア,コモロ,コンゴ,コンゴ民主共和国,クック諸島,コスタリカ,コートジボワール,クロアチア,キューバ,キプロス,チェコ,デンマーク,ジブチ,ドミニカ,ドミニカ共和国,エクアドル,エジプト,エルサルバドル,赤道ギニア,エリトリア,エストニア,エチオピア,フォークランド諸島（マルビナス）,フェロー諸島,フィジー,フィンランド,フランス,フランス領ギアナ,フランス領ポリネシア,フランス領南方・南極地域,ガボン,ガンビア,ジョージア,ドイツ,ガーナ,ジブラルタル,ギリシャ,グリーンランド,グレナダ,グアドループ,グアム,グアテマラ,ギニア,ギニアビサウ,ガイアナ,ハイチ,ハード島とマクドナルド諸島,聖座（バチカン市国）,ホンジュラス,香港,ハンガリー,アイスランド,インド,インドネシア,イラン・イスラム共和国,イラク,アイルランド,イスラエル,イタリア,ジャマイカ,日本,ヨルダン,カザフスタン,ケニア,キリバス,朝鮮民主主義人民共和国,韓国,クウェート,キルギス,ラオス,ラトビア,レバノン,レソト,リベリア,リビア,リヒテンシュタイン,リトアニア,ルクセンブルグ,マカオ,マケドニア（旧ユーゴスラビア共和国）,マダガスカル,マラウイ,マレーシア,モルジブ,マリ,マルタ,マーシャル諸島,マルティニーク,モーリタニア,モーリシャス,マヨット,メキシコ,ミクロネシア,モルドバ,モナコ,モンゴリア,モントセラト,モロッコ,モザンビーク,ミャンマー,ナミビア,ナウル,ネパール,オランダ（ネザーランド）,オランダ領アンティル,ニューカレドニア,ニュージーランド,ニカラグア,ニジェール,ナイジェリア,ニウエ,ノーフォーク島,北マリアナ諸島,ノルウェー,オマーン,パキスタン,パラオ,パレスチナ,パレスチナ自治区,パナマ,パプアニューギニア,パラグアイ,ペルー,フィリピン,ピトケアン諸島,ポーランド,ポルトガル,プエルトリコ,カタール,レユニオン,ルーマニア,ロシア連邦,ルワンダ,セントヘレナ,セントクリストファー・ネイビス,セントルシア,サンピエール島およびミクロン島,セントビンセントおよびグレナディーン諸島,サモア,サンマリノ,サントメ・プリンシペ,サウジアラビア,セネガル,セルビア・モンテネグロ,セーシェル,シエラレオネ,シンガポール,スロバキア,スロベニア,ソロモン諸島,ソマリア,南アフリカ共和国,サウスジョージア・サウスサンドウィッチ諸島,スペイン,スリランカ,スーダン,スリナム,スヴァーバル島およびヤンマイエン島,スワジランド,スウェーデン,スイス,シリア,台湾（台湾省）,タジキスタン,タンザニア,タイ,東ティモール,トーゴ,トケラウ,トンガ,トリニダード・トバゴ,チュニジア,トルコ,トルクメニスタン,タークス・カイコス諸島,ツバル,ウガンダ,ウクライナ,アラブ首長国連邦,イギリス,アメリカ合衆国,合衆国領有小離島,ウルグアイ,ウズベキスタン,バヌアツ,ベネズエラ,ベトナム,ヴァージン諸島,イギリス領ヴァージン諸島,ウォリス・フツナ,西サハラ,イエメン,ザンビア,ジンバブエ" />
+    <addInputTextBox required="" width="45%" text="覚えやすいパスワードを我々に提供してください。実験参加後、あなたがご自身のデータを取り出すことを希望する際は、Eメールで実験者にこのパスワードをお送りいただく必要があります。" height="80" x="50%" wordWrap="true" y="30%" horizontal="left" timeStart="0" peg="pword" />
+    <addButton width="99%" goto="" if="this.click?this.text='please answer the questions',this.click&amp;&amp;required==true?next.start()" height="40" text="私はこの研究への参加に全面的に同意します。" vertical="bottom" y="100%" />
+    <behavNextTrial peg="next" />
+  </TRIAL>
+  <TRIAL TYPE="Trial" hideResults="false" block="1" order="fixed" trials="1" >
+      <addText depth="bottom" drawBox="true" howMany="2" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true" width="80%" height="30%" y="70%---80%" x="0%" vertical="top" text="あなたは何人ですか？---あなたの国籍は何ですか？" timeStart="0" timeEnd="forever" fontSize="20" />
+  	<addInputTextBox required="" width="30%" height="35" x="30.1%" y="85%" horizontal="left" timeStart="0" peg="nationality" />
+    <addInputTextBox timeStart="0" required="" width="30%" x="30.1%" height="35" y="72%" peg="ethnicity" restrict="" horizontal="left" />
+    <addButton width="99%" goto="" if="this.click?this.text='上記のすべてについて同意いただける場合、”Yes”をクリックしパスワードを提供してください。もし同意いただけない場合は、ESCキーを押してプログラムを終了してください。',this.click&amp;&amp;required==true?next.start()" height="40" text="私はこの研究への参加に全面的に同意します。" vertical="bottom" y="100%" />
+    <behavNextTrial peg="next" />
+  </TRIAL>
+  <TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1" >
+    <addText drawBox="true" autoSize="false" align="left" wordWrap="true" width="100%" text="{b}導入ページ:{/b}&#xD;&#xA;参加者は、15秒間一連の顔写真を見ます。まず、各写真を何秒か見て、その後、その顔がどのくらい弁別しやすいか、好ましいか、魅力的か、記憶しやすいか、親しみやすいかを評価します。&#xD;&#xA;{b}弁別性{/b} は、あなたがその（写真の）人物を群衆の中から探し出す時、どれくらい難しいと思うか。&#xD;&#xA;{b}好ましさ{/b} は、あなたにとってその人物が好ましく見えると思うかどうかについて。&#xD;&#xA;{b}魅力度{/b} は、あなたにとってその人物が魅力的だと思うかどうか（について）。&#xD;&#xA;{b}記憶しやすさ{/b} は、あなたがその人物を覚えやすいと思うかどうかについて。&#xD;&#xA;{b}親近性{/b} は、その顔が、あなたの知り合いの誰かと混同しやすいかどうかについて。&#xD;&#xA;上記の評価を行う際には、1から7の尺度で評定してください。尺度上の他の数字のことを考慮せずに、常に同じ数字（例．3または5のみで回答する）で回答しないようお願いします。" timeStart="0" timeEnd="forever" fontSize="20" />
+    <addButton width="20%" height="40" text="次へ" vertical="bottom" y="100%" />
+  </TRIAL>
+  <TRIAL block="10" template="pauseTemplate" forceBlockDepthPositions="1/4" />
+  <TRIAL block="10" template="pauseTemplate" forceBlockDepthPositions="2/4" />
+  <TRIAL block="10" template="pauseTemplate" forceBlockDepthPositions="3/4" />
+  <pauseTemplate TYPE="Trial" hideResults="true" blockOrder="fixed" trials="1"  >
+    <addText wordWrap="true" text="23試行の次のブロックを始めます（全部で4ブロックあります）。" timeStart="0" width="80%" align="center" timeEnd="forever" fontSize="60" />
+    <addButton peg="nextTr" width="140" height="40" text="次へ" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%" />
+  </pauseTemplate>
+  <TRIAL template="myTemplate" block="10,1" trials="23" trialName="CF" >
+    <addJPG copyOverID="images" filename="0010_FF_Caucasian;0011_FF_Caucasian;0012_FF_Caucasian;0013_FF_Caucasian;0014_FF_Caucasian;0015_FF_Caucasian;0016_FF_Caucasian;0017_FF_Caucasian;0019_FF_Caucasian;0020_FF_Caucasian;0021_FF_Caucasian;0022_FF_Caucasian;0023_FF_Caucasian;0024_FF_Caucasian;002_FF_Caucasian;003_FF_Caucasian;004_FF_Caucasian;006_FF_Caucasian;008_FF_Caucasian;009_FF_Caucasian;0018_Brit_NF_UP;001_Brit_NF_UP;007_Brit_NF_UP" />
+  </TRIAL>
+  <TRIAL template="myTemplate" block="10,2" trials="23" trialName="JF" >
+    <addJPG copyOverID="images" filename="0010_FF_Japan;0011_FF_Japan;0013_FF_Japan;0014_FF_Japan;0015_FF_Japan;0016_FF_Japan;0017_FF_Japan;0018_FF_Japan;0019_FF_Japan;0020_FF_Japan;0021_FF_Japan;0022_FF_Japan;0023_FF_Japan;0024_FF_Japan;0025_FF_Japan;003_FF_Japan;006_FF_Japan;007_FF_Japan;008_FF_Japan;009_FF_Japan;002_Jap_NF_UP;004_Jap_NF_UP;005_Jap_NF_UP" />
+  </TRIAL>
+  <TRIAL template="myTemplate" block="10,3" trials="23" trialName="CM" >
+    <addJPG copyOverID="images" filename="0046_MF_Caucaisan;0026_MF_Caucasian;0027_MF_Caucasian;0028_MF_Caucasian;0031_MF_Caucasian;0032_MF_Caucasian;0033_MF_Caucasian;0034_MF_Caucasian;0035_MF_Caucasian;0036_MF_Caucasian;0039_MF_Caucasian;0040_MF_Caucasian;0041_MF_Caucasian;0042_MF_Caucasian;0043_MF_Caucasian;0045_MF_Caucasian;0047_MF_Caucasian;0048_MF_Caucasian;0049_MF_Caucasian;0050_MF_Caucasian;0029_Brit_NF_UP;0037_Brit_NF_UP;0044_Brit_NF_UP" />
+  </TRIAL>
+  <TRIAL template="myTemplate" block="10,4" trials="23" trialName="JM" >
+    <addJPG copyOverID="images" filename="0026_MF_Japan;0027_MF_Japan;0029_MF_Japan;0031_MF_Japan;0032_MF_Japan;0033_MF_Japan;0034_MF_Japan;0035_MF_Japan;0037_MF_Japan;0038_MF_Japan;0039_MF_Japan;0040_MF_Japan;0042_MF_Japan;0043_MF_Japan;0045_MF_Japan;0046_MF_Japan;0047_MF_Japan;0048_MF_Japan;0049_MF_Japan;0050_MF_Japan;0028_Jap_NF_UP;0030_Jap_NF_UP;0036_Jap_NF_UP" />
+  </TRIAL>
+  <myTemplate order="random"  >
+    <addTrialCounter horizontal="left" vertical="top" width="10%" height="4%" x="1%" y="1%" trials="92" />
+    <addJPG extension="jpg" if="this.doBefore?results.face=this.filename" copyOverID="images" timeEnd="15000" vertical="top" y="0%" />
+    <addResults timeStart="0" peg="results" />
+    <behavSchedule timeStart="0" peg="nxt" schedule="[crowd,crowdTxt],[like,likeTxt],[attractive,attractiveTxt],[remember,rememberTxt],[confuse,confuseTxt]" usePegs="crowd,like,attractive,remember,confuse,crowdTxt,likeTxt,attractiveTxt,rememberTxt,confuseTxt,next" doAfter="next" />
+    <addText y="88%" fontSize="17" width="100%" align="middle" peg="crowdTxt---likeTxt---attractiveTxt---rememberTxt---confuseTxt" howMany="5" text="この人を群衆の中から見つけ出すのはどれくらい難しいですか？　1=難しくない、7=とても難しい---この人は好ましく見えますか？　1=好ましくない、7=とても好ましい---この人は魅力的に見えますか？　1=魅力的でない、7=とても魅力的である---この顔は覚えやすいですか？　1=覚えやすい、7=覚えにくい---この顔はあなたの知り合いと混同しそうですか？　1=混同しそうにない、7=とても混同しそうだ" />
+    <addMultipleChoice if="this.click?nxt.next()" fontSize="18" peg="crowd---like---attractive---remember---confuse" howMany="5" height="50" width="90%" labels="1,2,3,4,5,6,7" y="100%" vertical="bottom" seperation="horizontal" />
+    <behavNextTrial peg="next" />
+  </myTemplate>
+  <TRIAL TYPE="Trial" hideResults="false" block="50" order="fixed" trials="1" >
+    <addText text="以下のアンケートで、あなたがどの程度、東洋人（日本人を含みます）や西洋人と接触しているのかを教えてください。以下の各質問項目に対して、あなたの意見にもっとも近い数値を示して下さい。" y="5%" width="100%" fontSize="20" />
+    <addMultipleChoice fontSize="18" height="50" width="90%" timeStart="0" labels="1 全く当てはまらない,2 ほとんど当てはまらない,3 当てはまらない,4 当てはまる,5 ほぼ当てはまる,6 非常に当てはまる" y="13%" seperation="horizontal" />
+    <addText autoSize="false" align="right" wordWrap="true" width="70%" howMany="16" text="(1) 東洋人（日本人を含む）をたくさん知っている。 ---(2) 日常生活で、西洋人と接触している---(3) 西洋人と接触するような場所に住んでいる、住んでいたことがある。 ---(4) 東洋人と接触するような場所に住んでいる、住んでいたことがある。 ---(5) 日常生活で、東洋人と接触している。 ---(6) 毎日、西洋人と接触している。---(7) 西洋人と親交多くがある。---(8) 東洋人と接触する中学校・高校に通っていた。---(9) 東洋人と親交が多くある。---(10) 西洋人をたくさん知っている。---(11) 普段、東洋人とだけ接触している。---(12) 毎日、東洋人と接触する。---(13) 西洋人と接触する中学校・高校に通っていた。---(14)普段、西洋人とだけ接触している。 ---(15) 西洋人が多くいる国に住んだことがある。---(16) 東洋人が多くいる国に住んだことがある。" timeStart="0" timeEnd="forever" fontSize="18" x="0" y="19%---24%---etc---"  horizontal="left" />
+    <addMultipleChoice height="30" width="20%" timeStart="0" labels="1,2,3,4,5,6" peg="1---2---3---4---5---6---7---8---9---10---11---12---13---14---15---16" required="" horizontal="left" howMany="16" y="19%---24%---etc---" x="73%" seperation="horizontal" />
+    <addButton width="20%" height="35" text="次へ" resultFileName="continue" vertical="bottom" y="100%" />
+  </TRIAL>
+  <TRIAL TYPE="Trial" hideResults="true" block="100" blockOrder="random" trials="1" >
+    <behavSaveData timeStart="0" />
+    <addText height="80%" wordWrap="true" text="{b}参加者への説明{/b}&#xD;&#xA;この研究の目的は、刺激表象の差異を実験参加前に評価するものです。それは“人種間効果”に内在する魅力度、親近性、好ましさ、弁別性、記憶のしやすさについての評価です。また、“人種間効果”は、顔再認において、自身と異なる人種の顔の方が自身と同じ人種の顔よりも違いを処理するのが苦手だという効果です。自分と同じ、または異なる人種間の顔再認において見られる差異を、これらの要因で説明し得るかどうかを確立し、また先行研究の刺激や今後の研究に使用する刺激について検証するためにも、このような文化間の差異の評価は重要です。そこで我々は、白色人種-英国人とアジア人種-日本人の参加者に、自身と同じ、および異なる人種の顔のシリーズについて前述の5項目で評価するようお願いしています。実験はXperiment Mobi software (www.xperiment.mobi) が心理実験向けにデザインしたものをオンラインで実施します。ここでの顔評価の尺度は、異なる人種グループにおいて行った先行研究で用いられたものを採用しています。例えば、Meissner, Brigham and Butz (2005) は白色人種および黒色人種の男子大学生が両方の人種の顔を再認する際の魅力度、親近性、好ましさ、弁別性、記憶のしやすさの影響について着目しています。彼らの実験と結果の詳細は以下のとおりです。&#xD;&#xA;例えば、Meissner, Brigham and Butz (2005) は白色人種および黒色人種の男子大学生が両方の人種の顔を再認する際の魅力度、親近性、好ましさ、弁別性、記憶のしやすさの影響について着目しています。彼らの実験と結果の詳細は以下のとおりです。&#xD;&#xA;「自身の、および異なる人種の顔の記憶 : デュアルプロセスアプローチ」Christian A. Meissner, John C. Brigham and David A. Butz (2005)&#xD;&#xA;要約: 本研究は、自身と同じ、および異なる人種の顔の知覚(実験1)と再認(実験2)の両方について、人種間効果の現象論的な基準を評価する。評価は、デュアルプロセスの枠組みに内在するさまざまな社会-認知的メカニズムの予測を調査することによって行う。本研究の結果をまとめると、自身と同じ人種の顔における弁別成績の違いは、想起過程によって表象された顔情報の符号化における質的な違いによるものが大きいことが示された。さらに、参加者が馴染みのない、異なる人種の顔について符号化して反応したときに、確信度の高い誤反応が多く見られた。習熟した知覚記憶の現象学に関するこれらの結果の理論的意義が議論される。また、符号化に基づいた現象としての人種間効果の応用的結果も考えられる。&#xD;&#xA;ご参加いただきありがとうございました。
+{b}PlEASE GIVE THIS CODE TO YOUR EXPERIMENTER: GX723{/b}" timeStart="0" width="100%" align="center" timeEnd="forever" fontSize="18" />
+  </TRIAL>
+</Bouba2>

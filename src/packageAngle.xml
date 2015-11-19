@@ -133,13 +133,13 @@ By clicking ‘I consent’, you are agreeing to the above statements."
 </TRIAL>
 
 
-<myTemplate block="15" trialName="large" trials="1">
+<myTemplate block="-15" trialName="large" trials="1">
 	<addText copyOverID="txt" align="centre" width="25%" height="50%" x="0%" y="0%" colour="black" horizontal="left" vertical="top" verticalAlign="top"
 	text="Please rotate the " text1="food" text2=" so that it is orientated so it looks most appealing by moving your mouse around the screen Press SPACE when you are done." 	fontSize="22" wordWrap="true"  timeStart="0" peg="instruct" /> 
 	
 	<behavRotate yz="45" randomStartRotation="true" peg="angle" timeStart="0" rotateWithMouseDown="true" usePegs="pic"/>
 	<addJPG copyOverID="bg" timeStart="10" filename="largePlate.png" />
-	<addJPG copyOverID="r" timeStart="10"  peg="pic" smoothing="true" filename="large.png" />
+	<addJPG copyOverID="r" depth="top" timeStart="10"  peg="pic" smoothing="true" filename="large.png" />
 	<behavRT timeStart="0" peg="rt"/>
 	<addButton copyOverID="b" hideResults="true" visible="false" key=" "/>
 	

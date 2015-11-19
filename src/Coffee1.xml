@@ -1,3 +1,4 @@
+
 <Taste exptType="WEB">
 
 <SETUP>  
@@ -11,7 +12,7 @@
 
 
 <TRIAL TYPE="Trial" ITI="0" trialName="splash" hideResults="true" block="0" trials="1" >
-    <addButton fontSize="30" howMany="2" text="中国的---english" behaviours="click:trial.start(),lang.language='chinese',lang.start(),next.start()---click:next.start()" width="20%" height="100" y="30%---50%---70%" goto="" />
+    <addButton fontSize="30" howMany="3" text="中国的---español---english" behaviours="click:trial.start(),lang.language='chinese',lang.start(),next.start()---click:trial.start(),lang.language='spanish',lang.start(),next.start()---click:next.start()" width="20%" height="100" y="30%---50%---70%" goto="" />
     <behavTrial peg="trial" enable="Code" />
     <behavLanguage peg="lang" />
     <behavNextTrial peg="next" />
@@ -26,10 +27,10 @@
     text="Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
 We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked some questions about the appearance of different mugs. 
 There are no right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."  
-    text.chinese="欢迎参加本研究。我们是牛津大学实验心理学系跨通道研究实验室的研究人员。本研究是为了探索人们如何把不同感官的感觉联系起来。如果你决定参加这个实验,我们将会问你一些关于药片外观的问题.
+    text.chinese="欢迎参加本研究。我们是牛津大学实验心理学系跨通道研究实验室的研究人员。本研究是为了探索人们如何把不同感官的感觉联系起来。如果你决定参加这个实验,我们将会问你一些关于杯子外观的问题.
     你对每个问题的回答无所谓对错。请按照你的真实想法回答。谢谢你的参与。"  
     text.spanish="¡Bienvenido a nuestro estudio! Somos el Laboratorio de Integración Transmodal, Departamento de Psicología Experimental, Universidad de Oxford.
-    Estamos interesados en entender cómo las personas asocian información a través de distintos sentidos. Si decide tomar parte en estudio, se le harán algunas preguntas sobre las apariencias de distintas tabletas. 
+    Estamos interesados en entender cómo las personas asocian información a través de distintos sentidos. Si decide tomar parte en estudio, se le harán algunas preguntas sobre las apariencias de distintas tazas de café.
     No hay respuestas correctas o incorrectas, por favor responda de acuerdo a lo que usted sienta que es correcto. Esperamos que lo disfrute. Su participación es muy importante para nosotros."/>
     <addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" text.chinese="继续" text.spanish="Continuar" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
     
@@ -48,16 +49,38 @@ There are no right or wrong responses, please respond according to what it feels
 	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
 	 text=
 "{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have read the information about the study on the previous screen and consent to take part.{/b}{p align='left'}
-At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Dr Andy Woods (andy@xperiment.mobi) for further information at a later date if you wish.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Dr Andy Woods (andy@xperiment.mobi), Dr Carmel Levitan (levitan@oxy.edu), Dr George  Van Doorn (george.vandoorn@monash.edu) or Dr Irene Wan (wanxa@mail.tsinghua.edu.cn) for further information at a later date if you wish.
 Please read the below consent statement and indicate whether you consent.
 {u}Statement of Informed Consent{/u}
 1. I have read and understand the information above, and understand general purpose of this experiment.
 2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
 3. I understand that my responses are anonymous.
 4. I agree to take part in this online experiment.{/p}"
+text.chinese="在开始之前，请先阅读以下内容。当你点击“我同意”时，表明你已经阅读了必要信息并自愿同意参加本研究。
+在研究的末尾，我们会告诉你更多关于本研究的信息，包括本研究的目的及我们为什么进行这个研究。如果你愿意的话也可以联系研究者thusapcelab@hotmail.com以获得更多信息。
+知情同意声明
+1.我已经阅读并理解了以上信息，并且大致理解这个研究的目的。
+2.我理解我可以在研究中的任何阶段退出，退出后我的数据不会保存。我的数据是匿名保存的，如果研究结束后我改变主意了，研究者也无法知道哪份数据是我的或为我删除数据。
+3.我理解我的数据是匿名的。
+4.我同意参加这个网络实验。"
+text.spanish="Antes de empezar le vamos a pedir que lea el siguiente texto.
+Al presionar el botón que dice 'Acepto' usted indicará que acepta participar en la investigación.
+En este estudio le pedimos que evalue ciertas tipografías. Al final del estudio le contaremos un poco más acerca del propósito de la investigación. Usted también puede ponerse en contacto con el Dr. Irene Wan (wanxa@tsinghua.edu.cn) o el Dr. Andy Woods (andy@xperiment.mobi) para más información.
+
+-Continúa en la siguiente página-; 
+Por favor lea el consentimiento informado presentado a continuacion e indique si está de acuerdo o no.
+{u}Statement of Informed Consent{/u}
+1. He leído y entendido la información presentada arriba, y entiendo el propósito general del experimento.
+2. Entiendo que me puedo retirar del estudio en cualquier momento y que al hacerlo nosotros destruiremos sus datos. Usted puede retirarse en cualquier momento, por cualquier motivo. (NB – Note que los datos recolectados son anónimos -  si usted cambia de parecer al terminar el experimento, nosotros no podremos rastrear sus datos específicos para borrarlos.
+3. Entiendo que mis respuestas son anónimas.
+4. Estoy de acuerdo con participar en este experimento online."
+
 		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
 
-	<addButton width="140" present="1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="90%"  />
+	<addButton width="140" present="1" height="40" 
+	text="I consent" 	
+	text.chinese="我同意"
+	text.spanish="Acepto" resultFileName="continue" timeStart="0" timeEnd="forever" y="90%"  />
 
 </TRIAL>
 
@@ -89,28 +112,41 @@ Please read the below consent statement and indicate whether you consent.
 
 	<addText   x="50%" y="12%" height="20%"
 	text = "some questions"
+	text.chinese="一些问题"
+	text.spanish="Algunas preguntas"
 	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
 	
 	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
 	text="sex---age"
+	text.spanish="sexo---edad"
+	text.chinese="性别---年龄"
 	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
 
  	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
  	labels="male,female"
+	labels.chinese="男,女"
+ 	labels.spanish="hombre, mujer"
  	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
 	
 	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
 
 	<addComboBox peg="origin" 
 	label="where do you come from?"
+	labels.chinese="你来自哪里？"
+	label.spanish="De dónde es usted (país de origen)"
 	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
 	
-	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+	<addInput 
+	text.chinese="您的母语是？请在方框内输入您的答案。"
+	text.spanish="Cuál es su idioma nativo? Por favor responda acá."
+	text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
 
 	<behavNextTrial peg='nextTrial'/>
 	
 	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
 	text="next"
+	text.chinese="继续"
+	text.spanish="siguiente"
 	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
 	timeEnd="forever" x="50%" vertical="top" y="90%"/>
 	
@@ -121,22 +157,34 @@ Please read the below consent statement and indicate whether you consent.
 
 	<addText   x="50%" y="12%" height="20%"
 	text = "some more questions"
+	text.chinese="另一些问题"
+	text.spanish="algunas preguntas adicionales"
 	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
 	
-	<addInput required="" text="if you are a regular coffee drinker, can you tell us what type of coffee you mostly drink?" timeStart="0" peg="language" height="7%" y="36%" width="70%"/>
+	<addText howMany="2" width="100%" height="10%"  y="30%---70%" 
+	text="If you are a regular coffee drinker, can you tell us what type of coffee you mostly drink?---what is your occupation?" text.chinese="如果你经常喝咖啡，可否告诉我们你最常喝哪种咖啡?---你的职业是?"
+	text.spanish= "Si usted toma café regularmente, puede decirnos qué tipo de café suele tomar?---Cuál es su ocupación?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="middle" fontSize="20"/> 
+	
+	
+	<addInput required="" text="" 
+	text.chinese=""
+	timeStart="0" peg="language" height="7%" y="36%" width="70%"/>
 	
 	<addText  width="50%" height="10%" x="50%" horizontal="right" align="right" y="55%" 
 	text="How many cups of coffee do you drink each day?"
+	text.chinese="你每天喝几杯咖啡？"
+	text.spanish="¿Cuántas tazas de café toma cada día?"
 	timeStart="0"  timeEnd="forever" autoSize="false"  fontSize="20"/> 
 	
 	<addMultiNumberSelector required="" peg="coffDay" width="25%" height="20%" startingVal="00" horizontal="left" x="55%" y="55%" timeStart="0" timeEnd="forever" />
 	
-	<addInput required="" text="what is your occupation?" timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
-
+	<addInput required="" text.chinese="你的职业？" text="" timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+   
 	<behavNextTrial peg='nextTrial'/>
 	
 	<addButton timeStart='0' hideResults="true" goto="" width="340" height="40" if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()" 
-	text="next"	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	text="next"	text.spanish="siguiente" timeEnd="forever" x="50%" vertical="top" y="90%"/>
 	
 </TRIAL>
 
@@ -144,65 +192,68 @@ Please read the below consent statement and indicate whether you consent.
 <TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
 
 <addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="30"
-	text="You will now begin the experiment. You will see a series of cups and are asked to arrange them according to different properties."/>   
-	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" x="50%" vertical="top" y="90%"/>
+	text.chinese="你将正式开始实验。你会看到一些杯子，请根据要求按照一定的特征摆放它们。"
+	text="You will now begin the experiment. You will see a series of cups and are asked to arrange them according to different properties."   
+text.spanish="Empezará el experimento ahora. Usted verá una serie de tazas de café y le pedimos que las organice de acuerdo a ciertas propiedades."/> 
+	
+	<addButton timeStart='0' hideResults="true" width="340" height="40" text="begin" text.spanish="Empezar" x="50%" vertical="top" y="90%"/>
 	
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="bitter">
     <addText copyOverID="taste" text="Please arrange these cups of coffee in order of how bitter would you expect each to taste" 
-    text.chinese="请根据你认为的这些药片的苦味程度把它们摆放到合适的位置上。"
-    text.spanish="Por favor organice estas tabletas en orden de que tan amargo esperaría usted que sea el sabor de cada" />
-    <addText copyOverID="labels" text="not bitter at all---bitter"  text.chinese="一点都不苦---苦" text.spanish="para nada amargo---amargo"/>
+    text.chinese="请根据你期望的每个杯子里的咖啡的苦味程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café en orden de que tan amargo esperaría usted que sea el sabor del café en cada una" />
+    <addText copyOverID="labels" text="not bitter at all---very bitter"  text.chinese="一点都不苦---苦" text.spanish="para nada amargo---amargo"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="sweet">
     <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how sweet you would expect coffee from each to taste" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" text="not sweet at all---very sweet"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    text.chinese="请根据你期望的每个杯子里的咖啡的甜味程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tan dulce esperara usted el sabor del café en cada una de las tazas" />
+    <addText copyOverID="labels" text="not sweet at all---very sweet"  text.chinese="一点都不甜---非常甜" text.spanish="para nada dulce---muy dulce"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="aroma">
-    <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how strong smelling would you expect coffee from each to be" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" text="not aromatic at all---very strongly aromatic"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how strong smelling would you expect the coffee from each to be" 
+    text.chinese="请根据你期望的每个杯子里的咖啡的气味的强烈程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tan fuerte espera que sea el olor del café de cada una de las tazas" />
+    <addText copyOverID="labels" text="not aromatic at all---very strongly aromatic"  text.chinese="一点香味都没有---非常强烈的香味" text.spanish="para nada aromático---muy fuertemente aromático"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="intense">
     <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how intense would you expect coffee from each to taste" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" text="not intense at all---very intense"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    text.chinese="请根据你期望的每个杯子里的咖啡的味道的强烈程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tan cargado espera que sea el café en cada una de las tazas" />
+    <addText copyOverID="labels" text="not intense at all---very intense"  text.chinese="一点都不强烈---非常强烈" text.spanish="para nada intenso---muy intenso"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="liking">
     <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how much you expect to like the coffee from each" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" text="greatest imaginable dislike---greatest imaginable like"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    text.chinese="请根据你期望的对每个杯子里的咖啡的喜欢程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tanto espera que le guste el café en cada una de las tazas" />
+    <addText copyOverID="labels" text="greatest imaginable dislike---greatest imaginable like"  text.chinese="能想像到的最大程度的不喜欢---能想像到的最大程度的喜欢" text.spanish="no me gusta para nada---me gusta mucho"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="hot">
     <addText copyOverID="taste" text="Please arrange these cups in order of how hot would you expect the coffee from each to be" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" text="body temperature---too hot to hold"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    text.chinese="请根据你期望的每个杯子里的咖啡的温度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tanto espera que el café esté" />
+    <addText copyOverID="labels" text="body temperature---too hot to hold"  text.chinese="和体温相同---太烫了都拿不住" text.spanish="a temperatura corporal---demasiado caliente para sostenerla"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="energy">
     <addText copyOverID="taste" text="Please arrange these mugs in order of how energising would you expect the coffee in each to make you" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" howMany="3" y="93%" align="left---middle---right" horizontal="left---middle---right" x="0%---50%---100%" text="not energised---energised---too energised"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    text.chinese="请根据你期望的每个杯子里的咖啡让你振作精神的程度摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tan energizante espera que sea el café en cada una de las tazas" />
+    <addText copyOverID="labels" text="not at all energising---very energising"  text.chinese="完全没有精神---非常精神" text.spanish="para nada energizante---muy energizante"/>
 </TRIAL>
 
 <TRIAL template="template" TYPE="Trial" block="5" trials="1" order="random" trialName="money">
-    <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how much money in US dollars you would be willing to pay for each" 
-    text.chinese="chinese please"
-    text.spanish="spanish please" />
-    <addText copyOverID="labels" howMany="10" y="93%" align="middle" horizontal="middle" x="10%---19%---etc---" text="$0---1---2---3---4---5---7---8---9---$10"  text.chinese="chinese please---chinese please" text.spanish="spanish please---spanish please"/>
+    <addText copyOverID="taste" text="Please arrange these mugs of coffee in order of how much money in US dollars you would be willing to pay for a cup of coffee in each" 
+    text.chinese="请根据你愿意为每个杯子里的咖啡所付的价格摆放这几杯咖啡。"
+    text.spanish="Por favor organice estas tazas de café de acuerdo a qué tanto está dispuesto a pagar en pesos colombianos por un café en cada una de las tazas" />
+    <addText copyOverID="labels" howMany="10" y="93%" align="middle" horizontal="middle" x="10%---19%---etc---" text="$0---1---2---3---4---5---7---8---9---$10"  text.chinese="0元---5---10---15---20---25---30---35---40---45元" text.spanish="0---3100---6200---9300---12400---15500---21700---24800---27900---31000"/>
 </TRIAL>
 
 
@@ -211,11 +262,10 @@ Please read the below consent statement and indicate whether you consent.
     <behavSaveData timeStart='0'/>
     
     <addText  wordWrap="true"  height="30%" width="100%" x="50%" y="40%" 
-    text = "Thank you for your participation to this study. We're exploring how the shape and colour of a tablet can influence expectations of that tablet. In previous studies, we found that people associated angular shapes to sourness, and rounded shapes to sweetness. We have also found that colour can as well impact on taste expectations. Here, we were interested in finding out if these findings extend to tablets. We were also interested in seeing if colour and shape can influence other expectations such as how well a given tablet may be in curing you of a headache.
-If you have any questions or would like to here more about our research, please contact us at andytwoods@gmail.com." timeStart="0"  timeEnd="forever" fontSize="25"
-text.chinese="谢谢你参与这个研究。我们在研究药片的形状和颜色如何影响人们对它们的预期。在以前的研究中，我们发现人们倾向于把尖锐的形状与酸味联系起来，而把圆润的形状和甜味联系起来。我们还发现颜色也可以影响人们对味道的预期。因此，我们在这个研究中检验这些发现是否也适用于药片。我们也希望研究药片的形状和颜色如何影响人们对于它治疗头痛的有效程度的预期。
-如果你有任何问题或希望对我们的研究有更多的了解，可发邮件至thuspacelab@hotmail.com。"
-text.spanish="Gracias por participar en este estudio. Estamos explorando cómo la forma y el color de una tableta pueden influenciar las expectativas de esa tableta. In estudios previos, encontramos que las personas asociaban formas angulares a sabores ácidos y formas redondas a sabores dulces. También hemos encontrado que el color también impacta las expectativas de sabor. Aquí, estamos interesados en encontrar si estos hallazgos se extiende a las tabletas. También estamos interesados en ver si el color y la forma pueden incidir sobre otras expectativas, tales como que tanto una tableta puede aliviar el dolor de cabeza. Si tiene alguna pregunta o quisiera saber más sobre nuestra investigación, por favor póngase en contacto con nosotros a través del siguiente correo andytwoods@gmail.com."/>
+    text = "Thank you for your participation to this study. We're exploring how the shape of coffee mugs can influence expectations of coffee. If you have any questions or would like to here more about our research, please contact us at andytwoods@gmail.com." timeStart="0"  timeEnd="forever" fontSize="25"
+text.chinese="谢谢你参与这个研究。我们在研究咖啡杯的形状如何影响人们对咖啡的预期。如果你有任何问题或希望对我们的研究有更多的了解，可发邮件至thuspacelab@hotmail.com。"
+
+text.spanish=" Gracias por participar en este estudio. Estamos explorando cómola forma de las tazas de café influye en las expectativas sobre el sabor del café. Si tiene preguntas o quiere saber más sobre nuestra investigación, por favor contáctenos en andytwoods@gmail.com."/>
 </TRIAL>
 
 
@@ -226,7 +276,7 @@ text.spanish="Gracias por participar en este estudio. Estamos explorando cómo l
     
     <addText text="" text.chinese="越靠近左端表示越符合左边的描述，越靠近右端表示越符合右边的描述。" height="7%" y="17%"/>
     
-    <behavDrag saveProperty="peg" timeStart="0" peg="drag" save="x" usePegs="p1,p2,p3,p4,p5,p6,checker" box="checker" />
+    <behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="p1,p2,p3,p4,p5,p6,checker" box="checker" />
     
     <behavRandPos box="box" width="100%" height="20%" usePegs="p1,p2,p3,p4,p5,p6,box" timeStart="0" timeEnd="forever"/>
     

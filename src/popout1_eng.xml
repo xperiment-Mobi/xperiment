@@ -1,0 +1,270 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="ff\popout1" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are a company called Flying Fish Research-Neurosketch, which performs research for companies.
+Here, we are interested in understanding how people see different brands. We will ask you to look for a target brand. We will then show you several brands on screen. If you see the target brand you are to press the 'z' key, elsewise the 'm' key, as quickly and accurately as possible .
+Your participation is very important to us.
+Please press ' Continue'."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When stimuli are loaded (bottom bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{B} Before we start we will ask you to read the following.{/b}
+Pressing the button that says 'I agree' you indicate that you agree to participate in this research.
+In this study we ask you to look for logos. Before you start the study we will tell you a little more about the purpose of the investigation. You may also contact Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr. Andy Woods (andy@xperiment.mobi) for more information.
+
+-continued On next page-;
+Please read the information presented below and indicate whether you agree or not.
+{U} Statement of Informed Consent {/U}
+1. I have read and understand the information presented above, and understand the general purpose of the experiment.
+2. I understand that I can withdraw from the study at any time and in doing so we will destroy your data. You can withdraw at any time for any reason. (NB - Note that the data collected is anonymous - if you change your mind at the end of the experiment, we can not track your specific data to delete it.
+3. I understand that my responses are anonymous.
+4. I agree to participate in this online experiment."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I agree" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "Some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="What country do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="What is your native language ? - Please answer writing in this space." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+
+
+</TRIAL>
+
+
+<TRIAL block="10" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="20" vertical="top" y="0" verticalAlign="top" align="middle" text="Please respond as quickly and accurately as possible in this study. In each trial, we will show you the name of a target brand. We will then show you 3, 6 or 9 brands. Your task is to press the 'm' key if the target brand is not listed among the brands, or the 'z' key if the target is shown.
+We start with a few practice trials."/>
+	<addJPG filename="instructions_eng.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="continue (SPACE)"/>
+</TRIAL>
+
+<TRIAL template="practice,present,corona,six,template"></TRIAL>
+<TRIAL template="practice,present,coronaSquare,six,template"></TRIAL>
+<TRIAL template="practice,present,alpha,six,template"></TRIAL>
+<TRIAL template="practice,absent,coronaAbsent,six,template"></TRIAL>
+<TRIAL template="practice,absent,coronaSquareAbsent,six,template"></TRIAL>
+<TRIAL template="practice,absent,alphaAbsent,six,template"></TRIAL>
+
+
+<practice trials="1" block="12" hideResults="true">
+	<addText copyOverID="feedback" duration="500"/>
+</practice>
+
+<TRIAL block="14" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="You will now start with the actual experiment. You will not receive feedback during the actual study. Please respond as quickly and accurately as possible by pressing the 'm' key if the target brand is not listed among the brands and the 'z' key if the target brand is present."/>
+	<addJPG filename="instructions_eng.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="Start the study (SPACE)"/>
+</TRIAL>
+
+
+<TRIAL template="present,corona,three,template"></TRIAL>
+<TRIAL template="present,corona,six,template"></TRIAL>
+<TRIAL template="present,corona,nine,template"></TRIAL>
+<TRIAL template="present,coronaSquare,three,template"></TRIAL>
+<TRIAL template="present,coronaSquare,six,template"></TRIAL>
+<TRIAL template="present,coronaSquare,nine,template"></TRIAL>
+<TRIAL template="present,alpha,three,template"></TRIAL>
+<TRIAL template="present,alpha,six,template"></TRIAL>
+<TRIAL template="present,alpha,nine,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,three,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,six,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,nine,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,three,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,six,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,nine,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,three,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,six,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,nine,template"></TRIAL>
+
+
+
+<present>
+	<addButton copyOverID="keys" if="this.click?results.ans=1,feedback.text='correct'---this.click?results.ans=0,feedback.text='incorrect'"/>
+</present>
+
+<absent>
+	<addButton copyOverID="keys" if="this.click?results.ans=0,feedback.text='incorrect'---this.click?results.ans=1,feedback.text='correct'"/>
+</absent>
+
+
+
+<corona>
+	<behavResults copyOverID="results" stim="corona" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'2_Corona_actual',mustNotHave:'1_Corona_nuevo'" />
+	<addText copyOverID="debug1" text="corona"/>
+	<addText copyOverID="find" text="corona"/>
+</corona>
+
+<coronaSquare>
+	<behavResults copyOverID="results" stim="coronaSquare" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'1_Corona_nuevo',mustNotHave:'2_Corona_actual'" />
+	<addText copyOverID="debug1" text="coronaSquare"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaSquare>
+
+<alpha>
+	<behavResults copyOverID="results" stim="alpha" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'3_Alfa',onlyOne:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="alpha"/>
+	<addText copyOverID="find" text="alfa"/>
+</alpha>
+
+
+<coronaAbsent>
+	<behavResults copyOverID="results" stim="coronaAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="coronaAbsent"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaAbsent>
+
+<coronaSquareAbsent>
+	<behavResults copyOverID="results" stim="coronaSquareAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:['2_Corona_actual','1_Corona_nuevo']" />
+	<addText copyOverID="debug1" text="coronaSquareAbsent"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaSquareAbsent>
+
+<alphaAbsent>
+	<behavResults copyOverID="results" stim="alphaAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:'3_Alfa',onlyOne:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="alphaAbsent"/>
+	<addText copyOverID="find" text="alfa"/>
+</alphaAbsent>
+
+<three>	
+	<behavResults copyOverID="results" logos="3" />
+	<addJPG copyOverID="png" howMany="3" super_shuffle_something1=",howMany:3}" />
+	<addText copyOverID="debug2" text="3"/>
+</three>
+<six>	
+	<behavResults copyOverID="results" logos="6" />
+	<addJPG copyOverID="png" howMany="6" super_shuffle_something1=",howMany:6}"/>	
+	<addText copyOverID="debug2" text="6"/>
+</six>
+<nine>
+	<behavResults copyOverID="results" logos="9" />	
+	<addJPG copyOverID="png" howMany="9" super_shuffle_something1=",howMany:9}"/>	
+	<addText copyOverID="debug2" text="9"/>
+</nine>
+
+
+
+<template block="20" order="random" trials="4" trialName="T" >
+
+ 	<addText peg="startTxt" timeStart="0" align="middle" text="press SPACE to start the trial" width="100%" fontSize="40"/>
+	<addTrialCounter peg="startCounter" trials="78" timeStart="0" y="80%" width="100" height="40"/>
+	<addButton key=" " visible="false" goto="" if="this.click?startTxt.stop(),startCounter.stop(),this.stop(),find.start()"/> 
+	
+	<addText copyOverID="find" text="corona" peg="find" duration="500" if="this.onFinish?stimuli.start(),rt.start(),z.start(),m.start()" align="middle" fontSize="60" />
+	
+	<behavResults copyOverID="results" />
+	<addJPG  copyOverID="png" width="200"  height="aspectRatio" peg="stimuli" shuffle_somethings="x y ---" extension="png"  
+	filename="10_SanLorenzo---11_Pintuco---12_Sika---13_Stertto---1_Corona_nuevo---2_Corona_actual---3_Alfa---4_Boccherini---5_Ceramica-Italia---6_easy---7_euroCeramica---8_Homecenter---9_Gricol"
+	y="25%---25%---25%---50%---50%---50%---75%---75%---75%"
+	x="25%---50%---75%---25%---50%---75%---25%---50%---75%"/>
+	<behavRT peg="rt"  />
+	<addButton copyOverID="keys" key="z---m" y="100%" peg="z---m" vertical="bottom" x="40%---60%" width="150" height="80" enabled="false" keyEnabled="true" text="Present (z)---Absent (m)" howMany="2"/>
+	<behavNextTrial peg='nextTrial'/>
+	<addText visible="false" copyOverID="debug1" y="0%" x="0" vertical="top" horizontal="left" fontSize="30" align="left" verticalAlign="top"/>
+	<addText visible="false" copyOverID="debug2" y="0%" x="100%" vertical="top" horizontal="right" fontSize="30" align="right" verticalAlign="top"/>
+	<addText copyOverID="feedback" peg="feedback" timeStart="end" align="middle" duration="0" width="100%" text="" fontSize="80"/>
+</template>
+
+
+
+<TRIAL block="50" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="Do you know these brands?"/>
+	<addText y="40%---60%" fontSize="20" width="30%" horizontal="left" height="10%" howMany="2" text="Corona (Latin American furniture brand---Alfa" />
+	
+	<addMultipleChoice horizontal="right" required="" peg="corona---alfa" howMany="2" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="yes,no"
+ 	x="45%" y="40%---60%" timeStart="0" seperation="horizontal" timeEnd="forever" /> 	
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="Continue"
+	if="this.click?this.text='Please answer the questions',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation. We are exploring ways in which the different characteristics of a brand logo change how people perceive that logo.
+If you have questions and would like to learn more about this investigation, please contact Alejandro Salgado alejandro.salgado@psy.oc.ac.uk.
+PLEASE DO NOT FORGET TO ENTER THE CODE BELOW IN MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

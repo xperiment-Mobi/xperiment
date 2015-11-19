@@ -1,0 +1,49 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="false" block="0" order="fixed" trials="1">
+
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are a company called Flying Fish Research-Neurosketch, which performs research for companies.
+Here, we are interested in understanding how people like different beer bottle designs. We will ask you questions about different new beers.
+Your participation is very important to us.
+Please press ' Continue'."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When stimuli are loaded (bottom bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true" howMany="2" height="30%" width="100%" colour="grey---blue" x="50%" y="50%---70%" 
+	text = "Thank you for your participation. We are testing different beer bottle designs on a number of attributes.
+If you have questions and would like to learn more about this investigation, please contact Alejandro Salgado alejandro.salgado@psy.oc.ac.uk.
+Don't forget to visit the below site to tell Profilic Academic you have completed the study.---{a href='https://prolificacademic.co.uk/submissions/55ab5adbfdf99b2dced04115/complete?cc=TB6DYR7P'}https://prolificacademic.co.uk/submissions/55ab5adbfdf99b2dced04115/complete?cc=TB6DYR7P{/a}."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

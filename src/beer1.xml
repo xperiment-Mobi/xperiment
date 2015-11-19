@@ -1,0 +1,198 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="ff\beer1" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are a company called Flying Fish Research-Neurosketch, which performs research for companies.
+Here, we are interested in understanding how people like different beer bottle designs. We will ask you questions about different new beers.
+Your participation is very important to us.
+Please press ' Continue'."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When stimuli are loaded (bottom bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{B} Before we start we will ask you to read the following.{/b}
+Pressing the button that says 'I agree' you indicate that you agree to participate in this research.
+In this study we ask you to look for logos. Before you start the study we will tell you a little more about the purpose of the investigation. You may also contact Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr. Andy Woods (andy@xperiment.mobi) for more information.
+
+-continued On next page-;
+Please read the information presented below and indicate whether you agree or not.
+{U} Statement of Informed Consent {/U}
+1. I have read and understand the information presented above, and understand the general purpose of the experiment.
+2. I understand that I can withdraw from the study at any time and in doing so we will destroy your data. You can withdraw at any time for any reason. (NB - Note that the data collected is anonymous - if you change your mind at the end of the experiment, we can not track your specific data to delete it.
+3. I understand that my responses are anonymous.
+4. I agree to participate in this online experiment."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I agree" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1" hideResults="false" block="1" order="fixed" trials="1">
+	
+	 <addText  autoSize="false" align="left" selectable="false" wordWrap="true"  width="100%" height="10%"  y="20%" verticalAlign="top" vertical="top" 
+	 text="please tell us your Prolific Academic participant ID"	timeStart="0"  timeEnd="forever" fontSize="18"></addText> 
+		
+	<addInput required="" y="50%" height="5%"/>
+	
+	<addButton goto="" width="48%"    height="40" text="Next" timeStart="0" timeEnd="forever" vertical="bottom" y="80%"
+	if="this.click?this.text='If you wish to take part you need to provide your ID',this.click&&required==true?nextTrial.start()"
+	/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+	
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "Some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="What country do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="What is your native language ? - Please answer writing in this space." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+
+
+</TRIAL>
+
+
+<TRIAL block="10" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="In each trial you are asked to drag pictures of bottles of beer, or words, into a grey box, arranging those items as instructed. There are 11 such trials in total."/>
+	<addJPG filename="instructions_eng.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="start (SPACE)"/>
+</TRIAL>
+
+
+
+
+<TRIAL template="boxTemplate"></TRIAL>
+
+<TRIAL template="boxTemplate" trialName="A" block="50" trials="1">
+	<addText copyOverID="stim" fontSize="30" text="dangerous---exciting---special---fun---forbidden---popular---elegant"
+	y="15%---15%---15%---25%---25%---25%---35%" x="20%---50%---80%---20%---50%---80%---50%" selectable="false" align="middle" width="150" height="40" background="white"
+	/>
+	<behavDrag copyOverID="drag" saveProperty="text" />
+	<addText copyOverID="info" text="Please arrange these words according to how well you think each befits the brand name {b}Malagüero{/b}." text1=""/>
+	<addText copyOverID="instruct" duration="5000" text="Drag words into this space."/>
+	<addResults copyOverID="r" dv="words" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="meaning" hideResults="false" block="60" order="fixed" trials="1">
+	
+	 <addText  autoSize="false" align="left" selectable="false" wordWrap="true"  width="100%" height="10%"  y="20%" verticalAlign="top" vertical="top" 
+	 text="What does {b}Malagüero{/b} mean in English? Please do not use a dictionary."	timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+		
+	<behavRT peg="rt" timeStart="0"/>	
+		
+	<addInput required="" y="50%" height="5%"/>
+	
+	<addButton goto="" width="48%"    height="40" text="Next" timeStart="0" timeEnd="forever" vertical="bottom" y="80%"
+	if="this.click?this.text='Please answer the question',this.click&&required==true?nextTrial.start()"
+	/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+	
+			
+
+<boxTemplate order="random" block="20" trials="10" trialName="R">
+
+	<addResults copyOverID="r" dv="like;sell;read;suitable;sweet;sour;bitter;smooth;strong;expensive"/>
+    
+    <addText depth="top" copyOverID="labels" y="95%" timeStart="0" howMany="2" align="left---right" horizontal="left---right" x="0%---100%" width="50%" fontSize="20" text="not at all---very much;not at all well---very well;hard to read---easy to read;not at all---very much;not at all---very;not at all---very;not at all---very;dry---smooth;light---strong;cheapest on the market---most expensive on the market" text.chinese="一点也不---非常" text.spanish="para nada---muchísimo"  /> 
+      
+    <addText copyOverID="info" howMany="2" duration="2000---" depth="top---bottom" text="Please arrange the beers you see next according to " text1="how much you {b}like{/b} each.;how well you think each would sell.;how easy it is to read the beer brand on each.;whether the bottle design is suitable for a beer.;how {b}sweet{/b} you think each would be.;how {b}sour{/b} you think each would be.;how {b}bitter{/b} you think each would be.;how {b}dry/smooth{/b} you think each would be.;how {b}light/strong{/b} you think each would be.;how {b}expensive{/b} you think each would be." height="100%---10%" background="white---" y="50%---92%" width="100%" align="middle" fontSize="40---18"/>
+    
+    <behavDrag copyOverID="drag" saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="b1,b2,b3,b4,b5,b6,b7,checker" box="checker" />
+    
+    <behavSwap usePegs="b1,b2,b3,b4,b5,b6,b7"  timeStart="0" timeEnd="forever"/>
+    
+    <addJPG copyOverID="stim" timeStart="0" howMany="7" y="20%" x="20%---30%---etc---" extension="png" peg="b1---b2---b3---b4---b5---b6---b7" width="288" exactSize="false" height="aspectRatio" filename="bottle" filename1="1---2---3---4---5---6---7" />
+    
+    <addText copyOverID="instruct" duration="5000" text="Drag beers into this space." height="100%" background="white" y="75%" width="100%" align="middle" fontSize="40"/>
+    
+    
+    <addShape peg="checker" timeStart="0" width="99%" height="50%" colour="grey" lineColour="black" fill="true" lineThickness="1" y="40%" vertical="top"/>
+    
+
+    <addButton peg="b" hideResults="true" depth="bottom" key=" " goto="" if="this.click?this.text='place all images please'" if.chinese="this.click?this.text='请摆放所有图片。'" if.spanish="this.click?this.text='ubique todas las imagenes por favor'" if1=",this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="400" height="40" text="next (SPACE)" text.chinese="下一个。" text.spanish="siguiente"/>
+   
+    <behavNextTrial peg='nextTrial'/>
+    
+</boxTemplate>  
+			
+			
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true" howMany="2" height="30%" width="100%" colour="grey---blue" x="50%" y="50%---70%" 
+	text = "Thank you for your participation. We are testing different beer bottle designs on a number of attributes.
+If you have questions and would like to learn more about this investigation, please contact Alejandro Salgado alejandro.salgado@psy.oc.ac.uk.
+Don't forget to visit the below site to tell Profilic Academic you have completed the study.---{a href='https://prolificacademic.co.uk/submissions/55ab5adbfdf99b2dced04115/complete?cc=TB6DYR7P'}https://prolificacademic.co.uk/submissions/55ab5adbfdf99b2dced04115/complete?cc=TB6DYR7P{/a}."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

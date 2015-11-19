@@ -132,7 +132,7 @@ Please read the below consent statement and indicate whether you consent.
 	<addButton peg="b1---b2" howMany="2"  timeStart="0" enabled="false" keyEnabled="false"  y="50%" key="z---m" shuffle_somethings="key x text2 ---" width="200" x="30%---70%" height="200" text1=" (" text2="z---m" text3=")" text="star---blob"/>
 </TRIAL>
 
-<TRIAL  block="20,1,2" trials="32" order="random" trialName="F" >
+<TRIAL  block="-20,1,2" trials="32" order="random" trialName="F" >
 
 	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
 	text="Please select the word that you feel best matches image." 

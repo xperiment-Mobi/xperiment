@@ -1,0 +1,174 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <screen BGcolour="grey"></screen>                       
+			  <computer  encrypt='false'  stimuliFolder="Malaysia\XY" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x333333"  />
+			  <trials blockDepthOrder="20,*,*=random 20,*=random 20=random" />
+
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" text=
+		"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people decide whether or not they like a plate of food. If you decide to take part in this experiment, you will be asked to decide which of several plates of food you prefer. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+We also ask you some questions about yourself at the beginning."
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to decide which of several plates of food you prefer.
+You can contact Carlos Velasco Woods (psy.ox.ac.uk) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="5"  trials="1">
+	
+	<addText  wordWrap="true" howMany="1" text="In this study you will be asked to rate foods and tastes on several scales."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="40" y="40%---60%"></addText>
+
+<addButton timeStart='0' hideResults="true" width="340"  height="40" peg='next' text="start"timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+
+  	
+<TRIAL block="20,1" blockOrder="random" trials="4">
+
+	<behavResults/>
+	
+	<addText y="0" height="10%" vertical="top" verticalAlign="top" howMany="1" width="100%" align="middle" text="Please imagine the below taste. Where would you locate it in 2d space? Please use the horizontal and vertical axes to tell us."  timeStart="100" fontSize="20" />
+	
+	<addText y="10%" colour="white" height="10%" vertical="top" verticalAlign="top" howMany="1" width="100%" align="middle" text="Sweet;Sour;Salty;Bitter" if="this.doNow?results.taste=this.text"  timeStart="100" fontSize="40" />
+
+	<addLineScale required="" peg="ver" timeStart="0" labelList="top,centre,bottom" labelLocation="0%,50%,100%" sliderAxis='y' />
+	<addLineScale required="" peg="hor" timeStart="0" labelList="left,centre,right" labelLocation="0%,50%,100%" y="85%"/>
+	
+	<addButton key=" " depth="top" timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next (SPACE)"
+	if="this.click?this.text='please use the scales',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="bottom" y="100%"/>
+	
+	
+	<behavNextTrial peg="nextTrial" />
+	
+	
+</TRIAL>
+
+<TRIAL template='template' block="-20,2,1">
+<addJPG copyOverID="stim" filename="Sweet_BL.png;Sweet_BM.png;Sweet_BR.png;Sweet_ML.png;Sweet_MM.png;Sweet_MR.png;Sweet_TL.png;Sweet_TM.png;Sweet_TR.png" />
+</TRIAL>
+
+<TRIAL template='template' block="20,2,2">
+<addJPG copyOverID="stim" filename="Sour_BL.png;Sour_BM.png;Sour_BR.png;Sour_ML.png;Sour_MM.png;Sour_MR.png;Sour_TL.png;Sour_TM.png;Sour_TR.png" />
+</TRIAL>
+
+<TRIAL template='template' block="20,2,3">
+<addJPG copyOverID="stim" filename="Salty_BL.png;Salty_BM.png;Salty_BR.png;Salty_ML.png;Salty_MM.png;Salty_MR.png;Salty_TL.png;Salty_TM.png;Salty_TR.png" />
+</TRIAL>
+
+<TRIAL template='template' block="20,2,4">
+<addJPG copyOverID="stim" filename="Bitter_BL.png;Bitter_BM.png;Bitter_BR.png;Bitter_ML.png;Bitter_MM.png;Bitter_MR.png;Bitter_TL.png;Bitter_TM.png;Bitter_TR.png" />
+</TRIAL>
+
+  	
+<template blockOrder="random" trials="9">
+
+	<behavResults/>
+	
+	<addJPG copyOverID="stim" y='23%' actualSize="false" width="150" height="200" if='this.doNow?results.image=this.filename' />
+	
+
+    <addText copyOverID="taste" colour="0x333333" align="centre" width="95%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top" fontSize="20" wordWrap="true" timeStart="0" peg="instruct"
+    text="Please arrange the taste words to the extent to which you expect the taste of the product to be like. The more to the left the word is placed, the less you expect that taste, whereas the more to the right, the more you expect it to taste. Please use the four words." /> 
+
+  
+    <behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x" usePegs="salty,sweet,sour,bitter,checker" box="checker" />
+    
+    <behavRandPos box="box" width="100%" height="20%" usePegs="salty,sweet,sour,bitter,box" timeStart="0" timeEnd="forever"/>
+    
+    <addJPG timeStart="0" howMany="4" extension="png" peg="salty---sweet---sour---bitter"  filename="salty---sweet---sour---bitter" />
+    
+    <addShape peg="box" timeStart="0" width="1000" height="20%" colour="none" visible="false" y="50%"/>
+    
+    <addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" lineThickness="1" y="75%"/>
+    
+    <addText  y="95%" colour="0x333333" timeStart="0" howMany="2" align="left---right" horizontal="left---right" x="0%---100%" width="50%" fontSize="40" text="not at all---very much"  /> 
+    
+    <addButton peg="b" hideResults="true" depth="top" key=" " goto="" if="this.click?this.text='place all images please'" if1=",this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="next (SPACE)"/>
+   
+    <behavNextTrial peg='nextTrial'/>
+	
+	
+	<behavNextTrial peg="nextTrial" />
+	
+</template>
+  	
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100"  trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thankyou for taking part in this study! We are interested in how the arrangement of food on a plate influences your liking of a dish of food.
+Don't forget to enter the code below in Mechanical Turk."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="40"></addText>
+</TRIAL>
+  	
+
+
+
+
+</Bouba2>	

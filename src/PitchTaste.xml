@@ -31,10 +31,10 @@ There are not right or wrong responses, please respond according to what it feel
 	
 </TRIAL>
 
-<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="10"  order="fixed" trials="2" trialName="t">
+<TRIAL template="myTemplate" TYPE="Trial"  hideResults="true" block="-10"  order="fixed" trials="2" trialName="t">
 	<addText y="20%"/>
 	<addTone peg="tone" volume=".5" timeStart="0"/>
-	<addLineScale y="80%" if="this.updated?tone.frequency=this.result;this.moved?tone.frequency=this.result" />
+	<addLineScale y="80%" if="this.moved?tone.frequency=this.result;this.moved?tone.frequency=this.result" />
 	<addButton width="140" key=" " timeStart="0"  height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
 </TRIAL>
 

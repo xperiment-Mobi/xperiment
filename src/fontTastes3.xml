@@ -1,0 +1,433 @@
+
+<Taste exptType="WEB">
+
+<SETUP>  
+       
+              <screen BGcolour="gray" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="Oxford\fontTastes3" />
+			  <trials blockDepthOrder="10,*=random 10,*,*=fixed" />
+			  <variables trialNum='1' />
+			  <style  LABEL_TEXT="black" />
+</SETUP>
+
+<TRIAL TYPE="Trial" ITI="0" trialName="splash" hideResults="true" block="0" trials="1" >
+    <addButton fontSize="30" howMany="3" text="español---中国的---english" behaviours="click:trial.start(),lang.language='spanish',lang.start(),next.start()---click:trial.start(),lang.language='chinese',lang.start(),next.start()---click:next.start()" width="20%" height="100" y="30%---50%---70%" goto="" />
+    <behavTrial peg="trial" enable="Code" />
+    <behavLanguage peg="lang" />
+    <behavNextTrial peg="next" />
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+			<addJPG y="0%" vertical="top" filename="lab.png"    />
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text.chinese="欢迎您参加本研究。我们是牛津大学实验心理学系跨通道实验室的研究人员。
+	这个实验主要研究人们如何把不同感觉通道的信息联系起来。如果您决定参加这个实验，我们会请您评价一些不同的字体。
+	您的反应无所谓对错，请按照您自己的真实感受做出反应。您的参与对我们非常重要。"
+	text.spanish="Estimado participante,
+Bienvenido a nuestro experimento! Somos el Crossmodal Research Laboratory, Departamento de Psicología Experimental, Universidad de Oxford. 
+Estamos interesados en entender cómo las personas asocian información a través de los sentidos. Si usted decide participar en este experimento, le pediremos que evalúe diferentes tipografías. 
+No hay respuestas correctas o incorrectas. Por favor responda de acuerdo con lo que se siente correcto para usted.
+Esperamos que lo disfrute. Su participación es muy importante para nosotros."
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to rate different fonts.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" 
+	text.chinese="继续"
+	text.spanish="Continuar"
+	text="Continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true"  align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text.chinese="当图片已经下载完毕，请点击“继续“。"
+	text.spanish="Cuando los estímulos hayan cargado (barra de abajo), por favor haga click en 'continuar'"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true'  width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" block="0" order="fixed" trials="1">
+    <fullScreen timeStart="0" if="this.onFinish?next.start()"
+    closeMessage="close when ready"
+    header="Click ‘go full screen’ (recommended) or click ‘close when ready’ to begin the experiment."
+    header2="Click ‘close when ready’ to begin the experiment."
+    goFullScreen="go full screen"
+    goSmallScreen="go small screen"
+    closeMessage.chinese="直接开始。"
+    header.chinese="点击‘全屏显示’（推荐）或点击‘直接开始’。"
+    header2.chinese ="点击‘直接开始’以开始实验。"
+    goFullScreen.chinese ="全屏显示。"
+    goSmallScreen.chinese="小窗口显示。"
+    closeMessage.spanish = "cerrar cuando esté listo"
+    header.spanish = "Haga clic en ' ir a pantalla completa '(recomendado) o haga clic en 'cerrar cuando esté listo' para comenzar el experimento."
+    header2.spanish = "Haga clic en 'cerrar cuando esté listo' para comenzar el experimento."
+    goFullScreen.spanish ="a pantalla completa"
+    goSmallScreen.spanish ="ir a pantalla pequeña"
+    />
+    <behavNextTrial peg="next"/>
+    
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text.chinese="开始前，请阅读以下信息。您同意参加则请点击”我同意“。
+	 如果您决定参加这个实验，我们会请您按照不同的要求拖动屏幕上呈现的字。
+	 实验末尾，我们会更详细地告诉您本研究的目的。如果您愿意，您也可以联系我们 （thuspacelab@163.com） 以获得更多的信息。
+     
+	 -接下页-; 
+     请阅读以下声明并指出您是否愿意参加。
+	 {u}知情同意书{/u}
+      1. 我已阅读并理解了以上信息，而且理解这个实验的大致目的。
+      2. 我明白我可以在研究的任何阶段以任何理由退出这个研究，而且我退出后研究者会删除我的数据。但是，由于我是匿名参加这个实验的，如果我在实验结束后改变主意，研究者无法找到我的数据并删除.
+	  3. 我明白我是匿名参加这个实验的。
+	  4. 我同意参加这个网络实验。{/p}"
+	 text.spanish="Antes de empezar le vamos a pedir que lea el siguiente texto.
+Al presionar el botón que dice 'Estoy de acuerdo' usted indicará que acepta participar en la investigación.
+En este estudio le pediremos que evalue ciertas tipografías. Al final del estudio le contaremos un poco más acerca del propósito de la investigación. Usted también puede ponerse en contacto con el Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) o el Dr. Andy Woods (andy@xperiment.mobi) para más información.
+
+-Continúa en la siguiente página-; 
+Por favor lea el consentimiento informado presentado a continuacion e indique si está de acuerdo o no.
+{u}Statement of Informed Consent{/u}
+1. He leído y entendido la información presentada arriba, y entiendo el propósito general del experimento.
+2. Entiendo que me puedo retirar del estudio en cualquier momento y que al hacerlo nosotros destruiremos sus datos. Usted puede retirarse en cualquier momento, por cualquier motivo. (NB – Note que los datos recolectados son anónimos -  si usted cambia de parecer al terminar el experimento, nosotros no podremos rastrear sus datos específicos para borrarlos.
+3. Entiendo que mis respuestas son anónimas.
+4. Estoy de acuerdo con participar en este experimento online."
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to drag the words in different fonts into a variety of scales.
+At the end of the study we will tell you more about the purpose of the study and why we are conducting this research. You can also contact the researchers – Carlos Velasco (carlos.velasco@psy.ox.ac.uk), Andy Woods (andy@xperiment.mobi) or Sarah Hyndman (sarah@typetasting.com) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40"
+	text.chinese="下一页;前一页"
+	text.spanish="Siguiente página;Siguiente página" 
+	text="next page;previous page" 
+	goto="ethics2;ethics1"  timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" 
+	text="I consent" 
+	text.chinese="我同意"
+	text.spanish="Acepto"
+	resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+	
+<TRIAL TYPE="Trial" trialName="ethics1" hideResults="false" block="3" order="fixed" trials="1">
+	
+	 <addText  autoSize="false" align="left" selectable="false" wordWrap="true"  width="100%" height="10%"  y="20%" verticalAlign="top" vertical="top" 
+	 text="please tell us your Prolific Academic participant ID"	timeStart="0"  timeEnd="forever" fontSize="18"></addText> 
+		
+	<addInput required="" y="50%" height="5%"/>
+	
+	<addButton  width="48%"    height="40" text="Next" timeStart="0" timeEnd="forever" vertical="bottom" y="80%"/>
+	
+
+
+</TRIAL>
+	
+
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text.chinese="一些问题"
+	text.spanish="Algunas preguntas"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%"
+	text.chinese="性别---年龄"
+	text.spanish="sexo---edad"
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sexo" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels.chinese="男,女"
+ 	labels.spanish="hombre, mujer"
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label.chinese="您来自哪里？"
+	label.spanish="De dónde es usted (país de origen)"
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput 
+	text.chinese="您的母语是？请在方框内输入您的答案。"
+	text.spanish="Cuál es su idioma nativo? Por favor responda acá."
+	text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text.chinese="继续"
+	text.spanish="siguiente"
+	text="next"
+	if1.chinese="请回答问题"
+	if1="please answer the questions"
+	if1.spanish="por favor conteste las preguntas"
+	if="this.click?this.text='"  if2="',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+<TRIAL template="info" TYPE="Trial" block="10,1,1"></TRIAL>
+<TRIAL template="taste,english_stim,myTemplate" TYPE="Trial" block="10,1,2"></TRIAL>
+<TRIAL template="round,english_stim,myTemplate" TYPE="Trial" block="10,1,2"></TRIAL>
+<TRIAL template="like,english_stim,myTemplate" TYPE="Trial" block="10,1,2"></TRIAL>
+<TRIAL template="familiar,english_stim,myTemplate" TYPE="Trial" block="10,1,2"></TRIAL>
+<TRIAL template="read,english_stim,myTemplate" TYPE="Trial" block="10,1,2"></TRIAL>
+
+<TRIAL template="info" TYPE="Trial" block="10,2,1"></TRIAL>
+<TRIAL template="taste,chinese_stim,myTemplate" TYPE="Trial" block="10,2,2"></TRIAL>
+<TRIAL template="round,chinese_stim,myTemplate" TYPE="Trial" block="10,2,2"></TRIAL>
+<TRIAL template="like,chinese_stim,myTemplate" TYPE="Trial" block="10,2,2"></TRIAL>
+<TRIAL template="familiar,chinese_stim,myTemplate" TYPE="Trial" block="10,2,2"></TRIAL>
+<TRIAL template="read,chinese_stim,myTemplate" TYPE="Trial" block="10,2,2"></TRIAL>
+
+<TRIAL template="info" TYPE="Trial" block="10,3,1"></TRIAL>
+<TRIAL template="taste,spanish_stim,myTemplate" TYPE="Trial" block="10,3,2"></TRIAL>
+<TRIAL template="round,spanish_stim,myTemplate" TYPE="Trial" block="10,3,2"></TRIAL>
+<TRIAL template="like,spanish_stim,myTemplate" TYPE="Trial" block="10,3,2"></TRIAL>
+<TRIAL template="familiar,spanish_stim,myTemplate" TYPE="Trial" block="10,3,2"></TRIAL>
+<TRIAL template="read,spanish_stim,myTemplate" TYPE="Trial" block="10,3,2"></TRIAL>
+
+
+
+
+<info  template="pauseTemplate"  hideResults="true" blockOrder="fixed" trials="1">
+
+    <addText wordWrap="true" text="Starting the next block of trials (there are 3 blocks in total)."
+    text.chinese="请开始下一组实验（一共有三组）。"
+    text.spanish="Empezando el nuevo bloque de pruebas (3 bloques en total)."
+     timeStart="0" width="80%" align="center" timeEnd="forever" fontSize="60" />
+    <addButton peg="nextTr" width="140" height="40" 
+    text.chinese="继续"
+	text.spanish="Continuar"
+	text="Continue"
+	timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%" />
+
+</info>
+
+
+<taste trials="4">
+	<addText copyOverID="labels" 
+	text.chinese="不咸---咸;不苦---苦;不酸---酸;不甜---甜"
+	text.spanish="para nada salado---salado;para nada amargo---amargo;para nada ácido---ácido;para nada dulce---dulce"	
+	text="not salty---salty;not bitter---bitter;not sour---sour;not sweet---sweet"
+	/>
+	<addText copyOverID="info"
+	text1.chinese="觉得它们咸。;觉得它们苦。;觉得它们酸。;觉得它们甜。"
+	text1.spanish="los asocia con sabores salados.; los asocia con sabores amargos.; los asocia con sabores ácidos.; los asocia con sabores dulces."
+	text1="find them salty.; find them bitter.; find them sour.; find them sweet." />
+</taste>
+
+
+<round>
+	<addText copyOverID="labels" 
+	text.chinese="圆的---尖的"
+	text.spanish="redonda---angular"
+	text="round---angular"/>
+	<addText copyOverID="info"
+	text1.chinese="觉得它们是圆的还是尖的。"
+	text1.spanish="los considera de forma redonda o angular."
+	text1="consider them to be round or angular." />
+</round>
+
+<like>
+	<addText copyOverID="labels" 
+	text.chinese="不喜欢---喜欢"
+	text.spanish="no me gusta---me gusta"
+	text="dislike---like"/>
+	<addText copyOverID="info"
+	text1.chinese="喜欢它们。"
+	text1.spanish="le gustan."
+	text1="like them." />
+</like>
+
+<familiar>
+	<addText copyOverID="labels" 
+	text.chinese="不熟悉---熟悉"
+	text.spanish="para nada familiar---muy familiar"
+	text="not familiar---familiar"/>
+	<addText copyOverID="info"
+	text1.chinese="觉得它们熟悉 。"
+	text1.spanish="los encuentra familiares."
+	text1="find them familiar." />
+</familiar>
+
+
+<read>
+	<addText copyOverID="labels" 
+	text.chinese="非常清楚---一点也不清楚"
+	text.spanish="muy clara---para nada clara"
+	text="very clear---not at all clear"/>
+	<addText copyOverID="info"
+	text1.chinese="觉得字体清楚（请忽略文字内容而只考虑字体）。"
+	text1.spanish="considera los tipos de letra claros (ignore lo que el texto dice y enfóquese en la forma de los tipos de letra)."
+	text1="consider the fonts to be clear (ignore what the text says and focus on the form of the fonts)." />
+</read>
+
+
+
+
+<english_stim>
+	<addJPG copyOverID="images" filename="en_" />
+</english_stim>
+
+<chinese_stim>
+	<addJPG copyOverID="images" filename="ch_"  />
+</chinese_stim>
+
+<spanish_stim>
+	<addJPG copyOverID="images" filename="sp_"/>
+</spanish_stim>
+
+
+
+<TRIAL template="myTemplate" TYPE="Trial" trials="1" block="15" trialName="tastes;en;ch;sp">
+	<behavDrag copyOverID="drag" saveProperty="text" />
+	<addText copyOverID="labels" 
+	text.chinese="不喜欢---喜欢"
+	text.spanish="no me gusta---me gusta"
+	text="dislike---like"/>
+	<addText copyOverID="info"
+	text.chinese="请您把这些味道词拖进方框里，并根据您喜欢它们的程度摆放好。"
+	text.spanish="Por favor ubique estas palabras de sabores hacia el interior de la caja presentada abajo, ordenándolas de acuerdo a qué tanto le gustan."
+	text="Please drag these taste-words into the box, arranging them according to the extent to which you like them."
+	text1="" />
+	<addJPG present="false" copyOverID="images" filename="en_;ch_;sp_" />
+	<addText 
+	text.chinese="咸---甜---苦---酸"
+	text.spanish="salado---dulce---amargo---ácido"	
+	text="salty---sweet---bitter---sour" 
+	selectable="false" fontSize="40" align="middle"  verticalAlign="middle" width="150" height="60" peg="pics" timeStart="0" howMany="4"/>
+</TRIAL>
+
+
+
+
+<myTemplate order="random" trials="1">
+
+	<addTrialCounter trials="25" width="100" x="0%" horizontal="left" height="20" y="10%" vertical="bottom"/>
+	<addButton peg="b" hideResults="true" depth="top" key=" " goto="" if="this.click?this.text='" 
+	if1.chinese="请拖动所有的图片"
+	if1.spanish="Por favor ubicar todas las imágenes"
+
+	
+	text.chinese="继续 (空格鍵)"
+	text.spanish="siguiente (barra espaciadora)"
+	
+	
+	if1="place all images please" if2=",this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next (SPACE)"/>
+	
+	<addText align="centre" width="100%" height="20%" x="50%" y="0%" vertical="top" verticalAlign="top" copyOverID="info" fontSize="22" wordWrap="true"  timeStart="0" peg="instruct" 
+	text.chinese="请把这些不同的字体拖到方框中，摆放的标准是在多大的程度上您"
+	text.spanish="Por favor ubique los diferentes tipos de letra hacia el interior de la caja presentada abajo, ordenándolos de acuerdo a qué tanto "	
+	text2.chinese=" 请注意垂直的位置是无所谓的。"
+	text2.spanish=" Nótese que la posición vertical no importa."
+	text="Please drag these words in different fonts into the box, arranging them according to the extent to which you " text2=" Note that vertical position does not matter." /> 
+	
+	<behavDrag copyOverID="drag" saveProperty="filename" timeStart="0" peg="drag" save="x,y" usePegs="pics,checker" box="checker" />	
+	
+	<behavRandPos box="box" width="100%" y="25%" height="50%" usePegs="pics,box" timeStart="0" />
+	
+	<addJPG copyOverID="images" timeStart="0" width="100" height="75" keepBoxSize="true" exactSize="true" background="white" extension="png" peg="pics"   howMany="12" filename1="A1---A1B---A2---A2B---A3---A3B---R10---R10B---R8---R8B---R9---R9B"  />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="20%" colour="none" visible="false" y="35%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="45%" colour="none" lineThickness="1" y="70%"/>
+	
+	<addResults timeStart="0" />
+	
+	<addText copyOverID="labels" howMany="2" y="95%" if="this.doNow?results.scale=this.text---" timeStart="0" align="left---right" horizontal="left---right" width="50%" fontSize="30" x="5%---95%" />
+
+	<behavNextTrial peg='nextTrial'/>
+	
+</myTemplate>  
+
+
+
+<TRIAL block="95" trials="1">
+
+<addText   x="50%" y="12%" height="20%"
+	text.chinese="对于以下语言您的熟练程度是？"
+	text.spanish="Qué tan fluido es usted en los siguientes idiomas?"
+	text = "How fluent are you in the following languages?"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+
+<addComboBox peg="spanish---english---chinese" howMany="3" required=""
+	label.chinese="您能讲西班牙语吗？---您能讲英语吗？---您能讲汉语吗？"
+	label.spanish="español---inglés---chino" 
+	label="do you speak Spanish?---do you speak English?---do you speak Chinese?"
+	items="fluently,conversationally,basic,no"
+	items.chinese="流利,自由会话,基本会话,不会讲"
+	items.spanish="fluido, conversacional, básico, no"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="30%---40%---50%"/>
+
+
+<addButton timeStart='0' hideResults="true" width="340" goto='' height="40"  
+	text.chinese="继续"
+	text.spanish="siguiente"
+	text="next"
+	if1.chinese="请回答问题"
+	if1="please answer the questions"
+	if1.spanish="por favor conteste las preguntas"
+	if="this.click?this.text='"  if2="',this.click&&required==true?next.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+
+    <behavNextTrial peg="next" />
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%"
+	text.chinese="谢谢您参加这个研究。我们在研究人们如何把字体和味道联系起来。在以前的研究中，我们发现人们一般把比较尖的字体和酸味联系起来，而把比较圆润的字体和甜味联系起来。但是对于其它味道来说，人与人之间的差异很大。我们请您参加这个网络研究，帮助我们进一步研究这个问题。 
+                  如果您有任何问题或是希望更多连接我们的研究，请与我们联系thuspacelab@163.com"
+	text.spanish="Muchas gracias por haber participado en este estudio. Estamos explorando la forma en la que las personas asocian tipografías y sabores. En estudios previos se ha mostrado que asociamos tipografías angulares con acidez y tipografías redondas con dulce. Respecto a los otros sabores, dependiendo de la tipografía, parece haber menos consenso. Esto es lo que usted nos ha ayudado a evaluar con este estudio online. Si tiene alguna pregunta o quisiera saber más de nuestra investigación, por favor póngase en contacto con nosotros en carlos.velasco@psy.oc.ac.uk
+NO OLVIDE ESCRIBIR EL ÉSTE CÓDIGO EN Profilic Academic." 
+	text = "Thank you for your participation to this study. We're exploring the way people associate fonts to tastes. In previous studies, we found that people associated angular fonts to sourness, and rounded fonts to sweetness. Still, when it comes to other tastes, depending on the fonts there seems to be less agreement. This is what you helped us assessing by taking part to this online experiment. 
+If you have any questions or would like to here more about our research, please contact us at carlos.velasco@psy.oc.ac.uk.
+Don't forget to visit the below site to tell Profilic Academic you have completed the study."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addText  wordWrap="true" height="30%" width="100%" colour="blue" x="50%" y="80%" 
+	text = "{a href='https://prolificacademic.co.uk/submissions/562b30929e2b9000120070ac/complete?cc=Y4RZSQRY'}https://prolificacademic.co.uk/submissions/562b30929e2b9000120070ac/complete?cc=Y4RZSQRY{/a}."
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addMechanicalTurk fontSize="50" align="middle" y="80%"/>
+</TRIAL>
+
+
+
+
+</Taste>

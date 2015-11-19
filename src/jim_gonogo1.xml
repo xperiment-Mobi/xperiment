@@ -1,0 +1,407 @@
+<multi>	
+<MULTISETUP overSJs="forceCondition" forceCondition="start" />
+
+
+<start>
+    <SETUP >
+        <screen BGcolour="black" orientation="vertical" />
+        <style BUTTON_DOWN="0xff5656" />
+    </SETUP>
+    <TRIAL TYPE="Trial" trialName="DoExpt" block="1" hideResults="true" trials="1" >
+        <behavGotoCond howMany="3" peg="points---game---regular" goto="points---game---regular" />
+        <addButton peg="points---game---regular" howMany="3" if="this.click?" if1="points---game---regular" if2=".start()" width="140" sstartID="next" height="40" text="points---game---regular" timeStart="0" timeEnd="forever"  goto="" vertical="top" y="40%---50%---60%" />
+    </TRIAL>
+</start>
+
+
+    
+    
+<game exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="black" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="Bristol\Jim_gonogo" />
+			  <trials blockDepthOrder="20,*=random 20,*,*=fixed 20,*,*,*=random" />
+			  <style  />
+			  <variables myBLOCK="0" COLOUR="0x666666"/>
+			  <defaults ITI="0-500" />
+</SETUP>
+
+
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" background="white" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" wordWrap="true"  width="85%" height="90%" x="50%" y="5%;20%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}EFFECTS OF SIMPLE GAME MECHANICS AND TEST LOCATION ON DATA AND SUBJECTIVE ENGAGEMENT IN COGNITIVE TESTING - INFORMATION SHEET{/b}
+Before you decide to take part in this study, please take time to read the following information. Contact us if there is anything that is not clear or if you would like more information. 
+{b}Background{/b}: This study aims to investigate the effect of adding game-like features to a psychological test. How does the data change? Do participants rate the task differently? Our secondary aim is to investigate the impact of testing participants online, rather than in a laboratory.
+{b}Procedures{/b}: We are looking for people aged 18 years or older, without a diagnosis of ADHD. Participants are free to withdraw from the study at any time by simply closing the web page and do not have to give a reason for this decision. The experiment may take up to 15 minutes.During the experiment, you will be asked to complete a short-online task which measures how impulsive you are. This will be followed by a brief questionnaire on your experiences of the task. 
+{b}Your Data{/b}: Your involvement in the study will remain confidential. This information will only be available to research staff and national bodies which monitor whether research studies are conducted properly. Your study data will be anonymised. This means that it will be given an identification number and we will not collect any identifying information about you. Therefore, it will not be possible to identify you by name from any aspect of reporting for this research study. At the end of the study your data will become “open data”. This means that the data will be stored in an online database and will be publicly available.
+;{b}What is open access?{/b} Open data means that data are made available, free of charge, to anyone interested in the research, or who wishes to conduct their own analysis of the data. We will therefore have no control over how these data are used. However, all data will be anonymised and therefore there will be no way to identify you from the research data.
+{b}Why open data?{/b}: Sharing research data and findings is considered best scientific practice and is a requirement of many funding bodies and scientific journals. As a large proportion of research is publicly funded, the outcomes of the research should be made publicly available. Sharing data helps to maximise the impact of investment through wider use, and encourages new avenues of research.
+{b}If you have any questions about the study{/b} please contact Jim Lumsden at jim.lumsden@bristol.ac.uk.
+{b}If you have any concerns{/b} related to your participation in this study, please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0044 (0)117 9546832, Email: liam.mckervey@bristol.ac.uk"
+		timeStart="0"  timeEnd="forever" fontSize="19"></addText> 
+	
+	
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" vertical="bottom" timeEnd="forever" y="100%"  />
+	<addButton width="140" present="0;1" height="40" text="Continue" resultFileName="continue"  peg="next" enabled="false" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+	
+	<addText present="0;1"  y="83%" x="5%" wordWrap="true" align="left" peg="info" horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When stimuli are loaded (bottom bar), please click 'Continue'"/>    
+	<addLoadingIndicator present="0;1" behaviours='onFinish:next.enabled=true,info.stop()' width="50%" height="5%" x="30%" y="91%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" background="white" order="fixed" trials="1">
+
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="100%" height="10%" y="0%" x="0%" vertical="top" text=
+	"{b}CONSENT FORM{/b}. Please answer the following questions to the best of your knowledge. DO YOU CONFIRM THAT YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+
+	<addText  drawBox="true" autoSize="false" howMany="1" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="4%" x="20%" vertical="top" text=
+	"Don’t have a diagnosis of ADHD?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="1" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="8%" x="20%" vertical="top" text=
+	"Are not colour-blind?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="18%" x="0%" vertical="top" text=
+	"HAVE YOU:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="3" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="19%---24%---29%" x="20%" vertical="top" text=
+	"Been given information explaining about the study?---Been given contact information to ask questions and discuss this study?---Received enough information about the study for you to make a decision about participation?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" align="left" horizontal="left" verticalAlign="top" wordWrap="true"  width="80%" height="10%" y="40%" x="0%" vertical="top" text=
+	"DO YOU UNDERSTAND THAT YOU MAY:" timeStart="0"  timeEnd="forever" fontSize="20"/>
+	
+	<addText  drawBox="true" autoSize="false" howMany="2" align="left" horizontal="left"  wordWrap="true"  width="80%" height="10%" y="41%---45%" x="21%" vertical="top" text=
+	"Withdraw from the study at any time?---Withdraw from the study without having to give a reason?" timeStart="0"  timeEnd="forever" fontSize="20"/>
+
+	
+	<addMultipleChoice height="40" width="18%" peg="ethics" timeStart="0" labels="I confirm" required=""   horizontal="left" howMany="7" y="9%---14%---24%---29%---34%---46%---51%" x="0" seperation="horizontal"/>
+
+	<addButton width="90%" hideResults="true" goto="" if="this.click?this.text='To consent you must have clicked 'I confirm' to all of the above. If you do not wish to consent please press escape to exit the study.',this.click&&required==true?next.start()" height="40"  text="I hereby fully and freely consent to my participation in this study." vertical="bottom" y="100%"/>	
+	
+	<addText y="57%---64%---etc---" colour="black" width="100%" howMany="5"
+	text="I understand the nature and purpose of the procedures involved in this study. These have been communicated to me on the information sheet accompanying this form.---I understand and acknowledge that the investigation is designed to promote scientific knowledge and that the University of Bristol will use the data I provide for no purpose other than research.---I agree that the data collected from me as part of the study will be anonymised, and that after the study will be made “open data”. I understand that this means the anonymised data will be publicly available and may be used for purposes not related to this study, and it will not be possible to identify me from these data.---I understand that the University of Bristol may use the data collected for this study in a future research project but that the conditions on this form under which I have provided the data will still apply.---I agree to the University of Bristol keeping and processing the data I have provided during the course of this study. I understand that these data will be used only for the purpose(s) set out in the information sheet, and my consent is conditional upon the University complying with its duties and obligations under the 1998 Data Protection Act and will be stored in manual and/or electronic files in a secured encoded format" />
+	
+	<addShape width="100%" height="36%" border="0" colour="grey" y="72.5%" />
+	
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="how old are you?" />
+		<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="00"  x="50%" y="60%" timeStart="0" timeEnd="forever" />
+	</TRIAL>
+
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Sex?" />
+		<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is your Ethnicity?" />
+		<addComboBox required="" peg="ethnicity"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="White/European,African,South Asian,East Asian,Other"/> 
+	</TRIAL>
+	
+	<TRIAL template="demographics">
+		<addText copyOverID="Q" text="What is the highest level of education you have attained?" />
+		<addComboBox required="" peg="edu"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="Some High School,High School Graduate or Some College,Bachelor Degree,Graduate or Professional Degree"/> 
+	</TRIAL>
+	
+		<TRIAL template="demographics">
+		<addText copyOverID="Q" text="Roughly how many hours a week do you play video-games?" />
+		<addComboBox required="" peg="games"  scale="1" label="" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%" items="0,1-5,5-10,10-15,15+"/> 
+	</TRIAL>
+	
+	<demographics TYPE="Trial" block="3" order="fixed" trials="1">
+		<addText colour="COLOUR" x="50%" y="12%" height="20%" text="Some questions about yourself" timeStart="0"  width="100%" timeEnd="forever" fontSize="40"></addText> 
+		<addText copyOverID="Q" colour="COLOUR" width="100%" align="middle" height="10%" y="35%" fontSize="30"	/>
+		<addButton timeStart='0' hideResults="true" width="340" goto='' key=" " height="40" text="continue (SPACE)"if="this.click?this.text='please answer the question',this.click&&required==true?next.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>	
+		<behavNextTrial peg="next"/>
+	</demographics>
+			
+
+
+<TRIAL TYPE="Trial" block="5" order="fixed" trials="3">
+
+	<addJPG betweenSJ='instructions' extension="png"  filename="G" filename1="_ins_1;_ins_2;_ins_3" exactSize="true" />
+	
+	<addButton timeStart='0' key=" " hideResults="true" width="340" height="40" peg='next' 
+	text="next" visible="false" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL block="20,1,0" template="midway" />
+	<TRIAL block="20,1,1,1" template="catchTrial,template" />
+	<TRIAL block="20,1,1,1" template="realTrial,template" />
+	<TRIAL block="20,1,1,2" template="catchTrial,template" />
+	<TRIAL block="20,1,1,2" template="realTrial,template" />
+	<TRIAL block="20,1,1,3" template="catchTrial,template" />
+	<TRIAL block="20,1,1,3" template="realTrial,template" />
+	<TRIAL block="20,1,1,4" template="catchTrial,template" />
+	<TRIAL block="20,1,1,4" template="realTrial,template" />
+	<TRIAL block="20,1,1,5" template="catchTrial,template" />
+	<TRIAL block="20,1,1,5" template="realTrial,template" />
+
+<TRIAL block="20,2,0" template="midway" />
+	<TRIAL block="20,2,1,1" template="catchTrial,template" />
+	<TRIAL block="20,2,1,1" template="realTrial,template" />
+	<TRIAL block="20,2,1,2" template="catchTrial,template" />
+	<TRIAL block="20,2,1,2" template="realTrial,template" />
+	<TRIAL block="20,2,1,3" template="catchTrial,template" />
+	<TRIAL block="20,2,1,3" template="realTrial,template" />
+	<TRIAL block="20,2,1,4" template="catchTrial,template" />
+	<TRIAL block="20,2,1,4" template="realTrial,template" />
+	<TRIAL block="20,2,1,5" template="catchTrial,template" />
+	<TRIAL block="20,2,1,5" template="realTrial,template" />
+
+<TRIAL block="20,3,0" template="midway" />
+	<TRIAL block="20,3,1,1" template="catchTrial,template" />
+	<TRIAL block="20,3,1,1" template="realTrial,template" />
+	<TRIAL block="20,3,1,2" template="catchTrial,template" />
+	<TRIAL block="20,3,1,2" template="realTrial,template" />
+	<TRIAL block="20,3,1,3" template="catchTrial,template" />
+	<TRIAL block="20,3,1,3" template="realTrial,template" />
+	<TRIAL block="20,3,1,4" template="catchTrial,template" />
+	<TRIAL block="20,3,1,4" template="realTrial,template" />
+	<TRIAL block="20,3,1,5" template="catchTrial,template" />
+	<TRIAL block="20,3,1,5" template="realTrial,template" />
+
+<TRIAL block="20,4,0" template="midway" />
+	<TRIAL block="20,4,1,1" template="catchTrial,template" />
+	<TRIAL block="20,4,1,1" template="realTrial,template" />
+	<TRIAL block="20,4,1,2" template="catchTrial,template" />
+	<TRIAL block="20,4,1,2" template="realTrial,template" />
+	<TRIAL block="20,4,1,3" template="catchTrial,template" />
+	<TRIAL block="20,4,1,3" template="realTrial,template" />
+	<TRIAL block="20,4,1,4" template="catchTrial,template" />
+	<TRIAL block="20,4,1,4" template="realTrial,template" />
+	<TRIAL block="20,4,1,5" template="catchTrial,template" />
+	<TRIAL block="20,4,1,5" template="realTrial,template" />
+
+<TRIAL block="20,5,0" template="midway" />
+	<TRIAL block="20,5,1,1" template="catchTrial,template" />
+	<TRIAL block="20,5,1,1" template="realTrial,template" />
+	<TRIAL block="20,5,1,2" template="catchTrial,template" />
+	<TRIAL block="20,5,1,2" template="realTrial,template" />
+	<TRIAL block="20,5,1,3" template="catchTrial,template" />
+	<TRIAL block="20,5,1,3" template="realTrial,template" />
+	<TRIAL block="20,5,1,4" template="catchTrial,template" />
+	<TRIAL block="20,5,1,4" template="realTrial,template" />
+	<TRIAL block="20,5,1,5" template="catchTrial,template" />
+	<TRIAL block="20,5,1,5" template="realTrial,template" />
+
+<midway>
+
+	<addTrialCounter onlyText="true" trials="5" x="63%" startNumber="0" fontSize="30"  fontColour="white" label="blocks complete:" />
+	
+	<addText copyOverID="feedback" align="middle" text="
+
+Please wait:
+
+
+The block will begin when the countdown reaches 0
+	" fontSize="30" colour="white"/>
+
+	<addCounter steps="10" startVal="10000"  colour="white" size="20" width="5%" height="5%" endVal="0" if="this.onFinish?next.start()"/>
+	<addJPG  betweenSJ='bg' extension="png"  filename="background" exactSize="true" />
+	<behavNextTrial peg='next'/>
+	
+</midway>
+
+
+<catchTrial trials="3">
+	<addResults copyOverID="results" catchTrial="1" correct="1"/>
+	<addText copyOverID="feedback" text="" />
+	<addJPG betweenSJ='err'  filename="err.png" duration="500" exactSize="true" y="70%" peg="err" depth="top"/>
+	<addButton copyOverID="button" if="this.click?err.start(),feedback.text='Oops!',results.correct=0"  />
+	<addJPG copyOverID="target" betweenSJ='catchImages' shuffle_something="filename" filename="Friendly1;Friendly2;Friendly3;Friendly4;Friendly5" />
+	<behavScore copyOverID="score" if="this.doBefore&&feedback.text=='WRONG'?this.y=480,feedback.y=230" />
+</catchTrial>
+
+<realTrial trials="9">
+	<addButton copyOverID="button" if="this.click?feedback.text='',feedback.duration=0,results.slow=0,results.correct=1" />
+	<addJPG copyOverID="target" betweenSJ='realImages' shuffle_something="filename" filename="cowboy1;Cowboy10;Cowboy11;Cowboy12;Cowboy13;Cowboy14;Cowboy15;cowboy2;Cowboy3;Cowboy4;Cowboy5;Cowboy6;Cowboy7;Cowboy8;Cowboy9" />
+</realTrial>
+
+
+<template order="random" trialName="T" >
+
+	<addFixationCross betweenSJ='fixation' timeStart="0" y="68%" timeEnd="500"   colour="white"/>
+	
+	<addResults copyOverID="results" peg="results" copyOver="true" correct="0" slow="1" />
+ 	
+ 	<addJPG betweenSJ='bloodspat' filename="bloodsplat.png" exactSize="true" y="70%" peg="blood" depth="top"/>
+ 	
+ 	<addButton copyOverID="button"  key=" " visible="false" timeStart="500" timeEnd="1100" peg="space" if1=",results.slow=0,rt.stop(),blood.start()" goto=""/>
+ 	
+	<addText betweenSJ='feedback' copyOverID="feedback" colour="white" peg="feedback" timeStart="end" y="67%" align="middle" duration="500" width="100%" text="too slow" depth="top" fontSize="60"/>
+		
+ 	<addJPG betweenSJ='bg' timeStart="500"  extension="png"  filename="saloon" overTrials="keep" exactSize="true" />
+ 	
+ 	<addJPG timeStart="500" copyOverID="target" betweenSJ='target' exactSize="true" y="67%" depth="top" if="this.doNow?results.target=this.filename" peg="target" extension="png" />
+ 	
+	<behavScore peg="score"  copyOverID="score" present="false"  betweenSJ='score' y="60%" height="20%" usePegs="results,rt" basicScore="600" depth="top" timeStart="end" duration="500"/>
+	
+	<behavScoreStatic  overTrials="score" hideResults="true" present="false" horizontal="left" betweenSJ='score' y="80%" height="20%" width="20%" x="0" depth="top" />
+
+	<behavNextTrial peg='nextTrial' timeStart="1100"/>
+	
+	<behavRT timeStart="500" peg="rt" />
+	
+	
+</template>
+
+
+<TRIAL TYPE="Trial" block="70" order="fixed" trials="1">
+	<addFixationCross overTrials="remove" duration="10"/>
+	<addJPG betweenSJ='instructions' visible="true" overTrials="remove" extension="png" filename="G" filename1="_post_1" exactSize="true" />
+	
+	<addButton timeStart='0' key=" " hideResults="true" width="340" height="40" peg='next' 
+	text="next" visible="false" timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="75" order="random" background="white" trials="11">
+
+	<addResults dv="enjoy;frustrate;difficult;well;stim;boring;effort;repetitive;takePart;friend;intuitive" />
+ 	
+
+	<addText height="20%" width="100%" y="10%" verticalAlign="top" align="middle" vertical="top" fontSize="22"
+	text="How enjoyable did you find the task?;How frustrating did you find the task?;Was it difficult to concentrate for the duration of the task?;How well do you think you performed on this task?;How mentally stimulating did you find this task to be?;How boring did you find the task?;How much effort did you put in throughout the task?;How repetitive was the task?;How willing would you be to take part in the study again?;How willing would you be recommend the study to a friend?;How intuitive did you find the pictures chosen for stop and go?"/>
+	
+		<addText height="20%" width="100%" y="14%" verticalAlign="top" align="middle" vertical="top" fontSize="17"
+	text="Please use your mouse to select a point along the line. You can click on the arrow to change your score."/>
+	
+	<addText height="20%" width="100%" y="60%" x="20%---80%" verticalAlign="top" vertical="top" fontSize="22" horizontal="left---right" align="left---right" howMany="2"
+	text="Not enjoyable at all---Very enjoyable;Not frustrating at all---Very frustrating;Not difficult at all---Very difficult;Not well at all---Very well;Not stimulating at all---Very stimulating;Not boring at all---Very boring;Not much effort---Lots of effort;Not repetitive at all---Very repetitive;Not willing at all---Very willing;Not willing at all---Very willing;Not intuitive at all---Very intuitive"/>
+	
+	<addSlider timeStart="0" peg="s" y="50%" lineColour="grey" labelList="," if="this.updated?next.start()"/>
+	
+	<addButton  key=" " hideResults="true" width="340" height="40" peg='next' 
+	text="next (SPACE)"  timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" background="white" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  verticalAlign="top" wordWrap="true" text="{b}EFFECTS OF SIMPLE GAME MECHANICS AND TEST LOCATION ON DATA AND SUBJECTIVE ENGAGEMENT IN COGNITIVE TESTING - DEBRIEF SHEET{/b}: The test you just completed was one of three out of three potential tests: you either completed a game-like shoot em up, a points focussed stopping challenge or a standard psychological test, a “Go-NoGo Task”. All of these three tasks were designed to measure the same thing: your ability to stop yourself from responding to certain pictures, in a situation where you normally have to respond as fast as you can. Many participants in psychological experiments have difficulty remaining interested in the task they are asked to do, especially when the task is long. Having bored participants obviously has consequences for the quality of data we collect, and so many researchers have tried to make their experiments more fun by making them more game-like. However, the trade-off for adding lots of sound effects, graphics, theming and points to your task is that it becomes less and less like the precise scientific tool that it’s supposed to be. This study aims to look at the exact effects of adding various game mechanics to psychological tests, to better understand how they impact the data we collect. Another recent trend in Psychological research is using online testing platforms to test many hundreds of participants very rapidly. Online testing platforms, such as MTurk, are a powerful tool but it is important to understand the differences between data gathered in a formal laboratory setting and data gathered online in a participants own home. As a result this study is being run both in the lab and online in order to compare the data they produce. Finally, we asked you to take a short questionnaire to rate your experiences of this study. This is because we are interested in participant’s personal experiences of the testing procedure: How fun was it? How dull was it? Your answers to these questions will help us understand how to make more engaging experiments in the future.
+{b}Further Reading{/b}
+Hamari, J., Koivisto, J., & Sarsa, H. (2014, January). Does Gamification Work?—A Literature Review of Empirical Studies on Gamification. In Proceedings of the 47th Hawaii International Conference on System Sciences. 
+Hawkins, G. E., Rae, B., Nesbitt, K. V., & Brown, S. D. (2013). Gamelike features might not improve data. Behavior Research Methods, 45(2), 301–318.
+Prins, Ponsioen, van der Oord, & Dovis. (2011). Does computerized working memory training with game elements enhance motivation and training efficacy in children with ADHD? Cyberpsychology, Behavior and Social Networking
+{b}Main contacts:{/b} Jim Lumsden jim.lumsden@bristol.ac.uk -- Professor Marcus Munafò marcus.munafo@bristol.ac.uk -- 
+If you have any concerns related to your participation in this study please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0117 9546832, Email: liam.mckervey@bristol.ac.uk).
+"	
+timeStart="0" width="100%" y="0" vertical="top" textAlign="top" align="center" timeEnd="forever" fontSize="17"></addText>
+
+</TRIAL>
+
+
+
+
+</game>	
+
+<regular>
+	<a betweenSJ='instructions'>
+		<editAttributes filename="NG" />
+	</a>
+
+
+	<a betweenSJ='realImages'>
+		<editAttributes y="50%" filename="green1;green10;green11;green12;green13;green14;green15;green2;green3;green4;green5;green6;green7;green8;green9" />
+	</a>
+	
+	<a betweenSJ='catchImages'>
+		<editAttributes y="50%" filename="red1;red2;red3;red4;red5" />
+	</a>
+	
+	<a betweenSJ='feedback'>
+		<editAttributes y="50%" />
+	</a>
+	
+	<a betweenSJ='bloodspat'>
+		<editAttributes visible="false"/>
+	</a>
+
+	
+	<a betweenSJ='bg'>
+		<editAttributes present="false" />
+	</a>	
+	
+	<a betweenSJ='fixation'>
+		<editAttributes y="50%" />
+	</a>	
+		 
+	<a betweenSJ='err'>
+		<editAttributes y="50%" />
+	</a>	
+		 	 
+		 
+</regular>
+
+
+<points>
+	<a betweenSJ='instructions'>
+		<editAttributes filename="P" />
+	</a>
+
+	<a betweenSJ='bloodspat'>
+		<editAttributes visible="false" />
+	</a>
+
+	
+	<a betweenSJ='realImages'>
+		<editAttributes y="50%" filename="green1;green10;green11;green12;green13;green14;green15;green2;green3;green4;green5;green6;green7;green8;green9" />
+	</a>
+	
+	<a betweenSJ='catchImages'>
+		<editAttributes y="50%" filename="red1;red2;red3;red4;red5" />
+	</a>
+	
+	<a betweenSJ='feedback'>
+		<editAttributes y="35%" />
+	</a>
+
+	
+	<a  betweenSJ='score'>
+		<editAttributes y="40%" present="true"/>
+	</a>
+	
+	<a betweenSJ='bg'>
+		<editAttributes present="false" />
+	</a>		 
+		
+	<a betweenSJ='fixation'>
+		<editAttributes y="50%" />
+	</a>	
+	
+	<a betweenSJ='err'>
+		<editAttributes y="50%" />
+	</a>
+</points>
+
+
+</multi>	

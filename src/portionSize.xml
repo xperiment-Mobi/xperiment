@@ -1,0 +1,309 @@
+<MULTI >
+    <MULTISETUP overSJs="__forceCondition" forceCondition="largeChocA"  />
+    
+<abstract>
+
+ <SETUP>   
+              <screen BGcolour="white"></screen>                          
+			  <computer  stimuliFolder="Malaysia\portionSize" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+
+</SETUP>
+
+<code>
+
+
+
+</code>
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! This study is conducted by the Imagineering Institute, Malaysia in collaboration with the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+This study aims to understand how people perceive food portion. There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+This study should only take 4-5 minutes to complete.
+When the stimuli have loaded (below bar), please click 'Next' to continue."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Before you begin, please read the below consent and indicate whether you consent.
+By clicking I CONSENT you indicate you have consented to take part.
+You can contact the researchers - Olivia Petit (oliviapetit@imagineeringinstitute.org or Carlos Velasco (carlos@imagineeringinstitute.org) for further information at a later date if you wish.
+Statement of Informed Consent
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so your data will be removed.
+3. You can withdraw at any time, for any reason. (NB - Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+4. I understand that my response are anonymous.
+5. I agree to take part in this online experiment"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1" hideResults="false" block="1" order="fixed" trials="1">
+	
+	 <addText  autoSize="false" align="left" selectable="false" wordWrap="true"  width="100%" height="10%"  y="20%" verticalAlign="top" vertical="top" 
+	 text="please tell us your Prolific Academic participant ID"	timeStart="0"  timeEnd="forever" fontSize="18"></addText> 
+		
+	<addInput required="" y="50%" height="5%"/>
+	
+	<addButton goto="" width="48%"    height="40" text="Next" timeStart="0" timeEnd="forever" vertical="bottom" y="80%"
+	if="this.click?this.text='If you wish to take part you need to provide your ID',this.click&&required==true?nextTrial.start()"
+	/>
+	
+	<behavNextTrial peg='nextTrial'/>
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="random" trials="1" trialName="hungry">
+
+
+<addText   x="50%" y="30%" align="centre" height="20%"
+	text = "How hungry are you at the present moment?"
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="30">
+	</addText> 
+	
+	<addResults />
+	
+	<addButton timeStart="0" if="this.click?results.r=this.key,nextTrial.start()" x="30%---36.5%---etc---" howMany="7" key="1---2---3---4---5---6---7" peg="1---2---3---4---5---6---7" text="1---2---3---4---5---6---7" width="40" goto="" height="40" />
+
+    <addText betweenSJ="labels" timeStart="0" selectable="false"  text="not at all hungry---very hungry" x="25%---74%" howMany="2" fontSize="19" align="right---left" horizontal="right---left"  width="25%" />
+
+    <addText timeStart="0" colour="0x444444"  selectable="false" text="(use keys 1-7 or click)"  fontSize="15" align="center" y="55%" width="20%" />
+    <behavNextTrial peg="nextTrial" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText betweenSJ="instructions" drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="30%" y="10%"   
+	 text="Instructions svp" timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+		
+	<addJPG betweenSJ="target" y="60%" />
+	
+	<addButton width="220"  height="40" depth="top" key=" " text="next (space)" x="80%"  y="90%"  />
+	
+
+</TRIAL>
+
+
+
+
+
+<TRIAL block="10" trials="1" trialName="r">
+	
+	<behavSequence sortBy="seqID" usePegs="images" show="max;min" peg="mySeq" timeStart="0" />
+	
+	<behavResults peg="results" timeStart="0" />
+	<addText betweenSJ="adjust" align="center" timeStart="1500" width="100%" verticalAlign="top" height="10%" fontSize="25" y="5%" />
+	
+	
+	<addShape peg="box" timeStart="0" width="1024" height="70%" colour="none" visible="false" y="35%"/>
+	
+	<addJPG  howMany="30"  betweenSJ="jpg" exactSize="true" filename="" timeStart="500" y="55%" extension="jpg" seqID="1---2---etc---" filename1="0---1---etc---" peg="images"/>
+	
+	<addText text="Press space when the amount of food above is the same as seen just previously."  timeStart="1500" width="80%" height="5%" align="center" vertical="bottom" fontSize="20" y="100%" />
+	<behavNextTrial peg="next"/>
+	
+	<addText peg="info" timeStart="1500" text="Please use the scroll button on your mouse or up/down cursor keys to change how much food." align="center" 
+fontSize="16" width="70%" y="10%" />
+	
+	<addButton hideResults="true" visible="false" key=" " y="15%" width="200" goto='' timeStart="1500" if="this.click?info.text='please fill the glass',this.click&&scroll.result!=''?results.startingVal=scroll.startingVal,next.start()" height="40"/>
+ 
+	<behavScroll copyOverID="scroll" startingVal="random" acceleration="1" timeStart="0" orientation="y"  if="this.moved?mySeq.itemFromChange=this.direction" peg="scroll" listenFor="keys,scroll"/>
+
+
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="-20" order="random" trials="5" trialName="appetis;buy;imagine1;imagine2;imagine3">
+
+
+<addText   x="50%" y="30%" align="centre" height="20%"
+	betweenSJ="Qs" text = "How appetizing do you find the French fries portion?;How likely would you be to buy the French fries portion?;As you viewed the French fries, to what extent did images of yourself eating the French fries come to mind?;While viewing the French fries, you experienced:;To what extent while viewing the French fries could you imagine yourself eating the French fries?"
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="30">
+	</addText> 
+	
+	<addResults />
+	
+	<addButton timeStart="0" if="this.click?results.r=this.key,nextTrial.start()" x="30%---36.5%---etc---" howMany="7" key="1---2---3---4---5---6---7" peg="1---2---3---4---5---6---7" text="1---2---3---4---5---6---7" width="40" goto="" height="40" />
+
+    <addText betweenSJ="labels" timeStart="0" selectable="false"  text="not at all appetizing---very appetizing;not at all likely---very likely;not at all---to a great extent;Few or no images of yourself eating the French fries---Many images of yourself eating the French fries;not at all---to a great extent" x="25%---74%" howMany="2" fontSize="19" align="right---left" horizontal="right---left"  width="25%" />
+
+    <addText timeStart="0" colour="0x444444"  selectable="false" text="(use keys 1-7 or click)"  fontSize="15" align="center" y="55%" width="20%" />
+    <behavNextTrial peg="nextTrial" />
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="20" order="random" trials="1" trialName="cal">
+
+	
+<addText betweenSJ="cals"  x="50%" y="30%" align="centre" height="20%"
+	text = "How many total calories do you think the French fries portion contain?"
+	timeStart="0"  width="100%" timeEnd="forever" fontSize="30"/>
+
+	
+	<addResults />
+	
+	<addSlider peg="cal" timeStart="0" labelList="0,,200,,400,,600,,800,,1000,,1200,,1400,,1600,,1800,,2000" fontSize="12" labelLocation="0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100" required="" lineColour="black" />	
+	
+	<addButton hideResults="true" key=" "  text="continue" y="65%" goto="" width="40%"  timeStart="0"  height="40"
+	if="this.click?this.text='please answer the question',this.click&&required==true?nextTrial.start()"  />
+
+    <behavNextTrial peg="nextTrial" />
+	
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thanks for taking part in this study. 
+
+If you have any questions or would like to here more about our research, please contact us at oliviapetit@imagineeringinstitute.org
+Press escape to leave full screen. You can now close this browser window. Thanks again!
+{b}Don't forget to visit the below site to tell Profilic Academic you have completed the study.{/b}"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+
+	<addText colour="blue" height="10%" y="85%" wordWrap="true" howMany="1" text="{a href='https://prolificacademic.co.uk/submissions/55dbd59150a1f7001090d7ac/complete?cc=H1UII53Q'}https://prolificacademic.co.uk/submissions/55dbd59150a1f7001090d7ac/complete?cc=H1UII53Q{/a}"	timeStart="0" width="100%"  align="center" timeEnd="forever" fontSize="30"></addText>
+
+  	
+
+</TRIAL>
+  	
+
+</abstract>
+
+
+<medChocA>
+<a betweenSJ="target" ><editAttributes filename="C_M15.jpg" /></a>
+<a betweenSJ="jpg" ><editAttributes filename="C_M" howMany="16"  /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the chocolate bar picture below and IMAGINE THE SENSORY EXPERIENCE OF EATING ALL OF THE CHOCOLATE BAR, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How many squares of chocolate would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+<a betweenSJ="Qs" ><editAttributes text="How appetizing do you find the chocolate bar?;How likely would you be to buy the chocolate bar?;As you viewed the chocolate bar, to what extent did images of yourself eating the chocolate bar come to mind?;While viewing the chocolate bar, you experienced:;To what extent while viewing the chocolate bar could you imagine yourself eating the chocolate bar?" /></a>
+<a betweenSJ="cals" ><editAttributes text="How many total calories do you think the chocolate bar contain?" /></a>
+<a betweenSJ="labels"><editAttributes text="not at all appetizing---very appetizing;not at all likely---very likely;not at all---to a great extent;Few or no images of yourself eating the chocolate bar---Many images of yourself eating the chocolate bar;not at all---to a great extent" /></a>
+</medChocA>
+
+
+<medChocB>
+<a betweenSJ="target" ><editAttributes filename="C_M15.jpg" /></a>
+<a betweenSJ="jpg" ><editAttributes filename="C_M" howMany="16"  /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the chocolate bar picture below and THINK ABOUT ANYTHING YOU WOULD LIKE TO THINK ABOUT, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How many squares of chocolate would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+<a betweenSJ="Qs" ><editAttributes text="How appetizing do you find the chocolate bar?;How likely would you be to buy the chocolate bar?;As you viewed the chocolate bar, to what extent did images of yourself eating the chocolate bar come to mind?;While viewing the chocolate bar, you experienced:;To what extent while viewing the chocolate bar could you imagine yourself eating the chocolate bar?" /></a>
+<a betweenSJ="cals" ><editAttributes text="How many total calories do you think the chocolate bar portion contain?" /></a>
+<a betweenSJ="labels"><editAttributes text="not at all appetizing---very appetizing;not at all likely---very likely;not at all---to a great extent;Few or no images of yourself eating the chocolate bar---Many images of yourself eating the chocolate bar;not at all---to a great extent" /></a>
+</medChocB>
+
+<largeChocA><a betweenSJ="jpg" >
+<editAttributes filename="C_L" howMany="25"  /></a>
+<a betweenSJ="target" ><editAttributes filename="C_L24.jpg" /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the chocolate bar picture below and IMAGINE THE SENSORY EXPERIENCE OF EATING ALL OF THE CHOCOLATE BAR, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="square" ><editAttributes trials="1"  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How many squares of chocolate would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+<a betweenSJ="Qs" ><editAttributes text="How appetizing do you find the chocolate bar?;How likely would you be to buy the chocolate bar?;As you viewed the chocolate bar, to what extent did images of yourself eating the chocolate bar come to mind?;While viewing the chocolate bar, you experienced:;To what extent while viewing the chocolate bar could you imagine yourself eating the chocolate bar?" /></a>
+<a betweenSJ="cals" ><editAttributes text="How many total calories do you think the chocolate bar portion contain?" /></a>
+<a betweenSJ="labels"><editAttributes text="not at all appetizing---very appetizing;not at all likely---very likely;not at all---to a great extent;Few or no images of yourself eating the chocolate bar---Many images of yourself eating the chocolate bar;not at all---to a great extent" /></a>
+</largeChocA>
+
+<largeChocB><a betweenSJ="jpg" >
+<editAttributes filename="C_L" howMany="25"  /></a>
+<a betweenSJ="target" ><editAttributes filename="C_L24.jpg" /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the chocolate bar picture below and THINK ABOUT ANYTHING YOU WOULD LIKE TO THINK ABOUT, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="square" ><editAttributes trials="1"  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How many squares of chocolate would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+<a betweenSJ="Qs" ><editAttributes text="How appetizing do you find the chocolate bar?;How likely would you be to buy the chocolate bar?;As you viewed the chocolate bar, to what extent did images of yourself eating the chocolate bar come to mind?;While viewing the chocolate bar, you experienced:;To what extent while viewing the chocolate bar could you imagine yourself eating the chocolate bar?" /></a>
+<a betweenSJ="cals" ><editAttributes text="How many total calories do you think the chocolate bar portion contain?" /></a>
+<a betweenSJ="labels"><editAttributes text="not at all appetizing---very appetizing;not at all likely---very likely;not at all---to a great extent;Few or no images of yourself eating the chocolate bar---Many images of yourself eating the chocolate bar;not at all---to a great extent" /></a>
+</largeChocB>
+
+
+
+<medFries><a betweenSJ="jpg" >
+<editAttributes filename="M" howMany="17"  /></a>
+<a betweenSJ="target" ><editAttributes filename="M17.jpg" /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the French fries portion picture below, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How much of the portion of French fries would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+</medFries>
+
+<largeFries><a betweenSJ="jpg" >
+<editAttributes filename="L" howMany="26"  /></a>
+<a betweenSJ="target" ><editAttributes filename="L26.jpg" /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the French fries portion picture below, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How much of the portion of French fries would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+</largeFries>
+
+<extraLargeFries><a betweenSJ="jpg" >
+<editAttributes filename="XL" howMany="51"  /></a>
+<a betweenSJ="target" ><editAttributes filename="XL50.jpg" /></a>
+<a betweenSJ="instructions" ><editAttributes text="Please look carefully the French fries portion picture below, click next to continue and answer the following questions."  /></a>
+<a betweenSJ="adjust" ><editAttributes text="How much of the portion of French fries would you like to eat? Please use the scroll button on your mouse or up/down cursor keys to change how much food and press space button to continue."  /></a>
+</extraLargeFries>
+
+
+
+
+
+
+
+</MULTI>	
+

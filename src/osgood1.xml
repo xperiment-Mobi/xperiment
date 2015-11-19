@@ -1,0 +1,203 @@
+<expt>
+	
+	 <SETUP>  
+	              <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+	              <results mock="false" />
+	              <screen BGcolour="white" orientation="vertical" ></screen>                          
+				  <computer  encrypt='false'  stimuliFolder="Oxford/osgood" />
+				  <style BUTTON_DOWN="0xff5656"  />
+				  <trials blockDepthOrder="10,*=random 10,*,*=fixed" />
+				  <variables practice='0' />
+	</SETUP>
+	
+	
+
+	<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+	
+		<addJPG filename="lab.png" exactSize="true" depth="bottom" vertical="top" y="0" />
+	
+		<addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="20%" x="50%"  text=
+	"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match a variety of shapes to tastes. We hope you enjoy it. Your participation is very important to us."timeStart="0"  timeEnd="forever" fontSize="20"/>
+				
+		
+		<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+		
+		<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+	
+	</TRIAL>
+	
+	
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be told specific links between tastes and shapes, and will be ask to respond according to such links.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact the researchers – Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) or Dr Andy Woods (andy.woods@bristol.ac.uk) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+		<behavNextTrial peg="next" />
+		
+	</TRIAL>
+	
+	
+	<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	
+		<addUrlVariable  _ip="notGiven" />
+	
+		<addText   x="50%" y="12%" height="20%"
+		text = "some questions"
+		timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+		
+		<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+		text="sex---age"
+		timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+	
+	 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+	 	labels="male,female"
+	 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+		
+		<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+	
+		<addComboBox peg="origin" 
+		label="where is your country of birth?"
+		timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+		
+		<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+	
+		<behavNextTrial peg='nextTrial'/>
+		
+		<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+		text="next"
+		if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+		timeEnd="forever" x="50%" vertical="top" y="90%"/>
+		
+	
+	</TRIAL>
+	
+	
+	
+	
+	<TRIAL TYPE="Trial" block="10" order="fixed" trials="1">
+		<addText   x="50%" height="40%" betweenSJ='instruct'
+			text = 
+	"There are 4 blocks of trials in this experiment. In each block, you are asked to match either specific taste-words with shapes, or the other way around. Please do so as quickly but as accurately as possible."
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="30"></addText> 
+			
+		
+			
+		<addButton width="140" key=" " timeStart="0" height="40" peg="next" text="begin"  vertical="top" y="87%"/>
+	</TRIAL>
+		
+
+
+
+<!-- good -->
+<TRIAL block="10,1,1" template="instructions"><addJPG copyOverID="instruct" filename1="congruentWords"/></TRIAL>	
+<TRIAL block="10,1,2" template="tasteResponse,practice,congruent,template"><addText copyOverID="choices"  /></TRIAL>
+<TRIAL block="10,1,3" template="tasteResponse,congruent,template"><addText copyOverID="choices"  /></TRIAL>
+
+
+<!-- good -->
+<TRIAL block="10,2,1" template="instructions"><addJPG copyOverID="instruct" filename1="incongruentWords"/></TRIAL>	
+<TRIAL block="10,2,2" template="tasteResponse,practice,incongruent,template"><addText copyOverID="choices" /></TRIAL>	
+<TRIAL block="10,2,3" template="tasteResponse,incongruent,template"><addText copyOverID="choices" /></TRIAL>	
+
+<!-- good -->
+<TRIAL block="10,3,1" template="instructions"><addJPG copyOverID="instruct" filename1="congruentShapes"/></TRIAL>	
+<TRIAL block="10,3,2" template="shapeResponse,practice,congruent,template"><addJPG copyOverID="choices"  /></TRIAL>	
+<TRIAL block="10,3,3" template="shapeResponse,congruent,template"><addJPG copyOverID="choices"  /></TRIAL>	
+
+<!-- good -->
+<TRIAL block="10,4,1" template="instructions"><addJPG copyOverID="instruct" filename1="incongruentShapes"/></TRIAL>	
+<TRIAL block="-10,4,2" template="shapeResponse,practice,incongruent,template"><addJPG copyOverID="choices"  /></TRIAL>
+<TRIAL block="10,4,3" template="shapeResponse,incongruent,template"><addJPG copyOverID="choices"  /></TRIAL>
+	
+	
+	<instructions hideResults="true" trials="1">
+		<addButton width="140" depth="top" key=" " timeStart="0" height="40"  text="continue (SPACE)"  vertical="bottom" y="100%"/>
+		<addJPG exactSize="true" copyOverID="instruct" y="35%" filename="instructions_" extension="jpg" filename1="please set" />
+		<addText text="There are 8 practice trials and then you will immediately start the experiment proper. During the practice trials you will given feedback as to whether your answer was right or wrong." y="80%" height="10%" fontSize="20" align="middle" colour="red" width="100%"/>
+	</instructions>
+	
+	
+	<practice trials="8">
+		<addResults copyOverID="r" practice="1"  />
+		<addText copyOverID="feedback" timeStart="end"  duration="500" />
+	</practice>
+
+	
+	<shapeResponse>
+		<addResults copyOverID="r" response="shape" />
+		<addJPG copyOverID="choices" extension="jpg" filename="A1---R1;A1---R1;A2---R2;A2---R2;A3---R3;A3---R3;A4---R4;A4---R4" />
+		<!-- <addJPG copyOverID="choices" extension="jpg" filename="A1---R1;R1---A1" /> -->
+		<addText copyOverID="target" text="sweet;sweet;sour;sour" />
+	</shapeResponse>
+
+
+
+	<tasteResponse>
+		<addResults copyOverID="r" response="taste" />
+		<addText copyOverID="choices" text="sweet---sour"  />
+		<addJPG copyOverID="target" extension="jpg" filename="A1;A1;R1;R1;A2;A2;R2;R2;A3;A3;R3;R3;A4;A4;R4;R4"/>
+	</tasteResponse>
+	
+	
+	
+	<congruent>
+		<choices copyOverID="choices" correct="0---1;1---0;1---0;0---1" />
+		<addResults copyOverID="r" congruent="1" />
+	</congruent>
+
+	<incongruent>
+		<choices copyOverID="choices" correct="1---0;0---1;0---1;1---0" />
+		<addResults copyOverID="r" congruent="0" />
+	</incongruent>
+	
+	
+	
+	
+	<template order="random" trials="16">
+		<behavRT timeStart="0" peg="rt"/>
+		<addResults practice="0" copyOverID="r" ans="0" peg="r" if="this.doNow?r.choice1=a.choice,r.target1=target.target,r.choice1X=a.x" choiceID="1;2;3;4" />	
+		<choices  exactSize="true" copyOverID="choices" howMany="2" peg="a---b" x="25%---75%;75%---25%" choice="1;2;3;4" correct="specify later" if="this.doNow?left.correct=this.correct---this.doNow?right.correct=this.correct" timeStart="0" align="middle" verticalAlign="middle" fontSize="60" colour="black"/> 
+		<target depth="top" copyOverID="target" width="200" peg="target" timeStart="0" target="1;2;3;4" align="middle" verticalAlign="middle" fontSize="60" colour="black"/>
+		<addButton copyOverID="keys" key="z---m" goto="" text="z---m" y="80%" timeStart="0" peg="left---right" correct="set later" vertical="bottom" x="25%---75%" width="150" height="80" enabled="false" keyEnabled="true" if="this.click&&this.correct=='1'?feedback.text='correct',r.ans=1" howMany="2"/>
+		<addText copyOverID="feedback" peg="feedback" text="wrong" align="middle" duration="0" width="100%" fontSize="80"/>
+		<addMoveToArea copyOverID="moveArea" movePeg="target" time="100" direction="x" useKeys="{left:'z',right:'m'}" useMouse="false" moveToMiddle="true" usePegs="target,a,b" if="this.onFinish?next.start(200)"/>
+		<behavNextTrial peg="next" delay="200"/>
+	</template>
+
+
+	
+	<TRIAL TYPE="Trial" hideResults="true" block="101" trials="1">
+	
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thank you for your participation to this study. We're exploring the way people associate shapes to tastes. In previous studies, we found that people associated angular shapes to sourness, and rounded shapes to sweetness. Still, when it comes to other tastes, depending on the shape, there seems to be less agreement. This is what you helped us assessing by taking part to this online experiment. 
+If you have any questions or would like to here more about our research, please contact us at carlos.velasco@psy.oc.ac.uk or andy.woods@bristol.ac.uk
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK."	y="10%" vertical="top" verticalAlign="top" timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="25"></addText>
+		
+	
+	</TRIAL>
+
+</expt>
+	
+	
+	
+	

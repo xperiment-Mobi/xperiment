@@ -4,7 +4,7 @@
        
               <screen BGcolour="white" orientation="horizontal" ></screen>                          
               <email emailResults="false"  />
-			  <computer  stimuliFolder="fontTastes" />
+			  <computer  stimuliFolder="Oxford\fontTastes" />
 			  			   <trials blockDepthOrder="10=random" />
 			  <variables trialNum='1' />
 			  <style  LABEL_TEXT="black" />
@@ -86,31 +86,39 @@ Please read the below consent statement and indicate whether you consent.
 
 
 
-<TRIAL template="myTemplate" trialName="t" block="10">
+<TRIAL template="english,myTemplate" trialName="t" block="10">
 	<addText copyOverID="labels" text="round---angular"/>
 	<addText copyOverID="info"
 	text="Please drag these fonts into the box, arranging them according to the extent to which you consider them to be round or angular. Note that vertical position does not matter." />
 </TRIAL>
 
-<TRIAL template="myTemplate" trialName="t" block="10">
+<TRIAL template="english,myTemplate" trialName="t" block="10">
 	<addText copyOverID="labels" text="easy to read---hard to read"/>
 	<addText copyOverID="info"
 	text="Please drag these fonts into the box, arranging them according to the extent to which you consider them being easy or hard to read. Note that vertical position does not matter." />
 </TRIAL>
 
-<TRIAL template="myTemplate" trialName="t" block="10">
+<TRIAL template="english,myTemplate" trialName="t" block="10">
 	<addText copyOverID="labels" text="dislike---like"/>
 	<addText copyOverID="info"
 	text="Please drag these fonts into the box, arranging them according to the extent to which you like them. Note that vertical position does not matter." />
 </TRIAL>
 
 <TRIAL template="myTemplate" trialName="t" block="10">
-	<addJPG copyOverID="images" filename="salty---sour---sweet---bitter" width="84" height="31" howMany="4"  />
+	<addJPG copyOverID="images" filename1="" filename="salty---sour---sweet---bitter" width="84" height="31" howMany="4"  />
 	<addText copyOverID="labels" text="dislike---like"/>
 	<addText copyOverID="info"
 	text="Please drag these fonts into the box, arranging them according to the extent to which you like them. Note that vertical position does not matter." />
 </TRIAL>
 
+
+<english>
+	<addJPG copyOverID="images" filename="eng_" />
+</english>
+
+<chinese>
+	<addJPG copyOverID="images" filename="chi_" />
+</chinese>
 
 
 <myTemplate order="random" trials="1">
@@ -123,7 +131,7 @@ Please read the below consent statement and indicate whether you consent.
 	
 	<behavRandPos box="box" width="100%" y="25%" height="50%" usePegs="pics,box" timeStart="0" />
 	
-	<addJPG copyOverID="images" timeStart="0" width="100" height="100" extension="png" peg="pics"   howMany="12" filename="words_sf---words_st---words_sof---words_bt---arial---arialBold---chunk---tnw---tnwBold---words_salty---words_sour---words_sweet" />
+	<addJPG copyOverID="images" timeStart="0" width="100" height="100" extension="png" peg="pics"   howMany="12" filename="" filename1="A1.png---A1B.png---A2.png---A2B.png---A3.png---A3B.png---R1.png---R1B.png---R2.png---R2B.png---R3.png---R3B.png" />
 	
 	<addShape peg="box" timeStart="0" width="1000" height="20%" colour="none" visible="false" y="35%"/>
 	
@@ -140,11 +148,11 @@ Please read the below consent statement and indicate whether you consent.
 
 
 
-<TRIAL trialName="p" block="20" trials="12">
+<TRIAL template="chi" trialName="p" block="20" trials="12">
 
 	<addResults timeStart="0" />
 
-	<addJPG copyOverID="images" width="100" height="100" if="this.doNow?results.image=this.filename" timeStart="0" extension="png" peg="pics"     filename="words_sf;words_st;words_sof;words_bt;arial;arialBold;chunk;tnw;tnwBold;words_salty;words_sour;words_sweet" />
+	<addJPG copyOverID="images" width="100" height="100" if="this.doNow?results.image=this.filename" timeStart="0" extension="png" peg="pics"     filename1="A1.png---A1B.png---A2.png---A2B.png---A3.png---A3B.png---R1.png---R1B.png---R2.png---R2B.png---R3.png---R3B.png" />
 	
 	<addText howMany="2" y="75%" timeStart="0" align="left---right" horizontal="left---right" width="50%" fontSize="30" x="5%---95%"  text="dislike---like"/>
 	<addText align="centre" width="100%" height="20%" x="50%" y="0%" vertical="top" verticalAlign="top" copyOverID="info" fontSize="22" wordWrap="true"  timeStart="0" peg="instruct"

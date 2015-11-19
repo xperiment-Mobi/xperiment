@@ -1,0 +1,279 @@
+<Taste exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="white" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			  <computer  stimuliFolder="ff\popout1" />
+			   <trials blockDepthOrder="20,*=random 20,*,*=fixed" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Estimado participante,
+Bienvenido al estudio! Somos una empresa llamada Flying Fish Research - Neurosketch, la cual realiza investigación para empresas.
+Estamos interesados en entender la forma en la que las personas buscan diferentes marcas. Para esto, le indicaremos que busque ciertas marcas, y que presione la tecla 'z' en el teclado cuando la marca está ausente, y la tecla 'm' cuando está presente, tan rápido y precisamente como le sea posible.
+Su participación es muy importante para nosotros.
+Presione 'Continuar'"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continuar" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="Cuando los estímulos hayan cargado (barra de abajo), por favor haga click en 'continuar'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" 
+	success="los estímulos han sido cargados"
+	/>
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Antes de empezar le vamos a pedir que lea el siguiente texto.
+Al presionar el botón que dice 'Estoy de acuerdo' usted indicará que acepta participar en la investigación.
+En este estudio le pediremos que busque marcas. Al final del estudio le contaremos un poco más acerca del propósito de la investigación. Usted también puede ponerse en contacto con el Dr. Carlos Velasco (carlos.velasco@psy.ox.ac.uk) o el Dr. Andy Woods (andy@xperiment.mobi) para más información.
+
+-Continúa en la siguiente página-; 
+Por favor lea el consentimiento informado presentado a continuacion e indique si está de acuerdo o no.
+{u}Statement of Informed Consent{/u}
+1. He leído y entendido la información presentada arriba, y entiendo el propósito general del experimento.
+2. Entiendo que me puedo retirar del estudio en cualquier momento y que al hacerlo nosotros destruiremos sus datos. Usted puede retirarse en cualquier momento, por cualquier motivo. (NB – Note que los datos recolectados son anónimos -  si usted cambia de parecer al terminar el experimento, nosotros no podremos rastrear sus datos específicos para borrarlos.
+3. Entiendo que mis respuestas son anónimas.
+4. Estoy de acuerdo con participar en este experimento online."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="página siguiente;página anterior" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="Estoy de acuerdo" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"
+	closeMessage = "cerrar cuando esté listo"
+    header = "Haga clic en ' ir a pantalla completa '(recomendado) o haga clic en 'cerrar cuando esté listo' para comenzar el experimento."
+    header2 = "Haga clic en 'cerrar cuando esté listo' para comenzar el experimento."
+    goFullScreen ="a pantalla completa"
+    goSmallScreen ="ir a pantalla pequeña"	
+	/>
+	<behavNextTrial peg="next" />
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "Algunas preguntas"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sexo---edad"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="Hombre,Mujer"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	items="Afganistán,Akrotiri,Albania,Alemania,Andorra,Angola,Anguila,Antártida,Antigua y Barbuda,Antillas Neerlandesas,Arabia Saudí,Arctic Ocean,Argelia,Argentina,Armenia,Aruba,Ashmore and Cartier Islands,Atlantic Acean,Australia,Austria,Azerbaiyán,Bahamas,Bahráin,Bangladesh,Barbados,Bélgica,Belice,Benín,Bermudas,Bielorrusia,Birmania / Myanmar,Bolivia,Bosnia y Hercegovina,Botsuana,Brasil,Brunéi,Bulgaria,Burkina Faso,Burundi,Bután,Cabo Verde,Camboya,Camerún,Canadá,Chad,Chile,China,Chipre,Clipperton Island,Colombia,Comoras,Congo,Coral Sea Islands,Corea del Norte,Corea del Sur,Costa de Marfil,Costa Rica,Croacia,Cuba,Dhekelia,Dinamarca,Dominica,Ecuador,Egipto,El Salvador,El Vaticano,Emiratos Árabes Unidos,Eritrea,Eslovaquia,Eslovenia,España,Estados Unidos,Estonia,Etiopía,Filipinas,Finlandia,Fiyi,Francia,Gabón,Gambia,Gaza Strip,Georgia,Ghana,Gibraltar,Granada,Grecia,Groenlandia,Guam,Guatemala,Guernsey,Guinea,Guinea Ecuatorial,Guinea-Bissau,Guyana,Haití,Honduras,Hong Kong,Hungría,India,Indian Ocean,Indonesia,Irán,Iraq,Irlanda,Isla Bouvet,Isla Christmas,Isla Norfolk,Islandia,Islas Caimán,Islas Cocos,Islas Cook,Islas Feroe,Islas Georgia del Sur y Sandwich del Sur,Islas Heard y McDonald,Islas Malvinas,Islas Marianas del Norte,Islas Marshall,Islas Pitcairn,Islas Salomón,Islas Turcas y Caicos,Islas Vírgenes Americanas,Islas Vírgenes Británicas,Israel,Italia,Jamaica,Jan Mayen,Japón,Jersey,Jordania,Kazajistán,Kenia,Kirguizistán,Kiribati,Kuwait,Laos,Lesoto,Letonia,Líbano,Liberia,Libia,Liechtenstein,Lituania,Luxemburgo,Macao,Macedonia,Madagascar,Malasia,Malaui,Maldivas,Malí,Malta,Man Isle of,Marruecos,Mauricio,Mauritania,Mayotte,México,Micronesia,Moldavia,Mónaco,Mongolia,Montenegro,Montserrat,Mozambique,Mundo,Namibia,Nauru,Navassa Island,Nepal,Nicaragua,Níger,Nigeria,Niue,Noruega,Nueva Caledonia,Nueva Zelanda,Omán,Pacific Ocean,Países Bajos,Pakistán,Palaos,Panamá,Papúa-Nueva Guinea,Paracel Islands,Paraguay,Perú,Polinesia Francesa,Polonia,Portugal,Puerto Rico,Qatar,Reino Unido,República Centroafricana,República Checa,República Democrática del Congo,República Dominicana,Ruanda,Rumania,Rusia,Sáhara Occidental,Samoa,Samoa Americana,San Cristóbal y Nieves,San Marino,San Pedro y Miquelón,San Vicente y las Granadinas,Santa Helena,Santa Lucía,Santo Tomé y Príncipe,Senegal,Serbia,Seychelles,Sierra Leona,Singapur,Siria,Somalia,Southern Ocean,Spratly Islands,Sri Lanka,Suazilandia,Sudáfrica,Sudán,Suecia,Suiza,Surinam,Svalbard y Jan Mayen,Tailandia,Taiwán,Tanzania,Tayikistán,Territorio Británico del Océano Indico,Territorios Australes Franceses,Timor Oriental,Togo,Tokelau,Tonga,Trinidad y Tobago,Túnez,Turkmenistán,Turquía,Tuvalu,Ucrania,Uganda,Unión Europea,Uruguay,Uzbekistán,Vanuatu,Venezuela,Vietnam,Wake Island,Wallis y Futuna,West Bank,Yemen,Yibuti,Zambia,Zimbabue"
+	label="De dónde es usted?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="Cuál es su idioma nativo? - Por favor responda escribiendo en este espacio." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="Siguiente"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+
+
+</TRIAL>
+
+
+<TRIAL block="10" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="20" vertical="top" y="0" verticalAlign="top" align="middle" text="Este este estudio requiere de toda su atención ya que una de sus principales tareas consiste en responder tan rápida y precisamente como pueda. En cada intento, le presentaremos el nombre de una marca (la marca que debe buscar). Después, le presentaremos una pantalla en la cual pueden haber 3, 6, o 9 marcas. Su tarea consiste en presionar la tecla 'm' si la marca correspondiente NO aparece entre las marcas incluídas y 'z' si la marca SI aparece. Note que el nombre la marca que debe buscar se presentará rápidamente, y luego, usted tedrá un máximo de 3 segundos para identificar si está presente o no.
+Para que usted se haga una idea de cómo funciona el experimento, empezaremos con unos intentos de práctica."/>
+	<addJPG filename="instructions.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="siguiente (ESPACIO)"/>
+</TRIAL>
+
+<TRIAL template="practice,present,corona,six,template"></TRIAL>
+<TRIAL template="practice,present,coronaSquare,six,template"></TRIAL>
+<TRIAL template="practice,present,alpha,six,template"></TRIAL>
+<TRIAL template="practice,absent,coronaAbsent,six,template"></TRIAL>
+<TRIAL template="practice,absent,coronaSquareAbsent,six,template"></TRIAL>
+<TRIAL template="practice,absent,alphaAbsent,six,template"></TRIAL>
+
+
+<practice trials="1" block="12" hideResults="true">
+	<addText copyOverID="feedback" duration="500"/>
+</practice>
+
+<TRIAL block="14" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="Ahora va a empezar con el experimento real. En esta parte, no recibirá retroalimentación sobre su desempeño. Recuerte responder de forma rápida y precisa presionando la tecla 'm' si la marca correspondiente NO aparece entre las marcas  y la tecla 'z' su la marca SI aparece."/>
+	<addJPG filename="instructions.png" y="58%"/>
+	<addButton key=" " timeStart="0"  y="100%" vertical="bottom" width="300" height="40" text="Empezar el estudio (ESPACIO)"/>
+</TRIAL>
+
+
+<TRIAL template="present,corona,three,template"></TRIAL>
+<TRIAL template="present,corona,six,template"></TRIAL>
+<TRIAL template="present,corona,nine,template"></TRIAL>
+<TRIAL template="present,coronaSquare,three,template"></TRIAL>
+<TRIAL template="present,coronaSquare,six,template"></TRIAL>
+<TRIAL template="present,coronaSquare,nine,template"></TRIAL>
+<TRIAL template="present,alpha,three,template"></TRIAL>
+<TRIAL template="present,alpha,six,template"></TRIAL>
+<TRIAL template="present,alpha,nine,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,three,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,six,template"></TRIAL>
+<TRIAL template="absent,coronaAbsent,nine,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,three,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,six,template"></TRIAL>
+<TRIAL template="absent,coronaSquareAbsent,nine,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,three,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,six,template"></TRIAL>
+<TRIAL template="absent,alphaAbsent,nine,template"></TRIAL>
+
+
+
+<present>
+	<addButton copyOverID="keys" if="this.click?results.ans=1,feedback.text='correcto'---this.click?results.ans=0,feedback.text='incorrecto'"/>
+</present>
+
+<absent>
+	<addButton copyOverID="keys" if="this.click?results.ans=0,feedback.text='incorrecto'---this.click?results.ans=1,feedback.text='correcto'"/>
+</absent>
+
+
+
+<corona>
+	<behavResults copyOverID="results" stim="corona" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'2_Corona_actual',mustNotHave:'1_Corona_nuevo'" />
+	<addText copyOverID="debug1" text="corona"/>
+	<addText copyOverID="find" text="corona"/>
+</corona>
+
+<coronaSquare>
+	<behavResults copyOverID="results" stim="coronaSquare" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'1_Corona_nuevo',mustNotHave:'2_Corona_actual'" />
+	<addText copyOverID="debug1" text="coronaSquare"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaSquare>
+
+<alpha>
+	<behavResults copyOverID="results" stim="alpha" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustHave:'3_Alfa',onlyOne:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="alpha"/>
+	<addText copyOverID="find" text="alfa"/>
+</alpha>
+
+
+<coronaAbsent>
+	<behavResults copyOverID="results" stim="coronaAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="coronaAbsent"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaAbsent>
+
+<coronaSquareAbsent>
+	<behavResults copyOverID="results" stim="coronaSquareAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:['2_Corona_actual','1_Corona_nuevo']" />
+	<addText copyOverID="debug1" text="coronaSquareAbsent"/>
+	<addText copyOverID="find" text="corona"/>
+</coronaSquareAbsent>
+
+<alphaAbsent>
+	<behavResults copyOverID="results" stim="alphaAbsent" />
+	<addJPG copyOverID="png" super_shuffle_something="{what:'filename',shuffleOver:'---',mustNotHave:'3_Alfa',onlyOne:['1_Corona_nuevo','2_Corona_actual']" />
+	<addText copyOverID="debug1" text="alphaAbsent"/>
+	<addText copyOverID="find" text="alfa"/>
+</alphaAbsent>
+
+<three>	
+	<behavResults copyOverID="results" logos="3" />
+	<addJPG copyOverID="png" howMany="3" super_shuffle_something1=",howMany:3}" />
+	<addText copyOverID="debug2" text="3"/>
+</three>
+<six>	
+	<behavResults copyOverID="results" logos="6" />
+	<addJPG copyOverID="png" howMany="6" super_shuffle_something1=",howMany:6}"/>	
+	<addText copyOverID="debug2" text="6"/>
+</six>
+<nine>
+	<behavResults copyOverID="results" logos="9" />	
+	<addJPG copyOverID="png" howMany="9" super_shuffle_something1=",howMany:9}"/>	
+	<addText copyOverID="debug2" text="9"/>
+</nine>
+
+
+
+<template block="20" order="random" trials="4" trialName="T" >
+
+ 	<addText peg="startTxt" timeStart="0" align="middle" text="presione ESPACIO para iniciar la prueba" width="100%" fontSize="40"/>
+	<addTrialCounter peg="startCounter" trials="78" timeStart="0" y="80%" width="100" height="40"/>
+	<addButton key=" " visible="false" goto="" if="this.click?startTxt.stop(),startCounter.stop(),this.stop(),find.start()"/> 
+	
+	<addText copyOverID="find" text="corona" peg="find" duration="500" if="this.onFinish?stimuli.start(),rt.start(),z.start(),m.start()" align="middle" fontSize="60" />
+	
+	<behavResults copyOverID="results" />
+	<addJPG  copyOverID="png" width="200"  height="aspectRatio" peg="stimuli" shuffle_somethings="x y ---" extension="png"  
+	filename="10_SanLorenzo---11_Pintuco---12_Sika---13_Stertto---1_Corona_nuevo---2_Corona_actual---3_Alfa---4_Boccherini---5_Ceramica-Italia---6_easy---7_euroCeramica---8_Homecenter---9_Gricol"
+	y="25%---25%---25%---50%---50%---50%---75%---75%---75%"
+	x="25%---50%---75%---25%---50%---75%---25%---50%---75%"/>
+	<behavRT peg="rt"  />
+	<addButton copyOverID="keys" key="z---m" y="100%" peg="z---m" vertical="bottom" x="40%---60%" width="150" height="80" enabled="false" keyEnabled="true" text="Presente (z)---Ausente (m)" howMany="2"/>
+	<behavNextTrial peg='nextTrial'/>
+	<addText visible="false" copyOverID="debug1" y="0%" x="0" vertical="top" horizontal="left" fontSize="30" align="left" verticalAlign="top"/>
+	<addText visible="false" copyOverID="debug2" y="0%" x="100%" vertical="top" horizontal="right" fontSize="30" align="right" verticalAlign="top"/>
+	<addText copyOverID="feedback" peg="feedback" timeStart="end" align="middle" duration="0" width="100%" text="" fontSize="80"/>
+</template>
+
+
+
+<TRIAL block="50" hideResults="true"  trialName="T" >
+	<addText width="100%" fontSize="30" vertical="top" y="0" verticalAlign="top" align="middle" text="Usted conoce estas marcas?"/>
+	<addText y="40%---60%" fontSize="20" width="30%" horizontal="left" height="10%" howMany="2" text="Corona (marca latinoamericana de muebles---Alfa" />
+	
+	<addMultipleChoice horizontal="right" required="" peg="corona---alfa" howMany="2" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="si,no"
+ 	x="45%" y="40%---60%" timeStart="0" seperation="horizontal" timeEnd="forever" /> 	
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="Siguiente"
+	if="this.click?this.text='Por favor responda las preguntas',this.click&&required==true?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+		
+		  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Gracias por su participación. Estamos explorando la forma en la que las diferentes características del logo de una marca cambian la forma en la que las personas la buscan.
+Si tiene alguna pregunta y le gustaría conocer más acerca de esta investifación, por favor contacte a Alejandro Salgado en alejandro.salgado@psy.oc.ac.uk
+NO OLVIDE INGRESAR EL CÓDIGO PRESENTADO ABAJO EN MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Taste>	

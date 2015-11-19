@@ -1,0 +1,174 @@
+<multi>	
+	<MULTISETUP overSJs_forceCondition="forceCondition" _forceCondition="AF125" />
+
+
+	<AF125 exptType="WEB">
+	
+	 <SETUP> 
+	  
+        <screen BGcolour="white"></screen>                          
+		<computer stimuliFolder="MD_faces" />
+		<style BUTTON_DOWN="0xff5656"  />
+		<results save="cloud" mock="false"  />
+		
+					
+	</SETUP>
+		
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="3" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" wordWrap="true" align="center"  height="90%" x="50%"  
+	 text=
+"We need to wait for all the stimuli to download unfortunately. If they have already done so, you can click button below to continue."
+		timeStart="0"  timeEnd="forever" fontSize="30"></addText> 
+	
+	<addButton width="20%" enabled="false" peg="next" timeStart="0"  height="80" vertical="bottom" y="73%"/>
+	
+	<addLoadingIndicator if="this.onFinish?next.enabled=true" width="50%" height="5%"  y="85%" />
+	
+
+</TRIAL>
+		
+		
+		<TRIAL  template="myTemplate"  trialName="T" betweenSJ='shortTrials' trials="96">
+			<addJPG betweenSJ='images' copyOverID="images" filename="af" filename1="_f_anger00.jpg;_f_anger02.jpg;_f_anger04.jpg;_f_anger06.jpg;_f_anger08.jpg;_f_anger10.jpg;_f_anger12.jpg;_f_anger14.jpg;_f_disgust00.jpg;_f_disgust02.jpg;_f_disgust04.jpg;_f_disgust06.jpg;_f_disgust08.jpg;_f_disgust10.jpg;_f_disgust12.jpg;_f_disgust14.jpg;_f_fear00.jpg;_f_fear02.jpg;_f_fear04.jpg;_f_fear06.jpg;_f_fear08.jpg;_f_fear10.jpg;_f_fear12.jpg;_f_fear14.jpg;_f_happy00.jpg;_f_happy02.jpg;_f_happy04.jpg;_f_happy06.jpg;_f_happy08.jpg;_f_happy10.jpg;_f_happy12.jpg;_f_happy14.jpg;_f_sad00.jpg;_f_sad02.jpg;_f_sad04.jpg;_f_sad06.jpg;_f_sad08.jpg;_f_sad10.jpg;_f_sad12.jpg;_f_sad14.jpg;_f_surprise00.jpg;_f_surprise02.jpg;_f_surprise04.jpg;_f_surprise06.jpg;_f_surprise08.jpg;_f_surprise10.jpg;_f_surprise12.jpg;_f_surprise14.jpg;_m_anger00.jpg;_m_anger02.jpg;_m_anger04.jpg;_m_anger06.jpg;_m_anger08.jpg;_m_anger10.jpg;_m_anger12.jpg;_m_anger14.jpg;_m_disgust00.jpg;_m_disgust02.jpg;_m_disgust04.jpg;_m_disgust06.jpg;_m_disgust08.jpg;_m_disgust10.jpg;_m_disgust12.jpg;_m_disgust14.jpg;_m_fear00.jpg;_m_fear02.jpg;_m_fear04.jpg;_m_fear06.jpg;_m_fear08.jpg;_m_fear10.jpg;_m_fear12.jpg;_m_fear14.jpg;_m_happy00.jpg;_m_happy02.jpg;_m_happy04.jpg;_m_happy06.jpg;_m_happy08.jpg;_m_happy10.jpg;_m_happy12.jpg;_m_happy14.jpg;_m_sad00.jpg;_m_sad02.jpg;_m_sad04.jpg;_m_sad06.jpg;_m_sad08.jpg;_m_sad10.jpg;_m_sad12.jpg;_m_sad14.jpg;_m_surprise00.jpg;_m_surprise02.jpg;_m_surprise04.jpg;_m_surprise06.jpg;_m_surprise08.jpg;_m_surprise10.jpg;_m_surprise12.jpg;_m_surprise14.jpg"/> 	
+		</TRIAL> 
+		
+		<myTemplate order="random" block="50" trialName="t">
+			<addResults/>
+			<addHideMouse peg="mouse" timeStart="0"/>
+			<behavPause peg="pause" timeStart='100' time="rand(0:1000)" />
+		
+			<addJPG filename="mask.jpg" peg="mask" depth="top" if="this.onFinish?results.d=this.duration,mouse.stop(),angry.start(),happy.start(),sad.start(),fearful.start(),surprised.start(),disgusted.start()"
+			duration='150' width="459" height="600" />
+		
+			<addJPG extension="jpg" betweenSJ="duration" copyOverID="images" if="this.doBefore?results.image=this.filename,results.dur=this.duration,this.onFinish?mask.start()" peg="face"
+			timeStart="2000" duration="125" width="459" height="600" />
+			
+			<addText  selectable="false" text="+" fontSize="100" align='center' timeStart='0' timeEnd='2000'/>
+			
+			<behavSwap doOnce="true" peg="randomSwapChoice" usePegs="angry,happy,sad,fearful,surprised,disgusted" timeStart="0"/>
+			
+			<behavRT peg="rt" timeStart='2000'/>
+			
+			<addButton copyOverID="buttons" betweenSJ="timeStart" buttonGroup="selected" howMany="6" text='angry---happy---sad---fearful---surprised---disgusted'
+			peg='angry---happy---sad---fearful---surprised---disgusted' width='80' height='80' x="35%---45%---55%---65%---55%---45%" y="50%---35%---35%---50%---65%---65%" />
+		
+		</myTemplate>
+		
+
+<TRIAL TYPE="Trial" block="99" blockOrder="random" trials="1">
+
+	<addText x="0%"  colour="black" fontSize="20---20" howMany="2" horizontal="left" y="20%---30%" verticalAlign="top" align="middle" vertical="top" height="8%" width="100%" text="Please click on the little blue circle at the bottom of the screen. Do not click on the scale items that are labelled from 1 to 9.---This is just to screen out random clicking." />
+
+	<addText x="0%---100%"  colour="black" fontSize="20" howMany="2" horizontal="left---right"  vertical="top" height="8%" y="47%" width="10%" text="Very Rarely---Very Frequently" />
+	
+	<addMultipleChoice required="" fontSize="13" seperation="horizontal" peg="catchButton" if="this.click?results.catch='bad',next.start()"  horizontalDistanceApart="210" labels="1,2,3,4,5,6,7,8,9"  padding="10"     height="4%" width="70%" timeStart="0"  timeEnd="forever" /> 	
+			
+	<addShape shape="circle" width="20" y="90%" lineThickness="1" height="20" if="this.click?results.catch='true',next.start()" />
+	
+	<behavResults peg="results"/>
+	
+	<behavNextTrial peg="next"/>
+	
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" hideResults="true" block="100" blockOrder="random" trials="1">
+			
+			<addText  verticalAlign="top" wordWrap="true" text="{b}Demo 6AFC face study{/b}: Thank you for taking part in this study. The aim of this project is to determine whether stimulus presentation time influences emotion recognition performance across six different emotions using ethnically diverse stimulus sets. In this study participants were randomly assigned to complete the short version of the Bristol emotion recognition task with a randomly assigned stimulus presentation time and stimulus set. 
+We will also investigate whether sociodemographic characteristics (age, sex, and level of education) influence recognition performance.  In addition, we will examine whether there is any relationship between recognition performance and self-reported symptoms of depression and anxiety.
+This research will allow us to better understand how people recognize facial expressions of emotion and identify what factors may impact recognition performance.
+{b}Further Reading{/b}
+Dalili, M. N., Penton-Voak, I. S., Harmer, C. J., & Munafo, M. R. (2015). Meta-analysis of emotion recognition deficits in major depressive disorder. Psychol Med, 45(6), 1135-1144. doi: 10.1017/S0033291714002591
+Demenescu, L. R., Kortekaas, R., den Boer, J. A., & Aleman, A. (2010). Impaired attribution of emotion to facial expressions in anxiety and major depression. PLoS ONE, 5(12), e15058. doi: 10.1371/journal.pone.0015058
+Kessels, R. P., Montagne, B., Hendriks, A. W., Perrett, D. I., & de Haan, E. H. (2014). Assessment of perception of morphed facial expressions using the Emotion Recognition Task: normative data from healthy participants aged 8-75. J Neuropsychol, 8(1), 75-93. doi: 10.1111/jnp.12009
+{b}Main contacts:{/b} Michael Dalili 0117 331 0494 michael.dalili@bristol.ac.uk -- Professor Marcus Munafò 0117 954 6841 (internal 46841) marcus.munafo@bristol.ac.uk -- Professor Ian Penton-Voak 0117 928 8667 (internal 88667) i.s.penton-voak@bris.ac.uk
+If you have any concerns related to your participation in this study please direct them to the School of Experimental Psychology Human Research Ethics Committee, via Liam McKervey (Tel: 0117 9546832, Email: liam.mckervey@bristol.ac.uk).
+"	
+timeStart="0" width="80%" y="0" vertical="top" textAlign="top" align="center" timeEnd="forever" fontSize="17"></addText>
+
+		</TRIAL>
+	</AF125>	
+	
+	
+
+	<AF250>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</AF250>
+	<AF500>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</AF500>
+	<AF1000>
+		<a betweenSJ='images'> --><editAttributes filename="af" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</AF1000>
+
+	
+	
+	
+	<EA125>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</EA125>
+	<EA250>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</EA250>
+	<EA500>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</EA500>
+	<EA1000>
+		<a betweenSJ='images'> --><editAttributes filename="ea" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</EA1000>
+	
+	
+	
+	
+	<CA125>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</CA125>
+	<CA250>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</CA250>
+	<CA500>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</CA500>
+	<CA1000>
+		<a betweenSJ='images'> --><editAttributes filename="ca" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</CA1000>
+	
+	
+	
+
+	
+	<SA125>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="125" />  </a>	
+	</SA125>
+	<SA250>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="250" />  </a>	
+	</SA250>
+	<SA500>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="500" />  </a>	
+	</SA500>
+	<SA1000>
+		<a betweenSJ='images'> --><editAttributes filename="sa" />  </a>	
+	 	<a betweenSJ='duration'> --><editAttributes duration="1000" />  </a>	
+	</SA1000>
+	
+	
+
+	
+	
+</multi>

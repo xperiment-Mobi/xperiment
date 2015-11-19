@@ -1,0 +1,200 @@
+<expt exptType="WEB">
+
+ <SETUP>  
+            
+              <screen BGcolour="0x7A7A79"></screen>                          
+			  <computer  stimuliFolder="Singapore/framedFood" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x333333" />
+			  <variables practice='0' />
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+We are interested in understanding how people perceive portion size. 'If you decide to take part in this experiment, you will be asked questions about plates of food, as well as to provide us with some information about yourself.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the Singapore Institute for Clinical Sciences keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+				
+		<TRIAL TYPE="Trial" block="20" background="white" order="fixed" trials="1">
+			<addText   height="20%" text=
+			"In the first section of this experiment you will be shown some images of boxes with lines inside of them.
+After examining the boxes and lines, you will be asked to draw from memory the line by moving your mouse.
+Press SPACE to continue on with the first part of the study." 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="40"></addText> 
+			<addButton width="10" hideResults="true" visible ="false" height="10" key=" "  />
+		</TRIAL>
+		
+			
+		
+		<TRIAL TYPE="Trial" block="20" background="white" order="fixed" trials="1">
+			
+			<addJPG filename="lineTaskInstruct.png" />
+		
+			<addButton width="10" hideResults="true" visible ="true" height="10" key=" "  />
+		</TRIAL>
+		
+		
+		
+		<TRIAL TYPE="Trial" block="20" order="fixed" trials="1">
+			<addText  x="50%" y="12%" height="20%" text=
+			"Info (press space when happy)" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			<addFramedLine twoWay="true" timeStart="0" peg="line"/>
+			<addButton width="10" hideResults="true" visible ="false" height="10" key=" "  />
+		</TRIAL>
+			
+<TRIAL TYPE="Trial" block="20" background="white" order="fixed" trials="1">
+	<addText   height="20%" timeStart="0"  width="80%" timeEnd="forever" fontSize="40" text=
+"You have finished the first part of the study.
+Press SPACE to continue on with the second part." ></addText> 
+	<addButton width="10" hideResults="true" visible ="false" height="10" key=" "  />
+</TRIAL>
+		
+<TRIAL TYPE="Trial" block="20" background="white" order="fixed" trials="1">		
+	<addJPG filename="foodTaskInstruct.png" />
+	<addText   height="20%" text="Press SPACE to continue on with the second part of the study." align="right" timeStart="0"  y="90%" width="80%" timeEnd="forever" fontSize="20"></addText>
+	<addButton width="10" hideResults="true" visible ="true" height="10" key=" "  />
+</TRIAL>
+			
+			
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="MP" /> <addJPG copyOverID="ref" filenamePrefix='MP_' /> <addJPG copyOverID="images" filenamePrefix='MP_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="PPM" /> <addJPG copyOverID="ref" filenamePrefix='PPM_' /> <addJPG copyOverID="images" filenamePrefix='PPM_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="YC" /> <addJPG copyOverID="ref" filenamePrefix='YC_' /> <addJPG copyOverID="images" filenamePrefix='YC_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="Laksa" /> <addJPG copyOverID="ref" filenamePrefix='Laksa_' /> <addJPG copyOverID="images" filenamePrefix='Laksa_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="BR" /> <addJPG copyOverID="ref" filenamePrefix='BR_' /> <addJPG copyOverID="images" filenamePrefix='BR_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="CK" /> <addJPG copyOverID="ref" filenamePrefix='CK_' /> <addJPG copyOverID="images" filenamePrefix='CK_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="MC" /> <addJPG copyOverID="ref" filenamePrefix='MC_' /> <addJPG copyOverID="images" filenamePrefix='MC_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="PG" /> <addJPG copyOverID="ref" filenamePrefix='PG_' /> <addJPG copyOverID="images" filenamePrefix='PG_' />    </TRIAL>
+
+
+
+<!-- <TRIAL template="template"> <behavResults copyOverID="results"  cond="CP" /> <addJPG copyOverID="ref" filenamePrefix='CP_' /> <addJPG copyOverID="images" filenamePrefix='CP_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="CR" /> <addJPG copyOverID="ref" filenamePrefix='CR_' /> <addJPG copyOverID="images" filenamePrefix='CR_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="FS" /> <addJPG copyOverID="ref" filenamePrefix='FS_' /> <addJPG copyOverID="images" filenamePrefix='FS_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="GB" /> <addJPG copyOverID="ref" filenamePrefix='GB_' /> <addJPG copyOverID="images" filenamePrefix='GB_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="HM" /> <addJPG copyOverID="ref" filenamePrefix='HM_' /> <addJPG copyOverID="images" filenamePrefix='HM_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="M" /> <addJPG copyOverID="ref" filenamePrefix='M_' /> <addJPG copyOverID="images" filenamePrefix='M_' />    </TRIAL>
+<TRIAL template="template"> <behavResults copyOverID="results"  cond="MS" /> <addJPG copyOverID="ref" filenamePrefix='MS_' /> <addJPG copyOverID="images" filenamePrefix='MS_' />    </TRIAL>
+ -->
+
+
+
+	
+		<template block="40" trials="32">
+		
+
+			<addJPG timeStart="1000" timeEnd="2000" depth="top" peg="refFood" copyOverID="ref" exactSize="true"  extension="png" filename="800;300"  if="this.doNow?results.refFood=this.filename"  />
+			<addJPG timeStart="0" timeEnd="2000" extension="png" peg="refPlate" filename="plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate"  if="this.doBefore?results.refPlate=this.filename"/>
+			
+			
+			<addShape peg="box" timeStart="0" width="1024" height="70%" colour="none" visible="false" y="35%"/>
+			
+			<behavRandPos usePegs="refFood,refPlate,box" link="refPlate,refFood" box="box"/>
+
+			<behavSequence timeStart="2000" firstStim="true" mousePos="true" sortBy="sortMe" usePegs="images" hideAtStart="true" show="max;min" peg="mySeq"  />
+			
+			<behavResults copyOverID="results" peg="results"/>
+			
+			
+			<addJPG timeStart="3000" howMany="50"  copyOverID="images" exactSize="true" extension="png" sortMe="0---1---etc---" filename="20---40---etc---" peg="images"/>
+			
+			<addJPG timeStart="2000" extension="png" peg="plate" filename="largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;largePlate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate;plate" present="true;true" if="this.doNow?results.plate=this.filename"/>
+			
+			<addText timeStart="2000" text="Press space when the amount of food above is the same as seen just previously."  peg="info2" width="80%" height="5%" align="center" vertical="bottom" fontSize="20" y="100%" />
+			
+			<addText timeStart="2000" peg="info"  text="Please change how much food by moving the mouse around either upward or downward." align="center" 
+		fontSize="16" width="70%" y="10%" />
+		
+			<addText peg="info_dot"  text="Please move your mouse cursor into the circle to begin the next trial." align="center" 
+		fontSize="25" width="100%" y="10%" />
+		
+			<addShape shape='circle' colour="grey" width="50" if="this.mouseOver?next.start()" shuffleSomething='y ;' y="80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%;80%;50%" alpha=".5" height="50" peg="mouseOver"/>
+			
+			<behavNextTrial peg="next"/>
+			
+			<addButton timeStart="2000" hideResults="true" visible="false" goto="" if="this.click?mySeq.stop(),info.stop(),info2.stop(),plate.stop(),info_dot.start(),mouseOver.start()" key=" " y="15%" width="200"  height="40"/>
+		 
+		
+		</template>		
+		
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thanks for taking part in this study. We're exploring how the size of the plate some is placed on influences perceived portion size. If you have any questions or would like to here more about our research, please contact us at Bobby_Cheon@sics.a-star.edu.sg.
+Press escape to leave full screen. You can now close this browser window. Thanks again!"	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</expt>	
+

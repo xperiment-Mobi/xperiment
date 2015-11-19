@@ -7,6 +7,10 @@
             <style BUTTON_DOWN="0xff5656" />
         </SETUP>
         <TRIAL TYPE="Trial" trialName="DoExpt" block="1" order="fixed" trials="1" >
+           	
+           	
+           	
+           <addText  drawBox="true" background="red" align="middle" wordWrap="true" width="85%" height="80%" y="4%---20%" vertical="top" text="This study has now ended. Please do not continue." timeStart="0" timeEnd="forever" fontSize="50" />
             <addText howMany="2" drawBox="true" autoSize="false" align="middle" wordWrap="true" width="85%" height="80%" x="50%" y="4%---20%" vertical="top" text="Can you tell us if you are male or female. Thank you.---After clicking, please be advised that approximately 5MB of images required for the experiment will start streaming to your computer. Thank you." timeStart="0" timeEnd="forever" fontSize="30---25" />
             <behavGotoCond howMany="2" peg="male---female" goto="male---female" />
             <addButton peg="male---female" howMany="2" if="this.click?male.start()---this.click?female.start()" width="140" sstartID="next" height="40" text="male---female" timeStart="0" timeEnd="forever" x="40%---60%" goto="" vertical="top" y="90%" />

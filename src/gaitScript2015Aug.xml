@@ -1,0 +1,168 @@
+
+
+<MULTI >
+    <MULTISETUP forceCondition="agreeableFemale"  />
+   
+    <extraverted exptType="MALE"  >
+        <SETUP >
+            <info id="0a66f64fd9c648c3ae92889aa66040a0" />
+            <results trialTime="true" id="bristol" />
+            <screen BGcolour="black" orientation="vertical" />
+            <email username="andy.woods@xperiment.mobi" toWhom="oxfordexpt@gmail.com" />
+            <computer stimuliFolder="Bristol/gait2015Aug" />
+            <style BUTTON_DOWN="0xff5656" />
+            <core makeMode="false" />
+            <variables COLOUR="0xe9e9e9" betweenSJ="stimSEX"
+                        
+STIM1=
+"P002;P003;P004;P006;P007;P008;P012;P013;P014;P015;P016;P017;P018;P019;P020;P021;P027;P029;P031;P034;P036;P038;P042;P044;P046;P047;P050;P052;P053;P057;P058;P060;P061;P064;P070;P075;P076;P077;P078;P079;P080;P083;P085;P086;P089;P092;P098;P103;P109;P110;P112;P117;P119;P121;P123;P124;P126;P127;P128;P129;P134;P140;P142;P143;P144;P147;P148;P150;P151;P155;P159;P161;P163;P165;P166;P168;P169;P170;P171;P172"        
+            />
+            
+        </SETUP>
+        <TRIAL TYPE="Trial" trialName="DoExpt" hideResults="true" block="1" order="fixed" trials="1" >
+            <addText colour="COLOUR" drawBox="true" autoSize="false" align="left" wordWrap="true" width="85%" height="90%" x="50%" y="4%" vertical="top" text="{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}&#xA;You will be shown a series of videos and asked to rate the women/men in them for personality. Just click on the rating that you consider best applies - don't think about it too much! We are interested in people's intuitive responses. &#xA;At the end of the study we will tell you more about the purpose of the study. You can contact kate.howard.2011@my.bristol.ac.uk for further information at a later date if you wish.&#xA;Please read the below consent statement and indicate whether you consent.&#xA;{u}Statement of Informed Consent{/u}&#xA;1. I understand the general purpose of this experiment.&#xA;2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data.&#xA;3. I understand that my responses are anonymous.&#xA;4. I agree to take part in this online experiment.{/p}" timeStart="0" timeEnd="forever" fontSize="17" />
+            <addButton width="140" sstartID="next" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="90%" />
+        </TRIAL>
+        <TRIAL TYPE="Trial" block="1" order="fixed" trials="1" >
+            <fullScreen timeStart="0" if="this.onFinish?next.start()" />
+            <behavNextTrial peg="next" />
+        </TRIAL>
+        <TRIAL TYPE="Trial" block="1" order="fixed" trials="1" >
+            <addUrlVariable _ip="notGiven" />
+            <addText colour="COLOUR" x="50%" y="12%" height="20%" text="Some questions about yourself" timeStart="0" width="80%" timeEnd="forever" fontSize="20" />
+            <addText colour="COLOUR" howMany="2" padding="10" width="60" height="10%" x="20%" y="23%---40%" text="sex---age" timeStart="0" timeEnd="forever" autoSize="false" align="right" fontSize="20" />
+            <addMultipleChoice seperation="horizontal" peg="sex" distanceApart="5" id="sex" width="25%" height="5%" horizontalDistanceApart="210" labels="female,male" padding="10" x="50%" y="20%" timeStart="0" timeEnd="forever" />
+            <addMultiNumberSelector peg="age" width="25%" height="20%" id="age" startingVal="22" x="50%" y="40%" timeStart="0" timeEnd="forever" />
+            <addComboBox peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="40%" timeEnd="forever" x="50%" y="75%" />
+            <addComboBox peg="orientation" items="heterosexual,homosexual,bisexual" label="what is your sexual orientation?" scale="1" timeStart="0" width="70%" height="31%" timeEnd="forever" x="50%" y="84%" />
+            <behavNextTrial peg="nextTrial" />
+            <addButton timeStart="0" enabled="false" hideResults="true" width="90%" goto="" height="40" peg="next" text="continue (if stimuli are still loading, please wait for them to load)" if="this.click?this.text='please answer the questions',this.click&amp;&amp;orientation.result!=''&amp;&amp;sex.result!=''&amp;&amp;origin.result!=''&amp;&amp;age.result!=''?nextTrial.start()" timeEnd="forever" x="50%" vertical="top" y="83%" />
+            <addLoadingIndicator id="loading" behaviours="onFinish:next.enabled=true" width="80%" height="20" timeStart="0" timeEnd="forever" x="50%" vertical="bottom" y="95%" />
+        </TRIAL>
+        <TRIAL TYPE="Trial" hideResults="true" block="3" order="fixed" trials="1" >
+            <addText colour="COLOUR" wordWrap="true" text="In this study, on each trial you will a 15 seconds long video of a person walking. Please watch it carefully. After the video is completed, you should judge the personality of the person in the video was using a scale that will appear beneath the video.&#xA;To begin, rate this person after the video has finished." timeStart="0" vertical="top" y="0%" timeEnd="forever" verticalAlign="top" width="100%" fontSize="22" />
+            <addVideo timeStart="500" timeEnd="4000" extension="flv" flip_something="filename ;"  peg="stim1" y="45%" filename="STIM1" />
+
+            <addText colour="white"  selectable="false" betweenSJ="variables_DV" text="How " text1="extrovert" text2=" is this person?" fontSize="30" align="center" y="85%" width="100%" />
+
+            <addButton timeStart="4000" if="this.click?nextTrial.start()" x="35%---40%---etc---" howMany="7" key="1---2---3---4---5---6---7" y="95%" vertical="bottom" peg="1---2---3---4---5---6---7" text="1---2---3---4---5---6---7" width="40" height="40" />
+
+            <addText timeStart="4000" colour="white"  selectable="false" betweenSJ="variables_SCALE" text="not extroverted---very extroverted" x="32%---68%" howMany="2" fontSize="15" align="right---left" horizontal="right---left" y="92%" width="32%" />
+
+            <addText timeStart="4000" colour="gray"  selectable="false" text="(use keys 1-7 or click)"  fontSize="13" align="center" y="70%" width="20%" />
+            <behavNextTrial peg="nextTrial" />
+        </TRIAL>
+        <TRIAL TYPE="Trial" hideResults="true" block="10" blockOrder="random" forceBlockDepthPositions="1/2" trials="1" >
+            <addText colour="COLOUR" wordWrap="true" text="You have completed half the trials. Click START to continue." timeStart="0" timeEnd="forever" fontSize="30" />
+            <addButton peg="nextTr" width="140" height="40" text="start" timeStart="0" timeEnd="forever" x="50%" vertical="top" y="85%" />
+        </TRIAL>
+        <TRIAL block="10" trials="80" trialName="t" >
+            <addResults timeStart="0" peg="filename" />
+            <addVideo timeStart="1000" timeEnd="4000" extension="flv" if="this.onFinish?filename.stim1=this.filename" peg="stim1" y="45%" filename="STIM1" />
+
+            <addText colour="white" selectable="false" betweenSJ="variables_DV" text="How " text1="extroverted" text2=" is this person?" fontSize="30" align="center" y="85%" width="100%" />
+
+            <addButton timeStart="4000" if="this.click?filename.dv=this.text,nextTrial.start()" x="35%---40%---etc---" howMany="7" key="1---2---3---4---5---6---7" y="95%" vertical="bottom" peg="1---2---3---4---5---6---7" text="1---2---3---4---5---6---7" width="40" height="40" />
+
+            <addText timeStart="4000" colour="white"  betweenSJ="variables_SCALE" selectable="false" text="very reserved, quiet---very extraverted, enthusiastic" x="32%---68%" howMany="2" fontSize="15" align="right---left" horizontal="right---left" y="92%" width="32%" />
+
+            <addText timeStart="4000" colour="gray"  selectable="false" text="(use keys 1-7 or click)"  fontSize="13" align="center" y="70%" width="20%" />
+
+            <behavNextTrial peg="nextTrial" />
+            <addTrialCounter trials="80" y="0%" x="0%" horizontal="left" vertical="top" width="10%" height="5%" />
+        </TRIAL>
+        <TRIAL trialName="end" TYPE="Trial" hideResults="true" block="20" order="fixed" trials="1" >
+            <behavSaveData timeStart="0" />
+            <addText colour="COLOUR" wordWrap="true" height="30%" width="70%" text="Thank you for your participation. We are developing a set of stimuli for use in research and needed your help in establishing how different body motions affect the perceived personality in our videos. Have a lovely day!" timeStart="0" timeEnd="forever" fontSize="20" />
+        </TRIAL>
+    </extraverted>
+    
+    <agreeable>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="agreeable"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very critical, quarrelsome---very sympathetic, warm" />
+        </a>
+    </agreeable>
+    
+    <open>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="open"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very conventional, uncreative---very open to new experiences, complex" />
+        </a>
+    </open>
+    
+    <conscientious>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="conscientious"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very disorganised, careless---very dependable, self-disciplined" />
+        </a>
+    </conscientious>
+    
+        <neurotic>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="neurotic"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very calm, emotionally stable---very anxious, easily upset" />
+        </a>
+    </neurotic >
+    
+    
+    
+    
+    
+    <extravertedFemale>
+     <a betweenSJ="stimSEX" > <editAttributes STIM1="P001;P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P045;P048;P049;P051;P054;P055;P056;P059;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P102;P104;P105;P106;P107;P111;P113;P114;P115;P116;P118;P122;P131;P135;P136;P137;P138;P139;P141;P145;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167"  /></a>
+    </extravertedFemale>
+    
+  <agreeableFemale>
+       <a betweenSJ="stimSEX" > <editAttributes STIM1="P001;P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P045;P048;P049;P051;P054;P055;P056;P059;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P102;P104;P105;P106;P107;P111;P113;P114;P115;P116;P118;P122;P131;P135;P136;P137;P138;P139;P141;P145;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167"  /></a>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="agreeable"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very critical, quarrelsome---very sympathetic, warm" />
+        </a>
+    </agreeableFemale>
+    
+    <openFemale>
+         <a betweenSJ="stimSEX" > <editAttributes STIM1="P001;P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P045;P048;P049;P051;P054;P055;P056;P059;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P102;P104;P105;P106;P107;P111;P113;P114;P115;P116;P118;P122;P131;P135;P136;P137;P138;P139;P141;P145;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167"  /></a>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="open"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very conventional, uncreative---very open to new experiences, complex" />
+        </a>
+    </openFemale>
+    
+    <conscientiousFemale>
+         <a betweenSJ="stimSEX" > <editAttributes STIM1="P001;P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P045;P048;P049;P051;P054;P055;P056;P059;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P102;P104;P105;P106;P107;P111;P113;P114;P115;P116;P118;P122;P131;P135;P136;P137;P138;P139;P141;P145;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167"  /></a>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="conscientious"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very disorganised, careless---very dependable, self-disciplined" />
+        </a>
+    </conscientiousFemale>
+    
+        <neuroticFemale>
+             <a betweenSJ="stimSEX" > <editAttributes STIM1="P001;P005;P009;P010;P011;P022;P023;P024;P025;P026;P028;P030;P032;P033;P035;P037;P039;P045;P048;P049;P051;P054;P055;P056;P059;P063;P065;P066;P067;P068;P069;P071;P072;P073;P074;P081;P082;P084;P087;P088;P091;P093;P094;P095;P096;P097;P099;P100;P101;P102;P104;P105;P106;P107;P111;P113;P114;P115;P116;P118;P122;P131;P135;P136;P137;P138;P139;P141;P145;P149;P152;P153;P154;P156;P157;P158;P160;P162;P164;P167"  /></a>
+        <a betweenSJ="variables_DV" >
+            <editAttributes text1="neurotic"  />
+        </a>
+        <a betweenSJ="variables_SCALE" >
+            <editAttributes text="very calm, emotionally stable---very anxious, easily upset" />
+        </a>
+    </neuroticFemale>
+
+
+
+
+    
+</MULTI>

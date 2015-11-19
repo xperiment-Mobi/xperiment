@@ -1,0 +1,188 @@
+<MULTI >
+    <MULTISETUP forceCondition="sound"  />
+    
+<spoken>
+
+ <SETUP>   
+              <screen BGcolour="gray"></screen>                          
+			  <computer  stimuliFolder="Oxford\semanticCongruency" />
+			  <style BUTTON_DOWN="0xff5656" LABEL_TEXT="0x000000" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true"  align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+This study aims to understand how people link sounds with images. There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<behavAudioPassword autoStart="true" width="80%" height="80%" usePegs="1,2,3,4,5,6,7,8,9,0" if="this.onFinish?nextTrial.start()"/>
+	<addSound volume=".1" filename="1---2---3---4---5---6---7---8---9---0" peg="1---2---3---4---5---6---7---8---9---0" howMany="10" extension="mp3" />
+	
+	<behavNextTrial peg='nextTrial'/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText  x="50%" y="12%" height="20%" text=
+	"Some questions about yourself" 
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+	"sex---age---music experience"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+	
+	<addMultipleChoice required="" seperation="horizontal" peg="music" distanceApart="5" id="music"  width="60%" height="5%"  labels="no experience,amateur,intermediate,expert"  padding="10" x="60%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+	
+
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial"  hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="30%" x="50%" betweenSJ="instruct"  
+	 text=
+"In this experiment, on each trial (28 in total), you will first hear a " text1="spoken word" text2=".
+Please imagine what " text3="that word means" text4=".
+After 3 seconds you will see a picture for 3 seconds.
+Please tell us how well the picture matched the image you thought of.
+Click 'begin' to begin with 4 practice trials."
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton width="140"  height="40" text="begin" resultFileName="continue" timeStart="0" timeEnd="forever" y="90%"  />
+	
+
+</TRIAL>
+
+
+<TRIAL template="template" block="10" trialName="p" trials="4">
+
+	<addSound copyOverID="sound" filename="bell;tiger;fly;cannon" />
+    <addJPG copyOverID="image" filename="bell;tiger;fly;cannon" />
+
+
+</TRIAL>
+
+<TRIAL TYPE="Trial"  hideResults="true" block="15" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="30%" x="50%" betweenSJ="instruct"   
+	 text=
+"That's the end of the practice trials. Just to remind you:
+In this experiment, on each trial, you will first hear a " text1="spoken word" text2=".
+Please imagine what " text3="that word means" text4=".
+After 3 seconds you will see a picture for 3 seconds.
+Please tell us how well the picture matched the image you thought of.
+Click 'begin' to start the 24 experimental trials."
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton width="140"  height="40" text="begin" resultFileName="continue" timeStart="0" timeEnd="forever" y="90%"  />
+	
+
+</TRIAL>
+
+
+
+<TRIAL template="template" ></TRIAL>
+
+
+
+<template block="20"  trials="24" trialName="t" order="random">
+
+	<addTrialCounter trials="28" width="100" height="40" y="0" vertical="top" x="50%" />
+
+	<addResults />
+	
+	<addSound betweenSJ="mp3" copyOverID="sound" timeStart="0"  y="50%" width="10%" height="aspectRatio" controls="" extension="mp3" if="this.doNow?results.sound=this.filename,this.onFinish?image.start()" filename="bird;car;cat;door;cow;drum;dog;guitar;duck;gun;eagle;motorcycle;elephant;piano;frog;scissors;goat;switch;horse;telephone;pig;trumpet;rooster;whistle" filename1="_v" />
+
+    <addJPG copyOverID="image" timeStart="3000" duration="3000" y="50%" width="10%" height="aspectRatio" controls="" peg="image" extension="png" if="this.doNow?results.image=this.filename" filename="bird;car;cat;door;cow;drum;dog;guitar;duck;gun;eagle;motorcycle;elephant;piano;frog;scissors;goat;switch;horse;telephone;pig;trumpet;rooster;whistle" />
+
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addSlider if="this.updated?button.start()" timeStart="6000" labelList="1,2,3,4,5" labelLocation="0%,25%,50%,75%,100%"/>
+	
+	<addText timeStart="6000" howMany="2" horizontal="right---left" y="51.5%" x="22%---78%" width="22%" align="right---left" text="Did not match at all---Matched perfectly" fontSize="25"/>
+	
+	<addButton peg="button" hideResults="true" width="340"  height="40" key=" " text="next (SPACE)"  timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+	
+</template>
+
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="
+Thanks for taking part in this study. 
+This is a control experiment we are running to make sure our stimuli (sounds, spoken word and images) are sufficiently similarly matched in terms of the imagery they produce. Control experiments help to rule out certain explanations of other experimetns and strengthen the overall quality of the research we report. 
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again!
+DO NOT FORGET TO ENTER YOUR CODE INTO MECHANICAL TURK."	timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</spoken>	
+
+
+<sound>
+<a betweenSJ="mp3" ><editAttributes filename1=""  /></a>
+<a betweenSJ="instruct" ><editAttributes text1="naturalistic sound" text3="produces that sound"  /></a>
+</sound>
+
+
+</MULTI>

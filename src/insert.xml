@@ -1,0 +1,179 @@
+<expt exptType="WEB">
+
+ <SETUP>  
+
+              <screen BGcolour="black" orientation="vertical" ></screen>                          
+			  <computer  encrypt='false' sstimuliFolder="SG_Words" stimuliFolder="Oxford/insert" />
+			  <style BUTTON_DOWN="0xff5656"  />
+			  <variables practice='0' />
+</SETUP>
+
+
+<TRIAL  hideResults="true" block="1" order="fixed" trials="1">
+
+	<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+		
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. 
+Here we are studying how people perceive rectal medicinal applicators. You will be asked about how you perceive their usability.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+-	I have read and understood the information above, and understand the general purpose of the experiment
+-	I understand that I can withdraw during the study without giving a reason and that by doing so, we will destroy your data. (NB - Please be aware that the data we collect is anonymous - if you decide you do not want your data in the study after giving your final consent, we will be unable to trace your specific data to remove it)
+-	I understand my responses are anonymous
+-	I agree to take part in this online experiment
+-	I agree to the University of Oxford keeping and processing the data I have provided during the course of this study.
+By clicking ‘I consent’, you are agreeing to the above statements."
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+
+		<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%" text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+		
+<TRIAL TYPE="Trial" block="5" order="fixed" trials="1">
+
+	<addText  peg="info"  padding="10" y="10%" width="100%" text=
+	"Below is a rectal medicinal applicator."
+	timeStart="0"  timeEnd="forever"  align="middle" fontSize="50"/> 
+
+ 	<addJPG filename="plain.png" />
+ 	
+ 	<addCounter steps="5" endMessage="" width="10%" height="aspectRatio" textSize="20" startValue="5000" endValue="0" y="85%" timeStart="0"/>
+ 	
+ 	<addText  peg="info"  padding="10" y="75%" width="100%" text=
+	"Were you IMMEDIATELY aware that the top of the applicator must be removed before use? How long did it take you to realise this?"
+	timeStart="5000"  timeEnd="forever"  align="middle" fontSize="20"/>  	
+ 	
+ 	<addMultipleChoice required="" timeStart="5000" seperation="horizontal" peg="aware" distanceApart="5" id="sex"  width="100%" height="15%" if="this.click?nextTrial.start()" horizontalDistanceApart="210" labels="immediately aware,1 second,5 seconds,after reading the above message"  padding="10" x="50%" y="90%"   timeEnd="forever" /> 	
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+			
+</TRIAL>
+
+
+<TRIAL trials="1" template="template" block="15" order="random">
+	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please place these pictures of rectal medicinal applicators packages in the box below according to how {b}" text1="easy to insert rectally" text2="{/b} or {b}" text3="hard to insert rectally" text4="{/b} you find each package in respect to the others. Note that the vertical position does not matter. Please try to use the full range of the scale." 
+	fontSize="20" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<addResults if="this.doBefore?this.instruct=label2.text"/>
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x,y" usePegs="pics,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" timeEnd="forever"/>
+	
+	<addJPG copyOverID="images" timeStart="0" howMany="7"  peg="pics" extension="png" filename="plain---straight---wave---zigzag---round---pink---blue"  />
+	
+	<addShape peg="box" timeStart="0" width="1000" height="40%" colour="none" visible="false" y="28%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="400"  lineColour="white" lineThickness="3" y="100%" vertical="bottom"/>
+		
+	<addText howMany="2" y="72%" timeStart="0" align="left---right" horizontal="left---right" peg="label1---label2" width="30%" fontSize="30" text="easy to insert---hard to insert" x="5%---95%" />
+	
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="20%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+		
+		
+
+<TRIAL  TYPE="Trial" block="10"  order="random" trials="1">
+	<behavSequence sortBy="seqID" usePegs="images" peg="mySeq" timeStart="0" />
+	<behavResults peg="results" timeStart="0" />
+	<addJPG  howMany="20" exactSize="true" timeStart="0" extension="png" seqID="1---2---etc---" filename="1---2---etc---" peg="images"/>
+	<addText text="Please use the scroll button on your mouse (or the left/right cursor keys) to change the length of the applicator so that you think it would be most effective at delivering medicine. Press SPACE to continue." width="100%" align="center" fontSize="20" y="95%" />
+	<behavNextTrial peg="next"/>
+	<addButton hideResults="true" visible="false" key=" " y="15%" width="200" goto='' if="this.click&&scroll.result!=''?next.start()" height="40"/>
+	<behavScroll  timeStart="0" if="this.moved?mySeq.itemFromPercent=this.result" peg="scroll"/>
+	<aaddLineScale y="80%" if="this.moved?mySeq.itemFromPercent=this.result" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="20" order="fixed" trials="1">
+
+	<addText  howMany="2"  padding="10" width="150" height="10%" x="20%" y="29%---59%" text=
+	"have you ever used such a device to administer medication before?---how familiar are you with such devices?"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice required="" seperation="horizontal" peg="used" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="yes,no"  padding="10" x="50%" y="30%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultipleChoice required="" seperation="horizontal" peg="familar" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="familiar,not familiar"  padding="10" x="50%" y="60%" timeStart="0"  timeEnd="forever" /> 
+	
+	<behavNextTrial peg='nextTrial'/>
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+	if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+</TRIAL>
+		
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thanks for taking part in this study. This is a preliminary study exploring how best to make certain types of medicine more appealing to use.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@xperiment.mobi.
+Press escape to leave full screen. You can now close this browser window. Thanks again! PLEASE DO NOT FORGET TO ENTER YOUR MECHANICAL TURK PASSWORD."	y="10%" vertical="top" timeStart="0" width="80%"  align="left" timeEnd="forever" fontSize="30"></addText>
+	
+
+</TRIAL>
+  	
+
+
+</expt>	

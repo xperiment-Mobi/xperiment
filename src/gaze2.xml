@@ -1,0 +1,259 @@
+<multi >	
+<MULTISETUP overSJs="forceCondition" _forceCondition="" />
+
+
+
+<expt3>
+
+ <SETUP>   
+              <results mock="false"    />
+              <screen BGcolour="black"></screen>                          
+			  <computer  stimuliFolder="TCD\gaze2" />
+			  <style BUTTON_DOWN="0xff5656" />
+
+</SETUP>
+
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.jpg"  width='1024' height='108'  />
+		
+		
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="{b}Attractiveness of Virtual Characters{/b}
+Thank you for your interest in this study. In this experiment, you will be asked to view a number of computer generated female face images. When prompted, your task will be to rate how attractive the face is.
+This experiment will take approximately 10 minutes to complete. Prior to the experiment, you will be asked to answer a few general background questions and give your consent to participate in the research. You will also be required to complete a short pre-test. Finally, you can read a short description of the study at the end."/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" block="1" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" align="left" colour="white" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="1%" verticalAlign="top" vertical="top" 
+	 text=
+"{b}Consent form:{/b}
+Your final results will be kept strictly confidential. Your data will be stored using a unique ID number and, as such, the experimenter will not be able to identify your data or link your personal details (e.g. your name, email) with your data.
+You are free to withdraw from this study at any time during the duration of the experiment without any penalty. Incomplete data will be excluded from analysis. If you withdraw from this study, you can still take part in any of the other on-going experiments.
+Statement of Informed consent:
+1.   I understand the general purpose of this experiment
+2.   I understand that I can withdraw from the study at any time and that in doing so my data will be destroyed and not included in the study. 
+3.   I understand that my responses are anonymous. 
+4.   My data will be grouped with other participants and these group results will be presented in scientific papers and conferences.
+5.   I agree to take part in this experiment.
+By clicking the “I consent” button below you agree to participate in the study.
+"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="I consent"  y="99%" vertical="bottom" />
+
+</TRIAL>
+
+
+
+
+		<TRIAL TYPE="Trial" block="1" background="white" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some questions about yourself" 
+			timeStart="0"  width="80%" timeEnd="forever"  fontSize="20"></addText> 
+			
+			<addText  howMany="3"  padding="10" width="150" height="10%" x="20%" y="19%---38%---74%"  text=
+			"sex---age---handedness"
+			timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+		
+		 	<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="female,male"  padding="10" x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+			
+			<addMultiNumberSelector textColour="white" required="" peg="age" width="25%" height="20%" id="age" startingVal="22"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+		
+			<addComboBox required="" peg="origin" label="what country do you come from?" scale="1" timeStart="0" width="70%" height="45%" timeEnd="forever" x="50%" y="79%"/>
+			
+			<addMultipleChoice required="" seperation="horizontal" peg="sex" distanceApart="5" id="sex"  width="25%" height="5%" horizontalDistanceApart="210" labels="right-handed,left-handed"  padding="10" x="50%" y="75%" timeStart="0"  timeEnd="forever" /> 	
+			
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+		<TRIAL TYPE="Trial" block="1" background="white" order="fixed" trials="1">
+		
+			<addUrlVariable  _ip="notGiven" />
+		
+			<addText  x="50%" y="12%" height="20%" text=
+			"Some more questions" 
+			timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+			
+			<addComboBox required="" peg="whereLive" label="Which country do you currently live in?" timeStart="0" width="70%" height="40%" y="45%"/>
+		
+		 	<addComboBox required="" peg="ethnic---sexual---relationship" label="what is your ethnicity?---sexual orientation?---relationship status?" items="White,Hispanic or Latino,Black or African,Native American,Asian/Pacific Islander,Other---Straight,Gay,Bisexual,Other---Single,In a relationship" howMany="3" timeStart="0" width="70%" height="40%" timeEnd="forever" y="55%---65%---75%"/>
+		
+		
+			<behavNextTrial peg='nextTrial'/>
+			<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' text="continue"
+			if="this.click?this.text='please answer the questions',this.click&&required==true?nextTrial.start()"   timeEnd="forever" x="50%" vertical="top" y="90%"/>
+			
+		</TRIAL>
+		
+		
+<TRIAL TYPE="Trial" trialName="ethics" hideResults="true" block="1" order="fixed" trials="1">
+	
+	 <addText drawBox="true" autoSize="false" colour="white" align="left" selectable="false" width="80%"
+	 text=
+"{b}Instructions{/b}
+Your task is to rate how ATTRACTIVE you think a given face is when prompted. After each image presentation, drag the triangle-shaped indicator to your preferred position on a scale from “very unattractive” to “very attractive.” Please utilize the whole scale when rating the faces and respond as quickly as possible."
+		timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+	
+	<addButton width="300"  height="40" text="start the study"  y="99%" vertical="bottom" />
+
+</TRIAL>
+
+
+
+
+<TRIAL template="template">
+	<addResults betweenSJ="fanN" copyOverID="res" cond="fan" />
+	<addJPG betweenSJ="fan" copyOverID="images" filename="F2_F_D_S---F2_F_A_N;F3_F_D_S---F3_F_A_N;F5_F_D_S---F5_F_A_N;F6_F_D_S---F6_F_A_N;F7_F_D_S---F7_F_A_N;F8_F_D_S---F8_F_A_N;F9_F_D_S---F9_F_A_N;F11_F_D_S---F11_F_A_N;F12_F_D_S---F12_F_A_N;F13_F_D_S---F13_F_A_N;F14_F_D_S---F14_F_A_N;F15_F_D_S---F15_F_A_N;F16_F_D_S---F16_F_A_N;F17_F_D_S---F17_F_A_N;F18_F_D_S---F18_F_A_N;F19_F_D_S---F19_F_A_N;F20_F_D_S---F20_F_A_N;F21_F_D_S---F21_F_A_N;F22_F_D_S---F22_F_A_N;F23_F_D_S---F23_F_A_N;F24_F_D_S---F24_F_A_N;F25_F_D_S---F25_F_A_N;F26_F_D_S---F26_F_A_N;F27_F_D_S---F27_F_A_N;F28_F_D_S---F28_F_A_N;F30_F_D_S---F30_F_A_N;F31_F_D_S---F31_F_A_N;F33_F_D_S---F33_F_A_N;F34_F_D_S---F34_F_A_N;F35_F_D_S---F35_F_A_N;F36_F_D_S---F36_F_A_N;F37_F_D_S---F37_F_A_N;F38_F_D_S---F38_F_A_N;F39_F_D_S---F39_F_A_N" />
+</TRIAL>
+
+<TRIAL template="template">
+	<addResults betweenSJ="fasN" copyOverID="res" cond="fas" />
+	<addJPG betweenSJ="fas" copyOverID="images" filename="F2_F_D_N---F2_F_A_S;F3_F_D_N---F3_F_A_S;F5_F_D_N---F5_F_A_S;F6_F_D_N---F6_F_A_S;F7_F_D_N---F7_F_A_S;F8_F_D_N---F8_F_A_S;F9_F_D_N---F9_F_A_S;F11_F_D_N---F11_F_A_S;F12_F_D_N---F12_F_A_S;F13_F_D_N---F13_F_A_S;F14_F_D_N---F14_F_A_S;F15_F_D_N---F15_F_A_S;F16_F_D_N---F16_F_A_S;F17_F_D_N---F17_F_A_S;F18_F_D_N---F18_F_A_S;F19_F_D_N---F19_F_A_S;F20_F_D_N---F20_F_A_S;F21_F_D_N---F21_F_A_S;F22_F_D_N---F22_F_A_S;F23_F_D_N---F23_F_A_S;F24_F_D_N---F24_F_A_S;F25_F_D_N---F25_F_A_S;F26_F_D_N---F26_F_A_S;F27_F_D_N---F27_F_A_S;F28_F_D_N---F28_F_A_S;F30_F_D_N---F30_F_A_S;F31_F_D_N---F31_F_A_S;F33_F_D_N---F33_F_A_S;F34_F_D_N---F34_F_A_S;F35_F_D_N---F35_F_A_S;F36_F_D_N---F36_F_A_S;F37_F_D_N---F37_F_A_S;F38_F_D_N---F38_F_A_S;F39_F_D_N---F39_F_A_S" />
+</TRIAL>
+
+<TRIAL template="template">
+	<addResults betweenSJ="fdsN" copyOverID="res" cond="fds"  />
+	<addJPG betweenSJ="fds" copyOverID="images" filename="F2_F_A_N---F2_F_D_S;F3_F_A_N---F3_F_D_S;F5_F_A_N---F5_F_D_S;F6_F_A_N---F6_F_D_S;F7_F_A_N---F7_F_D_S;F8_F_A_N---F8_F_D_S;F9_F_A_N---F9_F_D_S;F11_F_A_N---F11_F_D_S;F12_F_A_N---F12_F_D_S;F13_F_A_N---F13_F_D_S;F14_F_A_N---F14_F_D_S;F15_F_A_N---F15_F_D_S;F16_F_A_N---F16_F_D_S;F17_F_A_N---F17_F_D_S;F18_F_A_N---F18_F_D_S;F19_F_A_N---F19_F_D_S;F20_F_A_N---F20_F_D_S;F21_F_A_N---F21_F_D_S;F22_F_A_N---F22_F_D_S;F23_F_A_N---F23_F_D_S;F24_F_A_N---F24_F_D_S;F25_F_A_N---F25_F_D_S;F26_F_A_N---F26_F_D_S;F27_F_A_N---F27_F_D_S;F28_F_A_N---F28_F_D_S;F30_F_A_N---F30_F_D_S;F31_F_A_N---F31_F_D_S;F33_F_A_N---F33_F_D_S;F34_F_A_N---F34_F_D_S;F35_F_A_N---F35_F_D_S;F36_F_A_N---F36_F_D_S;F37_F_A_N---F37_F_D_S;F38_F_A_N---F38_F_D_S;F39_F_A_N---F39_F_D_S" />
+</TRIAL>
+
+<TRIAL template="template">
+	<addResults betweenSJ="fdnN" copyOverID="res" cond="fdn" />
+	<addJPG betweenSJ="fdn" copyOverID="images" filename="F2_F_A_S---F2_F_D_N;F3_F_A_S---F3_F_D_N;F5_F_A_S---F5_F_D_N;F6_F_A_S---F6_F_D_N;F7_F_A_S---F7_F_D_N;F8_F_A_S---F8_F_D_N;F9_F_A_S---F9_F_D_N;F11_F_A_S---F11_F_D_N;F12_F_A_S---F12_F_D_N;F13_F_A_S---F13_F_D_N;F14_F_A_S---F14_F_D_N;F15_F_A_S---F15_F_D_N;F16_F_A_S---F16_F_D_N;F17_F_A_S---F17_F_D_N;F18_F_A_S---F18_F_D_N;F19_F_A_S---F19_F_D_N;F20_F_A_S---F20_F_D_N;F21_F_A_S---F21_F_D_N;F22_F_A_S---F22_F_D_N;F23_F_A_S---F23_F_D_N;F24_F_A_S---F24_F_D_N;F25_F_A_S---F25_F_D_N;F26_F_A_S---F26_F_D_N;F27_F_A_S---F27_F_D_N;F28_F_A_S---F28_F_D_N;F30_F_A_S---F30_F_D_N;F31_F_A_S---F31_F_D_N;F33_F_A_S---F33_F_D_N;F34_F_A_S---F34_F_D_N;F35_F_A_S---F35_F_D_N;F36_F_A_S---F36_F_D_N;F37_F_A_S---F37_F_D_N;F38_F_A_S---F38_F_D_N;F39_F_A_S---F39_F_D_N" />
+</TRIAL>
+
+
+
+
+<template TYPE="Trial" trials="34" block="-10">
+
+	<addTrialCounter trials="136" y="5%" height="30" width="200"/>
+	
+	<addResults copyOverID="res" />
+	
+	<addFixationCross duration="500"/>
+	
+	<addJPG copyOverID="images" timeStart="500---1500" extension="jpg" duration="1000" howMany="2" if="this.doNow?results." if1="face1---face2" if2="=this.filename" betweenSJ='faces'/>
+	
+	<addSlider y="83%" if="this.mouseUp?next.start()" textColour="white" peg="attract" sliderColour="white"  labelList="not very attractive,very attractive" timeStart="2500" />
+	
+	<addButton width="300"  peg="next" height="40" text="next (SPACE)" key=" "  y="99%" vertical="bottom" />
+
+</template>
+		
+		
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100" trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" colour="white" text="Debrief
+Thank you for participating in our study. There has been a lot of research in human studies involving behavioral and physical features of a person that can facilitate attraction in a viewer.  Through this experiment we are investigating how different facial features impact perceived attractiveness of virtual characters. We explored the concept by asking you to rate the attractiveness of characters which had been manipulated on the basis of these features. Your answers on the questionnaire will be used in the research to investigate the effects of different variables on preferences, such as sex and sexual orientation differences, with regards to different facial features.
+This experiment was part of a larger project (http://gv2.scss.tcd.ie/captavatar/), to determine how to apply principles of human perceptual processing to endow virtual social agents with maximum appeal. These virtual characters may then be applied to different settings, such as gaming, health care, and education.
+Thank you for participating! If you have any further questions regarding this study please do not hesitate to contact me.
+Yours sincerely,
+Zora Knauf (knaufz@tcd.ie)
+Principle Investigator: Professor Fiona Newell
+Institute of Neuroscience and School of Psychology, Trinity College Dublin, Ireland
+PRESS ESCAPE TO EXIT FULLSCREEN.
+DO NOT FORGET TO ENTER YOUR MTURK PASSWORD INTO MTURK."
+timeStart="0" width="80%"  align="left" verticalAlign="top" vertical="top" y="5%" timeEnd="forever" fontSize="20"></addText>
+
+</TRIAL>
+  	
+
+</expt3>	
+
+<expt2>
+	<a betweenSJ='fan'>
+		<editAttributes 
+			filename="F2_F_D_N---F2_F_A_N;F3_F_D_N---F3_F_A_N;F5_F_D_N---F5_F_A_N;F6_F_D_N---F6_F_A_N;F7_F_D_N---F7_F_A_N;F8_F_D_N---F8_F_A_N;F9_F_D_N---F9_F_A_N;F11_F_D_N---F11_F_A_N;F12_F_D_N---F12_F_A_N;F13_F_D_N---F13_F_A_N;F14_F_D_N---F14_F_A_N;F15_F_D_N---F15_F_A_N;F16_F_D_N---F16_F_A_N;F17_F_D_N---F17_F_A_N;F18_F_D_N---F18_F_A_N;F19_F_D_N---F19_F_A_N;F20_F_D_N---F20_F_A_N;F21_F_D_N---F21_F_A_N;F22_F_D_N---F22_F_A_N;F23_F_D_N---F23_F_A_N;F24_F_D_N---F24_F_A_N;F25_F_D_N---F25_F_A_N;F26_F_D_N---F26_F_A_N;F27_F_D_N---F27_F_A_N;F28_F_D_N---F28_F_A_N;F30_F_D_N---F30_F_A_N;F31_F_D_N---F31_F_A_N;F33_F_D_N---F33_F_A_N;F34_F_D_N---F34_F_A_N;F35_F_D_N---F35_F_A_N;F36_F_D_N---F36_F_A_N;F37_F_D_N---F37_F_A_N;F38_F_D_N---F38_F_A_N;F39_F_D_N---F39_F_A_N"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fas'>
+		<editAttributes 
+			filename="F2_F_D_S---F2_F_A_S;F3_F_D_S---F3_F_A_S;F5_F_D_S---F5_F_A_S;F6_F_D_S---F6_F_A_S;F7_F_D_S---F7_F_A_S;F8_F_D_S---F8_F_A_S;F9_F_D_S---F9_F_A_S;F11_F_D_S---F11_F_A_S;F12_F_D_S---F12_F_A_S;F13_F_D_S---F13_F_A_S;F14_F_D_S---F14_F_A_S;F15_F_D_S---F15_F_A_S;F16_F_D_S---F16_F_A_S;F17_F_D_S---F17_F_A_S;F18_F_D_S---F18_F_A_S;F19_F_D_S---F19_F_A_S;F20_F_D_S---F20_F_A_S;F21_F_D_S---F21_F_A_S;F22_F_D_S---F22_F_A_S;F23_F_D_S---F23_F_A_S;F24_F_D_S---F24_F_A_S;F25_F_D_S---F25_F_A_S;F26_F_D_S---F26_F_A_S;F27_F_D_S---F27_F_A_S;F28_F_D_S---F28_F_A_S;F30_F_D_S---F30_F_A_S;F31_F_D_S---F31_F_A_S;F33_F_D_S---F33_F_A_S;F34_F_D_S---F34_F_A_S;F35_F_D_S---F35_F_A_S;F36_F_D_S---F36_F_A_S;F37_F_D_S---F37_F_A_S;F38_F_D_S---F38_F_A_S;F39_F_D_S---F39_F_A_S"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fds'>
+		<editAttributes 
+			filename="F2_F_A_S---F2_F_D_S;F3_F_A_S---F3_F_D_S;F5_F_A_S---F5_F_D_S;F6_F_A_S---F6_F_D_S;F7_F_A_S---F7_F_D_S;F8_F_A_S---F8_F_D_S;F9_F_A_S---F9_F_D_S;F11_F_A_S---F11_F_D_S;F12_F_A_S---F12_F_D_S;F13_F_A_S---F13_F_D_S;F14_F_A_S---F14_F_D_S;F15_F_A_S---F15_F_D_S;F16_F_A_S---F16_F_D_S;F17_F_A_S---F17_F_D_S;F18_F_A_S---F18_F_D_S;F19_F_A_S---F19_F_D_S;F20_F_A_S---F20_F_D_S;F21_F_A_S---F21_F_D_S;F22_F_A_S---F22_F_D_S;F23_F_A_S---F23_F_D_S;F24_F_A_S---F24_F_D_S;F25_F_A_S---F25_F_D_S;F26_F_A_S---F26_F_D_S;F27_F_A_S---F27_F_D_S;F28_F_A_S---F28_F_D_S;F30_F_A_S---F30_F_D_S;F31_F_A_S---F31_F_D_S;F33_F_A_S---F33_F_D_S;F34_F_A_S---F34_F_D_S;F35_F_A_S---F35_F_D_S;F36_F_A_S---F36_F_D_S;F37_F_A_S---F37_F_D_S;F38_F_A_S---F38_F_D_S;F39_F_A_S---F39_F_D_S"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fdn'>
+		<editAttributes 
+			filename="F2_F_A_N---F2_F_D_N;F3_F_A_N---F3_F_D_N;F5_F_A_N---F5_F_D_N;F6_F_A_N---F6_F_D_N;F7_F_A_N---F7_F_D_N;F8_F_A_N---F8_F_D_N;F9_F_A_N---F9_F_D_N;F11_F_A_N---F11_F_D_N;F12_F_A_N---F12_F_D_N;F13_F_A_N---F13_F_D_N;F14_F_A_N---F14_F_D_N;F15_F_A_N---F15_F_D_N;F16_F_A_N---F16_F_D_N;F17_F_A_N---F17_F_D_N;F18_F_A_N---F18_F_D_N;F19_F_A_N---F19_F_D_N;F20_F_A_N---F20_F_D_N;F21_F_A_N---F21_F_D_N;F22_F_A_N---F22_F_D_N;F23_F_A_N---F23_F_D_N;F24_F_A_N---F24_F_D_N;F25_F_A_N---F25_F_D_N;F26_F_A_N---F26_F_D_N;F27_F_A_N---F27_F_D_N;F28_F_A_N---F28_F_D_N;F30_F_A_N---F30_F_D_N;F31_F_A_N---F31_F_D_N;F33_F_A_N---F33_F_D_N;F34_F_A_N---F34_F_D_N;F35_F_A_N---F35_F_D_N;F36_F_A_N---F36_F_D_N;F37_F_A_N---F37_F_D_N;F38_F_A_N---F38_F_D_N;F39_F_A_N---F39_F_D_N"
+	  	  />  
+  	</a>	 
+</expt2>
+
+
+
+
+<expt1>
+
+  	<a betweenSJ='fasN'>
+		<editAttributes 
+			cond="an"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fdsN'>
+		<editAttributes 
+			cond="dn"
+	  	  />  
+  	</a>
+ 
+
+	<a betweenSJ='fan'>
+		<editAttributes 
+			filename="F2_F_D_N---F2_F_A_N;F3_F_D_N---F3_F_A_N;F5_F_D_N---F5_F_A_N;F6_F_D_N---F6_F_A_N;F7_F_D_N---F7_F_A_N;F8_F_D_N---F8_F_A_N;F9_F_D_N---F9_F_A_N;F11_F_D_N---F11_F_A_N;F12_F_D_N---F12_F_A_N;F13_F_D_N---F13_F_A_N;F14_F_D_N---F14_F_A_N;F15_F_D_N---F15_F_A_N;F16_F_D_N---F16_F_A_N;F17_F_D_N---F17_F_A_N;F18_F_D_N---F18_F_A_N;F19_F_D_N---F19_F_A_N;F20_F_D_N---F20_F_A_N;F21_F_D_N---F21_F_A_N;F22_F_D_N---F22_F_A_N;F23_F_D_N---F23_F_A_N;F24_F_D_N---F24_F_A_N;F25_F_D_N---F25_F_A_N;F26_F_D_N---F26_F_A_N;F27_F_D_N---F27_F_A_N;F28_F_D_N---F28_F_A_N;F30_F_D_N---F30_F_A_N;F31_F_D_N---F31_F_A_N;F33_F_D_N---F33_F_A_N;F34_F_D_N---F34_F_A_N;F35_F_D_N---F35_F_A_N;F36_F_D_N---F36_F_A_N;F37_F_D_N---F37_F_A_N;F38_F_D_N---F38_F_A_N;F39_F_D_N---F39_F_A_N"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fas'>
+		<editAttributes 
+			filename="F2_T_n_15_D_N---F2_T_n_15_A_N;F3_T_p_15_D_N---F3_T_p_15_A_N;F5_T_n_15_D_N---F5_T_n_15_A_N;F6_T_p_15_D_N---F6_T_p_15_A_N;F7_T_n_15_D_N---F7_T_n_15_A_N;F8_T_p_15_D_N---F8_T_p_15_A_N;F9_T_n_15_D_N---F9_T_n_15_A_N;F11_T_p_15_D_N---F11_T_p_15_A_N;F12_T_n_15_D_N---F12_T_n_15_A_N;F13_T_p_15_D_N---F13_T_p_15_A_N;F14_T_n_15_D_N---F14_T_n_15_A_N;F15_T_p_15_D_N---F15_T_p_15_A_N;F16_T_n_15_D_N---F16_T_n_15_A_N;F17_T_p_15_D_N---F17_T_p_15_A_N;F18_T_n_15_D_N---F18_T_n_15_A_N;F19_T_p_15_D_N---F19_T_p_15_A_N;F20_T_n_15_D_N---F20_T_n_15_A_N;F21_T_p_15_D_N---F21_T_p_15_A_N;F22_T_n_15_D_N---F22_T_n_15_A_N;F23_T_p_15_D_N---F23_T_p_15_A_N;F24_T_n_15_D_N---F24_T_n_15_A_N;F25_T_p_15_D_N---F25_T_p_15_A_N;F26_T_n_15_D_N---F26_T_n_15_A_N;F27_T_p_15_D_N---F27_T_p_15_A_N;F28_T_n_15_D_N---F28_T_n_15_A_N;F30_T_p_15_D_N---F30_T_p_15_A_N;F31_T_n_15_D_N---F31_T_n_15_A_N;F33_T_p_15_D_N---F33_T_p_15_A_N;F34_T_n_15_D_N---F34_T_n_15_A_N;F35_T_p_15_D_N---F35_T_p_15_A_N;F36_T_n_15_D_N---F36_T_n_15_A_N;F37_T_p_15_D_N---F37_T_p_15_A_N;F38_T_n_15_D_N---F38_T_n_15_A_N;F39_T_p_15_D_N---F39_T_p_15_A_N"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fds'>
+		<editAttributes 
+			filename="F2_T_n_15_A_N---F2_T_n_15_D_N;F3_T_p_15_A_N---F3_T_p_15_D_N;F5_T_n_15_A_N---F5_T_n_15_D_N;F6_T_p_15_A_N---F6_T_p_15_D_N;F7_T_n_15_A_N---F7_T_n_15_D_N;F8_T_p_15_A_N---F8_T_p_15_D_N;F9_T_n_15_A_N---F9_T_n_15_D_N;F11_T_p_15_A_N---F11_T_p_15_D_N;F12_T_n_15_A_N---F12_T_n_15_D_N;F13_T_p_15_A_N---F13_T_p_15_D_N;F14_T_n_15_A_N---F14_T_n_15_D_N;F15_T_p_15_A_N---F15_T_p_15_D_N;F16_T_n_15_A_N---F16_T_n_15_D_N;F17_T_p_15_A_N---F17_T_p_15_D_N;F18_T_n_15_A_N---F18_T_n_15_D_N;F19_T_p_15_A_N---F19_T_p_15_D_N;F20_T_n_15_A_N---F20_T_n_15_D_N;F21_T_p_15_A_N---F21_T_p_15_D_N;F22_T_n_15_A_N---F22_T_n_15_D_N;F23_T_p_15_A_N---F23_T_p_15_D_N;F24_T_n_15_A_N---F24_T_n_15_D_N;F25_T_p_15_A_N---F25_T_p_15_D_N;F26_T_n_15_A_N---F26_T_n_15_D_N;F27_T_p_15_A_N---F27_T_p_15_D_N;F28_T_n_15_A_N---F28_T_n_15_D_N;F30_T_p_15_A_N---F30_T_p_15_D_N;F31_T_n_15_A_N---F31_T_n_15_D_N;F33_T_p_15_A_N---F33_T_p_15_D_N;F34_T_n_15_A_N---F34_T_n_15_D_N;F35_T_p_15_A_N---F35_T_p_15_D_N;F36_T_n_15_A_N---F36_T_n_15_D_N;F37_T_p_15_A_N---F37_T_p_15_D_N;F38_T_n_15_A_N---F38_T_n_15_D_N;F39_T_p_15_A_N---F39_T_p_15_D_N"
+	  	  />  
+  	</a>
+  	<a betweenSJ='fdn'>
+		<editAttributes 
+			filename="F2_F_A_N---F2_F_D_N;F3_F_A_N---F3_F_D_N;F5_F_A_N---F5_F_D_N;F6_F_A_N---F6_F_D_N;F7_F_A_N---F7_F_D_N;F8_F_A_N---F8_F_D_N;F9_F_A_N---F9_F_D_N;F11_F_A_N---F11_F_D_N;F12_F_A_N---F12_F_D_N;F13_F_A_N---F13_F_D_N;F14_F_A_N---F14_F_D_N;F15_F_A_N---F15_F_D_N;F16_F_A_N---F16_F_D_N;F17_F_A_N---F17_F_D_N;F18_F_A_N---F18_F_D_N;F19_F_A_N---F19_F_D_N;F20_F_A_N---F20_F_D_N;F21_F_A_N---F21_F_D_N;F22_F_A_N---F22_F_D_N;F23_F_A_N---F23_F_D_N;F24_F_A_N---F24_F_D_N;F25_F_A_N---F25_F_D_N;F26_F_A_N---F26_F_D_N;F27_F_A_N---F27_F_D_N;F28_F_A_N---F28_F_D_N;F30_F_A_N---F30_F_D_N;F31_F_A_N---F31_F_D_N;F33_F_A_N---F33_F_D_N;F34_F_A_N---F34_F_D_N;F35_F_A_N---F35_F_D_N;F36_F_A_N---F36_F_D_N;F37_F_A_N---F37_F_D_N;F38_F_A_N---F38_F_D_N;F39_F_A_N---F39_F_D_N"
+	  	  />  
+  	</a>	 
+</expt1>
+
+
+
+
+
+
+
+</multi>

@@ -1,0 +1,174 @@
+<Bouba2 exptType="WEB">
+
+ <SETUP>  
+              <screen BGcolour="white"  ></screen>                          
+			  <computer  encrypt='false'  stimuliFolder="Oxford\3v4" />
+			  <style BUTTON_DOWN="0xff5656"  />
+
+</SETUP>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="1" order="fixed" trials="1">
+		<addJPG y="0%" vertical="top" filename="lab.png"  width='1024' height='108'  />
+	 <addText  drawBox="true" autoSize="false" align="centre" wordWrap="true"  width="85%" height="30%" x="50%" y="50%" text=
+		"Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people decide whether or not they like a plate of food. If you decide to take part in this experiment, you will be asked to decide which of several plates of food you prefer. 
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+There are 8 trials in this experiment. We also ask you some questions about yourself at the beginning."
+		timeStart="0"  timeEnd="forever" fontSize="25"/>
+	<addButton width="140" key=" " timeStart="0"  enabled="false" height="40" peg="next" text="Continue"   x="75%" vertical="top" y="87%"/>
+	
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="40%" y="90.5%" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to decide which of several plates of food you prefer.
+You can contact Andy Woods (psy.ox.ac.uk) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="5"  trials="1">
+	
+	<addText  wordWrap="true" text="In this study you will see several dishes containing scallops on each trial. Which dish do you prefer?"	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="40"></addText>
+
+<addButton timeStart='0' hideResults="true" width="340"  height="40" peg='next' 
+	text="start"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+</TRIAL>
+
+<TRIAL template="polygon,roundPlate,template"></TRIAL>
+<TRIAL template="line,roundPlate,template"></TRIAL>
+<TRIAL template="polygon,squarePlate,template"></TRIAL>
+<TRIAL template="line,squarePlate,template"></TRIAL>
+
+<TRIAL template="polygonSmall,roundPlate,template"></TRIAL>
+<TRIAL template="lineSmall,roundPlate,template"></TRIAL>
+<TRIAL template="polygonSmall,squarePlate,template"></TRIAL>
+<TRIAL template="lineSmall,squarePlate,template"></TRIAL>
+
+<lineSmall>
+	<behavShapePattern copyOverID="p3" shape="v3" fillParentRatio=".27"  />
+	<behavShapePattern copyOverID="p4" shape="v4" fillParentRatio=".4" />
+	<behavResults copyOverID="results" foodShape="line" stimSize="small"/>
+	<addJPG copyOverID="images1"  width="35---35---35---35---35---250---250" height="35---35---35---35---35---250---250"/>
+	<addJPG copyOverID="images2" width="35---35---35---35---35---250---250" height="35---35---35---35---35---250---250" />
+</lineSmall>
+
+<polygonSmall>
+	<behavShapePattern copyOverID="p3" shape="triangle"  />
+	<behavShapePattern copyOverID="p4" shape="diamond" />
+	<behavResults copyOverID="results" foodShape="poly" stimSize="small"/>
+</polygonSmall>
+
+
+<line>
+	<behavShapePattern copyOverID="p3" shape="v3" fillParentRatio=".36"  />
+	<behavShapePattern copyOverID="p4" shape="v4" fillParentRatio=".55" />
+	<behavResults copyOverID="results" foodShape="line"  stimSize="large"/>
+</line>
+
+<polygon>
+	<behavShapePattern copyOverID="p3" shape="triangle"  />
+	<behavShapePattern copyOverID="p4" shape="diamond" />
+	<behavResults copyOverID="results" foodShape="poly"  stimSize="large"/>
+</polygon>
+
+<roundPlate>
+	<behavShapePattern copyOverID="p3" background="round1" hide="square1"/>
+	<behavShapePattern copyOverID="p4" background="round2" hide="square2"/>
+	<behavResults copyOverID="results" plateShape="round"/>
+</roundPlate>
+
+<squarePlate>
+	<behavShapePattern copyOverID="p3" background="square1" hide="round1"/>
+	<behavShapePattern copyOverID="p4" background="square2" hide="round2"/>
+	<behavResults copyOverID="results" plateShape="diamond"/>
+</squarePlate>
+
+<template block="-20" blockOrder="random" trials="1">
+
+	<behavSwap peg="loc" usePegs="p3,p4" timeStart="0" />
+	
+	<behavResults copyOverID="results"/>
+	
+	<addText y="20%" height="10%" width="100%" align="middle" text="Please click the plate of food you like more"  timeStart="100" fontSize="40" />
+
+	
+	<addJPG copyOverID="images1" howMany="7" peg="c1---c2---c3---c4---c5---round1---square1" extension="png" filename="1---2---3---4---5---roundPlate---squarePlate" timeStart="100" width="50---50---50---50---50---250---250" height="50---50---50---50---50---250---250"/>
+	<addJPG copyOverID="images2" howMany="7" peg="d1---d2---d3---d4---d5---round2---square2" extension="png" filename="1---2---3---4---5---roundPlate---squarePlate" timeStart="100" width="50---50---50---50---50---250---250" height="50---50---50---50---50---250---250"/>
+	
+
+	<behavShapePattern copyOverID="p3" peg="p3" usePegs="c1,c2,c3,c4,c5,square1,round1" x="30%" timeStart="100" width="250" height="250" fillParentRatio=".22"/>
+	<behavShapePattern copyOverID="p4" peg="p4" usePegs="d1,d2,d3,d4,d5,square2,round2" x="70%" timeStart="100" width="250" height="250" fillParentRatio=".22"/>
+	
+	<behavSelect usePegs="p3,p4" timeStart="0" peg="select" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</template>
+  	
+
+  
+
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="100"  trials="1">
+	<behavSaveData timeStart='0'/>
+	<addText  wordWrap="true" text="Thankyou for taking part in this study! We are interested in how the arrangement of food on a plate influences your liking of a dish of food.
+Don't forget to enter the code below in Mechanical Turk."	timeStart="0" width="80%"  align="center" timeEnd="forever" fontSize="40"></addText>
+</TRIAL>
+  	
+
+
+
+
+</Bouba2>	

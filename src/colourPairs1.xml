@@ -1,0 +1,228 @@
+<multi>	
+<MULTISETUP />
+
+<Hor exptType="WEB">
+
+<SETUP>  
+              <screen BGcolour="0x7A7A79" orientation="horizontal" ></screen>                          
+              <email emailResults="false"  />
+			   <trials blockDepthOrder="20,*=random" />
+			  <variables RAND='rand(0:1:0)' trialNum='1' />
+			  <computer  stimuliFolder="Oxford\fontTastes3" />
+			  <style  LABEL_TEXT="0x000000" />
+</SETUP>
+
+
+<TRIAL TYPE="Trial"  hideResults="true" block="0" order="fixed" trials="1">
+<addJPG y="0%" vertical="top" filename="lab.png" exactSize="true" width='600' height='108'  />
+		<addText  y="50%" x="50%" wordWrap="true" colour="white" align="left"  autoSize="false" width="100%" height="80%"  timeStart="0" fontSize="20"
+	text="Dear participant,
+Welcome to our study! We are the Crossmodal Research Laboratory, Department of Experimental Psychology, Oxford University. 
+We are interested in understanding how people associate information across the senses. If you decide to take part in this experiment, you will be asked to match colours with taste words and will be asked some questions about your choice and about the colours.
+There are not right or wrong responses, please respond according to what it feels right to you. We hope you enjoy it. Your participation is very important to us.
+"/>   
+	
+	<addButton peg="next" timeStart="0" width="350" enabled="false" height="200" text="Continue" resultFileName="continue" horizontal="right" x="99%" y="99%" vertical="bottom" ></addButton>                
+	
+	
+	<addText  y="83%" x="5%" wordWrap="true" align="left"  horizontal="left" autoSize="true" width="40%" height="10%"  timeStart="0" fontSize="20"
+	text="When the stimuli have loaded (below bar), please click 'Continue'"/>    
+	<addLoadingIndicator behaviours='onFinish:next.enabled=true' width="50%" height="5%" x="30%" y="91%" />
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" trialName="ethics1;ethics2" hideResults="true" block="1" order="fixed" trials="2">
+	
+	 <addText drawBox="true" autoSize="false" align="left" selectable="false" wordWrap="true"  width="85%" height="90%" x="50%" y="10%" verticalAlign="top" vertical="top" 
+	 text=
+"{{b}Before we begin, please read the below.  By clicking I CONSENT you indicate you have consented to take part.{/b}{p align='left'}
+If you decide to take part in this experiment, you will be asked to match colours with taste words and will be asked some questions about your choice and about the colours.
+At the end of the study we will tell you more about the purpose of the study and why we are doing this research. You can also contact Dr Andy Woods (andy.woods@psy.ox.ac.uk ) for further information at a later date if you wish.
+-Continued on the next page-; 
+Please read the below consent statement and indicate whether you consent.
+{u}Statement of Informed Consent{/u}
+1. I have read and understand the information above, and understand general purpose of this experiment.
+2. I understand that I can withdraw from the study at any time and that doing so we will destroy your data. You can withdraw at any time, for any reason. (NB – Please be aware that data collected is anonymous - if you change your mind after completing the experiment, we will be unable to trace your specific data to remove it).
+3. I understand that my responses are anonymous.
+4. I agree to take part in this online experiment.{/p}"
+		timeStart="0"  timeEnd="forever" fontSize="20"></addText> 
+	
+	<addButton width="140"  height="40" text="next page;previous page" goto="ethics2;ethics1" resultFileName="continue" timeStart="0" timeEnd="forever" y="80%"  />
+	<addButton width="140" present="0;1" height="40" text="I consent" resultFileName="continue" timeStart="0" timeEnd="forever" y="3%" vertical="top" />
+
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+	<fullScreen timeStart="0" if="this.onFinish?next.start()"/>
+	<behavNextTrial peg="next" />
+	
+</TRIAL>
+
+<TRIAL TYPE="Trial" block="3" order="fixed" trials="1">
+
+	<addUrlVariable  _ip="notGiven" />
+
+	<addText   x="50%" y="12%" height="20%"
+	text = "some questions"
+	timeStart="0"  width="80%" timeEnd="forever" fontSize="20"></addText> 
+	
+	<addText howMany="2" width="60" height="10%" x="20%" y="23%---40%" 
+	text="sex---age"
+	timeStart="0"  timeEnd="forever" autoSize="false" align="right" fontSize="20"/> 
+
+ 	<addMultipleChoice peg="sex" distanceApart="5" width="25%" height="10%" horizontalDistanceApart="210" 
+ 	labels="male,female"
+ 	x="50%" y="20%" timeStart="0"  timeEnd="forever" /> 	
+	
+	<addMultiNumberSelector peg="age" width="25%" height="20%" startingVal="00"  x="50%" y="40%" timeStart="0" timeEnd="forever" />
+
+	<addComboBox peg="origin" 
+	label="where do you come from?"
+	timeStart="0" width="70%" height="40%" vertical="top" timeEnd="forever" x="50%" y="58%"/>
+	
+	<addInput text="what is your native language? Please type your answer into this box." timeStart="0" peg="language" height="7%" y="76%" width="70%"/>
+
+	<behavNextTrial peg='nextTrial'/>
+	
+	<addButton timeStart='0' hideResults="true" width="340" goto='' height="40" peg='next' 
+	text="next"
+	if="this.click?this.text='please answer the questions',this.click&&language.result!=''&&origin.result!=''&&age.result!=''?nextTrial.start()"  
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+
+</TRIAL>
+
+
+<TRIAL TYPE="Trial" hideResults="true" block="20" order="random" trials="1">
+	<addText peg="text" align="centre" width="100%" height="20%" 
+	text="In this study you will be shown a colour or colours in the middle of the screen. Your task is to tell us which taste or taste word (e.g., bitter, sweet, salty or sour) you think goes with that colour(s). We will also ask you how confident you were in your decision, how much you liked the colour(s), and when there is only one colour, how intense you find that colour. There are 24 trials in total." 
+	fontSize="30" wordWrap="true" timeStart="0" /> 
+	
+	<addButton timeStart='0' hideResults="true" width="340" height="40" peg='next (SPACE)' key=" " 
+	text="start"
+	timeEnd="forever" x="50%" vertical="top" y="90%"/>
+	
+</TRIAL>
+
+
+<TRIAL TYPE="Trial"  block="-50" order="random" trials="8" trialName="s">
+	<addText peg="text" align="centre" width="100%" height="20%"  y="0" vertical="top" verticalAlign="top"
+	text="Please select the taste-word that you feel most represents the colour in the middle of the screen." 
+	fontSize="40" wordWrap="true" timeStart="0" /> 
+	
+	<behavRT timeStart="0" peg="rt" />
+	
+	<behavResults colour="green;yellow;red;pink;blue;white;black;purple" />
+	
+	<addButton hideResults="true" timeStart="0"  text="salty---sweet---sour---bitter" SHUFFLE_SOMETHINGS="x y ---" peg="b1---b2---b3---b4" goto="" if="this.click?results.s=this.text,scale.start(),rt.stop(),b1.stop(),b2.stop(),b3.stop(),b4.stop(),text.text='Please rate how confident you were in your decision.'" sticky="true" width="10%" height="10%" x="35%---35%---65%---65%" y="35%---65%---35%---65%" howMany="4" />
+
+ 	<addMultipleChoice howMany="3" peg="scale---liking---intensity" distanceApart="5" width="100%" height="10%" seperation="horizontal" horizontalDistanceApart="1" 
+ 	labels="not at all confident,not confident,undecided,confident,very confident---dislike very much,dislike,neither,like,like very much---not at all intense,a little intense,somewhat intense,intense,very intense" if="this.click?" if1="text.text='Please rate how much you liked the colour.',liking---text.text='Please rate how intense you found the colour',intensity---nextTrial" if2=".start(),this.stop()"
+ 	y="75%" x="50%"    /> 
+
+ 	<addShape width="75" lineThickness="0" colour="green;yellow;red;pink;blue;white;black;purple" height="75" radius="20" shape="roundedRectangle" />
+ 			
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+
+
+
+
+<TRIAL TYPE="Trial"  block="50" order="random" trials="16" trialName="p">
+	<addText peg="text" align="centre" width="100%" height="20%"  y="0" vertical="top" verticalAlign="top"
+	text="Please select the taste-word that you feel most represents the PAIR OF COLOURS in the middle of the screen." 
+	fontSize="40" wordWrap="true" timeStart="0" /> 
+	
+	<behavRT timeStart="0" peg="rt" />
+	
+	<behavResults congruent="1;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0" colour="redPink;blueWhite;yellowGreen;blackPurple;redBlue;redYellow;redPurple;whiteYellow;whitePurple;whitePink;greenPurple;greenBlue; greenPink;blackPink;blackYellow;blackBlue" />
+	
+	<addButton hideResults="true" timeStart="0"  text="salty---sweet---sour---bitter" SHUFFLE_SOMETHINGS="x y ---" peg="b1---b2---b3---b4" goto="" if="this.click?results.s=this.text,scale.start()rt.stop(),b1.stop(),b2.stop(),b3.stop(),b4.stop(),text.text='Please rate how confident you were in your decision.'" sticky="true" width="10%" height="10%" x="35%---35%---65%---65%" y="35%---65%---35%---65%" howMany="4" />
+
+ 	<addMultipleChoice howMany="2" peg="scale---liking---intensity" distanceApart="5" width="100%" height="10%" seperation="horizontal" horizontalDistanceApart="1" 
+ 	labels="not at all confident,not confident,undecided,confident,very confident---dislike very much,dislike,neither,like,like very much---not at all intense,a little intense,somewhat intense,intense,very intense" if="this.click?" if1="text.text='Please rate how much you liked the pair of colours.',liking---nextTrial" if2=".start(),this.stop()"
+ 	y="75%" x="50%"    /> 
+
+ 	<addShape betweenSJ="orientation" timeStart="0" peg="a---b" width="75" if="this.doNow?results." if1="aCol---bCol" if2="=this.ref,results." if3="a---b" if4="X=this.x,results." if5="a---b" if6="Y=this.y" lineThickness="0" howMany="2" x="46.2%---53.8%" shuffle_something="x ---" colour="red---pink;blue---white;yellow---green;0x443709---purple;0x443709---yellow;green---red;white---purple;blue---pink" 
+ ref="red---pink;blue---white;yellow---green;black---purple;red---blue;red---yellow;red---purple;white---yellow;white---purple;white---pink;green---purple;green---blue;green---pink;black---pink;black---yellow;black---blue"	
+ height="75" radius="20" shape="roundedRectangle" />
+ 			
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+
+
+<!-- <TRIAL block="-80" order="random" trialName="liking;intensity" trials="2" >
+	<addText align="centre" width="100%" height="20%" x="50%" y="0" vertical="top" verticalAlign="top"
+	text="Please move these colours into the box and position them according to how " text1="much you like them.;how intense you find their colours." text2=" Note that the vertical position does not matter. Please try to use the full range of the scale." 
+	fontSize="25" wordWrap="true" timeStart="0" peg="instruct" /> 
+	
+	<behavDrag saveProperty="filename" timeStart="0" peg="drag" save="x,y" usePegs="pics,checker" box="checker" />
+	
+	<behavRandPos box="box" width="100%" height="20%" usePegs="pics,box" timeStart="0" timeEnd="forever"/>
+	
+	<addShape timeStart="0" width="75" peg="pics" howMany="8" lineThickness="0" colour="green---yellow---red---pink---blue---white---0x443709---purple" height="75" radius="20" shape="roundedRectangle" />
+	
+	
+	<addShape peg="box" timeStart="0" width="1000" height="35%" colour="black" visible="false" y="40%"/>
+	
+	<addShape peg="checker" timeStart="0" fill="false" width="1000" height="250" colour="none" line="true" lineThickness="1" y="75%"/>
+		
+	<addText howMany="2" y="95%" timeStart="0" align="left---right" horizontal="left---right" peg="label1---label2" width="30%" fontSize="30" text="dislike very much---very much like;not at all intense---very intense" x="0%---100%" />
+	
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='place all images please',this.click&&drag.allDragged==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+ -->
+
+
+<TRIAL TYPE="Trial" hideResults="false" block="90" order="fixed" trials="1">
+	<addText align="centre" width="100%" height="20%"  y="0" vertical="top" verticalAlign="top"
+	text="We need to test that you see the same colours as everyone else who does this experiment (colours can appear differently on different monitors). Please select the appropriate colour word next to each colour shape." 
+	fontSize="18" wordWrap="true" timeStart="0" /> 
+	
+ 	<addMultipleChoice required="" seperation="horizontal" howMany="8" distanceApart="1" width="90%" height="10%" horizontalDistanceApart="1" 
+ 	labels="red,pink,blue,white,green,yellow,black,purple" fontSize="15"
+ 	x="100%" horizontal="right" y="15%---25%---etc---" timeStart="0"  timeEnd="forever" /> 
+ 	
+ 	<addShape width="75" howMany="8" colour="yellow---green---purple---red---pink---blue---white---black" height="75" shape="roundedRectangle" horizontal="left" x="0" y="15%---25%---etc---"  />
+ 			
+	<addButton peg="b" hideResults="true" goto="" if="this.click?this.text='answer the questions please',this.click&&required==true?nextTrial.start()" timeStart="0"  y="100%" vertical="bottom" width="200" height="40" text="next"/>
+	<behavNextTrial peg='nextTrial'/>
+	
+</TRIAL>
+
+
+
+			
+<TRIAL TYPE="Trial" hideResults="true" block="100" order="fixed" trials="1">
+			  
+	<behavSaveData timeStart='0'/>
+	
+	<addText  wordWrap="true"  height="30%" width="100%" x="50%" y="50%" 
+	text = "Thank you for your participation to this study. We're exploring the way people associate colours with tastes.
+If you have any questions or would like to here more about our research, please contact us at andy.woods@psy.ox.ac.uk
+DO NOT FORGET TO ENTER THE BELOW CODE INTO MECHANICAL TURK."
+
+	timeStart="0"  timeEnd="forever" fontSize="25"></addText> 
+
+</TRIAL>
+
+
+
+
+</Hor>	
+
+<Ver>
+	<a betweenSJ='orientation'><editAttributes 
+		shuffle_something="y ---"
+		x="50%"
+		y="45%---55%"
+
+  	  />  </a>	 
+</Ver>
+
+</multi>
